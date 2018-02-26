@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.preferences.LocalArchetypeCatalogDialog">
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="D:\RHB\RHB BAU\Diamond\ApplicationSource"/>
+			<item value="D:\RHB\RHB W2"/>
+			<item value="D:\BSIB_Demo1"/>
+			<item value="D:\demo_workspace"/>
+			<item value="D:\BSIB-DEMO"/>
+			<item value="D:\RHB\BSIB Demo\BSIB-DEMO"/>
+			<item value="D:\RHB\"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="RHBI-BAU"/>
+			<item value="BSIB_DEMO"/>
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.preferences.RemoteArchetypeCatalogDialog">
+		<list key="catalogUrl">
+			<item value="https://10.100.7.76:8081/artifactory/libs-release/archetype-catalog.xml"/>
+		</list>
+	</section>
+</section>

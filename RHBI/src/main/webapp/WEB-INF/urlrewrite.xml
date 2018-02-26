@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.0//EN" "./dtd/urlrewrite3.0.dtd">
+<urlrewrite>
+	<rule>
+		<note/>
+		<from>^/agent/$</from>
+		<to>/agentlogin.do</to>
+	</rule>
+	<rule>
+		<note/>
+		<from>^/admin/$</from>
+		<to>/crclogin.do</to>
+	</rule>
+	<rule>
+		<note/>
+		<from>^/agentlayout/$</from>
+		<to>/agentlayout.do</to>
+	</rule>
+	<rule>
+		<note/>
+		<from>^/client/$</from>
+		<to>/clientprofile.do</to>
+	</rule>
+	<rule>
+		<note/>
+		<from>^/error/$</from>
+		<to>/error.do</to>
+	</rule>
+	<outbound-rule enabled="true" encodefirst="true">
+		<name>Strip URL Session IDs</name>
+		<from>^(.*?)(?:\;jsessionid=[^\?#]*)?(\?[^#]*)?(#.*)?$</from>
+		<to>$1</to>
+	</outbound-rule>
+</urlrewrite>

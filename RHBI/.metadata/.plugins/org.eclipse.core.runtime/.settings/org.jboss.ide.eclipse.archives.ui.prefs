@@ -1,0 +1,9 @@
+alwaysShowProjectExplorerNode=false
+defaultExcludesList=**/*~,**/\#*\#,**/.\#*,**/%*%,**/._*,**/CVS,**/CVS/**,**/.cvsignore,**/SCCS,**/SCCS/**,**/vssver.scc,**/.svn,**/.svn/**,**/.DS_Store,
+eclipse.preferences.version=1
+showAllProjects=false
+showBuildErrorDialog=true
+showFullFilesetRootDir=true
+showPackageOutputPath=true
+showProjectRoot=true
+useDefaultExcludes=true

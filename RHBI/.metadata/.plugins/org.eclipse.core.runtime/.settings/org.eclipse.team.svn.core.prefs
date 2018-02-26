@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+externalMigrateFromAuthorizationDatabase/isMigrated=true
+migrateFromAuthorizationDatabase/isMigrated=true
+repositories/10621f455252001716a4b564f74d2dcd=10621f455252001716a4b564f74d2dcd;https\://10.100.1.252/svn/BSIB;https\://10.100.1.252/svn/BSIB;branches;tags;trunk;true;;;;false;;;0
+repositories/507a1e2fc75000171a19d60c80f5e187=507a1e2fc75000171a19d60c80f5e187;https\://10.100.1.252/svn/RHB;https\://10.100.1.252/svn/RHB;branches;tags;trunk;true;521cad16-d9b6-2a48-9b60-caf3120fa7e9;https\://10.100.1.252/svn/RHB;;false;;;0

@@ -1,0 +1,247 @@
+
+.cd-tabs {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    font-weight: 300;
+    /*font-size: 1.25em;*/
+    
+    margin-top: -6px;
+}
+/* Nav */
+
+.cd-tabs nav {
+    text-align: center;
+    font-size: 20px;
+}
+.cd-tabs nav ul {
+    position: relative;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    /* display: flex; */
+    margin: 0 auto;
+    padding: 0;
+    /* max-width: 1200px; */
+    list-style: none;
+    -ms-box-orient: horizontal;
+    -ms-box-pack: center;
+    -ms-flex-flow: row wrap;
+    -ms-justify-content: center;
+    justify-content: center;
+}
+.cd-tabs nav ul li {
+
+	z-index: 1;
+	display:table-cell;
+	
+	margin: 0;
+	text-align: center;
+        -ms-flex: 1;              /* IE 10 */
+}
+.cd-tabs nav a {
+	position: relative;
+	display: block;
+	float-left;
+	overflow: hidden;
+	padding:0px 15px;
+	max-width:288px;
+	 min-width:250px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height:1.5;
+}
+.cd-tabs nav a span {
+    vertical-align: middle;
+    font-size: 0.75em;
+}
+.cd-tabs nav li.tab-current a {
+    color: #74777b;
+}
+.cd-tabs nav a:focus {
+    outline: none;
+}
+/* Icons */
+
+.icon::before {
+    z-index: 10;
+    display: inline-block;
+    margin: 0 0.4em 0 0;
+    vertical-align: middle;
+    text-transform: none;
+    font-weight: normal;
+    font-variant: normal;
+    font-size: 1.3em;
+    font-family: 'stroke7pixeden';
+    line-height: 1;
+    speak: none;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-upload::before {
+    content: "\e68a";
+}
+.icon-tools::before {
+    content: "\e60a";
+}
+.icon-plane::before {
+    content: "\e625";
+}
+.icon-joy::before {
+    content: "\e6a4";
+}
+.icon-plug::before {
+    content: "\e69a";
+}
+.icon-home::before {
+    content: "\e648";
+}
+.icon-gift::before {
+    content: "\e652";
+}
+.icon-display::before {
+    content: "\e65e";
+}
+.icon-date::before {
+    content: "\e660";
+}
+.icon-config::before {
+    content: "\e666";
+}
+.icon-coffee::before {
+    content: "\e669";
+}
+.icon-camera::before {
+    content: "\e66f";
+}
+.icon-box::before {
+    content: "\e674";
+}
+.cd-tabs-style-bar nav {
+    background: rgba(40, 44, 42, 0.05);
+}
+.cd-tabs-style-bar nav ul {
+    border: 4px solid transparent;
+}
+.cd-tabs-style-bar nav ul li a {
+    margin: 0 2px;
+    background-color: #f7f7f7;
+    color: #74777b;
+    transition: background-color 0.2s, color 0.2s;
+}
+.cd-tabs-style-bar nav ul li a:hover,
+.cd-tabs-style-bar nav ul li a:focus {
+    color: #EF3E44;
+    text-decoration: none;
+}
+.cd-tabs-style-bar nav ul li a span {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 0.6em;
+}
+.cd-tabs-style-bar nav ul li.tab-current a {
+    background: #054077;
+    color: #fff;
+}
+.cd-tabs-style-iconbox nav {
+    background: rgba(255, 255, 255, 0.4);
+}
+.cd-tabs-style-iconbox nav ul li a {
+    overflow: visible;
+    padding: 2em 0;
+    line-height: 1;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+.cd-tabs-style-iconbox nav ul li a span {
+    font-weight: 700;
+    font-size: 0.7em;
+}
+.cd-tabs-style-iconbox nav ul li.tab-current {
+    z-index: 100;
+}
+.cd-tabs-style-iconbox nav ul li.tab-current a {
+    background: #fff;
+    box-shadow: -1px 0 0 #fff;
+}
+.cd-tabs-style-iconbox nav ul li.tab-current a::after {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border: solid transparent;
+    border-width: 10px;
+    border-top-color: #fff;
+    content: '';
+    pointer-events: none;
+}
+.cd-tabs-style-iconbox nav ul li:first-child::before,
+.cd-tabs-style-iconbox nav ul li::after {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    z-index: -1;
+    width: 1px;
+    height: 60%;
+    background: rgba(0, 0, 0, 0.07);
+    content: '';
+}
+.cd-tabs-style-iconbox nav ul li:first-child::before {
+    right: auto;
+    left: 0;
+}
+.cd-tabs-style-iconbox .icon::before {
+    display: block;
+    margin: 0 0 0.25em 0;
+}
+/* Content */
+
+.content-wrap {
+    position: relative;
+}
+.content-wrap section {
+    display: none;
+    margin: 0 auto;
+    padding: 9px 0px 0px 15px;
+    /*max-width: 1200px;*/
+    /*text-align: center;*/
+}
+.content-wrap section.content-current {
+    display: block;
+}
+.content-wrap section p {
+    margin: 0;
+    padding: 0.75em 0;
+    color: rgba(40, 44, 42, 0.05);
+    font-weight: 900;
+    font-size: 4em;
+    line-height: 1;
+}
+/* Fallback */
+
+.no-js .content-wrap section {
+    display: block;
+    padding-bottom: 2em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+.no-flexbox nav ul {
+    display: block;
+}
+.no-flexbox nav ul li {
+    min-width: 15%;
+    display: inline-block;
+}
+@media screen and (max-width: 58em) {
+    .cd-tabs nav a.icon span {
+        display: none;
+    }
+    .cd-tabs nav a:before {
+        margin-right: 0;
+    }
+}

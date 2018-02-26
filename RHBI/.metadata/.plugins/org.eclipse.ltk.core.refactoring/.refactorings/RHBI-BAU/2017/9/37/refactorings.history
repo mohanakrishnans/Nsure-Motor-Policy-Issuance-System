@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract local variable &apos;emailConfigurationDO2&apos; from expression &apos;emailConfigurationDO&apos;&#x0D;&#x0A;- Original project: &apos;RHBI-BAU&apos;&#x0D;&#x0A;- Variable name: &apos;emailConfigurationDO2&apos;&#x0D;&#x0A;- Destination method: &apos;com.kgisl.nsure.admin.controller.AdministrationController.loadEmailconfigBranchGridDet()&apos;&#x0D;&#x0A;- Variable expression: &apos;emailConfigurationDO&apos;" description="Extract local variable &apos;emailConfigurationDO2&apos;" final="false" id="org.eclipse.jdt.ui.extract.temp" input="/src\/main\/java&lt;com.kgisl.nsure.admin.controller{AdministrationController.java" name="emailConfigurationDO2" replace="false" selection="104106 20" stamp="1505132280758" version="1.0"/>
+</session>

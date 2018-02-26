@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="452" key="DIALOG_X_ORIGIN"/>
+		<item value="248" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="CompanyProfile" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="companyprofile"/>
+			<item value="SAVE_REPORT_GEN_TIME"/>
+			<item value="getSqlDateTimeFromString"/>
+			<item value="response"/>
+			<item value="GENERAT"/>
+			<item value="getAllStaffLogin"/>
+			<item value="getAllStaffLogin()"/>
+			<item value=" getBranchList"/>
+		</list>
+		<list key="replacehistory">
+			<item value=""/>
+			<item value="Please Select Source Type"/>
+			<item value="select"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="854" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="285" key="DIALOG_HEIGHT"/>
+		<item value="518" key="DIALOG_X_ORIGIN"/>
+		<item value="397" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

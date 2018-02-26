@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="C:\Program Files (x86)\Java\jdk1.8.0_11" version="1.8.0_11">
+<bootpath>
+<entry path="C:\Program Files (x86)\Java\jdk1.8.0_11\jre\lib\resources.jar"/>
+<entry path="C:\Program Files (x86)\Java\jdk1.8.0_11\jre\lib\rt.jar"/>
+<entry path="C:\Program Files (x86)\Java\jdk1.8.0_11\jre\lib\sunrsasign.jar"/>
+<entry path="C:\Program Files (x86)\Java\jdk1.8.0_11\jre\lib\jsse.jar"/>
+<entry path="C:\Program Files (x86)\Java\jdk1.8.0_11\jre\lib\jce.jar"/>
+<entry path="C:\Program Files (x86)\Java\jdk1.8.0_11\jre\lib\charsets.jar"/>
+<entry path="C:\Program Files (x86)\Java\jdk1.8.0_11\jre\lib\jfr.jar"/>
+<entry path="C:\Program Files (x86)\Java\jdk1.8.0_11\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Program Files (x86)\Java\jdk1.8.0_11\jre\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Program Files (x86)\Java\jdk1.8.0_11\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="D:\IBM_JDK_1.7-32-Bit" version="1.7.0">
+<bootpath>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\bin\default\jclSC170\vm.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\se-service.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\math.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\jlm.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\ibmorb.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\ibmorbapi.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\ibmcfw.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\ibmpkcs.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\ibmcertpathfw.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\ibmjgssfw.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\ibmjssefw.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\ibmsaslfw.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\ibmjcefw.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\ibmjgssprovider.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\ibmjsseprovider2.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\ibmcertpathprovider.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\xmldsigfw.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\xml.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\charsets.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\resources.jar"/>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\rt.jar"/>
+</bootpath>
+<extensionDirs>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="D:\IBM_JDK_1.7-32-Bit\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="C:\Program Files (x86)\Java\jre8" version="1.8.0_11">
+<bootpath>
+<entry path="C:\Program Files (x86)\Java\jre8\lib\resources.jar"/>
+<entry path="C:\Program Files (x86)\Java\jre8\lib\rt.jar"/>
+<entry path="C:\Program Files (x86)\Java\jre8\lib\sunrsasign.jar"/>
+<entry path="C:\Program Files (x86)\Java\jre8\lib\jsse.jar"/>
+<entry path="C:\Program Files (x86)\Java\jre8\lib\jce.jar"/>
+<entry path="C:\Program Files (x86)\Java\jre8\lib\charsets.jar"/>
+<entry path="C:\Program Files (x86)\Java\jre8\lib\jfr.jar"/>
+<entry path="C:\Program Files (x86)\Java\jre8\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Program Files (x86)\Java\jre8\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Program Files (x86)\Java\jre8\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

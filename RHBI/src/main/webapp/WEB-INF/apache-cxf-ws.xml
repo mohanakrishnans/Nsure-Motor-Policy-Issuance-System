@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<import resource="dispatcher-servlet.xml" />
+
+	<bean id="wsAuthenticationCallback"
+	class="com.kgisl.nsure.diamond.services.security.WSAuthenticationCallback" />
+
+	<jaxws:endpoint id="motorPremiumService"
+		implementor="com.kgisl.nsure.diamond.services.PremiumServiceImpl"
+		address="/premium/motor"
+		wsdlLocation="com/kgisl/nsure/diamond/services/premium/motor/premium_service.wsdl">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+		<jaxws:properties>
+			<entry key="ws-security.callback-handler" value-ref="wsAuthenticationCallback" />
+		</jaxws:properties>
+	</jaxws:endpoint>
+	
+	<jaxws:endpoint id="vehicleMarketValueService"
+		implementor="com.kgisl.nsure.motor.ism.services.VehicleMarketValueServiceImpl"
+		address="/marketvalue">
+	</jaxws:endpoint>
+	
+	<!--  Diamond Services -->
+	
+	<jaxws:endpoint id="portfolioService"
+		implementor="com.kgisl.nsure.diamond.services.PortfolioServiceImpl"
+		address="/portfolio"
+		wsdlLocation="com/kgisl/nsure/diamond/services/portfolio/portfolio.wsdl">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+		<jaxws:properties>
+			<entry key="ws-security.callback-handler" value-ref="wsAuthenticationCallback" />
+		</jaxws:properties>
+	</jaxws:endpoint>
+	
+	<jaxws:endpoint id="motorProposal"
+		implementor="com.kgisl.nsure.diamond.services.MotorProposalServiceImpl"
+		address="/motorproposal"
+		wsdlLocation="com/kgisl/nsure/diamond/services/motorproposal/motorproposal.wsdl">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+		<jaxws:properties>
+			<entry key="ws-security.callback-handler" value-ref="wsAuthenticationCallback" />
+		</jaxws:properties>
+	</jaxws:endpoint>
+	
+	<jaxws:endpoint id="mpaProposal"
+		implementor="com.kgisl.nsure.diamond.services.MpaProposalServiceImpl"
+		address="/mpaproposal"
+		wsdlLocation="com/kgisl/nsure/diamond/services/mpaproposal/mpaproposal.wsdl">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+		<jaxws:properties>
+			<entry key="ws-security.callback-handler" value-ref="wsAuthenticationCallback" />
+		</jaxws:properties>
+	</jaxws:endpoint>
+	<jaxws:endpoint id="motorNewProposal"
+		implementor="com.kgisl.nsure.diamond.services.MotorNewProposalServiceImpl"
+		address="/motornewproposal"
+		wsdlLocation="com/kgisl/nsure/diamond/services/motornewproposal/motornewproposal.wsdl">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+		<jaxws:properties>
+			<entry key="ws-security.callback-handler" value-ref="wsAuthenticationCallback" />
+		</jaxws:properties>
+	</jaxws:endpoint>
+	<jaxws:endpoint id="mpaPremiumCalc"
+		implementor="com.kgisl.nsure.diamond.services.MpaPremiumCalclServiceImpl"
+		address="/mpapremiumcalc"
+		wsdlLocation="com/kgisl/nsure/diamond/services/mpapremiumcalc/mpapremiumcalc.wsdl">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+		<jaxws:properties>
+			<entry key="ws-security.callback-handler" value-ref="wsAuthenticationCallback" />
+		</jaxws:properties>
+	</jaxws:endpoint>
+	<jaxws:endpoint id="mpaNewProposal"
+		implementor="com.kgisl.nsure.diamond.services.MpaNewProposalServiceImpl"
+		address="/mpanewproposal"
+		wsdlLocation="com/kgisl/nsure/diamond/services/mpanewproposal/mpanewproposal.wsdl">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+		<jaxws:properties>
+			<entry key="ws-security.callback-handler" value-ref="wsAuthenticationCallback" />
+		</jaxws:properties>
+	</jaxws:endpoint>
+	<jaxws:endpoint id="motorRenewalProposal"
+		implementor="com.kgisl.nsure.diamond.services.MotorRenewalProposalServiceImpl"
+		address="motorrenewalproposal"
+		wsdlLocation="com/kgisl/nsure/diamond/services/motorrenewalproposal/motorrenewalproposal.wsdl">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+		<jaxws:properties>
+			<entry key="ws-security.callback-handler" value-ref="wsAuthenticationCallback" />
+		</jaxws:properties>
+	</jaxws:endpoint>
+	<jaxws:endpoint id="hhhoProposal"
+		implementor="com.kgisl.nsure.diamond.services.HHHOProposalServiceImpl"
+		address="hhhoProposal"
+		wsdlLocation="com/kgisl/nsure/diamond/services/hhhoProposal/hhhoProposal.wsdl">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+		<jaxws:properties>
+			<entry key="ws-security.callback-handler" value-ref="wsAuthenticationCallback" />
+		</jaxws:properties>
+	</jaxws:endpoint>
+	<jaxws:endpoint id="hhhonewProposal"
+		implementor="com.kgisl.nsure.diamond.services.HHHONewProposalServiceImpl"
+		address="hhhoNewProposal"
+		wsdlLocation="com/kgisl/nsure/diamond/services/hhhonewProposal/hhhonewProposal.wsdl">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+		<jaxws:properties>
+			<entry key="ws-security.callback-handler" value-ref="wsAuthenticationCallback" />
+		</jaxws:properties>
+	</jaxws:endpoint>
+	<jaxws:endpoint id="nmRenewalProposal"
+		implementor="com.kgisl.nsure.diamond.services.NMRenewalProposalServiceImpl"
+		address="nmRenewalProposal"
+		wsdlLocation="com/kgisl/nsure/diamond/services/nmrenewalProposal/nmrenewalProposal.wsdl">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+		<jaxws:properties>
+			<entry key="ws-security.callback-handler" value-ref="wsAuthenticationCallback" />
+		</jaxws:properties>
+	</jaxws:endpoint>
+	<jaxws:endpoint id="hhhoPremiumCalc"
+		implementor="com.kgisl.nsure.diamond.services.HHHOPremiumCalclServiceImpl"
+		address="/hhhopremiumcalc"
+		wsdlLocation="com/kgisl/nsure/diamond/services/hhhopremiumcalc/hhhopremiumcalc.wsdl">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+		<jaxws:properties>
+			<entry key="ws-security.callback-handler" value-ref="wsAuthenticationCallback" />
+		</jaxws:properties>
+	</jaxws:endpoint>
+</beans>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/tx
+          				http://www.springframework.org/schema/tx/spring-tx.xsd 
+						http://www.springframework.org/schema/mvc
+          				http://www.springframework.org/schema/mvc/spring-mvc.xsd
+          				http://www.springframework.org/schema/task
+        				http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+	<mvc:annotation-driven />
+	<context:annotation-config />
+	<context:component-scan base-package="com.kgisl.nsure" />
+	<task:annotation-driven />
+	<bean id="internalResourceViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" 
+		p:viewClass="org.springframework.web.servlet.view.JstlView" />
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="com.kgisl.nsure.web.logging.NsureException">redirect:/error</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+	<property name="order" value="1"></property>	
+	</bean>
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	<property name="alwaysUseFullPath" value="true"></property>	
+	</bean>
+	
+	<mvc:resources mapping="/resources/**" location="/resources/" />	
+	<mvc:resources mapping="/dashboard/***" location="/appresources/dashboard/" />
+	<mvc:resources mapping="/layout/**" location="/appresources/layout/" />
+	<mvc:resources mapping="/login/**" location="/appresources/login/" />
+	<mvc:resources mapping="/app/***" location="/appresources/js/app/" />
+	<mvc:resources mapping="/angularmain/**" location="/appresources/js/angularmain/" />
+	<mvc:resources mapping="/angularservice/***" location="/appresources/js/angularservice/" />
+	<mvc:resources mapping="/angularmod/***" location="/appresources/js/angularmodule/" />
+	
+	<mvc:annotation-driven></mvc:annotation-driven>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:applicationresources" />
+		<property name="defaultEncoding" value="UTF-8"></property>
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="20971520" /> <!-- 20MB -->
+	</bean>
+	
+
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en" />
+	</bean>
+
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="system" />
+		<property name="password" value="Mohan123" />
+    </bean>
+
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="txManager" />
+
+	<bean id="standardPBEStringEncryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
+		<property name="config">
+			<bean class="org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig">
+				<property name="algorithm" value="PBEWithMD5AndDES" />
+				<property name="passwordEnvName" value="APP_ENCRYPTION_PASSWORD" />
+			</bean>
+		</property>
+	</bean>
+	<!-- <bean class="com.kgisl.nsure.commonutils.domain.LDAPAuthenticator">
+		<constructor-arg ref="standardPBEStringEncryptor" />
+		<constructor-arg>
+			<value>org.jasypt.encryption.pbe.StandardPBEStringEncryptor</value>
+		</constructor-arg>
+	</bean> -->
+
+	<!-- <bean class="org.springframework.web.servlet.view.XmlViewResolver">
+		<property name="location">
+			<value>/WEB-INF/excel-config.xml</value>
+		</property>
+		<property name="order" value="0" />
+	</bean>
+ -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="properties">
+			<bean class="org.apache.commons.configuration.ConfigurationConverter"
+				factory-method="getProperties">
+				<constructor-arg>
+					<bean class="org.apache.commons.configuration.DatabaseConfiguration">
+						<constructor-arg>
+							<ref bean="dataSource" />
+						</constructor-arg>
+						<constructor-arg value="EIS_MST_DOMAIN_CONFIG" /> <!-- DB Table -->
+						<constructor-arg value="VCH_CONFIG_NAME" /> <!-- DB Key Column -->
+						<constructor-arg value="VCH_CONFIG_VALUE" /> <!-- DB Value Column -->
+					</bean>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
+
+
+	<!-- <bean id="PG_URL" class="java.lang.String">
+		<constructor-arg
+			value="${migs.url}~~${migs.access.code}~~${migs.merchant.code}~~${migs.secure.hash}" />
+	</bean>
+
+	<bean id="MAIL_FROM_ADDRESS" class="com.kgisl.nsure.commonutils.domain.GlobalNames">
+		<property name="mailFrom" value="${mail.sender}" />
+	</bean> -->
+
+
+	<bean id="masterRegionCache" class="org.apache.jcs.JCS"
+		factory-method="getInstance">
+		<constructor-arg>
+			<value>masterRegionCache</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="transactionRegionCache" class="org.apache.jcs.JCS"
+		factory-method="getInstance">
+		<constructor-arg>
+			<value>transactionRegionCache</value>
+		</constructor-arg>
+	</bean>
+
+	<!-- Mail Template -->
+	<!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${mail.smtp.host}" />
+		<property name="port" value="${mail.smtp.port}" />
+		<property name="username" value="${mail.sender}" /> -->
+		<!-- The name of the property, following JavaBean naming conventions -->
+	<!-- <property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+				<prop key="mail.debug">${mail.debug}</prop>
+			</props>
+		</property>
+	</bean>
+ -->	
+
+	<!-- <bean id="wsAuthValidator" class="com.kgisl.nsure.diamond.services.security.WsAuthenticationValidator">
+		<property name="wsAuthService" ref="wsAuthServiceImpl"/>
+	</bean> -->
+	
+	<!-- Contains Spring WS related configurations -->
+	<!-- <import resource="spring-ws.xml" />
+	
+	<bean id="externalAPIServiceImpl" class="com.kgisl.nsure.externalapi.services.ExternalAPIServiceImpl" />
+	<bean id="ancillaryServiceImpl" class="com.kgisl.nsure.ancillary.services.AncillaryServiceImpl" />
+	
+	<bean id="motorDetariffServiceImpl" class="com.kgisl.nsure.detariff.motor.services.MotorDetariffServiceImpl" />
+	<bean id="motorServiceImpl" class="com.kgisl.nsure.transaction.services.MotorServiceImpl" />
+	<bean id="administrationServiceImpl" class="com.kgisl.nsure.admin.services.AdministrationServiceImpl" />
+	<bean id="clientProfileServiceImpl" class="com.kgisl.nsure.transaction.services.ClientProfileServiceImpl" />
+	<bean id="premiumServiceImpl" class="com.kgisl.nsure.diamond.services.PremiumServiceImpl">
+		<property name="externalAPIService" ref="externalAPIServiceImpl"/>
+		<property name="motorDetariffService" ref="motorDetariffServiceImpl"/>
+		<property name="motorService" ref="motorServiceImpl"/>
+		<property name="administrationService" ref="administrationServiceImpl"/>
+		<property name="clientProfileService" ref="clientProfileServiceImpl"/>
+		<property name="webServiceTemplate" ref="webServiceTemplate"/>
+	</bean> 
+
+	<bean id="mediatorServiceImpl" class="com.kgisl.nsure.mediator.services.MediatorServiceImpl" />
+	<bean id="portfolioServiceImpl" class="com.kgisl.nsure.diamond.services.PortfolioServiceImpl">
+		<property name="mediatorService" ref="mediatorServiceImpl"/>
+	</bean>
+	<bean id="motorProposalServiceImpl" class="com.kgisl.nsure.diamond.services.MotorProposalServiceImpl">
+		<property name="mediatorService" ref="mediatorServiceImpl"/>
+	</bean>
+	<bean id="mpaProposalServiceImpl" class="com.kgisl.nsure.diamond.services.MpaProposalServiceImpl">
+		<property name="mediatorService" ref="mediatorServiceImpl"/>
+	</bean>
+	<bean id="motorNewProposalServiceImpl" class="com.kgisl.nsure.diamond.services.MotorNewProposalServiceImpl">
+		<property name="mediatorService" ref="mediatorServiceImpl"/>
+	</bean>
+	<bean id="mpaPremiumCalcServiceImpl" class="com.kgisl.nsure.diamond.services.MpaPremiumCalcServiceImpl">
+		<property name="mediatorService" ref="mediatorServiceImpl"/>
+	</bean>
+	<bean id="mpaNewProposalServiceImpl" class="com.kgisl.nsure.diamond.services.MpaNewProposalServiceImpl">
+		<property name="mediatorService" ref="mediatorServiceImpl"/>
+	</bean>
+	<bean id="motorRenewalProposalServiceImpl" class="com.kgisl.nsure.diamond.services.MotorRenewalProposalServiceImpl">
+		<property name="mediatorService" ref="mediatorServiceImpl"/>
+	</bean>
+	<bean id="hhhoProposalServiceImpl" class="com.kgisl.nsure.diamond.services.HHHOProposalServiceImpl">
+		<property name="mediatorService" ref="mediatorServiceImpl"/>
+	</bean>
+	<bean id="hhhoNewProposalServiceImpl" class="com.kgisl.nsure.diamond.services.HHHONewProposalServiceImpl">
+		<property name="mediatorService" ref="mediatorServiceImpl"/>
+	</bean>
+	<bean id="nmRenewalProposalServiceImpl" class="com.kgisl.nsure.diamond.services.NMRenewalProposalServiceImpl">
+		<property name="mediatorService" ref="mediatorServiceImpl"/>
+	</bean>
+	<bean id="hhhoPremiumCalcServiceImpl" class="com.kgisl.nsure.diamond.services.HHHOPremiumCalcServiceImpl">
+		<property name="mediatorService" ref="mediatorServiceImpl"/>
+	</bean>
+	<bean id="nsureLogger" class="com.kgisl.nsure.web.logging.NsureLogger">
+		<property name="externalAPIService" ref="externalAPIServiceImpl" />
+		<property name="ancillaryService" ref="ancillaryServiceImpl" />
+	</bean> -->
+</beans>
