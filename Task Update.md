@@ -63,3 +63,18 @@
  |10.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
 |Sunday| |Holiday||
  |12.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|In Progress|
+|13.02.2018|10:45 AM to 4:00 PM|Dashboard controls|In Progress|
+|14.02.2018|10:45 AM to 4:00 PM|Dashboard controls|In Progress|
+|15.02.2018|10:45 AM to 4:00 PM|Dashboard controls|In Progress|
+|16.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
+|17.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
+|Sunday||||
+|19.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
+|20.02.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+|21.02.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+|22.02.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+|23.02.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+|Saturday| |Holiday||
+|Sunday||||
+|||||
+
