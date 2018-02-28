@@ -77,5 +77,5 @@
 |Saturday| |Holiday||
 |Sunday||||
 |26.02.2018|10:45 AM to 4:00 PM|UI grid|In Progress|
-|27.02.2018|10:45 AM to 4:00 PM|Second Review|In Progress|
-|28.02.2018|10:45 AM to 4:00 PM|Second Review|In Progress|
+|27.02.2018|10:45 AM to 4:00 PM|Second Review|
+|28.02.2018|10:45 AM to 4:00 PM|Second Review|
