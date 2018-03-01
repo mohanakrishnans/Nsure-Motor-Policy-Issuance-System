@@ -156,7 +156,7 @@ function validationQuotation() {
 					</a>
 						<ul id="endorsement" class="collapse list-unstyled ">
 							<li><a href="nameddrivers">Named Drivers</a></li>
-							<li><a href="schedule">Schedule Print</a></li>
+							<li><a href="endorsementdetails">EndorsementDetails</a></li>
 						</ul></li>
 					<li><a href="premium"> <i class="icon-grid"></i>Premium
 					</a> <!-- <ul id="tablesDropdown" class="collapse list-unstyled ">
