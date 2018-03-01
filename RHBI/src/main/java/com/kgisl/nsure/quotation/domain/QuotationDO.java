@@ -3,9 +3,8 @@
  */
 package com.kgisl.nsure.quotation.domain;
 
-import java.util.Date;
 import org.springframework.stereotype.Component;
-import com.kgisl.nsure.quotation.domain.*;
+
 /**
  * @author mohan
  *
@@ -284,9 +283,10 @@ public class QuotationDO {
 		this.contactName = contactName;
 	}
 	/**
+	 * @param contactActiveStatus 
 	 * @param contactActiveStatus the contactActiveStatus to set
 	 */
-	public void setContactActiveStatus(char cStringctActiveStatus) {
+	public void setContactActiveStatus(char contactActiveStatus) {
 		this.contactActiveStatus = contactActiveStatus;
 	}
 	/**

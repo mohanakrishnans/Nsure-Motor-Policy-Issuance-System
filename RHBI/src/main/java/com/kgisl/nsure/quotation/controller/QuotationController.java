@@ -4,32 +4,24 @@
 package com.kgisl.nsure.quotation.controller;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
+import java.util.List; 
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
+ 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.stereotype.Controller; 
+import org.springframework.validation.BindingResult; 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
+import com.google.gson.Gson; 
 import com.kgisl.nsure.authenticate.domain.LoginDO;
 import com.kgisl.nsure.quotation.Service.QuotationService;
-import com.kgisl.nsure.quotation.domain.QuotationDO;
-import net.sf.json.JSON;
+import com.kgisl.nsure.quotation.domain.QuotationDO; 
 
 /**
  * @author mohan
@@ -73,7 +65,7 @@ public class QuotationController {
 
 		return new ModelAndView("premium/premium");
 	}
-
+	/**Named Drivers**/
 	@RequestMapping(value = "/nameddrivers", method = RequestMethod.GET)
 	public ModelAndView namedDrivers(@ModelAttribute("login") QuotationDO quotationdo) {
 

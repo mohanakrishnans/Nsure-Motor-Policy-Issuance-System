@@ -6,6 +6,4 @@ if(request.getSession()!=null && request.getSession().getAttribute("logouturl")!
 }else{
 	response.sendRedirect(request.getContextPath()+"/admin/");
 }
-%>	
-	
-
+%>
