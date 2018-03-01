@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 /.metadata/*
 /.recommenders/*
 /AngularJs/*
 /RemoteSystemsTempFiles/*
 /Servers/*
 /TEST/*
+=======
+/.metadata/
+/Servers/*
+>>>>>>> a64a3e75fb54549192750854578195e2a0435286
