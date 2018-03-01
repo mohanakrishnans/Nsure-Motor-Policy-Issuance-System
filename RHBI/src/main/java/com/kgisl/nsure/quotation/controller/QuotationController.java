@@ -80,10 +80,10 @@ public class QuotationController {
 		return new ModelAndView("endor/nameddrivers");
 	}
 
-	@RequestMapping(value = "/schedule", method = RequestMethod.GET)
-	public ModelAndView schedule(@ModelAttribute("login") QuotationDO quotationdo) {
+	@RequestMapping(value = "/endorsementdetails", method = RequestMethod.GET)
+	public ModelAndView endorsementDetails(@ModelAttribute("login") QuotationDO quotationdo) {
 
-		return new ModelAndView("endor/schedule");
+		return new ModelAndView("endor/endorsementdetails");
 	}
 
 	@RequestMapping(value = "/testt", method = RequestMethod.GET)
