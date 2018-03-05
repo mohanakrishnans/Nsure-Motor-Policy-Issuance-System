@@ -79,5 +79,8 @@
 |26.02.2018|10:45 AM to 4:00 PM|UI grid|In Progress|
 |27.02.2018|10:45 AM to 4:00 PM|Second review||
 |28.02.2018|10:45 AM to 4:00 PM|Second review||
-
-
+|01.03.2018|10:45 AM to 4:00 PM|Module 2 Ui grid|In Progress|
+|02.03.2018|10:45 AM to 4:00 PM|Module 2 Ui grid|In Progress|
+|03.03.2018|10:45 AM to 4:00 PM|Module 2 Ui grid|In Progress|
+|Sunday||Holiday||
+|05.03.2018|10:45 AM to 4:00 PM|Database table creation|In Progress|
