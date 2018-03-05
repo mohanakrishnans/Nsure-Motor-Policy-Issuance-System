@@ -68,7 +68,7 @@
 |15.02.2018|10:45 AM to 4:00 PM|Spring MVC PDF Generation|In Progress|
 |16.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
 |17.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
-|Sunday||||
+|Sunday||Holiday||
 |19.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
 |20.02.2018|10:45 AM to 4:00 PM|Spring MVC PDF Generation|In Progress|
 |21.02.2018|10:45 AM to 4:00 PM|Spring MVC PDF Generation|In Progress|
@@ -79,5 +79,9 @@
 |26.02.2018|10:45 AM to 4:00 PM|iReport and spring integration|In Progress|
 |27.02.2018|10:45 AM to 4:00 PM|Second review||
 |28.02.2018|10:45 AM to 4:00 PM|Second review||
-
+|01.03.2018|10:45 AM to 4:00 PM|Jasper ireport|In Progress|
+|02.03.2018|10:45 AM to 4:00 PM|Jasper ireport|In Progress|
+|03.03.2018|10:45 AM to 4:00 PM|Jasper ireport|In Progress|
+|Sunday||Holiday||
+|05.03.2018|10:45 AM to 4:00 PM|Jasper ireport|In Progress|
 
