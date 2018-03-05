@@ -79,3 +79,9 @@
 |26.02.2018|10:45 AM to 4:00 PM|UI grid|In Progress|
 |27.02.2018|10:45 AM to 4:00 PM|Second Review|
 |28.02.2018|10:45 AM to 4:00 PM|Second Review|
+|01.03.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+|02.03.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+|03.03.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+|Sunday||Holiday||
+|05.03.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+
