@@ -130,4 +130,18 @@ public class CovernoteServiceImpl implements CovernoteService {
 		}
 		return covernoteclass;
 	}
+	/*ADDITIONAL USAGE*/
+	@Override
+	public List<CovernoteDO> getAdditionalUsage(CovernoteDO covernoteDO){
+		List<CovernoteDO> covernoteclass = null;
+		try{
+			covernoteclass = covernotedao.getAdditionalUsage(covernoteDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return covernoteclass;
+	}
 }

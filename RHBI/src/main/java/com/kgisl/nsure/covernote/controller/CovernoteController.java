@@ -49,6 +49,8 @@ public class CovernoteController {
 		List<CovernoteDO> ownershiptype = null;
 		List<CovernoteDO> getlocation = null;
 		List<CovernoteDO> getvehicleusage =null;
+		List<CovernoteDO> getadditionalusage =null;
+		
 		
 		ArrayList<CovernoteDO> mainList = new ArrayList<CovernoteDO>();
 
@@ -63,6 +65,7 @@ public class CovernoteController {
 			ownershiptype = covernoteservice.getOwnerShipType(null);
 			getlocation = covernoteservice.getLocation(null);
 			getvehicleusage= covernoteservice.getVehicleUsage(null);
+			getadditionalusage = covernoteservice.getAdditionalUsage(null);
 			
 			mainList.addAll(0, covernoteclass);
 			mainList.addAll(1, covernotetype);
@@ -72,7 +75,8 @@ public class CovernoteController {
 			mainList.addAll(5, ownershiptype);
 			mainList.addAll(6, getlocation);
 			mainList.addAll(7, getvehicleusage);
-			
+			mainList.addAll(8, getadditionalusage);
+
 			jsonString = gson.toJson(mainList);
 			System.out.println("coverdrop\n" + jsonString);
 		} catch (Exception e) {

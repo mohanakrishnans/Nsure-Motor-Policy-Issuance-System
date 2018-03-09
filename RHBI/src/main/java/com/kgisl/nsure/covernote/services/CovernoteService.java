@@ -30,4 +30,6 @@ public interface CovernoteService {
 
 	List<CovernoteDO> getVehicleUsage(CovernoteDO covernoteDO);
 
+	List<CovernoteDO> getAdditionalUsage(CovernoteDO covernoteDO);
+
 }
