@@ -26,8 +26,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UrlPathHelper;
-import org.tuckey.web.filters.urlrewrite.utils.Log;
-
 import com.kgisl.nsure.authenticate.domain.AccountLockDO;
 import com.kgisl.nsure.authenticate.domain.LoginDO;
 import com.kgisl.nsure.authenticate.services.AuthenticateService;

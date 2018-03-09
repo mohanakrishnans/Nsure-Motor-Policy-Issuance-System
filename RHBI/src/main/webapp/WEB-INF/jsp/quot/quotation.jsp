@@ -123,8 +123,17 @@
 function validationQuotation() {
     document.getElementById("demo").innerHTML = "Hello World";
 }
-</script>s
+</script>
+<style type="text/css">
+.inputfield{
 
+height:25px
+
+}
+select{
+height:25px;
+}
+</style>
 </head>
 
 <body class="" data-ng-app="quotation"
@@ -202,7 +211,7 @@ function validationQuotation() {
 											Type </label>
 										<div class="col-sm-8">
 											<select name="sourceType" id="SOURCE_TYPE"
-												class="form-control">
+												class="form-control inputfield">
 												<option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
@@ -212,7 +221,7 @@ function validationQuotation() {
 											Code</label>
 										<div class="col-sm-8">
 											<input name="accountCode" required id="accountCode"
-												class="form-control" type="number" data-ng-model="accountCode" />
+												class="form-control inputfield" type="number" data-ng-model="accountCode" />
 										</div>
 									</div>
 								</div>
@@ -221,7 +230,7 @@ function validationQuotation() {
 										<label for="branch" class="col-sm-4 control-label">Branch</label>
 										<div class="col-sm-8">
 											<input name="branch" required id="branch"
-												class="form-control" type="text" data-ng-model="branch" />
+												class="form-control inputfield" type="text" data-ng-model="branch" />
 										</div>
 									</div>
 									<div class="row form-group form-inline">
@@ -229,7 +238,7 @@ function validationQuotation() {
 											Name</label>
 										<div class="col-sm-8">
 											<input name="accountName" required id="accountName"
-												class="form-control" type="text" data-ng-model="accountName" />
+												class="form-control inputfield" type="text" data-ng-model="accountName" />
 										</div>
 									</div>
 								</div>
@@ -245,7 +254,7 @@ function validationQuotation() {
 										<label for="CONTACT_TYPE" class="col-sm-4 control-label">Contact_Type:</label>
 										<div class="col-sm-4">											
 											<select name="contactType" id="CONTACT_TYPE"
-												class="form-control" data-ng-model="drpContactType">
+												class="form-control inputfield" data-ng-model="drpContactType">
 												<option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
@@ -264,9 +273,18 @@ function validationQuotation() {
 												IC No:</label>
 											<div class="col-sm-8">
 												<input name="newIcNo" required id="newicno"
-													class="form-control" data-ng-model="newicno" 
+													class="form-control inputfield" data-ng-model="newicno" 
 													maxlength="12" />
 												<!-- pattern="\d{12} " -->
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="oldicno" class="col-sm-4 control-label">Old
+												IC No / Passport No:</label>
+											<div class="col-sm-8">
+												<input name="oldIcNo" required id="oldicno"
+													class="form-control inputfield" data-ng-model="newicno" 
+													maxlength="12" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
@@ -274,7 +292,7 @@ function validationQuotation() {
 												Reg No:</label>
 											<div class="col-sm-8">
 												<input name="businessRegNo" required id="numberEdit"
-													class="form-control" type="number"
+													class="form-control inputfield" type="number"
 													data-ng-model="txtBusinessRegNo" />
 											</div>
 										</div>
@@ -282,13 +300,20 @@ function validationQuotation() {
 											<label for="nameEdit" class="col-sm-4 control-label">Name:</label>
 											<div class="col-sm-8">
 												<input name="name" required id="nameEdit"
-													class="form-control" type="text" data-ng-model="nameValue" />
+													class="form-control inputfield" type="text" data-ng-model="nameValue" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="salutation" class="col-sm-4 control-label">Salutation:</label>
+											<div class="col-sm-8">
+												<input name="salutation" required id="salutation"
+													class="form-control inputfield" type="text" data-ng-model="nameValue" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="nationalityEdit" class="col-sm-4 control-label">Nationality:</label>
 											<div class="col-sm-8">
-												<input name="nationality" required class="form-control"
+												<input name="nationality" required class="form-control inputfield"
 													id="nationalityEdit" type="text"
 													data-ng-model="nationalityValue" />
 											</div>
@@ -296,7 +321,7 @@ function validationQuotation() {
 										<div class="row form-group form-inline">
 											<label for="raceEdit" class="col-sm-4 control-label">Race:</label>
 											<div class="col-sm-8">
-												<input name="race" required class="form-control"
+												<input name="race" required class="form-control inputfield"
 													id="raceEdit" type="text" data-ng-model="raceValue" />
 											</div>
 										</div>
@@ -304,14 +329,14 @@ function validationQuotation() {
 											<label for="dobEdit" class="col-sm-4 control-label">Date
 												Of Birth:</label>
 											<div class="col-sm-8">
-												<input name="dateOfBirth" required class="form-control"
+												<input name="dateOfBirth" required class="form-control inputfield"
 													id="dobEdit" type="date" data-ng-model="dobValue" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="genderEdit" class="col-sm-4 control-label">Gender:</label>
 											<div class="col-sm-8">
-												<select name="gender" id="genderEdit" class="form-control"  data-ng-model="genderValue">
+												<select name="gender" id="genderEdit" class="form-control inputfield"  data-ng-model="genderValue">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="MALE">MALE</option>
 													<option value="FEMALE">FEMALE</option>
@@ -322,7 +347,7 @@ function validationQuotation() {
 											<label for="maritalstatusEdit" class="col-sm-4 control-label">Marital
 												Status:</label>
 											<div class="col-sm-8">
-												<select name="maritalStatus" id="maritalstatusEdit" class="form-control"  data-ng-model="maritalStatusValue">
+												<select name="maritalStatus" id="maritalstatusEdit" class="form-control inputfield"  data-ng-model="maritalStatusValue">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="SINGLE">SINGLE</option>
 													<option value="MARRIED">MARRIED</option>
@@ -334,16 +359,24 @@ function validationQuotation() {
 										<div class="row form-group form-inline">
 											<label for="OccupationEdit" class="col-sm-4 control-label">Occupation:</label>
 											<div class="col-sm-8">
-												<input name="occupation" required class="form-control"
+												<input name="occupation" required class="form-control inputfield"
 													id="OccupationEdit" type="text"
 													data-ng-model="OccupationValue" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="emloymentStatus" class="col-sm-4 control-label">Employment Status:</label>
+											<div class="col-sm-8">
+												<input name="emloymentStatus" required class="form-control inputfield"
+													id="emloymentStatus" type="text"
+													data-ng-model="emloymentStatusValue" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="GSTRegisteredEdit" class="col-sm-4 control-label">GST
 												Registered:</label>
 											<div class="col-sm-8"> 
-												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control"  data-ng-model="GST_RegisteredValue">
+												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control inputfield"  data-ng-model="GST_RegisteredValue">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -351,9 +384,22 @@ function validationQuotation() {
 											</div>
 										</div>
 										<div class="row form-group form-inline">
+											<label for="vipStatus" class="col-sm-4 control-label">VIP
+												Status:</label>
+											<div class="col-sm-8"> 
+												<select name="vipStatus" id="vipStatus" class="form-control inputfield"  data-ng-model="vipStatus">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="NO">NO</option>
+												</select>
+											</div>
+										</div>
+										<fieldset class="scheduler-border" >
+										<legend class="scheduler-border" >Permanent Address</legend>
+										<div class="row form-group form-inline">
 											<label for="AddressEdit" class="col-sm-4 control-label">Address:</label>
 											<div class="col-sm-8">
-												<input name="address" required class="form-control"
+												<input name="address" required class="form-control inputfield"
 													id="AddressEdit" type="text" data-ng-model="AddressValue" />
 											</div>
 										</div>
@@ -361,7 +407,7 @@ function validationQuotation() {
 											<label for="PostCodeEdit" class="col-sm-4 control-label">Post
 												Code:</label>
 											<div class="col-sm-8">
-												<input name="postCode" required class="form-control"
+												<input name="postCode" required class="form-control inputfield"
 													id="PostCodeEdit" type="number" data-ng-model="PostCodeValue" />
 											</div>
 										</div>
@@ -369,16 +415,17 @@ function validationQuotation() {
 											<label for="CountrycodeEdit" class="col-sm-4 control-label">Country
 												code:</label>
 											<div class="col-sm-8">
-												<input name="countryCode" required class="form-control"
+												<input name="countryCode" required class="form-control inputfield"
 													id="CountrycodeEdit" type="number"
 													data-ng-model="CountrycodeValue" />
 											</div>
 										</div>
+										</fieldset>
 										<div class="row form-group form-inline">
 											<label for="Mobile NoEdit" class="col-sm-4 control-label">Mobile
 												No:</label>
 											<div class="col-sm-8">
-												<input name="mobileNo" required class="form-control"
+												<input name="mobileNo" required class="form-control inputfield"
 													id="Mobile NoEdit" type="text"
 													data-ng-model="MobilenoValue" />
 											</div>
@@ -386,7 +433,7 @@ function validationQuotation() {
 										<div class="row form-group form-inline">
 											<label for="pdpaEdit" class="col-sm-4 control-label">PDPA:</label>
 											<div class="col-sm-8">
-												<select name="pdpa" id="pdpaEdit" class="form-control"  data-ng-model="pdpaValue">
+												<select name="pdpa" id="pdpaEdit" class="form-control inputfield"  data-ng-model="pdpaValue">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="N0">NO</option>
@@ -396,7 +443,7 @@ function validationQuotation() {
 										<div class="row form-group form-inline">
 											<label for="cssEdit" class="col-sm-4 control-label">CSS:</label>
 											<div class="col-sm-8">
-												<select name="css" id="cssEdit" class="form-control"  data-ng-model="cssValue">
+												<select name="css" id="cssEdit" class="form-control inputfield"  data-ng-model="cssValue">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -421,7 +468,7 @@ function validationQuotation() {
 												for="businessRegistrationNoEdit">Business
 												Registration No:</label>
 											<div class="col-sm-8">
-												<input name="businessRegNo" required class="form-control"
+												<input name="businessRegNo" required class="form-control inputfield"
 													id="businessRegistrationNumberEdit"
 													type="number" data-ng-model="registrationNoValue" />
 											</div>
@@ -429,7 +476,7 @@ function validationQuotation() {
 										<div class="row form-group form-inline">
 											<label class="col-sm-4 control-label" for="nameEdit">Name:</label>
 											<div class="col-sm-8">
-												<input name="name" required class="form-control"
+												<input name="name" required class="form-control inputfield"
 													id="nameEdit" type="text" data-ng-model="nameValue" />
 											</div>
 										</div>
@@ -437,7 +484,7 @@ function validationQuotation() {
 											<label class="col-sm-4 control-label"
 												for="TypeOfBusinessEdit">Type Of Business:</label>
 											<div class="col-sm-8">
-												<input name="typeOfBusiness" required class="form-control"
+												<input name="typeOfBusiness" required class="form-control inputfield"
 													id="TypeOfBusinessEdit" type="text"
 													data-ng-model="TypeOfBusinessValue" />
 											</div>
@@ -446,7 +493,7 @@ function validationQuotation() {
 											<label class="col-sm-4 control-label" for="GSTRegisteredEdit">GST
 												Registered:</label>
 											<div class="col-sm-8">
-												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control" data-ng-model="GST_RegisteredValue" >
+												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control inputfield" data-ng-model="GST_RegisteredValue" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -459,7 +506,7 @@ function validationQuotation() {
 										<div class="row form-group form-inline">
 											<label class="col-sm-4 control-label" for="AddressEdit">Address:</label>
 											<div class="col-sm-8">
-												<input name="address" required class="form-control"
+												<input name="address" required class="form-control inputfield"
 													id="AddressEdit" type="text" data-ng-model="AddressValue" />
 											</div>
 										</div>
@@ -467,7 +514,7 @@ function validationQuotation() {
 											<label class="col-sm-4 control-label" for="PostCodeEdit">Post
 												Code:</label>
 											<div class="col-sm-8">
-												<input name="postCode" required class="form-control"
+												<input name="postCode" required class="form-control inputfield"
 													id="PostCodeEdit" type="number" data-ng-model="PostCodeValue" />
 											</div>
 										</div>
@@ -475,7 +522,7 @@ function validationQuotation() {
 											<label class="col-sm-4 control-label" for="CountrycodeEdit">Country
 												code:</label>
 											<div class="col-sm-8">
-												<input name="countryCode" required class="form-control"
+												<input name="countryCode" required class="form-control inputfield"
 													id="CountrycodeEdit" type="number"
 													data-ng-model="CountrycodeValue" /> <br />
 											</div>
@@ -484,7 +531,7 @@ function validationQuotation() {
 											<label class="col-sm-4 control-label" for="Mobile NoEdit">Mobile
 												No:</label>
 											<div class="col-sm-8">
-												<input name="mobileNo" required class="form-control"
+												<input name="mobileNo" required class="form-control inputfield"
 													id="Mobile NoEdit" type="number"
 													data-ng-model="MobilenoValue" />
 											</div>
@@ -506,21 +553,21 @@ function validationQuotation() {
 											<label class="col-sm-4 control-label" for="numberEdit">New
 												IC No:</label>
 											<div class="col-sm-8">
-												<input name="newIcNo" required class="form-control"
+												<input name="newIcNo" required class="form-control inputfield"
 													id="numberEdit" type="number" data-ng-model="numberValue" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label class="col-sm-4 control-label" for="nameEdit">Name:</label>
 											<div class="col-sm-8">
-												<input name="name" required class="form-control"
+												<input name="name" required class="form-control inputfield"
 													id="nameEdit" type="text" data-ng-model="nameValue" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label class="col-sm-4 control-label" for="genderEdit">Gender:</label>
 											<div class="col-sm-8">
-												<select name="gender" id="genderEdit" class="form-control"  data-ng-model="genderValue">
+												<select name="gender" id="genderEdit" class="form-control inputfield"  data-ng-model="genderValue">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="MALE">MALE</option>
 													<option value="FEMALE">FEMALE</option>
@@ -531,7 +578,7 @@ function validationQuotation() {
 											<label class="col-sm-4 control-label" for="maritalstatusEdit">Marital
 												Status:</label>
 											<div class="col-sm-8">
-												<select name="maritalStatus" id="maritalstatusEdit" class="form-control"  data-ng-model="maritalStatusValue">
+												<select name="maritalStatus" id="maritalstatusEdit" class="form-control inputfield"  data-ng-model="maritalStatusValue">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="SINGLE">SINGLE</option>
 													<option value="MARRIED">MARRIED</option>
@@ -542,7 +589,7 @@ function validationQuotation() {
 											<label class="col-sm-4 control-label" for="GSTRegisteredEdit">GST
 												Registered:</label>
 											<div class="col-sm-8">
-												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control" data-ng-model="GST_RegisteredValue" >
+												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control inputfield" data-ng-model="GST_RegisteredValue" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -554,7 +601,7 @@ function validationQuotation() {
 										<div class="row form-group form-inline">
 											<label class="col-sm-4 control-label" for="AddressEdit">Address:</label>
 											<div class="col-sm-8">
-												<input required class="form-control" id="AddressEdit"
+												<input required class="form-control inputfield" id="AddressEdit"
 													name="address" type="text" data-ng-model="AddressValue" />
 											</div>
 										</div>
@@ -562,14 +609,14 @@ function validationQuotation() {
 											<label class="col-sm-4 control-label" for="PostCodeEdit">Post
 												Code:</label>
 											<div class="col-sm-8">
-												<input required class="form-control" id="PostCodeEdit"
+												<input required class="form-control inputfield" id="PostCodeEdit"
 													name="postCode" type="number" data-ng-model="PostCodeValue" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label class="col-sm-4 control-label" for="OccupationEdit">Occupation:</label>
 											<div class="col-sm-8">
-												<input required class="form-control" id="OccupationEdit"
+												<input required class="form-control inputfield" id="OccupationEdit"
 													name="occupation" type="text"
 													data-ng-model="OccupationValue" />
 											</div>
@@ -578,7 +625,7 @@ function validationQuotation() {
 											<label class="col-sm-4 control-label" for="CountrycodeEdit">Country
 												code:</label>
 											<div class="col-sm-8">
-												<input required class="form-control" id="CountrycodeEdit"
+												<input required class="form-control inputfield" id="CountrycodeEdit"
 													name="countryCode" type="number"
 													data-ng-model="CountrycodeValue" />
 											</div>
@@ -587,7 +634,7 @@ function validationQuotation() {
 											<label class="col-sm-4 control-label" for="Mobile NoEdit">Mobile
 												No:</label>
 											<div class="col-sm-8">
-												<input required class="form-control" id="Mobile NoEdit"
+												<input required class="form-control inputfield" id="Mobile NoEdit"
 													type="number" name="mobileNo" data-ng-model="MobilenoValue" />
 											</div>
 										</div>

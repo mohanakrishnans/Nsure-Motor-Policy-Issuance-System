@@ -5,15 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Nsure Motor Policy Issuance System | CoverNote</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js">
-	
-</script>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="all,follow">
-<link rel="shortcut icon"
-	href="http://localhost/nsure/dashboard/img/favicon.ico">
+ <link rel="shortcut icon"	href="http://localhost/nsure/dashboard/img/favicon.ico">
 <link rel="stylesheet"
 	href="http://localhost/nsure/dashboard/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -30,13 +22,20 @@
 <script src="http://localhost/nsure/dashboard/js/messenger.min.js"></script>
 <script
 	src="http://localhost/nsure/dashboard/js/messenger-theme-flat.js"></script>
-<script src="http://localhost/nsure/dashboard/js/home-premium.js"></script>
+<script src="http://localhost/nsure/dashboard/js/home-premium.js"></script> 
 
-<script type="text/javascript"
-	src="https://ajax.googleapis.com/ajax/libs/angular.js/1.3.16/angular.min.js"></script>
-	
+<script
+	src="http://localhost/nsure/dashboard/js/angular.min.js"></script>
+
+<script
+	src="http://localhost/nsure/dashboard/js/jquery.min.js"></script>
+
+<script
+	src="http://localhost/nsure/dashboard/js/angular-messages.min.js"></script>
+
+<script src="http://localhost/nsure/dashboard/js/jquery.min.js"></script>
 <script type="text/javascript">
- var app = angular.module("covernoteDrop", ['ngMessages']).controller("covernoteDrop",
+ var app = angular.module("coverNote", ['ngMessages']).controller("covernoteController",
 			function($scope) {
 				$scope.covernotedrop = null;
 				fnendtmotoronload();
@@ -44,9 +43,9 @@
 	
 	function fnendtmotoronload() {
 		var status = true;
-		//var contactId = document.getElementById("CONTACT_TYPE").value;
+		var covernotedrop = document.getElementById("COVERNOTE_CLASS").value;
 		var CONTEXT_PATH = '<%=request.getContextPath()%>/';
-
+		//alert("mohan "+CONTEXT_PATH);
 		$.ajax({
 			type : "GET",
 			url : CONTEXT_PATH + "covernoteDrop",
@@ -55,14 +54,38 @@
 			dataType : 'json',
 			success : function(result) {
 				$.each(result, function(index, value) {
-					if (value.contactType > 0) {
-						$('#CONTACT_TYPE').append(
-								'<option value="' + value.contactType + '">'
-										+ value.contactName + '</option>');
-					} else if (value.sourceType > 0) {
-						$('#SOURCE_TYPE').append(
-								'<option value="' + value.sourceType + '">'
-										+ value.sourceName + '</option>');
+					if(value.classid > 0){
+						$('#VEHICLE_TYPE').append(
+								'<option value="' + value.classid + '">'
+										+ value.classname + '</option>');
+					}else if (value.locid > 0) {
+						$('#LOCATION').append(
+								'<option value="' + value.locid + '">'
+										+ value.locname + '</option>');
+					} else if (value.covernotetypeid > 0) {
+						$('#COVERNOTE_TYPE').append(
+								'<option value="' + value.covernotetypeid + '">'
+										+ value.covernotetypename + '</option>');
+					}else if (value.coveragetypeid > 0) {
+						$('#COVERAGE_TYPE').append(
+								'<option value="' + value.coveragetypeid + '">'
+										+ value.coveragetypename + '</option>');
+					}else if (value.classgroupid > 0) {
+						$('#CLASS_GROUP').append(
+								'<option value="' + value.classgroupid + '">'
+										+ value.classgroupname + '</option>');
+					}else if (value.hiretypeid > 0) {
+						$('#HIRE_TYPE').append(
+								'<option value="' + value.hiretypeid + '">'
+										+ value.hiretypename + '</option>');
+					}else if (value.ownershipid > 0) {
+						$('#OWNERSHIP_TYPE').append(
+								'<option value="' + value.ownershipid + '">'
+										+ value.ownershipname + '</option>');
+					}else if (value.vehicleusageid > 0) {
+						$('#VEHICLE_USAGE').append(
+								'<option value="' + value.vehicleusageid + '">'
+										+ value.vehicleusagename + '</option>');
 					}
 				});
 
@@ -74,7 +97,8 @@
 
 
 </head>
-<body data-ng-app="covernoteDrop">
+<body data-ng-app="coverNote"
+	data-ng-controller="covernoteController as tc">
 	<nav class="side-navbar">
 	<div class="side-navbar-wrapper">
 		<div
@@ -145,11 +169,8 @@
 										<label for="vnumber" class="col-sm-4  control-label">Cover
 											Note Class</label>
 										<div class="col-sm-8">
-											<select class="form-control" id="sel1">
-												<option>----Please Select----</option>
-												<option>Motor</option>
-												<option>Non Motor</option>
-												<option>4</option>
+											<select class="form-control" id="COVERNOTE_CLASS">
+												<option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
@@ -167,11 +188,8 @@
 										<label for="vnumber" class="col-sm-4  control-label">
 											Cover Note Type</label>
 										<div class="col-sm-8">
-											<select class="form-control" id="sel1">
-												<option>----Please Select----</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
+											<select class="form-control" id="COVERNOTE_TYPE">
+												<option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
@@ -213,11 +231,8 @@
 										<label for="vnumber" class="col-sm-4  control-label">Geographical
 											Location</label>
 										<div class="col-sm-8">
-											<select class="form-control" id="sel1">
-												<option>----Please Select----</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
+											<select class="form-control" id="LOCATION">
+												<option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
@@ -225,11 +240,8 @@
 										<label for="vnumber" class="col-sm-4  control-label">
 											Class Group</label>
 										<div class="col-sm-8">
-											<select class="form-control" id="sel1">
-												<option>----Please Select----</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
+											<select class="form-control" id="CLASS_GROUP">
+												<option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
@@ -237,12 +249,23 @@
 										<label for="vnumber" class="col-sm-4  control-label">
 											Vehicle Usage</label>
 										<div class="col-sm-6">
-											<select class="form-control" id="sel1">
-												<option>--Please Select--</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-											</select> <input type="checkbox" value=""> High Risk
+											<select class="form-control" id="VEHICLE_USAGE">
+												<option selected="selected" value="0">--SELECT--</option>
+											</select>
+										</div>
+
+									</div>
+									<div class="row form-group form-inline"">
+										<div class="col-sm-4" >
+										</div>
+										<div class="col-sm-6">
+										<div class="row">
+											<div class="col-sm-1">
+												 <input type="checkbox" value="">
+											</div>
+											<label for="vnumber" class="col-sm-5  control-label">
+											High Risk</label>
+										</div>
 										</div>
 
 									</div>
@@ -250,11 +273,8 @@
 										<label for="vnumber" class="col-sm-4  control-label">
 											Type of Hire Purchase</label>
 										<div class="col-sm-8">
-											<select class="form-control" id="sel1">
-												<option>----Please Select----</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
+											<select class="form-control" id="HIRE_TYPE">
+												 <option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
@@ -262,11 +282,8 @@
 										<label for="vnumber" class="col-sm-4  control-label">
 											Ownership Type</label>
 										<div class="col-sm-8">
-											<select class="form-control" id="sel1">
-												<option>----Please Select----</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
+											<select class="form-control" id="OWNERSHIP_TYPE">
+												 <option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
@@ -336,23 +353,17 @@
 										<label for="vnumber" class="col-sm-4  control-label">
 											Vehicle Type</label>
 										<div class="col-sm-8">
-											<select class="form-control" id="sel1">
-												<option>----Please Select----</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
+											<select class="form-control" id="VEHICLE_TYPE">
+												<option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
 									<div class="row form-group form-inline"">
-										<label for="vnumber" class="col-sm-4  control-label">
+										<label for="vnumber" class="col-sm-4  control-labBel">
 											Coverage Type</label>
 										<div class="col-sm-8">
-											<select class="form-control" id="sel1">
-												<option>----Please Select----</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
+											<select class="form-control" id="COVERAGE_TYPE">
+												<option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>

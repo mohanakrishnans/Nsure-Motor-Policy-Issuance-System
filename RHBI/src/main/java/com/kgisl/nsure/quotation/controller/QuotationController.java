@@ -78,7 +78,7 @@ public class QuotationController {
 		return new ModelAndView("endor/endorsementdetails");
 	}
 
-	@RequestMapping(value = "/testt", method = RequestMethod.GET)
+	@RequestMapping(value = "/mohan", method = RequestMethod.GET)
 	public ModelAndView test(@ModelAttribute("login") QuotationDO quotationdo, HttpServletRequest request)
 			throws Exception {
 		request.getSession().setAttribute("QuotationDO", request.getSession().getId());
@@ -149,7 +149,7 @@ public class QuotationController {
 
 	
 	/* Covernote Drop */
-	@RequestMapping(value = "/covernoteDrop", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/covernoteDrop", method = RequestMethod.GET)
 	public @ResponseBody String covernoteDrop(HttpServletRequest request) {
 
 		List<QuotationDO> covernotegrid = null;
@@ -168,6 +168,6 @@ public class QuotationController {
 			System.out.println(e);
 		}
 		return jsonString;
-	}
+	}*/
 
 }

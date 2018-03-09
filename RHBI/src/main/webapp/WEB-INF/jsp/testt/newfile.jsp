@@ -1,4 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>angular-ui-grid enableFullRowSelection</title>
+
+<script src='resources/js/angular.min.js'></script>
+<script src='resources/js/angular-touch.min.js'></script>
+<script src='resources/js/angular-animate.min.js'></script>
+<script src='resources/js/ui-grid.min.js'></script>
+<script src="resources/js/index.js"></script>
+<link rel='stylesheet prefetch' href='resources/css/ui-grid.min.css'>
+
+
+
+</head>
+
+<body>
+
+	<div data-ng-app="app">
+		<div data-ng-controller="covernoteGrid">
+			<div data-ui-grid="gridOptions" data-ui-grid-selection class="grid"></div>
+		</div>
+	</div>
+	
+	<button type="button" class="btn btn-success" ng-click="getSelectedRows()">Get Selected Rows</button>
+    
+</body>
+
+</html>
+
+
+
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,4 +52,4 @@
 			value="Signin">
 	</form>
 </body>
-</html>
+</html> --%>
