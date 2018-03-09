@@ -1,5 +1,5 @@
 # Nsure-Motor-Policy-Issuance-System TASK UPADATES
-## MOHANAKRISHNAN
+## MOHANAKRISHNAN S
  |Date|Time|Project Task |Status |
  |----|----|-------------|-------|
  |11.12.2017|10:45 AM to 4:00 PM|Domain knowledge|Completed|
@@ -63,3 +63,25 @@
  |10.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
 |Sunday| |Holiday||
  |12.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|In Progress|
+|13.02.2018|10:45 AM to 4:00 PM|Dashboard controls|In Progress|
+|14.02.2018|10:45 AM to 4:00 PM|Dashboard controls|In Progress|
+|15.02.2018|10:45 AM to 4:00 PM|Dashboard controls|In Progress|
+|16.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
+|17.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
+|Sunday||||
+|19.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
+|20.02.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+|21.02.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+|22.02.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+|23.02.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+|Saturday| |Holiday||
+|Sunday||||
+|26.02.2018|10:45 AM to 4:00 PM|UI grid|In Progress|
+|27.02.2018|10:45 AM to 4:00 PM|Second Review|
+|28.02.2018|10:45 AM to 4:00 PM|Second Review|
+|01.03.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+|02.03.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+|03.03.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+|Sunday||Holiday||
+|05.03.2018|10:45 AM to 4:00 PM|Procedure writing|In Progress|
+
