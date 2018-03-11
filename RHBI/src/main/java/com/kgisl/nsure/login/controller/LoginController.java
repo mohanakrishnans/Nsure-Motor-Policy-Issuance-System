@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.kgisl.nsure.login.domain.LoginDO;
 import com.kgisl.nsure.login.service.LoginService;
+import com.kgisl.nsure.quotation.domain.QuotationDO;
 
 /**
  * @author mohan
@@ -34,9 +35,12 @@ public class LoginController {
 
 	/** Login **/
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView cn(@ModelAttribute("loginData") LoginDO loginDO, BindingResult result,
+	public ModelAndView login(@ModelAttribute("loginData") LoginDO loginDO, BindingResult result,
 			HttpServletRequest request, HttpSession session) {
 		//System.out.println(loginDO.getUserName());
+		session.setAttribute("user", loginDO.getUserName());
+		
+		//System.out.println("MOHAN"+ session.getAttribute("user"));
 		boolean value;
 		value = loginService.validate(loginDO);
 		//System.out.print(value);
@@ -45,5 +49,11 @@ public class LoginController {
 		} else {			
 			return new ModelAndView("redirect:/");
 		}
+	}
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout(HttpSession session) {
+		
+		session.removeAttribute("user");
+		return new ModelAndView("redirect:/");
 	}
 }

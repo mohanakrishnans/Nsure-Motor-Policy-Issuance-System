@@ -230,7 +230,7 @@ public class QuotationDAOImpl implements QuotationDAO {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		System.out.println("DAO<");
+		//System.out.println("DAO<");
 	}
 
 	@Override

@@ -219,7 +219,7 @@ public class AgentBaseController {
 		return returnView;
 	}
 	
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logoutT", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request,HttpServletResponse response) {
 		StringBuilder stringBuilder = new StringBuilder();
 		LoginDO loginDO = new LoginDO();

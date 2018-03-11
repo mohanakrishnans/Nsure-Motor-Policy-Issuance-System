@@ -82,13 +82,21 @@
 	
 	
  <script type="text/javascript">
+ /* 
+ window.onload=session;
+ function session(){
+	 document.getElementById("CONTACT_TYPE").value = "${contactType}";
+	 document.getElementById("SOURCE_TYPE").value = "${contactType}";
+ }
+  */
  var app = angular.module("quotation", ['ngMessages']).controller("quotationController",
 			function($scope) {
 				$scope.contactId = null;
 				fnendtmotoronload();
+				
 			});
 	//var app = angular.module('app', ['ngMessages']);
-	
+	//$SCdrpContactType=
 	function fnendtmotoronload() {
 		var status = true;
 		var contactId = document.getElementById("CONTACT_TYPE").value;
@@ -124,7 +132,8 @@ function validationQuotation() {
     document.getElementById("demo").innerHTML = "Hello World";
 }
 </script>
-<style type="text/css">
+
+<!-- <style type="text/css">
 .inputfield{
 
 height:25px
@@ -133,12 +142,11 @@ height:25px
 select{
 height:25px;
 }
-</style>
+</style> -->
 </head>
 
 <body class="" data-ng-app="quotation"
-	data-ng-controller="quotationController as tc"
-	id="ENDOR_NON_JPJ_MOTOR">
+	data-ng-controller="quotationController ">
 	<nav class="side-navbar">
 		<div class="side-navbar-wrapper">
 			<div
@@ -147,10 +155,11 @@ height:25px;
 					<img src="http://localhost/nsure/dashboard/img/avatar-1.jpg"
 						alt="person" class="img-fluid rounded-circle">
 					<h2 class="h5">Nsure</h2>
+					<h3 class="h4" style="color:red;">${sessionScope.user}</h3>
 				</div>
 				<div class="sidenav-header-logo">
 					<a href="index.jsp" class="brand-small text-center"> <strong>B</strong><strong
-						class="text-primary">D</strong></a>
+						class="text-primary">D</strong></a>					
 				</div>
 			</div>
 			<div class="main-menu">
@@ -190,6 +199,7 @@ height:25px;
 								</div>
 							</a>
 						</div>
+						<button type='submit' onclick="location.href='logout'" class="btn btn-danger pull-right">Log out</button>
 					</div>
 				</div>
 			</nav>
@@ -198,9 +208,10 @@ height:25px;
 			<div class="card">
 				<div class="card-header d-flex align-items-center">
 					<h4>Quotation | Client Profile</h4>
+					${sourceType}
 				</div>
 				<div class="card-body">
-					<form action="save_quotation_form" method="POST" modelAttribute="userFormData">
+					<form action="save_quotation_form" method="POST" modelAttribute="quotationFormData">
 						<fieldset class="scheduler-border">
 							<legend class="scheduler-border">Account Code / Branch
 								Details</legend>
@@ -209,8 +220,9 @@ height:25px;
 									<div class="row form-group form-inline">
 										<label for="sourceType" class="col-sm-4 control-label">Source
 											Type </label>
+										<%-- 	${sessionScope.sourceType} --%>
 										<div class="col-sm-8">
-											<select name="sourceType" id="SOURCE_TYPE"
+											<select name="sourceType" id="SOURCE_TYPE" value="${sourceType }"
 												class="form-control inputfield">
 												<option selected="selected" value="0">--SELECT--</option>
 											</select>
@@ -220,8 +232,8 @@ height:25px;
 										<label for="accountCode" class="col-sm-4 control-label">Account
 											Code</label>
 										<div class="col-sm-8">
-											<input name="accountCode" required id="accountCode"
-												class="form-control inputfield" type="number" data-ng-model="accountCode" />
+											<input name="accountCode"  id="accountCode" value="${accountCode}"
+												class="form-control inputfield" type="text"/>
 										</div>
 									</div>
 								</div>
@@ -229,8 +241,8 @@ height:25px;
 									<div class="row form-group form-inline">
 										<label for="branch" class="col-sm-4 control-label">Branch</label>
 										<div class="col-sm-8">
-											<input name="branch" required id="branch"
-												class="form-control inputfield" type="text" data-ng-model="branch" />
+											<input name="branch" required id="branch" value="${branch }"
+												class="form-control inputfield" type="text" />
 										</div>
 									</div>
 									<div class="row form-group form-inline">
@@ -238,7 +250,7 @@ height:25px;
 											Name</label>
 										<div class="col-sm-8">
 											<input name="accountName" required id="accountName"
-												class="form-control inputfield" type="text" data-ng-model="accountName" />
+												class="form-control inputfield" type="text" value="${accountName}" />
 										</div>
 									</div>
 								</div>
@@ -273,7 +285,7 @@ height:25px;
 												IC No:</label>
 											<div class="col-sm-8">
 												<input name="newIcNo" required id="newicno"
-													class="form-control inputfield" data-ng-model="newicno" 
+													class="form-control inputfield" value="${newIcNo }" 
 													maxlength="12" />
 												<!-- pattern="\d{12} " -->
 											</div>
@@ -283,7 +295,7 @@ height:25px;
 												IC No / Passport No:</label>
 											<div class="col-sm-8">
 												<input name="oldIcNo" required id="oldicno"
-													class="form-control inputfield" data-ng-model="newicno" 
+													class="form-control inputfield" value="${oldIcNo }" 
 													maxlength="12" />
 											</div>
 										</div>
@@ -293,21 +305,21 @@ height:25px;
 											<div class="col-sm-8">
 												<input name="businessRegNo" required id="numberEdit"
 													class="form-control inputfield" type="number"
-													data-ng-model="txtBusinessRegNo" />
+													value="${businessRegNo}" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="nameEdit" class="col-sm-4 control-label">Name:</label>
 											<div class="col-sm-8">
 												<input name="name" required id="nameEdit"
-													class="form-control inputfield" type="text" data-ng-model="nameValue" />
+													class="form-control inputfield" type="text" value="${name }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="salutation" class="col-sm-4 control-label">Salutation:</label>
 											<div class="col-sm-8">
 												<input name="salutation" required id="salutation"
-													class="form-control inputfield" type="text" data-ng-model="nameValue" />
+													class="form-control inputfield" type="text" value="${salutation }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
@@ -315,14 +327,14 @@ height:25px;
 											<div class="col-sm-8">
 												<input name="nationality" required class="form-control inputfield"
 													id="nationalityEdit" type="text"
-													data-ng-model="nationalityValue" />
+													value="${nationality }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="raceEdit" class="col-sm-4 control-label">Race:</label>
 											<div class="col-sm-8">
 												<input name="race" required class="form-control inputfield"
-													id="raceEdit" type="text" data-ng-model="raceValue" />
+													id="raceEdit" type="text" value="${race }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
@@ -330,13 +342,13 @@ height:25px;
 												Of Birth:</label>
 											<div class="col-sm-8">
 												<input name="dateOfBirth" required class="form-control inputfield"
-													id="dobEdit" type="date" data-ng-model="dobValue" />
+													id="dobEdit" type="date" value="${dateOfBirth }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="genderEdit" class="col-sm-4 control-label">Gender:</label>
 											<div class="col-sm-8">
-												<select name="gender" id="genderEdit" class="form-control inputfield"  data-ng-model="genderValue">
+												<select name="gender" id="genderEdit" class="form-control inputfield"  value="${gender }">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="MALE">MALE</option>
 													<option value="FEMALE">FEMALE</option>
@@ -347,7 +359,7 @@ height:25px;
 											<label for="maritalstatusEdit" class="col-sm-4 control-label">Marital
 												Status:</label>
 											<div class="col-sm-8">
-												<select name="maritalStatus" id="maritalstatusEdit" class="form-control inputfield"  data-ng-model="maritalStatusValue">
+												<select name="maritalStatus" id="maritalstatusEdit" class="form-control inputfield"  value="${maritalStatus }">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="SINGLE">SINGLE</option>
 													<option value="MARRIED">MARRIED</option>
@@ -361,22 +373,22 @@ height:25px;
 											<div class="col-sm-8">
 												<input name="occupation" required class="form-control inputfield"
 													id="OccupationEdit" type="text"
-													data-ng-model="OccupationValue" />
+													value="${occupation }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="emloymentStatus" class="col-sm-4 control-label">Employment Status:</label>
 											<div class="col-sm-8">
-												<input name="emloymentStatus" required class="form-control inputfield"
+												<input name="employmentStatus" required class="form-control inputfield"
 													id="emloymentStatus" type="text"
-													data-ng-model="emloymentStatusValue" />
+													value="${employmentStatus }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="GSTRegisteredEdit" class="col-sm-4 control-label">GST
 												Registered:</label>
 											<div class="col-sm-8"> 
-												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control inputfield"  data-ng-model="GST_RegisteredValue">
+												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control inputfield"  value="${gstRegistered }">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -387,7 +399,7 @@ height:25px;
 											<label for="vipStatus" class="col-sm-4 control-label">VIP
 												Status:</label>
 											<div class="col-sm-8"> 
-												<select name="vipStatus" id="vipStatus" class="form-control inputfield"  data-ng-model="vipStatus">
+												<select name="vipStatus" id="vipStatus" class="form-control inputfield"  value="${vipStatus }">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -400,7 +412,7 @@ height:25px;
 											<label for="AddressEdit" class="col-sm-4 control-label">Address:</label>
 											<div class="col-sm-8">
 												<input name="address" required class="form-control inputfield"
-													id="AddressEdit" type="text" data-ng-model="AddressValue" />
+													id="AddressEdit" type="text" value="${address }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
@@ -408,7 +420,7 @@ height:25px;
 												Code:</label>
 											<div class="col-sm-8">
 												<input name="postCode" required class="form-control inputfield"
-													id="PostCodeEdit" type="number" data-ng-model="PostCodeValue" />
+													id="PostCodeEdit" type="number" value="${postCode }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
@@ -417,7 +429,7 @@ height:25px;
 											<div class="col-sm-8">
 												<input name="countryCode" required class="form-control inputfield"
 													id="CountrycodeEdit" type="number"
-													data-ng-model="CountrycodeValue" />
+													value="${countryCode }" />
 											</div>
 										</div>
 										</fieldset>
@@ -427,13 +439,13 @@ height:25px;
 											<div class="col-sm-8">
 												<input name="mobileNo" required class="form-control inputfield"
 													id="Mobile NoEdit" type="text"
-													data-ng-model="MobilenoValue" />
+													value="${mobileNo }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="pdpaEdit" class="col-sm-4 control-label">PDPA:</label>
 											<div class="col-sm-8">
-												<select name="pdpa" id="pdpaEdit" class="form-control inputfield"  data-ng-model="pdpaValue">
+												<select name="pdpa" id="pdpaEdit" class="form-control inputfield"  value="${pdpa }">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="N0">NO</option>
@@ -443,7 +455,7 @@ height:25px;
 										<div class="row form-group form-inline">
 											<label for="cssEdit" class="col-sm-4 control-label">CSS:</label>
 											<div class="col-sm-8">
-												<select name="css" id="cssEdit" class="form-control inputfield"  data-ng-model="cssValue">
+												<select name="css" id="cssEdit" class="form-control inputfield"  value="${css }">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -470,14 +482,14 @@ height:25px;
 											<div class="col-sm-8">
 												<input name="businessRegNo" required class="form-control inputfield"
 													id="businessRegistrationNumberEdit"
-													type="number" data-ng-model="registrationNoValue" />
+													type="number" value="${businessRegNo }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label class="col-sm-4 control-label" for="nameEdit">Name:</label>
 											<div class="col-sm-8">
 												<input name="name" required class="form-control inputfield"
-													id="nameEdit" type="text" data-ng-model="nameValue" />
+													id="nameEdit" type="text" value="${name }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
@@ -486,14 +498,14 @@ height:25px;
 											<div class="col-sm-8">
 												<input name="typeOfBusiness" required class="form-control inputfield"
 													id="TypeOfBusinessEdit" type="text"
-													data-ng-model="TypeOfBusinessValue" />
+													value="${typeOfBusiness }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label class="col-sm-4 control-label" for="GSTRegisteredEdit">GST
 												Registered:</label>
 											<div class="col-sm-8">
-												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control inputfield" data-ng-model="GST_RegisteredValue" >
+												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control inputfield" value="${gstRegistered }" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -507,7 +519,7 @@ height:25px;
 											<label class="col-sm-4 control-label" for="AddressEdit">Address:</label>
 											<div class="col-sm-8">
 												<input name="address" required class="form-control inputfield"
-													id="AddressEdit" type="text" data-ng-model="AddressValue" />
+													id="AddressEdit" type="text" value="${address }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
@@ -515,7 +527,7 @@ height:25px;
 												Code:</label>
 											<div class="col-sm-8">
 												<input name="postCode" required class="form-control inputfield"
-													id="PostCodeEdit" type="number" data-ng-model="PostCodeValue" />
+													id="PostCodeEdit" type="number" value="${postCode }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
@@ -524,7 +536,7 @@ height:25px;
 											<div class="col-sm-8">
 												<input name="countryCode" required class="form-control inputfield"
 													id="CountrycodeEdit" type="number"
-													data-ng-model="CountrycodeValue" /> <br />
+													value="${countryCode }" /> <br />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
@@ -533,7 +545,7 @@ height:25px;
 											<div class="col-sm-8">
 												<input name="mobileNo" required class="form-control inputfield"
 													id="Mobile NoEdit" type="number"
-													data-ng-model="MobilenoValue" />
+													value="${mobileNo }" />
 											</div>
 										</div>
 									</div>
@@ -554,20 +566,20 @@ height:25px;
 												IC No:</label>
 											<div class="col-sm-8">
 												<input name="newIcNo" required class="form-control inputfield"
-													id="numberEdit" type="number" data-ng-model="numberValue" />
+													id="numberEdit" type="number" value="${newIcNo }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label class="col-sm-4 control-label" for="nameEdit">Name:</label>
 											<div class="col-sm-8">
 												<input name="name" required class="form-control inputfield"
-													id="nameEdit" type="text" data-ng-model="nameValue" />
+													id="nameEdit" type="text" value="${name }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label class="col-sm-4 control-label" for="genderEdit">Gender:</label>
 											<div class="col-sm-8">
-												<select name="gender" id="genderEdit" class="form-control inputfield"  data-ng-model="genderValue">
+												<select name="gender" id="genderEdit" class="form-control inputfield"  value="${gender }">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="MALE">MALE</option>
 													<option value="FEMALE">FEMALE</option>
@@ -578,7 +590,7 @@ height:25px;
 											<label class="col-sm-4 control-label" for="maritalstatusEdit">Marital
 												Status:</label>
 											<div class="col-sm-8">
-												<select name="maritalStatus" id="maritalstatusEdit" class="form-control inputfield"  data-ng-model="maritalStatusValue">
+												<select name="maritalStatus" id="maritalstatusEdit" class="form-control inputfield"  value="${maritalStatus }">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="SINGLE">SINGLE</option>
 													<option value="MARRIED">MARRIED</option>
@@ -589,7 +601,7 @@ height:25px;
 											<label class="col-sm-4 control-label" for="GSTRegisteredEdit">GST
 												Registered:</label>
 											<div class="col-sm-8">
-												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control inputfield" data-ng-model="GST_RegisteredValue" >
+												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control inputfield" value="${gstRegistered }" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -602,7 +614,7 @@ height:25px;
 											<label class="col-sm-4 control-label" for="AddressEdit">Address:</label>
 											<div class="col-sm-8">
 												<input required class="form-control inputfield" id="AddressEdit"
-													name="address" type="text" data-ng-model="AddressValue" />
+													name="address" type="text" value="${address }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
@@ -610,7 +622,7 @@ height:25px;
 												Code:</label>
 											<div class="col-sm-8">
 												<input required class="form-control inputfield" id="PostCodeEdit"
-													name="postCode" type="number" data-ng-model="PostCodeValue" />
+													name="postCode" type="number" value="${postCode }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
@@ -618,7 +630,7 @@ height:25px;
 											<div class="col-sm-8">
 												<input required class="form-control inputfield" id="OccupationEdit"
 													name="occupation" type="text"
-													data-ng-model="OccupationValue" />
+													value="${occupation }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
@@ -627,7 +639,7 @@ height:25px;
 											<div class="col-sm-8">
 												<input required class="form-control inputfield" id="CountrycodeEdit"
 													name="countryCode" type="number"
-													data-ng-model="CountrycodeValue" />
+													value="${countryCode }" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
@@ -635,7 +647,7 @@ height:25px;
 												No:</label>
 											<div class="col-sm-8">
 												<input required class="form-control inputfield" id="Mobile NoEdit"
-													type="number" name="mobileNo" data-ng-model="MobilenoValue" />
+													type="number" name="mobileNo" value="${mobileNo }" />
 											</div>
 										</div>
 									</div>

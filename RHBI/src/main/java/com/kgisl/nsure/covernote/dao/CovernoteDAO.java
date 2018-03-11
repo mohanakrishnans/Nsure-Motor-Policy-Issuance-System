@@ -6,7 +6,6 @@ package com.kgisl.nsure.covernote.dao;
 import java.util.List;
 
 import com.kgisl.nsure.covernote.domain.CovernoteDO;
-import com.kgisl.nsure.quotation.domain.QuotationDO;
 
 /**
  * @author mohan

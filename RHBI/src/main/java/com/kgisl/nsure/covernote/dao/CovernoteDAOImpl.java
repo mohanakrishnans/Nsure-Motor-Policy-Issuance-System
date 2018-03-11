@@ -215,8 +215,8 @@ public class CovernoteDAOImpl implements CovernoteDAO {
 				@Override
 				public CovernoteDO mapRow(ResultSet rs, int rowNum) throws SQLException {
 					CovernoteDO covernoteDO = new CovernoteDO();
-					covernoteDO.setVehicleusageid(rs.getInt("NUM_ADD_USAGE_ID"));
-					covernoteDO.setVehicleusagename(rs.getString("VCH_ADD_USAGE_NAME"));
+					covernoteDO.setAdditionalusageid(rs.getInt("NUM_ADD_USAGE_ID"));
+					covernoteDO.setAdditionalusagename(rs.getString("VCH_ADD_USAGE_NAME"));
 					return covernoteDO;
 				}
 			});

@@ -71,10 +71,10 @@ public class QuotationServiceImpl implements QuotationService {
 	@Override
 	public void saveQuotation(QuotationDO quotationDO) {
 		// TODO Auto-generated method stub
-		System.out.println("S>");
+		//System.out.println("S>");
 		quotationdao.saveQuotation(quotationDO);
 		
-		System.out.println("S<");
+		//System.out.println("S<");
 		
 	}
 

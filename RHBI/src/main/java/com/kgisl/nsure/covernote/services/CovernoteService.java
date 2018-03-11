@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.kgisl.nsure.covernote.domain.CovernoteDO;
 
+
 /**
  * @author mohan
  *
@@ -31,5 +32,7 @@ public interface CovernoteService {
 	List<CovernoteDO> getVehicleUsage(CovernoteDO covernoteDO);
 
 	List<CovernoteDO> getAdditionalUsage(CovernoteDO covernoteDO);
+
+	void saveCovernote(CovernoteDO covernoteDO);
 
 }

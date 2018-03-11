@@ -98,7 +98,35 @@ public class QuotationController {
 	public ModelAndView saveQuotation(@ModelAttribute("quotationFormData") QuotationDO quotationDO,
 			BindingResult result, HttpServletRequest request, HttpSession session) {
 		
+		session.setAttribute("sourceType", quotationDO.getSourceType());
+		session.setAttribute("accountCode", quotationDO.getAccountCode());
+		session.setAttribute("branch", quotationDO.getBranch());
+		session.setAttribute("accountName",quotationDO.getAccountName());
+		session.setAttribute("newIcNo", quotationDO.getNewIcNo());
+		session.setAttribute("name", quotationDO.getName());
+		session.setAttribute("nationality", quotationDO.getNationality());
+		session.setAttribute("race", quotationDO.getRace());
+		session.setAttribute("dateOfBirth", quotationDO.getDateOfBirth());
+		session.setAttribute("gender", quotationDO.getGender());
+		session.setAttribute("maritalStatus", quotationDO.getMaritalStatus());
+		session.setAttribute("occupation", quotationDO.getOccupation());
+		session.setAttribute("gstRegistered", quotationDO.getGstRegistered());
+		session.setAttribute("address", quotationDO.getAddress());
+		session.setAttribute("postCode", quotationDO.getPostCode());
+		session.setAttribute("countryCode", quotationDO.getCountryCode());
+		session.setAttribute("mobileNo", quotationDO.getMobileNo());
+		session.setAttribute("pdpa", quotationDO.getPdpa());
+		session.setAttribute("css", quotationDO.getCss());
+		session.setAttribute("businessRegNo", quotationDO.getBusinessRegNo());
+		session.setAttribute("typeOfBusiness", quotationDO.getTypeOfBusiness());
+		session.setAttribute("oldIcNo", quotationDO.getOldIcNo());/*
+		session.setAttribute("newIcNo", quotationDO.get);
+		session.setAttribute("newIcNo", quotationDO.get);
+		session.setAttribute("newIcNo", quotationDO.get);*/
+		
 		quotationService.saveQuotation(quotationDO);
+		System.out.println(session.getAttribute("sourceType"));
+		System.out.println(session.getAttribute("accountCode"));
 		
 		return new ModelAndView("redirect:covernote");
 	}
@@ -119,7 +147,7 @@ public class QuotationController {
 			mainList.addAll(0, contactType);
 			mainList.addAll(1, sourceType);
 			jsonString = gson.toJson(mainList);
-			System.out.println("dummy\n" + jsonString);
+			//System.out.println("dummy\n" + jsonString);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

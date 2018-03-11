@@ -44,6 +44,7 @@
 				<img src="http://localhost/nsure/dashboard/img/avatar-1.jpg"
 					alt="person" class="img-fluid rounded-circle">
 				<h2 class="h5">Nsure</h2>
+				<h3 class="h4" style="color:red;">${sessionScope.user}</h3>
 			</div>
 			<div class="sidenav-header-logo">
 				<a href="index.jsp" class="brand-small text-center"> <strong>B</strong><strong
@@ -87,6 +88,7 @@
 						</div>
 					</a>
 				</div>
+				<button type='submit' onclick="location.href='logout'" class="btn btn-danger pull-right">Log out</button>
 			</div>
 		</div>
 		</nav> </header>
