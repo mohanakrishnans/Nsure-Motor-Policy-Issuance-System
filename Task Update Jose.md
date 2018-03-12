@@ -1,5 +1,5 @@
-## Nsure-Motor-Policy-Issuance-System TASK UPADATES
-# JOSE ANTONY MUTHU S
+# Nsure-Motor-Policy-Issuance-System TASK UPADATES
+## JOSE ANTONY MUTHU S
  |Date|Time|Project Task |Status |
  |----|----|-------------|-------|
 |11.12.2017|10:45 AM to 4:00 PM|Absent| |
@@ -55,11 +55,11 @@
 |02.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
 |03.02.2018|10:45 AM to 4:00 PM|Absent||
 |Sunday||Holiday||
-|05.02.2018|10:45 AM to 4:00 PM|Schedule print generation|In Progress|
-|06.02.2018|10:45 AM to 4:00 PM|Schedule print generation|In Progress|
-|07.02.2018|10:45 AM to 4:00 PM|Schedule print generation|In Progress|
-|08.02.2018|10:45 AM to 4:00 PM|iReport and spring integration|In Progress|
-|09.02.2018|10:45 AM to 4:00 PM|iReport and spring integration|In Progress|
+|05.02.2018|10:45 AM to 4:00 PM|Schedule print generation|Completed|
+|06.02.2018|10:45 AM to 4:00 PM|Schedule print generation|Completed|
+|07.02.2018|10:45 AM to 4:00 PM|Schedule print generation|Completed|
+|08.02.2018|10:45 AM to 4:00 PM|iReport and spring integration|Completed|
+|09.02.2018|10:45 AM to 4:00 PM|iReport and spring integration|Completed|
 |10.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
 |Sunday||Holiday||
 |12.02.2018|10:45 AM to 4:00 PM|iReport and spring integration|In Progress|
@@ -84,4 +84,10 @@
 |03.03.2018|10:45 AM to 4:00 PM|Jasper ireport|In Progress|
 |Sunday||Holiday||
 |05.03.2018|10:45 AM to 4:00 PM|Jasper ireport|In Progress|
-
+|06.03.2018|10:45 AM to 4:00 PM|Absent||
+|07.03.2018|10:45 AM to 4:00 PM|Absent||
+|08.03.2018|10:45 AM to 4:00 PM|Jasper ireport|In Progress|
+|09.03.2018|10:45 AM to 4:00 PM|Jasper ireport|In Progress|
+|10.03.2018|10:45 AM to 4:00 PM|Absent||
+|Sunday||Holiday||
+|12.03.2018|10:45 AM to 4:00 PM|Absent||
