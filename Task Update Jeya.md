@@ -58,29 +58,37 @@
 |05.02.2018|10:45 AM to 4:00 PM|Learning angular validation|Completed|
 |06.02.2018|10:45 AM to 4:00 PM|Learning angular validation|Completed|
 |07.02.2018|10:45 AM to 4:00 PM|Learning angular validation|Completed|
-|08.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|In Progress|
-|09.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|In Progress|
+|08.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|Completed|
+|09.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|Completed|
 |10.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
 |Sunday||Holiday||
-|12.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|In Progress|
-|13.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|In Progress|
-|14.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|In Progress|
-|15.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|In Progress|
+|12.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|Completed|
+|13.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|Completed|
+|14.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|Completed|
+|15.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|Completed|
 |16.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
 |17.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
 |Sunday||||
 |19.02.2018|10:45 AM to 4:00 PM|Absent(placement drive)||
-|20.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|In Progress|
-|21.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|In Progress|
-|22.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|In Progress|
-|23.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|In Progress|
+|20.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|Completed|
+|21.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|Completed|
+|22.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|Completed|
+|23.02.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|Completed|
 |Saturday| |Holiday||
 |Sunday||||
-|26.02.2018|10:45 AM to 4:00 PM|UI grid|In Progress|
+|26.02.2018|10:45 AM to 4:00 PM|UI grid|Completed|
 |27.02.2018|10:45 AM to 4:00 PM|Second review||
 |28.02.2018|10:45 AM to 4:00 PM|Second review||
 |01.03.2018|10:45 AM to 4:00 PM|Module 2 Ui grid|In Progress|
 |02.03.2018|10:45 AM to 4:00 PM|Module 2 Ui grid|In Progress|
 |03.03.2018|10:45 AM to 4:00 PM|Module 2 Ui grid|In Progress|
 |Sunday||Holiday||
-|05.03.2018|10:45 AM to 4:00 PM|Database table creation|In Progress|
+|05.03.2018|10:45 AM to 4:00 PM|Database table creation|Completed|
+|06.03.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|Completed|
+|07.03.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|Completed|
+|08.03.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|Completed|
+|09.03.2018|10:45 AM to 4:00 PM|Absent||
+|10.03.2018|10:45 AM to 4:00 PM|Absent||
+|Sunday||Holiday||
+|12.03.2018|10:45 AM to 4:00 PM|Angular Js and Form validation|In Progress|
+
