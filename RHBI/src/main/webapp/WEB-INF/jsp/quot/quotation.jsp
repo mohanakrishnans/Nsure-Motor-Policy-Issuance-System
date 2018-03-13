@@ -51,7 +51,8 @@
 	src="http://localhost/nsure/dashboard/js/angular-messages.min.js"></script>
 
 -->
- <link rel="shortcut icon"	href="http://localhost/nsure/dashboard/img/favicon.ico">
+<link rel="shortcut icon"
+	href="http://localhost/nsure/dashboard/img/favicon.ico">
 <link rel="stylesheet"
 	href="http://localhost/nsure/dashboard/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -68,20 +69,18 @@
 <script src="http://localhost/nsure/dashboard/js/messenger.min.js"></script>
 <script
 	src="http://localhost/nsure/dashboard/js/messenger-theme-flat.js"></script>
-<script src="http://localhost/nsure/dashboard/js/home-premium.js"></script> 
+<script src="http://localhost/nsure/dashboard/js/home-premium.js"></script>
 
-<script
-	src="http://localhost/nsure/dashboard/js/angular.min.js"></script>
+<script src="http://localhost/nsure/dashboard/js/angular.min.js"></script>
 
-<script
-	src="http://localhost/nsure/dashboard/js/jquery.min.js"></script>
+<script src="http://localhost/nsure/dashboard/js/jquery.min.js"></script>
+<script src="//code.angularjs.org/snapshot/angular.min.js"></script>
+<script src="//code.angularjs.org/snapshot/angular-messages.js"></script>
+<script src="script.js"></script>
 
-<script
-	src="http://localhost/nsure/dashboard/js/angular-messages.min.js"></script>
-	
-	
-	
- <script type="text/javascript">
+<script type="text/javascript" src="resources/js/validate.js"></script>
+
+<script type="text/javascript">
  var app = angular.module("quotation", ['ngMessages']).controller("quotationController",
 			function($scope) {
 				$scope.contactId = null;
@@ -111,6 +110,11 @@
 								'<option value="' + value.sourceType + '">'
 										+ value.sourceName + '</option>');
 					}
+					/* else if (value.salutationid > 0) {
+						$('#SALUTATION').append(
+								'<option value="' + value.salutationid + '">'
+										+ value.salutationname + '</option>');
+					} */
 				});
 
 			}
@@ -119,52 +123,45 @@
 	}
 </script>
 
-<script>
-function validationQuotation() {
-    document.getElementById("demo").innerHTML = "Hello World";
-}
-</script>s
 
 </head>
 
 <body class="" data-ng-app="quotation"
-	data-ng-controller="quotationController as tc"
-	id="ENDOR_NON_JPJ_MOTOR">
+	data-ng-controller="quotationController as tc" id="ENDOR_NON_JPJ_MOTOR">
 	<nav class="side-navbar">
 		<div class="side-navbar-wrapper">
-			<div
-				class="sidenav-header d-flex align-items-center justify-content-center">
-				<div class="sidenav-header-inner text-center">
-					<img src="http://localhost/nsure/dashboard/img/avatar-1.jpg"
-						alt="person" class="img-fluid rounded-circle">
-					<h2 class="h5">Nsure</h2>
-				</div>
-				<div class="sidenav-header-logo">
-					<a href="index.jsp" class="brand-small text-center"> <strong>B</strong><strong
-						class="text-primary">D</strong></a>
-				</div>
+			<div class="sidenav-header d-flex align-items-center justify-content-center">
+			<div class="sidenav-header-inner text-center">
+				<img src="http://localhost/nsure/dashboard/img/avatar-1.jpg"
+					alt="person" class="img-fluid rounded-circle">
+				<h2 class="h5">Nsure</h2>
 			</div>
-			<div class="main-menu">
-				<ul id="side-main-menu" class="side-menu list-unstyled">
-					<li><a href="quotation"> <i class="icon-home"></i>Quotation
-					</a></li>
-					<li><a href="covernote"> <i class="icon-form"></i>New
-							Business
-					</a></li>
-					<li><a href="#endorsement" aria-expanded="false"
-						data-toggle="collapse"> <i class="fa fa-bar-chart"></i>Endorsement
-					</a>
-						<ul id="endorsement" class="collapse list-unstyled ">
-							<li><a href="nameddrivers">Named Drivers</a></li>
-							<li><a href="schedule">Schedule Print</a></li>
-						</ul></li>
-					<li><a href="premium"> <i class="icon-grid"></i>Premium
-					</a> <!-- <ul id="tablesDropdown" class="collapse list-unstyled ">
+			<div class="sidenav-header-logo">
+				<a href="index.jsp" class="brand-small text-center"> <strong>B</strong><strong
+					class="text-primary">D</strong></a>
+			</div>
+		</div>
+		<div class="main-menu">
+			<ul id="side-main-menu" class="side-menu list-unstyled">
+				<li><a href="quotation"> <i class="icon-home"></i>Quotation
+				</a></li>
+				<li><a href="covernote"> <i class="icon-form"></i>New
+						Business
+				</a></li>
+				<li><a href="#endorsement" aria-expanded="false"
+					data-toggle="collapse"> <i class="fa fa-bar-chart"></i>Endorsement
+				</a>
+					<ul id="endorsement" class="collapse list-unstyled ">
+						<li><a href="nameddrivers">Named Drivers</a></li>
+						<li><a href="schedule">Schedule Print</a></li>
+					</ul></li>
+				<li><a href="premium"> <i class="icon-grid"></i>Premium
+				</a> <!-- <ul id="tablesDropdown" class="collapse list-unstyled ">
 							<li><a href="tables.html">Bootstrap tables</a></li>
 							<li><a href="tables-datatable.html">Datatable</a></li>
 						</ul>--></li>
-				</ul>
-			</div>
+			</ul>
+		</div>
 		</div>
 	</nav>
 	<div class="page">
@@ -191,7 +188,8 @@ function validationQuotation() {
 					<h4>Quotation | Client Profile</h4>
 				</div>
 				<div class="card-body">
-					<form action="save_quotation_form" method="POST" modelAttribute="userFormData">
+					<form action="save_quotation_form" method="POST" 
+					modelAttribute="userFormData">
 						<fieldset class="scheduler-border">
 							<legend class="scheduler-border">Account Code / Branch
 								Details</legend>
@@ -201,7 +199,7 @@ function validationQuotation() {
 										<label for="sourceType" class="col-sm-4 control-label">Source
 											Type </label>
 										<div class="col-sm-8">
-											<select name="sourceType" id="SOURCE_TYPE"
+											<select name="sourceType" required id="SOURCE_TYPE"
 												class="form-control">
 												<option selected="selected" value="0">--SELECT--</option>
 											</select>
@@ -212,7 +210,8 @@ function validationQuotation() {
 											Code</label>
 										<div class="col-sm-8">
 											<input name="accountCode" required id="accountCode"
-												class="form-control" type="number" data-ng-model="accountCode" />
+												class="form-control" type="number"
+												data-ng-model="accountCode" />
 										</div>
 									</div>
 								</div>
@@ -239,20 +238,20 @@ function validationQuotation() {
 						<hr>
 
 						<!-- <div class="form-horizontal"> -->
-							<div class="row">
-								<div class="col-md-6">
-									<div class="row form-group form-inline">
-										<label for="CONTACT_TYPE" class="col-sm-4 control-label">Contact_Type:</label>
-										<div class="col-sm-4">											
-											<select name="contactType" id="CONTACT_TYPE"
-												class="form-control" data-ng-model="drpContactType">
-												<option selected="selected" value="0">--SELECT--</option>
-											</select>
-										</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="row form-group form-inline">
+									<label for="CONTACT_TYPE" class="col-sm-4 control-label">Contact_Type:</label>
+									<div class="col-sm-4">
+										<select name="contactType" required id="CONTACT_TYPE"
+											class="form-control" data-ng-model="drpContactType">
+											<option selected="selected" value="0">--SELECT--</option>
+										</select>
 									</div>
 								</div>
 							</div>
-						<!-- </div> -->
+						</div>
+						
 						<hr>
 						<div class="form-horizontal" data-ng-if="drpContactType=='1'">
 							<fieldset class="scheduler-border">
@@ -263,87 +262,128 @@ function validationQuotation() {
 											<label for="newicno" class="col-sm-4 control-label">New
 												IC No:</label>
 											<div class="col-sm-8">
-												<input name="newIcNo" required id="newicno"
-													class="form-control" data-ng-model="newicno" 
-													maxlength="12" />
-												<!-- pattern="\d{12} " -->
+												<input name="NewIcNo" required id="newicno" type="text"
+													class="form-control" data-ng-model="newicnoValue"
+													maxlength=12 />
+											</div>
+											<!-- <div data-ng-messages="form-horizontal.newIcNo.$error" style="color:maroon" role="alert">
+												<div data-ng-message="required">You did not enter a field</div>
+												<div data-ng-message="minlength">Your field is too short</div>
+												<div data-ng-message="maxlength">Your field is too long</div>
+											</div>-->
+										</div>
+										<div class="row form-group form-inline">
+											<label for="oldicno" class="col-sm-4 control-label">Old
+												IC No / Passport No:</label>
+											<div class="col-sm-8">
+												<input name="OldIcNo" required id="oldicno" type="text"
+													class="form-control" data-ng-model="oldicnoValue"
+													maxlength="20" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="numberEdit" class="col-sm-4 control-label">Business
-												Reg No:</label>
+											<label for="name" class="col-sm-4 control-label">Name:</label>
 											<div class="col-sm-8">
-												<input name="businessRegNo" required id="numberEdit"
-													class="form-control" type="number"
-													data-ng-model="txtBusinessRegNo" />
+												<input name="Name" required id="name" class="form-control"
+													type="text" maxlength="100" data-ng-model="nameValue" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="nameEdit" class="col-sm-4 control-label">Name:</label>
+											<label for="SALUTATION" class="col-sm-4 control-label">Salutation:</label>
 											<div class="col-sm-8">
-												<input name="name" required id="nameEdit"
-													class="form-control" type="text" data-ng-model="nameValue" />
-											</div>
-										</div>
-										<div class="row form-group form-inline">
-											<label for="nationalityEdit" class="col-sm-4 control-label">Nationality:</label>
-											<div class="col-sm-8">
-												<input name="nationality" required class="form-control"
-													id="nationalityEdit" type="text"
-													data-ng-model="nationalityValue" />
-											</div>
-										</div>
-										<div class="row form-group form-inline">
-											<label for="raceEdit" class="col-sm-4 control-label">Race:</label>
-											<div class="col-sm-8">
-												<input name="race" required class="form-control"
-													id="raceEdit" type="text" data-ng-model="raceValue" />
-											</div>
-										</div>
-										<div class="row form-group form-inline">
-											<label for="dobEdit" class="col-sm-4 control-label">Date
-												Of Birth:</label>
-											<div class="col-sm-8">
-												<input name="dateOfBirth" required class="form-control"
-													id="dobEdit" type="date" data-ng-model="dobValue" />
-											</div>
-										</div>
-										<div class="row form-group form-inline">
-											<label for="genderEdit" class="col-sm-4 control-label">Gender:</label>
-											<div class="col-sm-8">
-												<select name="gender" id="genderEdit" class="form-control"  data-ng-model="genderValue">
+												<select name="Salutation" required id="SALUTATION"
+													class="form-control" data-ng-model="salutationValue">
 													<option selected="selected" value="0">--SELECT--</option>
-													<option value="MALE">MALE</option>
-													<option value="FEMALE">FEMALE</option>
+													<option selected="selected" value="1">Mr</option>
+													<option selected="selected" value="2">Mrs</option>
+													<option selected="selected" value="3">Ms</option>
+													<option selected="selected" value="4">Dr</option>
+													<option selected="selected" value="5">Prof</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="row form-group form-inline">
+											<label for="nationality" class="col-sm-4 control-label">Nationality:</label>
+											<div class="col-sm-8">
+												<select name="Nationality" required id="nationality"
+													class="form-control" data-ng-model="drpnationalityValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option selected="selected" value="1">INDIAN</option>
+													<option selected="selected" value="2">MYLASIAN</option>
+													<option selected="selected" value="3">OTHERS</option>
 												</select>
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="maritalstatusEdit" class="col-sm-4 control-label">Marital
+											<label for="race" class="col-sm-4 control-label">Race:</label>
+											<div class="col-sm-8">
+												<select name="Race" required id="race" class="form-control"
+													data-ng-model="drpraceValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option selected="selected" value="1">BLACK</option>
+													<option selected="selected" value="2">WHITE</option>
+													<option selected="selected" value="3">OTHERS</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="dob" class="col-sm-4 control-label">Date
+												Of Birth:</label>
+											<div class="col-sm-8">
+												<input name="DateOfBirth" required class="form-control"
+													id="dob" type="date" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="age" class="col-sm-4 control-label">Age</label>
+											<div class="col-sm-8">
+												<input name="Age" required class="form-control" id="age"
+													type="text" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="gender" class="col-sm-4 control-label">Gender:</label>
+											<div class="col-sm-8">
+												<select name="Gender" required id="gender"
+													class="form-control">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="1">MALE</option>
+													<option value="2">FEMALE</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="maritalstatus" class="col-sm-4 control-label">Marital
 												Status:</label>
 											<div class="col-sm-8">
-												<select name="maritalStatus" id="maritalstatusEdit" class="form-control"  data-ng-model="maritalStatusValue">
+												<select name="MaritalStatus" required id="maritalstatus"
+													class="form-control" data-ng-model="maritalstatusValue">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="SINGLE">SINGLE</option>
 													<option value="MARRIED">MARRIED</option>
 												</select>
 											</div>
 										</div>
-									</div>
-									<div class="col-md-6">
 										<div class="row form-group form-inline">
-											<label for="OccupationEdit" class="col-sm-4 control-label">Occupation:</label>
+											<label for="occupation" class="col-sm-4 control-label">Occupation:</label>
 											<div class="col-sm-8">
-												<input name="occupation" required class="form-control"
-													id="OccupationEdit" type="text"
-													data-ng-model="OccupationValue" />
+												<select name="Occupation" required id="occupation"
+													class="form-control" data-ng-model="occupationValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option selected="selected" value="1">EMPLOYED</option>
+													<option selected="selected" value="2">BUSINESS</option>
+													<option selected="selected" value="3">HOUSE WIFE</option>
+													<option selected="selected" value="4">OTHERS</option>
+												</select>
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="GSTRegisteredEdit" class="col-sm-4 control-label">GST
+											<label for="gstregistered" class="col-sm-4 control-label">GST
 												Registered:</label>
-											<div class="col-sm-8"> 
-												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control"  data-ng-model="GST_RegisteredValue">
+											<div class="col-sm-8">
+												<select name="GstRegistered" required id="gstregistered"
+													class="form-control" data-ng-model="gstregisteredValue">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -351,42 +391,175 @@ function validationQuotation() {
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="AddressEdit" class="col-sm-4 control-label">Address:</label>
+											<label for="gstregistrationno" class="col-sm-4 control-label">GST
+												Registration No:</label>
 											<div class="col-sm-8">
-												<input name="address" required class="form-control"
-													id="AddressEdit" type="text" data-ng-model="AddressValue" />
+												<input name="GstRegistrationNo" required
+													class="form-control" id="gstregistrationno" type="text"
+													data-ng-model="gstregistrationnoValue" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="PostCodeEdit" class="col-sm-4 control-label">Post
-												Code:</label>
+											<label for="gstregdate" class="col-sm-4 control-label">GST
+												Reg Date:</label>
 											<div class="col-sm-8">
-												<input name="postCode" required class="form-control"
-													id="PostCodeEdit" type="number" data-ng-model="PostCodeValue" />
+												<input name="GstRegDate" required class="form-control"
+													id="gstregdate" type="date" data-ng-model="gstregdateValue" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="CountrycodeEdit" class="col-sm-4 control-label">Country
-												code:</label>
+											<label for="gstexpirydate" class="col-sm-4 control-label">GST
+												Expiry Date:</label>
 											<div class="col-sm-8">
-												<input name="countryCode" required class="form-control"
-													id="CountrycodeEdit" type="number"
-													data-ng-model="CountrycodeValue" />
+												<input name="GstExpiryDate" required class="form-control"
+													id="gstexpirydate" type="date"
+													data-ng-model="gstexpirydateValue" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="Mobile NoEdit" class="col-sm-4 control-label">Mobile
+											<label for="website" class="col-sm-4 control-label">Website:</label>
+											<div class="col-sm-8">
+												<input name="Website" required class="form-control"
+													id="website" type="text" data-ng-model="websiteValue" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="employmentstatus" class="col-sm-4 control-label">Employment
+												Status:</label>
+											<div class="col-sm-8">
+												<select name="EmploymentStatus" required
+													id="employmentstatus" class="form-control"
+													data-ng-model="employmentstatusValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="NO">NO</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										
+										<div class="row form-group form-inline">
+											<label for="trafficviolation" class="col-sm-4 control-label">Traffic
+												Violation:</label>
+											<div class="col-sm-8">
+												<select name="TrafficViolation" required
+													id="trafficviolation" class="form-control"
+													data-ng-model="trafficviolationValue">
+													<option selected="selected" value="0">--SELECT--</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="email" class="col-sm-4 control-label">E-mail:</label>
+											<div class="col-sm-8">
+												<input name="Email" required class="form-control" id="email"
+													type="email" data-ng-model="emailValue" />
+											</div>
+										</div>
+
+										<div class="row form-group form-inline">
+											<label for="vipstatus" class="col-sm-4 control-label">VIP
+												Status:</label>
+											<div class="col-sm-8">
+												<select name="VipStatus" required id="vipstatus"
+													class="form-control" data-ng-model="vipstatusValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="NO">NO</option>
+												</select>
+											</div>
+										</div>
+										<fieldset class="scheduler-border">
+											<legend class="scheduler-border">Permanent Address</legend>
+											<div class="row form-group form-inline">
+												<label for="address" class="col-sm-4 control-label">Address:</label>
+												<div class="col-sm-8">
+													<input name="Address" required class="form-control"
+														id="address" type="text" maxlength="120"
+														data-ng-model="addressValue" />
+												</div>
+											</div>
+											<div class="row form-group form-inline">
+												<label for="postcode" class="col-sm-4 control-label">Post
+													Code:</label>
+												<div class="col-sm-8">
+													<input name="PostCode" required class="form-control"
+														id="postcode" type="text" maxlength="6"
+														data-ng-model="postcodeValue" />
+												</div>
+											</div>
+											<div class="row form-group form-inline">
+												<label for="state" class="col-sm-4 control-label">State/Country:</label>
+												<div class="col-sm-8">
+													<select name="State" required id="state"
+														class="form-control">
+														<option selected="selected" value="0">--SELECT--</option>
+														<option selected="selected" value="1">INDIA</option>
+														<option selected="selected" value="2">MYLASIA</option>
+													</select>
+												</div>
+											</div>
+											<div class="row form-group form-inline">
+												<label for="countrycode" class="col-sm-4 control-label">Country
+													code:</label>
+												<div class="col-sm-8">
+													<input name="CountryCode" required class="form-control"
+														id="countrycode" type="text" maxlength="6"
+														data-ng-model="countrycodeValue" />
+												</div>
+											</div>
+										</fieldset>
+										<div class="row form-group form-inline">
+											<label for="mobileno" class="col-sm-4 control-label">Mobile
 												No:</label>
 											<div class="col-sm-8">
-												<input name="mobileNo" required class="form-control"
-													id="Mobile NoEdit" type="text"
-													data-ng-model="MobilenoValue" />
+												<input name="MobileNo" required class="form-control"
+													id="mobileno" type="number" maxlength="10"
+													data-ng-model="mobilenoValue" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="pdpaEdit" class="col-sm-4 control-label">PDPA:</label>
+											<label for="telno1" class="col-sm-4 control-label">Tel
+												No.(House):</label>
 											<div class="col-sm-8">
-												<select name="pdpa" id="pdpaEdit" class="form-control"  data-ng-model="pdpaValue">
+												<input name="Telno1" required class="form-control"
+													id="telno1" type="tel" maxlength="10"
+													data-ng-model="telno1Value" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="telno2" class="col-sm-4 control-label">Tel
+												No.(Office):</label>
+											<div class="col-sm-8">
+												<input name="Telno2" required class="form-control"
+													id="telno2" type="tel" maxlength="10"
+													data-ng-model="telno2Value" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="faxno1" class="col-sm-4 control-label">Fax
+												No.(House):</label>
+											<div class="col-sm-8">
+												<input name="Faxno1" required class="form-control"
+													id="faxno1" type="tel" maxlength="10"
+													data-ng-model="faxno1Value" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="faxno2" class="col-sm-4 control-label">Fax
+												No.(Office):</label>
+											<div class="col-sm-8">
+												<input name="Faxno2" required class="form-control"
+													id="faxno2" type="tel" maxlength="10"
+													data-ng-model="faxno2Value" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="pdpa" class="col-sm-4 control-label">PDPA:</label>
+											<div class="col-sm-8">
+												<select name="Pdpa" required id="pdpa" class="form-control"
+													data-ng-model="pdpaValue">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="N0">NO</option>
@@ -394,19 +567,45 @@ function validationQuotation() {
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="cssEdit" class="col-sm-4 control-label">CSS:</label>
+											<label for="css" class="col-sm-4 control-label">CSS:</label>
 											<div class="col-sm-8">
-												<select name="css" id="cssEdit" class="form-control"  data-ng-model="cssValue">
+												<select name="Css" required id="css" class="form-control"
+													data-ng-model="cssValue">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
 												</select>
 											</div>
 										</div>
+										<div class="row form-group form-inline">
+											<label for="remarks" class="col-sm-4 control-label">Remarks:</label>
+											<div class="col-sm-8">
+												<textarea rows="3" cols="20" class="form-control"
+													id="remarks" data-ng-model="remarksValue">
+													</textarea>
+											</div>
+										</div>
 									</div>
 								</div>
+								<fieldset class="scheduler-border">
+									<form>
+									Personal Data Protection consent signed by customer
+									<div class="col-sm-12">
+										<label><input type="radio" name="optradio">Yes</label>
+									<label><input type="radio" name="optradio">No</label>
+									</div>
+									</form>
+									<form>
+									Consent on Cross Selling signed by customer
+									<div class="col-sm-12">
+									<label><input type="radio" name="optradio">Yes</label>
+									<label><input type="radio" name="optradio">No</label>
+									</div>
+									</form>
+								</fieldset>
 							</fieldset>
-							<button type="submit" class="pull-right btn  btn-success center" onclick="validationIndividual()">Next</button>
+							<button type="submit" class="pull-right btn  btn-success center"
+								onclick="validateIndividual()">Next</button>
 						</div>
 						<!--  onclick="location.href='save_quotation_form'"  -->
 
@@ -414,124 +613,391 @@ function validationQuotation() {
 							<fieldset class="scheduler-border">
 								<legend class="scheduler-border">Business</legend>
 								<div class="row">
-
 									<div class="col-md-6">
 										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label"
-												for="businessRegistrationNoEdit">Business
-												Registration No:</label>
+											<label for="businessregno" class="col-sm-4 control-label">Business
+												Reg No:</label>
 											<div class="col-sm-8">
-												<input name="businessRegNo" required class="form-control"
-													id="businessRegistrationNumberEdit"
-													type="number" data-ng-model="registrationNoValue" />
+												<input name="BusinessRegNo" required id="businessregno"
+													class="form-control" type="text" maxlength="20"
+													data-ng-model="businessregnoValue" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="nameEdit">Name:</label>
+											<label for="name" class="col-sm-4 control-label">Name:</label>
 											<div class="col-sm-8">
-												<input name="name" required class="form-control"
-													id="nameEdit" type="text" data-ng-model="nameValue" />
+												<input name="Name" required id="name" class="form-control"
+													type="text" maxlength="100" data-ng-model="nameValue" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label"
-												for="TypeOfBusinessEdit">Type Of Business:</label>
+											<label for="race" class="col-sm-4 control-label">Race:</label>
 											<div class="col-sm-8">
-												<input name="typeOfBusiness" required class="form-control"
-													id="TypeOfBusinessEdit" type="text"
-													data-ng-model="TypeOfBusinessValue" />
-											</div>
-										</div>
-										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="GSTRegisteredEdit">GST
-												Registered:</label>
-											<div class="col-sm-8">
-												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control" data-ng-model="GST_RegisteredValue" >
+												<select name="Race" required id="race" class="form-control"
+													data-ng-model="drpraceValue">
 													<option selected="selected" value="0">--SELECT--</option>
-													<option value="YES">YES</option>
-													<option value="NO">NO</option>
-												</select>													
-													
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="AddressEdit">Address:</label>
-											<div class="col-sm-8">
-												<input name="address" required class="form-control"
-													id="AddressEdit" type="text" data-ng-model="AddressValue" />
-											</div>
-										</div>
-										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="PostCodeEdit">Post
-												Code:</label>
-											<div class="col-sm-8">
-												<input name="postCode" required class="form-control"
-													id="PostCodeEdit" type="number" data-ng-model="PostCodeValue" />
-											</div>
-										</div>
-										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="CountrycodeEdit">Country
-												code:</label>
-											<div class="col-sm-8">
-												<input name="countryCode" required class="form-control"
-													id="CountrycodeEdit" type="number"
-													data-ng-model="CountrycodeValue" /> <br />
-											</div>
-										</div>
-										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="Mobile NoEdit">Mobile
-												No:</label>
-											<div class="col-sm-8">
-												<input name="mobileNo" required class="form-control"
-													id="Mobile NoEdit" type="number"
-													data-ng-model="MobilenoValue" />
-											</div>
-										</div>
-									</div>
-								</div>
-							</fieldset>
-							<button type="submit" class="pull-right btn  btn-success center">Next</button>
-						</div>
-
-
-
-						<div class="form-horizontal" data-ng-if="drpContactType=='3'">
-							<fieldset class="scheduler-border">
-								<legend class="scheduler-border" >Others</legend>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="numberEdit">New
-												IC No:</label>
-											<div class="col-sm-8">
-												<input name="newIcNo" required class="form-control"
-													id="numberEdit" type="number" data-ng-model="numberValue" />
-											</div>
-										</div>
-										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="nameEdit">Name:</label>
-											<div class="col-sm-8">
-												<input name="name" required class="form-control"
-													id="nameEdit" type="text" data-ng-model="nameValue" />
-											</div>
-										</div>
-										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="genderEdit">Gender:</label>
-											<div class="col-sm-8">
-												<select name="gender" id="genderEdit" class="form-control"  data-ng-model="genderValue">
-													<option selected="selected" value="0">--SELECT--</option>
-													<option value="MALE">MALE</option>
-													<option value="FEMALE">FEMALE</option>
+													<option selected="selected" value="1">BLACK</option>
+													<option selected="selected" value="2">WHITE</option>
+													<option selected="selected" value="3">OTHERS</option>
 												</select>
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="maritalstatusEdit">Marital
+											<label class="col-sm-4 control-label" for="typeofbusiness">Type
+												Of Business:</label>
+											<div class="col-sm-8">
+												<input name="TypeOfBusiness" required class="form-control"
+													id="typeofbusiness" type="text"
+													data-ng-model="typeofbusinessValue" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="occupation" class="col-sm-4 control-label">Occupation:</label>
+											<div class="col-sm-8">
+												<select name="Occupation" id="occupation"
+													class="form-control" data-ng-model="occupationValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option selected="selected" value="1">EMPLOYED</option>
+													<option selected="selected" value="2">BUSINESS</option>
+													<option selected="selected" value="3">HOUSE WIFE</option>
+													<option selected="selected" value="4">OTHERS</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="gstregistered" class="col-sm-4 control-label">GST
+												Registered:</label>
+											<div class="col-sm-8">
+												<select name="GstRegistered" required id="gstregistered"
+													class="form-control" data-ng-model="gstregisteredValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="NO">NO</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="gstregistrationno" class="col-sm-4 control-label">GST
+												Registration No:</label>
+											<div class="col-sm-8">
+												<input name="GstRegistrationNo" required
+													class="form-control" id="gstregistrationno" type="text"
+													data-ng-model="gstregistrationnoValue" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="gstregdate" class="col-sm-4 control-label">GST
+												Reg Date:</label>
+											<div class="col-sm-8">
+												<input name="GstRegDate" required class="form-control"
+													id="gstregdate" type="date" data-ng-model="gstregdateValue" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="gstexpirydate" class="col-sm-4 control-label">GST
+												Expiry Date:</label>
+											<div class="col-sm-8">
+												<input name="GstExpiryDate" required class="form-control"
+													id="gstexpirydate" type="date"
+													data-ng-model="gstexpirydateValue" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="website" class="col-sm-4 control-label">Website:</label>
+											<div class="col-sm-8">
+												<input name="Website" required class="form-control"
+													id="website" type="text" data-ng-model="websiteValue" />
+											</div>
+										</div>
+										<!-- <div class="row form-group form-inline">
+											<label for="employmentstatus" class="col-sm-4 control-label">Employment
 												Status:</label>
 											<div class="col-sm-8">
-												<select name="maritalStatus" id="maritalstatusEdit" class="form-control"  data-ng-model="maritalStatusValue">
+												<select name="EmploymentStatus" required
+													id="employmentstatus" class="form-control"
+													data-ng-model="employmentstatusValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="NO">NO</option>
+												</select>
+											</div>
+										</div> -->
+										<div class="row form-group form-inline">
+											<label for="trafficviolation" class="col-sm-4 control-label">Traffic
+												Violation:</label>
+											<div class="col-sm-8">
+												<select name="TrafficViolation" required
+													id="trafficviolation" class="form-control"
+													data-ng-model="trafficviolationValue">
+													<option selected="selected" value="0">--SELECT--</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="email" class="col-sm-4 control-label">E-mail:</label>
+											<div class="col-sm-8">
+												<input name="Email" required class="form-control" id="email"
+													type="email" data-ng-model="emailValue" />
+											</div>
+										</div>
+
+										<div class="row form-group form-inline">
+											<label for="vipstatus" class="col-sm-4 control-label">VIP
+												Status:</label>
+											<div class="col-sm-8">
+												<select name="VipStatus" required id="vipstatus"
+													class="form-control" data-ng-model="vipstatusValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="NO">NO</option>
+												</select>
+											</div>
+										</div>
+
+									</div>
+									<div class="col-md-6">
+										<fieldset class="scheduler-border">
+											<legend class="scheduler-border">Permanent Address</legend>
+											<div class="row form-group form-inline">
+												<label for="address" class="col-sm-4 control-label">Address:</label>
+												<div class="col-sm-8">
+													<input name="Address" required class="form-control"
+														id="address" type="text" maxlength="120"
+														data-ng-model="addressValue" />
+												</div>
+											</div>
+											<div class="row form-group form-inline">
+												<label for="postcode" class="col-sm-4 control-label">Post
+													Code:</label>
+												<div class="col-sm-8">
+													<input name="PostCode" required class="form-control"
+														id="postcode" type="text" maxlength="6"
+														data-ng-model="postcodeValue" />
+												</div>
+											</div>
+											<div class="row form-group form-inline">
+												<label for="state" class="col-sm-4 control-label">State/Country:</label>
+												<div class="col-sm-8">
+													<select name="State" required id="state"
+														class="form-control">
+														<option selected="selected" value="0">--SELECT--</option>
+														<option selected="selected" value="1">INDIA</option>
+														<option selected="selected" value="2">MYLASIA</option>
+													</select>
+												</div>
+											</div>
+											<div class="row form-group form-inline">
+												<label for="countrycode" class="col-sm-4 control-label">Country
+													code:</label>
+												<div class="col-sm-8">
+													<input name="CountryCode" required class="form-control"
+														id="countrycode" type="text" maxlength="6"
+														data-ng-model="countrycodeValue" />
+												</div>
+											</div>
+										</fieldset>
+										<div class="row form-group form-inline">
+											<label for="mobileno" class="col-sm-4 control-label">Mobile
+												No:</label>
+											<div class="col-sm-8">
+												<input name="MobileNo" required class="form-control"
+													id="mobileno" type="tel" maxlength="10"
+													data-ng-model="mobilenoValue" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="telno1" class="col-sm-4 control-label">Tel
+												No.(House):</label>
+											<div class="col-sm-8">
+												<input name="Telno1" required class="form-control"
+													id="telno1" type="tel" maxlength="10"
+													data-ng-model="telno1Value" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="telno2" class="col-sm-4 control-label">Tel
+												No.(Office):</label>
+											<div class="col-sm-8">
+												<input name="Telno2" required class="form-control"
+													id="telno2" type="tel" maxlength="10"
+													data-ng-model="telno2Value" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="faxno1" class="col-sm-4 control-label">Fax
+												No.(House):</label>
+											<div class="col-sm-8">
+												<input name="Faxno1" required class="form-control"
+													id="faxno1" type="tel" maxlength="10"
+													data-ng-model="faxno1Value" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="faxno2" class="col-sm-4 control-label">Fax
+												No.(Office):</label>
+											<div class="col-sm-8">
+												<input name="Faxno2" required class="form-control"
+													id="faxno2" type="tel" maxlength="10"
+													data-ng-model="faxno2Value" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="pdpa" class="col-sm-4 control-label">PDPA:</label>
+											<div class="col-sm-8">
+												<select name="Pdpa" required id="pdpa" class="form-control"
+													data-ng-model="pdpaValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="N0">NO</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="css" class="col-sm-4 control-label">CSS:</label>
+											<div class="col-sm-8">
+												<select name="Css" required id="css" class="form-control"
+													data-ng-model="cssValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="NO">NO</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="remarks" class="col-sm-4 control-label">Remarks:</label>
+											<div class="col-sm-8">
+												<textarea rows="3" cols="20" class="form-control"
+													id="remarks" data-ng-model="remarksValue">
+													</textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+								<fieldset class="scheduler-border">
+									<form>
+									Personal Data Protection consent signed by customer
+									<div class="col-sm-12">
+										<label><input type="radio" name="optradio">Yes</label>
+									<label><input type="radio" name="optradio">No</label>
+									</div>
+									</form>
+									<form>
+									Consent on Cross Selling signed by customer
+									<div class="col-sm-12">
+									<label><input type="radio" name="optradio">Yes</label>
+									<label><input type="radio" name="optradio">No</label>
+									</div>
+									</form>
+								</fieldset>
+							</fieldset>
+							<button type="submit" class="pull-right btn  btn-success center"
+								onclick="validateBusiness()">Next</button>
+						</div>
+
+						<div class="form-horizontal" data-ng-if="drpContactType=='3'">
+							<fieldset class="scheduler-border">
+								<legend class="scheduler-border">Others</legend>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="row form-group form-inline">
+											<label for="oldicno" class="col-sm-4 control-label">Old
+												IC No / Passport No:</label>
+											<div class="col-sm-8">
+												<input name="OldIcNo" required id="oldicno" type="text"
+													class="form-control" data-ng-model="oldicnoValue"
+													maxlength="20" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="name" class="col-sm-4 control-label">Name:</label>
+											<div class="col-sm-8">
+												<input name="Name" required id="name" class="form-control"
+													type="text" maxlength="100" data-ng-model="nameValue" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="SALUTATION" class="col-sm-4 control-label">Salutation:</label>
+											<div class="col-sm-8">
+												<select name="Salutation" required id="SALUTATION"
+													class="form-control" data-ng-model="salutationValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option selected="selected" value="1">Mr</option>
+													<option selected="selected" value="2">Mrs</option>
+													<option selected="selected" value="3">Ms</option>
+													<option selected="selected" value="4">Dr</option>
+													<option selected="selected" value="5">Prof</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="nationality" class="col-sm-4 control-label">Nationality:</label>
+											<div class="col-sm-8">
+												<select name="Nationality" id="nationality"
+													class="form-control" data-ng-model="drpnationalityValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option selected="selected" value="1">INDIAN</option>
+													<option selected="selected" value="2">MYLASIAN</option>
+													<option selected="selected" value="3">OTHERS</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="race" class="col-sm-4 control-label">Race:</label>
+											<div class="col-sm-8">
+												<select name="Race" required id="race" class="form-control"
+													data-ng-model="drpraceValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option selected="selected" value="1">BLACK</option>
+													<option selected="selected" value="2">WHITE</option>
+													<option selected="selected" value="3">OTHERS</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="dob" class="col-sm-4 control-label">Date
+												Of Birth:</label>
+											<div class="col-sm-8">
+												<input name="DateOfBirth" required class="form-control"
+													id="dob" type="date" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="age" class="col-sm-4 control-label">Age</label>
+											<div class="col-sm-8">
+												<input name="Age" required class="form-control" id="age"
+													type="text" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="gender" class="col-sm-4 control-label">Gender:</label>
+											<div class="col-sm-8">
+												<select name="Gender" required id="gender"
+													class="form-control">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="1">MALE</option>
+													<option value="2">FEMALE</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="occupation" class="col-sm-4 control-label">Occupation:</label>
+											<div class="col-sm-8">
+												<select name="Occupation" required id="occupation"
+													class="form-control" data-ng-model="occupationValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option selected="selected" value="1">EMPLOYED</option>
+													<option selected="selected" value="2">BUSINESS</option>
+													<option selected="selected" value="3">HOUSE WIFE</option>
+													<option selected="selected" value="4">OTHERS</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="maritalstatus" class="col-sm-4 control-label">Marital
+												Status:</label>
+											<div class="col-sm-8">
+												<select name="MaritalStatus" required id="maritalstatus"
+													class="form-control" data-ng-model="maritalstatusValue">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="SINGLE">SINGLE</option>
 													<option value="MARRIED">MARRIED</option>
@@ -539,71 +1005,247 @@ function validationQuotation() {
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="GSTRegisteredEdit">GST
+											<label for="gstregistered" class="col-sm-4 control-label">GST
 												Registered:</label>
 											<div class="col-sm-8">
-												<select name="gstRegistered" id="GSTRegisteredEdit" class="form-control" data-ng-model="GST_RegisteredValue" >
+												<select name="GstRegistered" required id="gstregistered"
+													class="form-control" data-ng-model="gstregisteredValue">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
 												</select>
 											</div>
 										</div>
-									</div>
+										<div class="row form-group form-inline">
+											<label for="gstregistrationno" class="col-sm-4 control-label">GST
+												Registration No:</label>
+											<div class="col-sm-8">
+												<input name="GstRegistrationNo" required
+													class="form-control" id="gstregistrationno" type="text"
+													data-ng-model="gstregistrationnoValue" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="gstregdate" class="col-sm-4 control-label">GST
+												Reg Date:</label>
+											<div class="col-sm-8">
+												<input name="GstRegDate" required class="form-control"
+													id="gstregdate" type="date" data-ng-model="gstregdateValue" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="gstexpirydate" class="col-sm-4 control-label">GST
+												Expiry Date:</label>
+											<div class="col-sm-8">
+												<input name="GstExpiryDate" required class="form-control"
+													id="gstexpirydate" type="date"
+													data-ng-model="gstexpirydateValue" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="website" class="col-sm-4 control-label">Website:</label>
+											<div class="col-sm-8">
+												<input name="Website" required class="form-control"
+													id="website" type="text" data-ng-model="websiteValue" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="employmentstatus" class="col-sm-4 control-label">Employment
+												Status:</label>
+											<div class="col-sm-8">
+												<select name="EmploymentStatus" required
+													id="employmentstatus" class="form-control"
+													data-ng-model="employmentstatusValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="NO">NO</option>
+												</select>
+											</div>
+										</div>
+										</div>
+										
 									<div class="col-md-6">
+										
 										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="AddressEdit">Address:</label>
+											<label for="trafficviolation" class="col-sm-4 control-label">Traffic
+												Violation:</label>
 											<div class="col-sm-8">
-												<input required class="form-control" id="AddressEdit"
-													name="address" type="text" data-ng-model="AddressValue" />
+												<select name="TrafficViolation" required
+													id="trafficviolation" class="form-control"
+													data-ng-model="trafficviolationValue">
+													<option selected="selected" value="0">--SELECT--</option>
+												</select>
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="PostCodeEdit">Post
-												Code:</label>
+											<label for="email" class="col-sm-4 control-label">E-mail:</label>
 											<div class="col-sm-8">
-												<input required class="form-control" id="PostCodeEdit"
-													name="postCode" type="number" data-ng-model="PostCodeValue" />
+												<input name="Email" required class="form-control" id="email"
+													type="email" data-ng-model="emailValue" />
 											</div>
 										</div>
+
 										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="OccupationEdit">Occupation:</label>
+											<label for="vipstatus" class="col-sm-4 control-label">VIP
+												Status:</label>
 											<div class="col-sm-8">
-												<input required class="form-control" id="OccupationEdit"
-													name="occupation" type="text"
-													data-ng-model="OccupationValue" />
+												<select name="VipStatus" required id="vipstatus"
+													class="form-control" data-ng-model="vipstatusValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="NO">NO</option>
+												</select>
 											</div>
 										</div>
-										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="CountrycodeEdit">Country
-												code:</label>
-											<div class="col-sm-8">
-												<input required class="form-control" id="CountrycodeEdit"
-													name="countryCode" type="number"
-													data-ng-model="CountrycodeValue" />
+										<fieldset class="scheduler-border">
+											<legend class="scheduler-border">Permanent Address</legend>
+											<div class="row form-group form-inline">
+												<label for="address" class="col-sm-4 control-label">Address:</label>
+												<div class="col-sm-8">
+													<input name="Address" required class="form-control"
+														id="address" type="text" maxlength="120"
+														data-ng-model="addressValue" />
+												</div>
 											</div>
-										</div>
+											<div class="row form-group form-inline">
+												<label for="postcode" class="col-sm-4 control-label">Post
+													Code:</label>
+												<div class="col-sm-8">
+													<input name="PostCode" required class="form-control"
+														id="postcode" type="text" maxlength="6"
+														data-ng-model="postcodeValue" />
+												</div>
+											</div>
+											<div class="row form-group form-inline">
+												<label for="state" class="col-sm-4 control-label">State/Country:</label>
+												<div class="col-sm-8">
+													<select name="State" required id="state"
+														class="form-control">
+														<option selected="selected" value="0">--SELECT--</option>
+														<option selected="selected" value="1">INDIA</option>
+														<option selected="selected" value="2">MYLASIA</option>
+													</select>
+												</div>
+											</div>
+											<div class="row form-group form-inline">
+												<label for="countrycode" class="col-sm-4 control-label">Country
+													code:</label>
+												<div class="col-sm-8">
+													<input name="CountryCode" required class="form-control"
+														id="countrycode" type="text" maxlength="6"
+														data-ng-model="countrycodeValue" />
+												</div>
+											</div>
+										</fieldset>
 										<div class="row form-group form-inline">
-											<label class="col-sm-4 control-label" for="Mobile NoEdit">Mobile
+											<label for="mobileno" class="col-sm-4 control-label">Mobile
 												No:</label>
 											<div class="col-sm-8">
-												<input required class="form-control" id="Mobile NoEdit"
-													type="number" name="mobileNo" data-ng-model="MobilenoValue" />
+												<input name="MobileNo" required class="form-control"
+													id="mobileno" type="tel" maxlength="10"
+													data-ng-model="mobilenoValue" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="telno1" class="col-sm-4 control-label">Tel
+												No.(House):</label>
+											<div class="col-sm-8">
+												<input name="Telno1" required class="form-control"
+													id="telno1" type="tel" maxlength="10"
+													data-ng-model="telno1Value" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="telno2" class="col-sm-4 control-label">Tel
+												No.(Office):</label>
+											<div class="col-sm-8">
+												<input name="Telno2" required class="form-control"
+													id="telno2" type="tel" maxlength="10"
+													data-ng-model="telno2Value" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="faxno1" class="col-sm-4 control-label">Fax
+												No.(House):</label>
+											<div class="col-sm-8">
+												<input name="Faxno1" required class="form-control"
+													id="faxno1" type="tel" maxlength="10"
+													data-ng-model="faxno1Value" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="faxno2" class="col-sm-4 control-label">Fax
+												No.(Office):</label>
+											<div class="col-sm-8">
+												<input name="Faxno2" required class="form-control"
+													id="faxno2" type="tel" maxlength="10"
+													data-ng-model="faxno2Value" />
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="pdpa" class="col-sm-4 control-label">PDPA:</label>
+											<div class="col-sm-8">
+												<select name="Pdpa" required id="pdpa" class="form-control"
+													data-ng-model="pdpaValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="N0">NO</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="css" class="col-sm-4 control-label">CSS:</label>
+											<div class="col-sm-8">
+												<select name="Css" required id="css" class="form-control"
+													data-ng-model="cssValue">
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="NO">NO</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
+											<label for="remarks" class="col-sm-4 control-label">Remarks:</label>
+											<div class="col-sm-8">
+												<textarea rows="3" cols="20" class="form-control"
+													id="remarks" data-ng-model="remarksValue">
+													</textarea>
 											</div>
 										</div>
 									</div>
 								</div>
-
+								<fieldset class="scheduler-border">
+								<form>
+									Personal Data Protection consent signed by customer
+									<div class="col-sm-12">
+										<label><input type="radio" name="optradio">Yes</label>
+									<label><input type="radio" name="optradio">No</label>
+									</div>
+									</form>
+									<form>
+									Consent on Cross Selling signed by customer
+									<div class="col-sm-12">
+									<label><input type="radio" name="optradio">Yes</label>
+									<label><input type="radio" name="optradio">No</label>
+									</div>
+									</form>
+								</fieldset>
 							</fieldset>
-							<button type="submit" class="btn  btn-success center pull-right">Next</button>
-						</div>
-					</form>
-				</div>
+						
+						<button type="submit" class="btn  btn-success center pull-right"
+							onclick="validateOthers()">Next</button>
+				</div>	
+					</form>			
 			</div>
+		
+			</div>
+			
 		</div>
-	</div>
+	
+	
 </body>
-
 </html>
+
+
 
 
