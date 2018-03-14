@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.kgisl.nsure.covernote.dao.CovernoteDAO;
 import com.kgisl.nsure.covernote.domain.CovernoteDO;
+import com.kgisl.nsure.quotation.domain.QuotationDO;
 
 /**
  * @author mohan
@@ -17,6 +18,16 @@ import com.kgisl.nsure.covernote.domain.CovernoteDO;
 public class CovernoteServiceImpl implements CovernoteService {
 	@Autowired
 	CovernoteDAO covernotedao;
+	
+	@Override
+	public void saveCovernote(CovernoteDO covernoteDO) {
+		// TODO Auto-generated method stub
+		//System.out.println("S>");
+		covernotedao.saveCovernote(covernoteDO);
+		
+		//System.out.println("S<");
+		
+	}
 	/*COVERNOTE CLASS*/
 	@Override
 	public List<CovernoteDO> getCovernoteClass(CovernoteDO covernoteDO){
@@ -31,6 +42,134 @@ public class CovernoteServiceImpl implements CovernoteService {
 		}
 		return covernoteclass;
 	}
+	/*VEHICLEBODY CLASS*/
+	@Override
+	public List<CovernoteDO> getVehicleBody(CovernoteDO covernoteDO){
+		List<CovernoteDO> covernoteclass = null;
+		try{
+			covernoteclass = covernotedao.getVehicleBody(covernoteDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return covernoteclass;
+	}
+	
+	/*CN CLASS*/
+	@Override
+	public List<CovernoteDO> getCnClass(CovernoteDO covernoteDO){
+		List<CovernoteDO> covernoteclass = null;
+		try{
+			covernoteclass = covernotedao.getCNclass(covernoteDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return covernoteclass;
+	}
+	/*CN CLASS*/
+	@Override
+	public List<CovernoteDO> getSafetyCode(CovernoteDO covernoteDO){
+		List<CovernoteDO> covernoteclass = null;
+		try{
+			covernoteclass = covernotedao.getSafetyCode(covernoteDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return covernoteclass;
+	}
+	/*Functional Modification*/
+	@Override
+	public List<CovernoteDO> getFunctionalModification(CovernoteDO covernoteDO){
+		List<CovernoteDO> covernoteclass = null;
+		try{
+			covernoteclass = covernotedao.getFunctionalModification(covernoteDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return covernoteclass;
+	}
+	/*CN CLASS*/
+	@Override
+	public List<CovernoteDO> getDriverExperience(CovernoteDO covernoteDO){
+		List<CovernoteDO> covernoteclass = null;
+		try{
+			covernoteclass = covernotedao.getDriverExperience(covernoteDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return covernoteclass;
+	}
+	/*CN CLASS*/
+	@Override
+	public List<CovernoteDO> getGaraged(CovernoteDO covernoteDO){
+		List<CovernoteDO> covernoteclass = null;
+		try{
+			covernoteclass = covernotedao.getGaraged(covernoteDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return covernoteclass;
+	}
+	/*CN CLASS*/
+	@Override
+	public List<CovernoteDO> getAntiTheftCode(CovernoteDO covernoteDO){
+		List<CovernoteDO> covernoteclass = null;
+		try{
+			covernoteclass = covernotedao.getAntiTheftCode(covernoteDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return covernoteclass;
+	}
+	/*CN CLASS*/
+	@Override
+	public List<CovernoteDO> getPerformanceAesthetic(CovernoteDO covernoteDO){
+		List<CovernoteDO> covernoteclass = null;
+		try{
+			covernoteclass = covernotedao.getPerformanceAesthetic(covernoteDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return covernoteclass;
+	}
+	/*CN CLASS*/
+	@Override
+	public List<CovernoteDO> getVehicleCapacity(CovernoteDO covernoteDO){
+		List<CovernoteDO> covernoteclass = null;
+		try{
+			covernoteclass = covernotedao.getVehicleCapacity(covernoteDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return covernoteclass;
+	}
+	
 	/*COVERNOTE TYPE*/
 	@Override
 	public List<CovernoteDO> getCovernoteType(CovernoteDO covernoteDO){

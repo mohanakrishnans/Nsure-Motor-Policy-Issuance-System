@@ -30,6 +30,30 @@ public class CovernoteDO {
 	private int additionalusageid;
 	private String additionalusagename;
 	
+	private int cnclassid;
+	private String cnclassname;
+	private int vehiclebodyid;
+	private String vehiclebodyname;
+	private int functionalmodificationid;
+	private String functionalmodificationname;	
+	private int safetycodeid;
+	private String safetycodename;
+	private int driverexperienceid;
+	private String driverexperiencename;
+	private int garagedid;
+	private String garagedname;
+	private int antitheftcodeid;
+	private String antitheftcodename;
+	private int performanceaestheticid;
+	private String performanceaestheticname;
+	private int vehiclecapacityid;
+	private String vehiclecapacityname;
+	
+	
+	
+	
+	
+	
 	
 	private String covernoteclass;
 	private String masterpolicynumber;
@@ -86,10 +110,223 @@ public class CovernoteDO {
 	private String suminsured;
 	private String trailersuminsured;
 
-	
-	
-	
-	
+		
+	/**
+	 * @return the functionalmodificationid
+	 */
+	public int getFunctionalmodificationid() {
+		return functionalmodificationid;
+	}
+	/**
+	 * @param functionalmodificationid the functionalmodificationid to set
+	 */
+	public void setFunctionalmodificationid(int functionalmodificationid) {
+		this.functionalmodificationid = functionalmodificationid;
+	}
+	/**
+	 * @return the functionalmodificationname
+	 */
+	public String getFunctionalmodificationname() {
+		return functionalmodificationname;
+	}
+	/**
+	 * @param functionalmodificationname the functionalmodificationname to set
+	 */
+	public void setFunctionalmodificationname(String functionalmodificationname) {
+		this.functionalmodificationname = functionalmodificationname;
+	}
+	/**
+	 * @return the vehiclecapacityid
+	 */
+	public int getVehiclecapacityid() {
+		return vehiclecapacityid;
+	}
+	/**
+	 * @param vehiclecapacityid the vehiclecapacityid to set
+	 */
+	public void setVehiclecapacityid(int vehiclecapacityid) {
+		this.vehiclecapacityid = vehiclecapacityid;
+	}
+	/**
+	 * @return the vehiclecapacityname
+	 */
+	public String getVehiclecapacityname() {
+		return vehiclecapacityname;
+	}
+	/**
+	 * @param vehiclecapacityname the vehiclecapacityname to set
+	 */
+	public void setVehiclecapacityname(String vehiclecapacityname) {
+		this.vehiclecapacityname = vehiclecapacityname;
+	}
+	/**
+	 * @return the safetycodeid
+	 */
+	public int getSafetycodeid() {
+		return safetycodeid;
+	}
+	/**
+	 * @param safetycodeid the safetycodeid to set
+	 */
+	public void setSafetycodeid(int safetycodeid) {
+		this.safetycodeid = safetycodeid;
+	}
+	/**
+	 * @return the safetycodename
+	 */
+	public String getSafetycodename() {
+		return safetycodename;
+	}
+	/**
+	 * @param safetycodename the safetycodename to set
+	 */
+	public void setSafetycodename(String safetycodename) {
+		this.safetycodename = safetycodename;
+	}
+	/**
+	 * @return the driverexperienceid
+	 */
+	public int getDriverexperienceid() {
+		return driverexperienceid;
+	}
+	/**
+	 * @param driverexperienceid the driverexperienceid to set
+	 */
+	public void setDriverexperienceid(int driverexperienceid) {
+		this.driverexperienceid = driverexperienceid;
+	}
+	/**
+	 * @return the driverexperiencename
+	 */
+	public String getDriverexperiencename() {
+		return driverexperiencename;
+	}
+	/**
+	 * @param driverexperiencename the driverexperiencename to set
+	 */
+	public void setDriverexperiencename(String driverexperiencename) {
+		this.driverexperiencename = driverexperiencename;
+	}
+	/**
+	 * @return the garagedid
+	 */
+	public int getGaragedid() {
+		return garagedid;
+	}
+	/**
+	 * @param garagedid the garagedid to set
+	 */
+	public void setGaragedid(int garagedid) {
+		this.garagedid = garagedid;
+	}
+	/**
+	 * @return the garagedname
+	 */
+	public String getGaragedname() {
+		return garagedname;
+	}
+	/**
+	 * @param garagedname the garagedname to set
+	 */
+	public void setGaragedname(String garagedname) {
+		this.garagedname = garagedname;
+	}
+	/**
+	 * @return the antitheftcodeid
+	 */
+	public int getAntitheftcodeid() {
+		return antitheftcodeid;
+	}
+	/**
+	 * @param antitheftcodeid the antitheftcodeid to set
+	 */
+	public void setAntitheftcodeid(int antitheftcodeid) {
+		this.antitheftcodeid = antitheftcodeid;
+	}
+	/**
+	 * @return the antitheftcodename
+	 */
+	public String getAntitheftcodename() {
+		return antitheftcodename;
+	}
+	/**
+	 * @param antitheftcodename the antitheftcodename to set
+	 */
+	public void setAntitheftcodename(String antitheftcodename) {
+		this.antitheftcodename = antitheftcodename;
+	}
+	/**
+	 * @return the performanceaestheticid
+	 */
+	public int getPerformanceaestheticid() {
+		return performanceaestheticid;
+	}
+	/**
+	 * @param performanceaestheticid the performanceaestheticid to set
+	 */
+	public void setPerformanceaestheticid(int performanceaestheticid) {
+		this.performanceaestheticid = performanceaestheticid;
+	}
+	/**
+	 * @return the performanceaestheticname
+	 */
+	public String getPerformanceaestheticname() {
+		return performanceaestheticname;
+	}
+	/**
+	 * @param performanceaestheticname the performanceaestheticname to set
+	 */
+	public void setPerformanceaestheticname(String performanceaestheticname) {
+		this.performanceaestheticname = performanceaestheticname;
+	}
+	/**
+	 * @return the vehiclebodyid
+	 */
+	public int getVehiclebodyid() {
+		return vehiclebodyid;
+	}
+	/**
+	 * @param vehiclebodyid the vehiclebodyid to set
+	 */
+	public void setVehiclebodyid(int vehiclebodyid) {
+		this.vehiclebodyid = vehiclebodyid;
+	}
+	/**
+	 * @return the vehiclebodyname
+	 */
+	public String getVehiclebodyname() {
+		return vehiclebodyname;
+	}
+	/**
+	 * @param vehiclebodyname the vehiclebodyname to set
+	 */
+	public void setVehiclebodyname(String vehiclebodyname) {
+		this.vehiclebodyname = vehiclebodyname;
+	}
+	/**
+	 * @return the cnclassid
+	 */
+	public int getCnclassid() {
+		return cnclassid;
+	}
+	/**
+	 * @param cnclassid the cnclassid to set
+	 */
+	public void setCnclassid(int cnclassid) {
+		this.cnclassid = cnclassid;
+	}
+	/**
+	 * @return the cnclassname
+	 */
+	public String getCnclassname() {
+		return cnclassname;
+	}
+	/**
+	 * @param cnclassname the cnclassname to set
+	 */
+	public void setCnclassname(String cnclassname) {
+		this.cnclassname = cnclassname;
+	}
 	/**
 	 * @return the tcapacity
 	 */

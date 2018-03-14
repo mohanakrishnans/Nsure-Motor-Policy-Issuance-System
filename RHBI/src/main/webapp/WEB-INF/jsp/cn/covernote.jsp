@@ -42,8 +42,9 @@
 			});
 	
 	function fnendtmotoronload() {
+		document.getElementById("LOCATION").value="${geographicallocation}";
 		var status = true;
-		var covernotedrop = document.getElementById("COVERNOTE_CLASS").value;
+		var covernotedrop = document.getElementById("LOCATION").value;
 		var CONTEXT_PATH = '<%=request.getContextPath()%>/';
 		//alert("mohan "+CONTEXT_PATH);
 		$.ajax({
@@ -90,6 +91,42 @@
 						$('#ADDITIONAL_USAGE').append(
 								'<option value="' + value.additionalusageid + '">'
 										+ value.additionalusagename + '</option>');
+					}else if (value.cnclassid > 0) {
+						$('#CN_CLASS').append(
+								'<option value="' + value.cnclassid + '">'
+										+ value.cnclassname + '</option>');
+					}else if (value.vehiclebodyid > 0) {
+						$('#VEHICLE_BODY').append(
+								'<option value="' + value.vehiclebodyid + '">'
+										+ value.vehiclebodyname + '</option>');
+					}else if (value.safetycodeid > 0) {
+						$('#SAFETY_CODE').append(
+								'<option value="' + value.safetycodeid + '">'
+										+ value.safetycodename + '</option>');
+					}else if (value.driverexperienceid > 0) {
+						$('#DRIVER_EXPERIENCE').append(
+								'<option value="' + value.driverexperienceid + '">'
+										+ value.driverexperiencename + '</option>');
+					}else if (value.garagedid > 0) {
+						$('#GARAGED').append(
+								'<option value="' + value.garagedid + '">'
+										+ value.garagedname + '</option>');
+					}else if (value.antitheftcodeid > 0) {
+						$('#ANTI_THEFT_CODE').append(
+								'<option value="' + value.antitheftcodeid + '">'
+										+ value.antitheftcodename + '</option>');
+					}else if (value.performanceaestheticid > 0) {
+						$('#PERFORMANCE_AESTHETIC').append(
+								'<option value="' + value.performanceaestheticid + '">'
+										+ value.performanceaestheticname + '</option>');
+					}else if (value.vehiclecapacityid > 0) {
+						$('#CAPACITY_DROP').append(
+								'<option value="' + value.vehiclecapacityid + '">'
+										+ value.vehiclecapacityname + '</option>');
+					}else if (value.functionalmodificationid > 0) {
+						$('#FUNCTIONAL_MODIFICATION').append(
+								'<option value="' + value.functionalmodificationid + '">'
+										+ value.functionalmodificationname + '</option>');
 					}
 				});
 
@@ -175,14 +212,13 @@
 										<label for="COVERNOTE_CLASS" class="col-sm-4  control-label">Cover
 											Note Class</label>
 										<div class="col-sm-8">
-											<select name="covernoteclass" class="form-control" value="${covernoteclass }" id="COVERNOTE_CLASS">
-												<option selected="selected" value="1">--SELECT--</option>
-												<option  value="2">--SELECT 1--</option>
-												<option  value="3">--SELECT 2--</option>
+											<select name="covernoteclass" class="form-control" value="${covernoteclass }" id="CN_CLASS">
+												<option selected="selected" value="0">--SELECT--</option>
+											
 											</select>
 										</div>
 									</div>
-									<div class="row form-group form-inline"">
+									<%-- <div class="row form-group form-inline"">
 										<label for="masterpolicynumber" class="col-sm-4  control-label">
 											Master Policy Number</label>
 										<div class="col-sm-8 inner-addon right-addon">
@@ -191,7 +227,7 @@
 												<i class="glyphicon glyphicon-search"></i>
 											</button>
 										</div>
-									</div>
+									</div> --%>
 									<div class="row form-group form-inline"">
 										<label for="COVERNOTE_TYPE" class="col-sm-4  control-label">
 											Cover Note Type</label>
@@ -237,8 +273,8 @@
 										<label for="LOCATION" class="col-sm-4  control-label">Geographical
 											Location</label>
 										<div class="col-sm-8">
-											<select name="geographicallocation" value="${geographicallocation }" class="form-control" id="LOCATION">
-												<option selected="selected" value="0">--SELECT--</option>
+											<select name="geographicallocation"<%--  value="${geographicallocation }"  --%>class="form-control" id="LOCATION">
+												<option value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
@@ -254,18 +290,21 @@
 									<div class="row form-group form-inline"">
 										<label for="VEHICLE_USAGE" class="col-sm-4  control-label">
 											Vehicle Usage</label>
-										<div class="col-sm-6">
+										<div class="col-sm-4">
 											<select name="vehicleusage" value="${vehicleusage }" class="form-control" id="VEHICLE_USAGE">
 												<option selected="selected" value="0">--SELECT--</option>
 											</select>
+										</div>
+										<div class="col-sm-4">
+											<input name="highrisk" value="Y" type="checkbox" id="highrisk">	<h6>High Risk</h6>
 										</div>
 
 									</div>
 									<div class="row form-group form-inline"">
 										<label for="highrisk" class="col-sm-4  control-label">
-											High Risk</label>
+											</label>
 										<div class="col-sm-6">
-												 <input name="highrisk" value="${highrisk }" type="checkbox" id="highrisk">											 
+												 										 
 										</div>
 
 									</div>
@@ -273,7 +312,7 @@
 										<label for="HIRE_TYPE" class="col-sm-4  control-label">
 											Type of Hire Purchase</label>
 										<div class="col-sm-8">
-											<select name="typeofhirepurchase" value="" class="form-control" id="HIRE_TYPE">
+											<select name="typeofhirepurchase" value="${typeofhirepurchase }" class="form-control" id="HIRE_TYPE">
 												 <option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
@@ -283,7 +322,7 @@
 											Ownership Type</label>
 										<div class="col-sm-8">
 											<select name="ownershiptype" value="${ownershiptype }" class="form-control" id="OWNERSHIP_TYPE">
-												 <option selected="selected" value="0">--SELECT--</option>
+												 <option value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
@@ -291,51 +330,39 @@
 										<label for="safetycode" class="col-sm-4  control-label">
 											Safety Code</label>
 										<div class="col-sm-8">
-											<select class="form-control" name="safetycode" value="${safetycode }" id="safetycode">
-												<option value="0">----Please Select----</option>
-												<option value="1">2</option>
-												<option value="2">3</option>
-												<option value="3">4</option>
+											<select class="form-control" name="safetycode" value="${safetycode }" id="SAFETY_CODE">
+												<option value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
 									<div class="row form-group form-inline"">
 										<label for="allriderdriver" class="col-sm-4  control-label">
 											Permitted Driver</label>
-									</div>
-									<div class="panel panel-default">
-										<div class=" panel-body ">
-											<div class="checkbox col-sm-8">
-												<input name="allriderdriver" type="checkbox" value="${allriderdriver }"> All Rider/Driver
-											</div>
-											<br>
-											<div class="checkbox col-sm-8">
-												<input name="youngseniordriver" type="checkbox" value="${youngseniordriver }"> Young/Senior Driver
-											</div>
-
+									
+									<fieldset>
+										<div class="col-sm-8" id="allriderdriver">
+													<input name="allriderdriver" type="checkbox" value="1"> All Rider / Driver												
+												<br>
+													<input name="youngseniordriver" type="checkbox" value="Y"> Young / Senior Driver
+																						
 										</div>
-									</div>
+								 </fieldset>
+								 </div>
 									<div class="row form-group form-inline"">
-										<label for="driverexperience" class="col-sm-4  control-label">
+										<label for="DRIVER_EXPERIENCE" class="col-sm-4  control-label">
 											Driver Experience</label>
 										<div class="col-sm-8">
-											<select name="driverexperience" value="${driverexperience }" class="form-control" id="driverexperience">
-												<option>----Please Select----</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
+											<select name="driverexperience" value="${driverexperience }" class="form-control" id="DRIVER_EXPERIENCE">
+												 <option value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
 									<div class="row form-group form-inssline"">
-										<label for="functionalmodification" class="col-sm-4  control-label">
+										<label for="FUNCTIONAL_MODIFICATION" class="col-sm-4  control-label">
 											Functional Modification</label>
 										<div class="col-sm-8">
-											<select name="functionalmodification" value="${functionalmodification }" id="functionalmodification" class="form-control">
-												<option>----Please Select----</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
+											<select name="functionalmodification" value="${functionalmodification }" id="FUNCTIONAL_MODIFICATION" class="form-control">
+												 <option value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
@@ -386,26 +413,20 @@
 										</div>
 									</div>
 									<div class="row form-group form-inline"">
-										<label for="garaged" class="col-sm-4  control-label">
+										<label for="GARAGED" class="col-sm-4  control-label">
 											Garaged</label>
 										<div class="col-sm-8">
-											<select name="garaged" value="${garaged }" class="form-control" id="garaged">
-												<option>----Please Select----</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
+											<select name="garaged" value="${garaged }" class="form-control" id="GARAGED">
+												<option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
 									<div class="row form-group form-inline"">
-										<label for="antitheftcode" class="col-sm-4  control-label">
+										<label for="ANTI_THEFT_CODE" class="col-sm-4  control-label">
 											Anti-Theft Code</label>
 										<div class="col-sm-8">
-											<select name="antitheftcode" value="${antitheftcode }" class="form-control" id="antitheftcode">
-												<option>----Please Select----</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
+											<select name="antitheftcode" value="${antitheftcode }" class="form-control" id="ANTI_THEFT_CODE">
+												<option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
@@ -417,14 +438,11 @@
 										</div>
 									</div>
 									<div class="row form-group form-inline"">
-										<label for="performanceaesthetic" class="col-sm-4  control-label">
+										<label for="PERFORMANCE_AESTHETIC" class="col-sm-4  control-label">
 											Performance Aesthetic</label>
 										<div class="col-sm-8">
-											<select name="performanceaesthetic" value="${performanceaesthetic }" class="form-control" id="performanceaesthetic">
-												<option>----Please Select----</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
+											<select name="performanceaesthetic" value="${performanceaesthetic }" class="form-control" id="PERFORMANCE_AESTHETIC">
+												<option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
@@ -455,14 +473,11 @@
 										</div>
 									</div>
 									<div class="row form-group form-inline"">
-										<label for="vehiclebody" class="col-sm-4  control-label">
+										<label for="VEHICLE_BODY" class="col-sm-4  control-label">
 											Vehicle Body</label>
 										<div class="col-sm-8">
-											<select name="vehiclebody" value="${vehiclebody }" class="form-control" id="vehiclebody">
-												<option>----Please Select----</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
+											<select name="vehiclebody" value="${vehiclebody }" class="form-control" id="VEHICLE_BODY">
+												 <option selected="selected" value="0">--SELECT--</option>												
 											</select>
 										</div>
 									</div>
@@ -471,22 +486,19 @@
 											of Seats</label>
 										<div class="col-sm-8">
 											<input name="numberofseats" value="${numberofseats }" required id="numberofseats" class="form-control" type="text"
-												ng-model="vnumber" />
+												<%-- ng-model="${numberofseats }" --%> />
 										</div>
 									</div>
-									<div class="row form-group form-inline"">
-										<label for="capacity" class="col-sm-4  control-label">Capacity</label>
-										<div class="col-sm-4">
-											<input required id="capacity" name="capacity" value="${capacity }" class="form-control" type="text" />
-										</div>
-										<div class="col-sm-8 inner-addon right-addon">
-											<input type="text" class="form-control" placeholder="Search" />
-											<button class="btn btn-default" type="submit">
-												<i class="glyphicon glyphicon-search"></i>
-											</button>
-											<!-- <i class="glyphicon glyphicon-search"></i> -->
-										</div>
-									</div>
+								  	<div class="row form-group form-inline"">
+										<label for="CAPACITY_DROP" class="col-sm-4 control-label">Capacity</label>
+											<div class="col-sm-2">
+												<input required id="capacity" name="capacity" value="${capacity }" class="form-control" type="text" />
+											<br>
+												<select name="tcapacity" value="${tcapacity }" class="form-control" id="CAPACITY_DROP">
+													<option selected="selected" value="0">--SELECT--</option>
+												</select>
+											</div>
+									</div> 
 									<div class="row form-group form-inline"">
 										<label for="chassisnumber" class="col-sm-4  control-label">Chassis
 											Number</label>
@@ -503,7 +515,7 @@
 											/>
 										</div>
 									</div>
-									<div class="row form-group form-inline"">
+									<%-- <div class="row form-group form-inline"">
 										<label for="tcapacity" class="col-sm-4  control-label">Capacity</label>
 										<div class="col-sm-8">
 											<select name="tcapacity" value="${tcapacity }" class="form-control" id="tcapacity">
@@ -513,7 +525,7 @@
 												<option>4</option>
 											</select>
 										</div>
-									</div>
+									</div> --%>
 									<div class="row form-group form-inline"">
 										<label for="purchaseprice" class="col-sm-4  control-label">Purchase
 											Price</label>
@@ -546,11 +558,16 @@
 										</div>
 									</div>
 									<div class="row form-group form-inline"">
-										<label for="bdm_btm" class="col-sm-4  control-label">
-											BDM-BTM</label>
+										<label for="bdm" class="col-sm-4  control-label">
+											BDM</label>
 										<div class="col-sm-6">
-											<input name="btm" value="${bdm }" required id="bdm_btm" class="form-control" type="text" />
+											<input name="bdm" value="${bdm }" required id="bdm_btm" class="form-control" type="text" />
 										</div>
+									</div>
+											
+									<div class="row form-group form-inline"">
+										<label for="btm" class="col-sm-4  control-label">
+										BTM</label>
 										<div class="col-sm-6">
 											<input name="btm" value="${btm }" required id="bdm_btm" class="form-control" type="text"/>
 										</div>

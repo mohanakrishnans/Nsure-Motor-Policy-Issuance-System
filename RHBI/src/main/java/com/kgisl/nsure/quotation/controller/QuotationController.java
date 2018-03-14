@@ -119,7 +119,8 @@ public class QuotationController {
 		session.setAttribute("css", quotationDO.getCss());
 		session.setAttribute("businessRegNo", quotationDO.getBusinessRegNo());
 		session.setAttribute("typeOfBusiness", quotationDO.getTypeOfBusiness());
-		session.setAttribute("oldIcNo", quotationDO.getOldIcNo());/*
+		session.setAttribute("oldIcNo", quotationDO.getOldIcNo());
+		/*
 		session.setAttribute("newIcNo", quotationDO.get);
 		session.setAttribute("newIcNo", quotationDO.get);
 		session.setAttribute("newIcNo", quotationDO.get);*/
@@ -136,6 +137,7 @@ public class QuotationController {
 
 		List<QuotationDO> contactType = null;
 		List<QuotationDO> sourceType = null;
+		
 		ArrayList<QuotationDO> mainList = new ArrayList<QuotationDO>();
 
 		String jsonString = null;

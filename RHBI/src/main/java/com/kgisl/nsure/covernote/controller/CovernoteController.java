@@ -95,10 +95,10 @@ public class CovernoteController {
 		session.setAttribute("trailersuminsured", covernoteDO.getTrailersuminsured());
 		
 		covernoteService.saveCovernote(covernoteDO);
-		System.out.println(session.getAttribute("sourceType"));
-		System.out.println(session.getAttribute("accountCode"));
+		//System.out.println(session.getAttribute("sourceType"));
+		//System.out.println(session.getAttribute("accountCode"));
 		
-		return new ModelAndView("redirect:covernote");
+		return new ModelAndView("redirect:nameddrivers");
 	}
 	
 	
@@ -115,6 +115,16 @@ public class CovernoteController {
 		List<CovernoteDO> getlocation = null;
 		List<CovernoteDO> getvehicleusage =null;
 		List<CovernoteDO> getadditionalusage =null;
+		List<CovernoteDO> getcnclass =null;
+		List<CovernoteDO> getvehiclebody =null;
+		List<CovernoteDO> getsafetycode =null;
+		List<CovernoteDO> getdriverexperience =null;
+		List<CovernoteDO> getgaraged =null;
+		List<CovernoteDO> getantitheftcode =null;
+		List<CovernoteDO> getperformanceaesthetic =null;
+		List<CovernoteDO> getvehiclecapacity =null;
+		List<CovernoteDO> getfunctionalmodification =null;
+		
 		
 		
 		ArrayList<CovernoteDO> mainList = new ArrayList<CovernoteDO>();
@@ -131,6 +141,16 @@ public class CovernoteController {
 			getlocation = covernoteService.getLocation(null);
 			getvehicleusage= covernoteService.getVehicleUsage(null);
 			getadditionalusage = covernoteService.getAdditionalUsage(null);
+			getcnclass = covernoteService.getCnClass(null);
+			getvehiclebody = covernoteService.getVehicleBody(null);
+			getsafetycode = covernoteService.getSafetyCode(null);
+			getdriverexperience = covernoteService.getDriverExperience(null);
+			getantitheftcode = covernoteService.getAntiTheftCode(null);
+			getgaraged = covernoteService.getGaraged(null);
+			getperformanceaesthetic = covernoteService.getPerformanceAesthetic(null);
+			getvehiclecapacity = covernoteService.getVehicleCapacity(null);
+			getfunctionalmodification=covernoteService.getFunctionalModification(null);
+		
 			
 			mainList.addAll(0, covernoteclass);
 			mainList.addAll(1, covernotetype);
@@ -141,9 +161,19 @@ public class CovernoteController {
 			mainList.addAll(6, getlocation);
 			mainList.addAll(7, getvehicleusage);
 			mainList.addAll(8, getadditionalusage);
+			mainList.addAll(9, getcnclass);
+			mainList.addAll(10, getvehiclebody);
+			mainList.addAll(11, getsafetycode);
+			mainList.addAll(12, getdriverexperience);
+			mainList.addAll(13, getgaraged);
+			mainList.addAll(14, getantitheftcode);
+			mainList.addAll(15, getperformanceaesthetic);
+			mainList.addAll(16, getvehiclecapacity);
+			mainList.addAll(17, getfunctionalmodification);
+			
 
 			jsonString = gson.toJson(mainList);
-			//System.out.println("coverdrop\n" + jsonString);
+			System.out.println("coverdrop\n" + jsonString);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

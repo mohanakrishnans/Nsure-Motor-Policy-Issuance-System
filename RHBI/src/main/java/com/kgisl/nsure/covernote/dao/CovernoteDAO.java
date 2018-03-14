@@ -32,6 +32,25 @@ public interface CovernoteDAO {
 
 	List<CovernoteDO> getAdditionalUsage(CovernoteDO covernoteDO);
 
+	void saveCovernote(CovernoteDO covernoteDO);
+
+	List<CovernoteDO> getCNclass(CovernoteDO covernoteDO);
+
+	List<CovernoteDO> getVehicleBody(CovernoteDO covernoteDO);
+
+	List<CovernoteDO> getSafetyCode(CovernoteDO covernoteDO);
+
+	List<CovernoteDO> getDriverExperience(CovernoteDO covernoteDO);
+
+	List<CovernoteDO> getGaraged(CovernoteDO covernoteDO);
+
+	List<CovernoteDO> getAntiTheftCode(CovernoteDO covernoteDO);
+
+	List<CovernoteDO> getPerformanceAesthetic(CovernoteDO covernoteDO);
+
+	List<CovernoteDO> getVehicleCapacity(CovernoteDO covernoteDO);
+
+	List<CovernoteDO> getFunctionalModification(CovernoteDO covernoteDO);
 	
 	
 }
