@@ -173,7 +173,7 @@ public class CovernoteController {
 			
 
 			jsonString = gson.toJson(mainList);
-			System.out.println("coverdrop\n" + jsonString);
+			//System.out.println("coverdrop\n" + jsonString);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

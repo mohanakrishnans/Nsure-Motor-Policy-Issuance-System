@@ -24,4 +24,6 @@ public interface QuotationService {
 
 	List<QuotationDO> getcnGrid(QuotationDO quotationDO);
 
+	List<QuotationDO> namedDriversGrid(QuotationDO quotationDO);
+
 }

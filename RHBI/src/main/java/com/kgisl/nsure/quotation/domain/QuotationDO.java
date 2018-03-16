@@ -53,7 +53,107 @@ public class QuotationDO {
 	public String email;
 	public int quotationID;
 	
+	/*Named Drivers*/
+	public int nameddriversno;
+	public String namednewicno;
+	public String namedoldicno;
+	public int namedage;
+	public String nameddriverexperience;
+	public String namedgender;
+	public String nameddrivername;
+	public String nameddriverrelationship;
 	
+	
+	/**
+	 * @return the namednewicno
+	 */
+	public String getNamednewicno() {
+		return namednewicno;
+	}
+	/**
+	 * @param namedoldicno the namedoldicno to set
+	 */
+	public void setNamedoldicno(String namedoldicno) {
+		this.namedoldicno = namedoldicno;
+	}
+	/**
+	 * @param namednewicno the namednewicno to set
+	 */
+	public void setNamednewicno(String namednewicno) {
+		this.namednewicno = namednewicno;
+	}
+	/**
+	 * @return the nameddriversno
+	 */
+	public int getNameddriversno() {
+		return nameddriversno;
+	}
+	/**
+	 * @param nameddriversno the nameddriversno to set
+	 */
+	public void setNameddriversno(int nameddriversno) {
+		this.nameddriversno = nameddriversno;
+	}
+	/**
+	 * @return the namedage
+	 */
+	public int getNamedage() {
+		return namedage;
+	}
+	/**
+	 * @param namedage the namedage to set
+	 */
+	public void setNamedage(int namedage) {
+		this.namedage = namedage;
+	}
+	/**
+	 * @return the nameddriverexperience
+	 */
+	public String getNameddriverexperience() {
+		return nameddriverexperience;
+	}
+	/**
+	 * @param nameddriverexperience the nameddriverexperience to set
+	 */
+	public void setNameddriverexperience(String nameddriverexperience) {
+		this.nameddriverexperience = nameddriverexperience;
+	}
+	/**
+	 * @return the namedgender
+	 */
+	public String getNamedgender() {
+		return namedgender;
+	}
+	/**
+	 * @param namedgender the namedgender to set
+	 */
+	public void setNamedgender(String namedgender) {
+		this.namedgender = namedgender;
+	}
+	/**
+	 * @return the nameddrivername
+	 */
+	public String getNameddrivername() {
+		return nameddrivername;
+	}
+	/**
+	 * @param nameddrivername the nameddrivername to set
+	 */
+	public void setNameddrivername(String nameddrivername) {
+		this.nameddrivername = nameddrivername;
+	}
+	/**
+	 * @return the nameddriverrelationship
+	 */
+	public String getNameddriverrelationship() {
+		return nameddriverrelationship;
+	}
+	/**
+	 * @param nameddriverrelationship the nameddriverrelationship to set
+	 */
+	public void setNameddriverrelationship(String nameddriverrelationship) {
+		this.nameddriverrelationship = nameddriverrelationship;
+	}
 	/**
 	 * @return the quotationID
 	 */

@@ -62,7 +62,7 @@ public class QuotationDAOImpl implements QuotationDAO {
 
 	/*** COVERNOTE GRID ***/
 	@Override
-	public List<QuotationDO> covernoteGrid(QuotationDO quotationDO) {
+	public List<QuotationDO>covernoteGrid(QuotationDO quotationDO) {
 		List<QuotationDO> covernoteGrid = null;
 		try {
 			String SQL = null;
@@ -96,6 +96,37 @@ public class QuotationDAOImpl implements QuotationDAO {
 					quotationDO.setRace(rs.getString("VCH_RACE"));
 					quotationDO.setSourceType(rs.getInt("VCH_SOURCE_TYPE"));
 					quotationDO.setTypeOfBusiness(rs.getString("VCH_TYPE_OF_BUSINESS"));
+
+					return quotationDO;
+				}
+			});
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return covernoteGrid;
+	}
+	
+	/*** NAMED DRIVERS ***/
+	@Override
+	public List<QuotationDO> namedDriversGrid (QuotationDO quotationDO) {
+		List<QuotationDO> covernoteGrid = null;
+		try {
+			String SQL = null;
+			SQL = "SELECT * FROM EIS_TRN_NAMED_DRIVERS";
+
+			covernoteGrid = jdbcTemplate.query(SQL, new RowMapper<QuotationDO>() {
+				@Override
+				public QuotationDO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					QuotationDO quotationDO = new QuotationDO();
+					
+					quotationDO.setNameddriversno(rs.getInt("NUM_S_NO"));
+					quotationDO.setNameddrivername(rs.getString("VCH_NAME"));
+					quotationDO.setNamednewicno(rs.getString("NUM_NEW_IC_NO"));
+					quotationDO.setNamedoldicno(rs.getString("NUM_OLD_NEW_IC_NO"));
+					quotationDO.setNameddriverrelationship(rs.getString("VCH_RELATIONSHIP"));
+					quotationDO.setNamedgender(rs.getString("VCH_GENDER"));
+					quotationDO.setNamedage(rs.getInt("NUM_AGE"));
+					quotationDO.setNameddriverexperience(rs.getString("VCH_DRIVER_EXPERIENCE"));
 
 					return quotationDO;
 				}

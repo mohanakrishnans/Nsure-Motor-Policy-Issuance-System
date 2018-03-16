@@ -23,7 +23,8 @@
 <script src="http://localhost/nsure/dashboard/js/bootstrap.min.js"></script>
 <script src="http://localhost/nsure/dashboard/js/messenger.min.js"></script>
 <script
-	src="http://localhost/nsure/dashboard/js/messenger-theme-flat.js"></script><!-- 
+	src="http://localhost/nsure/dashboard/js/messenger-theme-flat.js"></script>
+<!-- 
 <script src="http://localhost/nsure/dashboard/js/home-premium.js"></script> -->
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/angular.js/1.3.16/angular.min.js"></script>
@@ -35,7 +36,7 @@
 <link rel='stylesheet prefetch' href='resources/css/ui-grid.min.css'>
 <link rel='stylesheet prefetch' href='resources/css/style.css'>
 </head>
-<body  data-ng-app="app">
+<body data-ng-app="app">
 	<nav class="side-navbar">
 	<div class="side-navbar-wrapper">
 		<div
@@ -44,7 +45,7 @@
 				<img src="http://localhost/nsure/dashboard/img/avatar-1.jpg"
 					alt="person" class="img-fluid rounded-circle">
 				<h2 class="h5">Nsure</h2>
-				<h3 class="h4" style="color:red;">${sessionScope.user}</h3>
+				<h3 class="h4" style="color: red;">${sessionScope.user}</h3>
 			</div>
 			<div class="sidenav-header-logo">
 				<a href="index.jsp" class="brand-small text-center"> <strong>B</strong><strong
@@ -58,19 +59,13 @@
 				<li><a href="covernote"> <i class="icon-form"></i>New
 						Business
 				</a></li>
-				<li><a href="#endorsement" aria-expanded="false"
-					data-toggle="collapse"> <i class="fa fa-bar-chart"></i>Endorsement
-				</a>
-					<ul id="endorsement" class="collapse list-unstyled ">
-						<li><a href="nameddrivers">Named Drivers</a></li>
-						<li><a href="endorsementdetails">endorsementdetails</a></li>
-					</ul></li>
+				<li><a href="nameddrivers"> <i class="icon-form"></i>Named
+						Drivers
+				</a></li>
+				<li><a href="endorsementdetails"><i class="icon-form"></i>Endorsement
+						Details</a></li>
 				<li><a href="premium"> <i class="icon-grid"></i>Premium
-				</a>
-					<ul id="tablesDropdown" class="collapse list-unstyled ">
-						<li><a href="tables.html">Bootstrap tables</a></li>
-						<li><a href="tables-datatable.html">Datatable</a></li>
-					</ul></li>
+				</a></li>
 			</ul>
 		</div>
 	</div>
@@ -88,7 +83,8 @@
 						</div>
 					</a>
 				</div>
-				<button type='submit' onclick="location.href='logout'" class="btn btn-danger pull-right">Log out</button>
+				<button type='submit' onclick="location.href='logout'"
+					class="btn btn-danger pull-right">Log out</button>
 			</div>
 		</div>
 		</nav> </header>
@@ -99,15 +95,16 @@
 				</div>
 				<div class="card-body">
 					<fieldset class="scheduler-border">
-						<legend class="scheduler-border">Named Drivers</legend> 
-						
-							<div data-ng-controller="MainCtrl">
-								<div data-ui-grid="gridOptions" data-ui-grid-selection
-									class="grid"></div>
-							</div> 
+						<legend class="scheduler-border">Named Drivers</legend>
+
+						<div data-ng-controller="NamedDrivers">
+							<div data-ui-grid="gridOptions" data-ui-grid-selection
+								class="named-grid"></div>
+						</div>
 						<br>
 						<ul align="center" class="pager">
-							<button type="button" class="btn btn-primary btn-md">Add
+							<button type="button" class="btn btn-primary btn-md"
+								data-toggle="modal" data-target="#namedDrivers">Add
 								More drivers</button>
 							<button type="button" class="btn btn-primary btn-md">Remove
 								drivers</button>
@@ -187,11 +184,11 @@
 							<button type="button" class="btn btn-primary btn-md">Remove
 							</button>
 						</ul>
-						
-							<div data-ng-controller="gridController">
-								<div data-ui-grid="gridOptions" data-ui-grid-selection
-									class="grid"></div>
-							</div>
+
+						<div data-ng-controller="NamedDrivers">
+							<div data-ui-grid="gridOptions" data-ui-grid-selection
+								class="extracoverage-grid"></div>
+						</div>
 						<!-- <fieldset class="scheduler-border">
 							<legend class="scheduler-border">Extra Coverage</legend>
 							<div class="panel panel-default">
@@ -266,6 +263,34 @@
 					</ul>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="namedDrivers" role="dialog">
+		<div class="modal-dialog modal-lg">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Add Drivers</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+				</div>
+				<div class="modal-body">
+					 <div class="card-body">
+					<div class="card"> 
+							<h4>New Business-Named Driver and Extra Coverage</h4>
+					 	
+						<div class="card-body">
+						</div>
+					</div>
+
+				</div> 
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </body>

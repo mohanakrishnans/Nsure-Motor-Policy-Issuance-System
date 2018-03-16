@@ -28,4 +28,6 @@ public interface QuotationDAO {
 
 	List<QuotationDO> covernoteGrid(QuotationDO quotationDO);
 
+	List<QuotationDO> namedDriversGrid(QuotationDO quotationDO);
+
 }

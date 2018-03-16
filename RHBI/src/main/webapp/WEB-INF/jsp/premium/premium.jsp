@@ -57,24 +57,11 @@
 		</div>
 		<div class="main-menu">
 			<ul id="side-main-menu" class="side-menu list-unstyled">
-				<li><a href="quotation"> <i class="icon-home"></i>Quotation
-				</a></li>
-				<li><a href="covernote"> <i class="icon-form"></i>New
-						Business
-				</a></li>
-				<li><a href="#endorsement" aria-expanded="false"
-					data-toggle="collapse"> <i class="fa fa-bar-chart"></i>Endorsement
-				</a>
-					<ul id="endorsement" class="collapse list-unstyled ">
-						<li><a href="nameddrivers">Named Drivers</a></li>
-						<li><a href="endorsementdetails">EndorsementDetails</a></li>
-					</ul></li>
-				<li><a href="premium"><i class="icon-grid"></i>Premium
-				</a>
-					<ul id="tablesDropdown" class="collapse list-unstyled ">
-						<li><a href="tables.html">Bootstrap tables</a></li>
-						<li><a href="tables-datatable.html">Datatable</a></li>
-					</ul></li>
+				<li><a href="quotation"> <i class="icon-home"></i>Quotation</a></li>
+					<li><a href="covernote"> <i class="icon-form"></i>New Business</a></li>
+					<li><a href="nameddrivers"> <i class="icon-form"></i>Named Drivers</a></li>
+					<li><a href="endorsementdetails"><i class="icon-form"></i>Endorsement Details</a></li>
+					<li><a href="premium"> <i class="icon-grid"></i>Premium</a></li>
 			</ul>
 		</div>
 	</div>

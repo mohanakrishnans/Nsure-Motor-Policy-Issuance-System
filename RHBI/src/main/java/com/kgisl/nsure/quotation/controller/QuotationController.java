@@ -176,9 +176,30 @@ public class QuotationController {
 		}
 		return jsonString;
 	}
+	
+	/* Named Drivers Grid */
+	@RequestMapping(value = "/namedDrivers", method = RequestMethod.GET)
+	public @ResponseBody String namedDriversGrid(QuotationDO quotationDO, HttpServletRequest request) {
+
+		List<QuotationDO> covernotegrid = null;
+		ArrayList<QuotationDO> mainList = new ArrayList<QuotationDO>();
+		System.out.println("covernoteGrid");
+		String jsonString = null;
+		Gson gson = new Gson();
+		try {
+			covernotegrid = quotationService.namedDriversGrid(quotationDO);
+
+			mainList.addAll(0, covernotegrid);
+			jsonString = gson.toJson(mainList);
+			System.out.println("covernotegrid\n" + jsonString);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return jsonString;
+	}
 
 	
-	/* Covernote Drop */
+	/* Covernote Drop  */
 	/*@RequestMapping(value = "/covernoteDrop", method = RequestMethod.GET)
 	public @ResponseBody String covernoteDrop(HttpServletRequest request) {
 

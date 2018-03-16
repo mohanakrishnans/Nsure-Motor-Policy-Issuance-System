@@ -57,6 +57,20 @@ public class QuotationServiceImpl implements QuotationService {
 	}
 	
 	@Override
+	public List<QuotationDO> namedDriversGrid(QuotationDO quotationDO){
+		List<QuotationDO> covernoteGrid = null;
+		try{
+			covernoteGrid = quotationdao.namedDriversGrid(quotationDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return covernoteGrid;
+	}
+	
+	@Override
 	public void insert(QuotationDO quotationDO) {
 		// TODO Auto-generated method stub
 		System.out.println("Serv>");
