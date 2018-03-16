@@ -43,6 +43,19 @@ public class QuotationServiceImpl implements QuotationService {
 	}
 	
 	@Override
+	public List<QuotationDO> getsalutation(QuotationDO quotationDO){
+		List<QuotationDO> salutation = null;
+		try{
+			salutation = quotationdao.getsalutation(quotationDO);
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return salutation;
+	}
+	
+	@Override
 	public List<QuotationDO> getcnGrid(QuotationDO quotationDO){
 		List<QuotationDO> covernoteGrid = null;
 		try{
@@ -91,6 +104,21 @@ public class QuotationServiceImpl implements QuotationService {
 			System.out.println(e);
 		}
 		return sourceType;
+	}
+
+	@Override
+	public List<QuotationDO> cnoptionGrid(QuotationDO quotationDO) {
+		// TODO Auto-generated method stub
+		List<QuotationDO> cnoption = null;
+		try{
+			cnoption = quotationdao.cnoptionGrid(quotationDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return cnoption;
 	}
 
 }

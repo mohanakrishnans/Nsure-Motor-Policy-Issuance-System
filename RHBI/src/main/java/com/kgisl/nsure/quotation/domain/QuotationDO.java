@@ -25,7 +25,8 @@ public class QuotationDO {
 	private int accountCode;
 	private String accountName;
 	private String sourceName;
-	
+	private int salutationid;
+	private String salutationname;
 	/*Business*/
 	private long newIcNo;
 	private String name;
@@ -53,8 +54,58 @@ public class QuotationDO {
 	public String namee;
 	public String email;
 	public int quotationID;
+	public int classId;
+	public Date IssueDate;
 	
 	
+	/**
+	 * @return the issueDate
+	 */
+	public Date getIssueDate() {
+		return IssueDate;
+	}
+	/**
+	 * @param issueDate the issueDate to set
+	 */
+	public void setIssueDate(Date issueDate) {
+		IssueDate = issueDate;
+	}
+	/**
+	 * @return the classId
+	 */
+	public int getClassId() {
+		return classId;
+	}
+	/**
+	 * @param classId the classId to set
+	 */
+	public void setClassId(int classId) {
+		this.classId = classId;
+	}
+	/**
+	 * @return the salutationid
+	 */
+	public int getSalutationid() {
+		return salutationid;
+	}
+	/**
+	 * @param salutationid the salutationid to set
+	 */
+	public void setSalutationid(int salutationid) {
+		this.salutationid = salutationid;
+	}
+	/**
+	 * @return the salutationname
+	 */
+	public String getSalutationname() {
+		return salutationname;
+	}
+	/**
+	 * @param salutationname the salutationname to set
+	 */
+	public void setSalutationname(String salutationname) {
+		this.salutationname = salutationname;
+	}
 	/**
 	 * @return the quotationID
 	 */

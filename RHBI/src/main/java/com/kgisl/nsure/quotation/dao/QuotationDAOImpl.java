@@ -127,6 +127,74 @@ public class QuotationDAOImpl implements QuotationDAO {
 		}
 		return contactType;
 	}
+	/*
+	*//*** COVERNOTE GRID ***//*
+	@Override
+	public List<QuotationDO> covernoteGrid(QuotationDO quotationDO) {
+		List<QuotationDO> covernoteGrid = null;
+		try {
+			String SQL = null;
+			SQL = "SELECT * FROM EIS_TRN_QUOTATION";
+
+			covernoteGrid = jdbcTemplate.query(SQL, new RowMapper<QuotationDO>() {
+				@Override
+				public QuotationDO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					QuotationDO quotationDO = new QuotationDO();
+
+					quotationDO.setQuotationID(rs.getInt("NUM_QUOTATION_ID"));
+					quotationDO.setAccountCode(rs.getInt("VCH_ACCOUNT_CODE"));
+					quotationDO.setAccountName(rs.getString("VCH_ACCOUNT_NAME"));
+					quotationDO.setDateOfBirth(rs.getString("DTT_DATE_OF_BIRTH"));
+					quotationDO.setAddress(rs.getString("VCH_ADDRESS"));
+					quotationDO.setBranch(rs.getString("VCH_BRANCH"));
+					quotationDO.setBusinessRegNo(rs.getLong("VCH_BUSINESS_REGISTRATION_NO"));
+					quotationDO.setContactType(rs.getInt("VCH_CONTACT_TYPE"));
+					quotationDO.setCountryCode(rs.getString("VCH_COUNTRY_CODE"));
+					quotationDO.setCss(rs.getString("VCH_CSS"));
+					quotationDO.setGender(rs.getString("VCH_GENDER"));
+					quotationDO.setGstRegistered(rs.getString("VCH_GST_REGISTERED"));
+					quotationDO.setMaritalStatus(rs.getString("VCH_MARITAL_STATUS"));
+					quotationDO.setMobileNo(rs.getString("VCH_MOBILE_NO"));
+					quotationDO.setName(rs.getString("VCH_NA ME"));
+					quotationDO.setNationality(rs.getString("VCH_NATIONALITY"));
+					quotationDO.setNewIcNo(rs.getLong("VCH_NEW_IC_NO"));
+					quotationDO.setOccupation(rs.getString("VCH_OCCUPATION"));
+					quotationDO.setPdpa(rs.getString("VCH_PDPA"));
+					quotationDO.setPostCode(rs.getString("VCH_POST_CODE"));
+					quotationDO.setRace(rs.getString("VCH_RACE"));
+					quotationDO.setSourceType(rs.getInt("VCH_SOURCE_TYPE"));
+					quotationDO.setTypeOfBusiness(rs.getString("VCH_TYPE_OF_BUSINESS"));
+
+					return quotationDO;
+				}
+			});
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return covernoteGrid;
+	}
+*/
+	/*** CN OPTIONS ***/
+	@Override
+	public List<QuotationDO> cnoptionGrid(QuotationDO quotationDO) {
+		List<QuotationDO> cnoption = null;
+		try {
+			String finalSQL = null;
+			finalSQL = "SELECT * FROM EIS_TRN_COVER_NOTE";
+			cnoption = jdbcTemplate.query(finalSQL, new RowMapper<QuotationDO>() {
+				@Override
+				public QuotationDO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					QuotationDO quotationDO = new QuotationDO();
+					quotationDO.setClassId(rs.getInt("NUM_COVER_NOTE_ID"));
+					quotationDO.setIssueDate(rs.getDate("DTT_ISSUE_DATE"));
+					return quotationDO;
+				}
+			});
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return cnoption;
+	}
 
 	/*** SOURCE TYPE ***/
 	@Override
@@ -150,10 +218,34 @@ public class QuotationDAOImpl implements QuotationDAO {
 		return contactType;
 	}
 
+	/*** SALUTATION ***/
+	@Override
+	public List<QuotationDO> getsalutation(QuotationDO quotationDO) {
+		List<QuotationDO> salutation = null;
+		
+		try {
+			String finalSQL = null;
+			finalSQL = "SELECT * FROM EIS_MST_OTS_SALUTATION";
+			salutation = jdbcTemplate.query(finalSQL, new RowMapper<QuotationDO>() {
+				@Override
+				public QuotationDO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					QuotationDO quotationDO = new QuotationDO();
+					quotationDO.setSalutationid(rs.getInt("NUM_SAL_ID"));
+					quotationDO.setSalutationname(rs.getString("VCH_SAL_NAME"));
+					return quotationDO;
+				}
+			});
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		System.out.println("jeya\n"+salutation);
+		return salutation;
+	}
+
 	@Override
 	public void saveQuotation(QuotationDO quotationDO) {
 		// TODO Auto-generated method stub
-		// System.out.println(quotationDO.getName()+" mohn");
+		// System.out.println(quotationDO.getName()+" mohan");
 
 		// System.out.println(" 11111"+quotationDO.getContactName());
 		// quotationDO.getContactName();
@@ -166,7 +258,7 @@ public class QuotationDAOImpl implements QuotationDAO {
 				DateOfBirth = new SimpleDateFormat("dd-MM-yyyy").parse(dob);
 			}
 
-			System.out.println(quotationDO.getSourceType() + " " + quotationDO.getAccountCode() + " "
+			/*System.out.println(quotationDO.getSourceType() + " " + quotationDO.getAccountCode() + " "
 					+ quotationDO.getBranch() + " " + quotationDO.getAccountName() + " " + quotationDO.getContactType()
 					+ " " + quotationDO.getNewIcNo() + " " + quotationDO.getBusinessRegNo() + " "
 					+ quotationDO.getName() + " " + quotationDO.getNationality() + " " + quotationDO.getRace() + " "
@@ -174,7 +266,7 @@ public class QuotationDAOImpl implements QuotationDAO {
 					+ quotationDO.getOccupation() + " " + quotationDO.getGstRegistered() + " "
 					+ quotationDO.getAddress() + " " + quotationDO.getPostCode() + " " + quotationDO.getCountryCode()
 					+ " " + quotationDO.getMobileNo() + " " + quotationDO.getPdpa() + " " + quotationDO.getCss() + " "
-					+ quotationDO.getTypeOfBusiness() + " ");
+					+ quotationDO.getTypeOfBusiness() + " ");*/
 			// System.out.println("DAO>");
 
 			SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(dataSource);
@@ -230,7 +322,7 @@ public class QuotationDAOImpl implements QuotationDAO {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		System.out.println("DAO<");
+		//System.out.println("DAO<");
 	}
 
 	@Override
@@ -257,9 +349,9 @@ public class QuotationDAOImpl implements QuotationDAO {
 			Map<String, Object> transactionStatus = simpleJdbcCall.execute(inputParams);
 
 		} catch (Exception e) {
-			System.out.println();
+			System.out.println(e);
 		}
-		System.out.println("DAO<");
+		//System.out.println("DAO<");
 	}
 
 	@Override

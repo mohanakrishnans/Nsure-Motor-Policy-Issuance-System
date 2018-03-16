@@ -28,4 +28,8 @@ public interface QuotationDAO {
 
 	List<QuotationDO> covernoteGrid(QuotationDO quotationDO);
 
+	List<QuotationDO> getsalutation(QuotationDO quotationDO);
+
+	List<QuotationDO> cnoptionGrid(QuotationDO quotationDO);
+
 }

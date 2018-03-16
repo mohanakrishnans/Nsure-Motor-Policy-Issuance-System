@@ -12,6 +12,12 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
+<script src='resources/js/angular.min.js'></script>
+<script src='resources/js/angular-touch.min.js'></script>
+<script src='resources/js/angular-animate.min.js'></script>
+<script src='resources/js/ui-grid.min.js'></script>
+<script src="resources/js/index.js"></script>
+<link rel='stylesheet prefetch' href='resources/css/ui-grid.min.css'>
 <link rel="shortcut icon"
 	href="http://localhost/nsure/dashboard/img/favicon.ico">
 <link rel="stylesheet"
@@ -32,14 +38,15 @@
 	src="http://localhost/nsure/dashboard/js/messenger-theme-flat.js"></script>
 <script src="http://localhost/nsure/dashboard/js/home-premium.js"></script>
 
-
 <!-- <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/angular.js/1.3.16/angular.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
  -->
-<script type="text/javascript">
+
+<%-- <script type="text/javascript">
+
  var app = angular.module("covernoteDrop", ['ngMessages']).controller("covernoteDrop",
 			function($scope) {
 				$scope.covernotedrop = null;
@@ -49,8 +56,7 @@
 	function fnendtmotoronload() {
 		var status = true;
 		//var contactId = document.getElementById("CONTACT_TYPE").value;
-		var CONTEXT_PATH = '<%=request.getContextPath()%>
-	/';
+		var CONTEXT_PATH = '<%=request.getContextPath()%>/';
 
 		$.ajax({
 			type : "GET",
@@ -76,10 +82,10 @@
 		return status;
 	}
 </script>
-
+ --%>
 
 </head>
-<body data-ng-app="covernoteDrop">
+<body data-ng-app="app">
 	<nav class="side-navbar">
 	<div class="side-navbar-wrapper">
 		<div
@@ -142,7 +148,7 @@
 				<div class="card-body">
 					<form class="container">
 
-						<fieldset class="scheduler-border">
+						<fieldset class="scheduler-border" id="fieldset1">
 							<legend class="scheduler-border">Select</legend>
 							<div class="row">
 								<div class="col-md-4">
@@ -245,11 +251,12 @@
 							</div>
 
 							<ul class="pager" align="center">
-								<button onclick="" type="submit" class="center btn">Search</button>
-								<button onclick="" type="submit" class="center btn">Reset</button>
+								<button onclick="" type="submit">Search</button>
+								<button onclick="" type="reset" for="fieldset1" value="reset">Reset</button>
 							</ul>
 
 						</fieldset>
+
 						<fieldset class="scheduler-border">
 							<!-- <legend></legend> -->
 							<ul class="nav nav-tabs" role="tablist">
@@ -259,37 +266,68 @@
 									role="tab" data-toggle="tab">Quotation</a></li>
 							</ul>
 							<div class="tab-content">
-								<div class="tab-pane active" role="tabpanel"
-									id="covernote">
+
+								<div class="tab-pane active" role="tabpanel" id="covernote">
+
 									</br>
 									<div class="row form-group form-inline">
 										<label for="Class" class="col-sm-3  control-label">
 											Class</label>
 										<div class="col-sm-3 inner-addon right-addon">
-											<input name="class" required id="Class" type="text"
-												class="form-control" placeholder="Search"
-												data-ng-model="classValue" />
-											<button class="btn btn-default" type="submit">
-												<i class="glyphicon glyphicon-search"></i>
-											</button>
+											<select name="class" required id="Class" class="form-control"
+												data-ng-model="classValue">
+												<option selected="selected" value="0">--SELECT--</option>
+												<option selected="selected" value="1">MOTORCYCLE</option>
+												<option selected="selected" value="2">PRIVATE CAR</option>
+												<option selected="selected" value="3">TAXI CAR</option>
+												<option selected="selected" value="4">BUS</option>
+												<option selected="selected" value="5">GOODS VEHICLE</option>
+												<option selected="selected" value="6">TANKERS</option>
+											</select>
 										</div>
 										<button onclick="" type="submit">Refresh</button>
 										<button onclick="" type="submit">Cancel</button>
 									</div>
+									</br>
+
+									<div data-ng-controller="cnoptionGrid">
+										<div data-ui-grid="gridOptions" data-ui-grid-selection
+											class="grid"></div>
+									</div>
+
 								</div>
-								<div role="tabpanel" class="tab-pane fade" id="quotation">bbb</div>
-							</div>
-							<div data-ng-app="app">
-								<div data-ng-controller="cnoptionGrid">
-									<div data-ui-grid="gridOptions" data-ui-grid-selection
-										class="grid"></div>
+								<div role="tabpanel" class="tab-pane fade" id="quotation">
+									<div class="row form-group form-inline">
+										<label for="Class" class="col-sm-3  control-label">
+											Class</label>
+										<div class="col-sm-3 inner-addon right-addon">
+											<select name="class" required id="Class" class="form-control"
+												data-ng-model="classValue">
+												<option selected="selected" value="0">--SELECT--</option>
+												<option selected="selected" value="1">MOTORCYCLE</option>
+												<option selected="selected" value="2">PRIVATE CAR</option>
+												<option selected="selected" value="3">TAXI CAR</option>
+												<option selected="selected" value="4">BUS</option>
+												<option selected="selected" value="5">GOODS VEHICLE</option>
+												<option selected="selected" value="6">TANKERS</option>
+											</select>
+
+										</div>
+									</div>
+									<div data-ng-controller="cnoptionGrid">
+										<div data-ui-grid="gridOptions" data-ui-grid-selection
+											class="grid"></div>
+									</div>
+									<ul class="pager" align="center">
+										<button onclick="" type="submit">Covert to Covernote</button>
+										<button onclick="" type="submit">Cancel</button>
+									</ul>
 								</div>
 							</div>
 						</fieldset>
 
+
 					</form>
-
-
 				</div>
 			</div>
 		</div>

@@ -24,4 +24,8 @@ public interface QuotationService {
 
 	List<QuotationDO> getcnGrid(QuotationDO quotationDO);
 
+	List<QuotationDO> getsalutation(QuotationDO quotationDO);
+
+	List<QuotationDO> cnoptionGrid(QuotationDO quotationDO);
+
 }

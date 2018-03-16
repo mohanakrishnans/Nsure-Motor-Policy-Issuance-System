@@ -82,38 +82,121 @@ app.controller('covernoteGrid', ['$scope', '$http', '$log', '$timeout', 'uiGridC
 	  };
 
 	  $scope.gridOptions.columnDefs = [{
-	    name: 'quotationID',
-	    	displayName:'ID'
+		    name: 'quotationID',
+		    	displayName:'ID'
+		  }, {
+		    name: 'sourceType',
+		    	displayName:'Source Type'
+		  }, {
+		    name: 'contactType',
+		    displayName:'Contact Type'
+		  }, {
+		    name: 'postCode',
+		    	displayName:'Post Code'
+		  }, {
+		    name: 'address',
+		    displayName:'Address'
+		  }, {
+		    name: 'branch',
+		    displayName:'Branch'
+		  }, {
+		    name: 'nationality',
+		    displayName: 'Nationality'
+		  }, {
+		    name: 'mobileNo',
+		    displayName:'Mobile'
+		  }];
+		  
+		  $http.get('covernoteGrid').success(
+			function(data) {
+		      $scope.gridOptions.data = data;
+		      $timeout(function() {
+		        if ($scope.gridApi.selection.selectRow) {
+		          $scope.gridApi.selection.selectRow($scope.gridOptions.data[0]);
+		        }
+		      });
+		    });	  
+		}]);
+
+/*CN OPTIONS*/
+app.controller('testselect', ['$scope', '$http', '$log', '$timeout', 'uiGridConstants',
+	 function($scope, $http, $log, $timeout, uiGridConstants) {
+	  $scope.gridOptions = {
+	    rowHeight: 35,
+	    multiSelect: false,
+	    showGridFooter: true,
+	    enableSelectAll: true,
+	    enableFullRowSelection: true,
+	    selectionRowHeaderWidth: 35    
+	  };
+
+	  $scope.gridOptions.columnDefs = [{
+	    name: 'id'
 	  }, {
-	    name: 'sourceType',
-	    	displayName:'Source Type'
+	    name: 'name'
 	  }, {
-	    name: 'contactType',
-	    displayName:'Contact Type'
+	    name: 'age',
+	    displayName: 'Age (not focusable)',
+	    allowCellFocus: false
 	  }, {
-	    name: 'postCode',
-	    	displayName:'Post Code'
-	  }, {
-	    name: 'address',
-	    displayName:'Address'
-	  }, {
-	    name: 'branch',
-	    displayName:'Branch'
-	  }, {
-	    name: 'nationality',
-	    displayName: 'Nationality'
-	  }, {
-	    name: 'mobileNo',
-	    displayName:'Mobile'
+	    name: 'address.city'
 	  }];
-	  
-	  $http.get('covernoteGrid').success(
-		function(data) {
+
+	  $http.get('resources/js/example.json')
+	    .success(function(data) {
 	      $scope.gridOptions.data = data;
 	      $timeout(function() {
 	        if ($scope.gridApi.selection.selectRow) {
 	          $scope.gridApi.selection.selectRow($scope.gridOptions.data[0]);
 	        }
 	      });
-	    });	  
+	    });
 	}]);
+
+	app.controller('cnoptionGrid', ['$scope', '$http', '$log', '$timeout', 'uiGridConstants',
+		 function($scope, $http, $log, $timeout, uiGridConstants) {
+		  $scope.gridOptions = {
+		    rowHeight: 25,
+		    multiSelect: false,
+		    showGridFooter: true,
+		    enableSelectAll: true,
+		    enableFullRowSelection: true,
+		    selectionRowHeaderWidth: 35    
+		  };
+
+		  $scope.gridOptions.columnDefs = [{
+			    name: 'classId',
+			    	displayName:'Class Id'
+			  }, {
+			    name: 'IssueDate',
+			    	displayName:'Issue Date'
+			  }/*, {
+			    name: 'contactType',
+			    displayName:'Contact Type'
+			  }, {
+			    name: 'postCode',
+			    	displayName:'Post Code'
+			  }, {
+			    name: 'address',
+			    displayName:'Address'
+			  }, {
+			    name: 'branch',
+			    displayName:'Branch'
+			  }, {
+			    name: 'nationality',
+			    displayName: 'Nationality'
+			  }, {
+			    name: 'mobileNo',
+			    displayName:'Mobile'
+			  }*/];
+			  
+			  $http.get('cnoptionGrid').success(
+				function(data) {
+			      $scope.gridOptions.data = data;
+			      $timeout(function() {
+			        if ($scope.gridApi.selection.selectRow) {
+			          $scope.gridApi.selection.selectRow($scope.gridOptions.data[0]);
+			        }
+			      });
+			    });	  
+			}]);

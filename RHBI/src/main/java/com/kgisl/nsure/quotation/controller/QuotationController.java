@@ -74,6 +74,13 @@ public class QuotationController {
 		return new ModelAndView("premium/premium");
 	}
 
+	/** CN options */
+	@RequestMapping(value = "/cnoptions", method = RequestMethod.GET)
+	public ModelAndView cn(@ModelAttribute("login") QuotationDO quotationdo) {
+
+		return new ModelAndView("cn/cnclient");
+	}
+
 	@RequestMapping(value = "/nameddrivers", method = RequestMethod.GET)
 	public ModelAndView namedDrivers(@ModelAttribute("login") QuotationDO quotationdo) {
 
@@ -116,6 +123,7 @@ public class QuotationController {
 
 		List<QuotationDO> contactType = null;
 		List<QuotationDO> sourceType = null;
+		List<QuotationDO> salutation = null;
 		ArrayList<QuotationDO> mainList = new ArrayList<QuotationDO>();
 
 		String jsonString = null;
@@ -123,9 +131,11 @@ public class QuotationController {
 		try {
 			contactType = quotationService.getcontactType(null);
 			sourceType = quotationService.getsourceType(null);
+			salutation = quotationService.getsalutation(null);
 
 			mainList.addAll(0, contactType);
 			mainList.addAll(1, sourceType);
+			mainList.addAll(2, salutation);
 			jsonString = gson.toJson(mainList);
 			System.out.println("dummy\n" + jsonString);
 		} catch (Exception e) {
@@ -140,7 +150,7 @@ public class QuotationController {
 
 		List<QuotationDO> covernotegrid = null;
 		ArrayList<QuotationDO> mainList = new ArrayList<QuotationDO>();
-		System.out.println("covernoteGrid");
+		//System.out.println("covernoteGrid");
 		String jsonString = null;
 		Gson gson = new Gson();
 		try {
@@ -148,7 +158,7 @@ public class QuotationController {
 
 			mainList.addAll(0, covernotegrid);
 			jsonString = gson.toJson(mainList);
-			System.out.println("covernotegrid\n" + jsonString);
+		//	System.out.println("covernotegrid\n" + jsonString);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -171,11 +181,32 @@ public class QuotationController {
 			mainList.addAll(0, covernotegrid);
 			
 			jsonString = gson.toJson(mainList);
-			System.out.println("covernotegrid\n" + jsonString);
+			//System.out.println("covernotegrid\n" + jsonString);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return jsonString;
 	}
 
+
+/* CN options Grid */
+@RequestMapping(value = "/cnoptionGrid", method = RequestMethod.GET)
+public @ResponseBody String cnoptionGrid(QuotationDO quotationDO, HttpServletRequest request) {
+
+	List<QuotationDO> cnoptiongrid = null;
+	ArrayList<QuotationDO> mainList = new ArrayList<QuotationDO>();
+	//System.out.println("cnoptionGrid");
+	String jsonString = null;
+	Gson gson = new Gson();
+	try {
+		cnoptiongrid = quotationService.cnoptionGrid(quotationDO);
+
+		mainList.addAll(0, cnoptiongrid);
+		jsonString = gson.toJson(mainList);
+	//	System.out.println("cnoptiongrid\n" + jsonString);
+	} catch (Exception e) {
+		System.out.println(e);
+	}
+	return jsonString;
+}
 }
