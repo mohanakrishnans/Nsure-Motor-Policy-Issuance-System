@@ -450,6 +450,8 @@
 												<select name="trafficviolation" value="${trafficviolation }" required
 													id="Trafficviolation" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="NO">NO</option>
 												</select>
 											</div>
 										</div>

@@ -42,6 +42,13 @@ public class CovernoteController {
 
 		return new ModelAndView("cn/covernote");
 	}
+	@RequestMapping(value = "/cnclient", method = RequestMethod.GET)
+	public ModelAndView cnClient(@ModelAttribute("quotationFormData") QuotationDO quotationDO,
+			BindingResult result, HttpServletRequest request, HttpSession session) {
+
+		
+		return new ModelAndView("cn/cnclient");
+	}
 	@RequestMapping(value = "/save_covernote_form", method = RequestMethod.POST)
 	public ModelAndView saveQuotation(@ModelAttribute("covernoteFormData") CovernoteDO covernoteDO,
 			BindingResult result, HttpServletRequest request, HttpSession session) {
