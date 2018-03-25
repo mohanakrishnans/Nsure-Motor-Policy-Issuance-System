@@ -3,6 +3,8 @@
  */
 package com.kgisl.nsure.quotation.domain;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Component;
 
 /**
@@ -63,18 +65,276 @@ public class QuotationDO {
 	public String nameddrivername;
 	public String nameddriverrelationship;
 	
+	/*Extra*/
+	public String gstregistrationdate;
+	public String gstexpirydate;
+	public String website;
+	public String trafficviolation;
+	public String vipstatus;
+	public String permanentaddress;
+	public String statecountry;
+	public String telnohouse;
+	public String telnooffice;
+	public String faxnohouse;
+	public String faxnooffice;
+	public String remarks;
+	public String datasignedcustomer;
+	public String crosssignedcustomer;
+	public String oldicpassportno;
+	public String salutation;
+	public String age;
+	public String employementstatus;
+	public String gstregistrationno;
+	
+	
+	
 	
 	/**
-	 * @return the namednewicno
+	 * @return the crosssignedcustomer
 	 */
-	public String getNamednewicno() {
-		return namednewicno;
+	public String getCrosssignedcustomer() {
+		return crosssignedcustomer;
+	}
+	/**
+	 * @param crosssignedcustomer the crosssignedcustomer to set
+	 */
+	public void setCrosssignedcustomer(String crosssignedcustomer) {
+		this.crosssignedcustomer = crosssignedcustomer;
+	}
+	/**
+	 * @return the gstregistrationdate
+	 */
+	public String getGstregistrationdate() {
+		return gstregistrationdate;
+	}
+	/**
+	 * @return the gstexpirydate
+	 */
+	public String getGstexpirydate() {
+		return gstexpirydate;
+	}
+	/**
+	 * @param gstregistrationdate the gstregistrationdate to set
+	 */
+	public void setGstregistrationdate(String gstregistrationdate) {
+		this.gstregistrationdate = gstregistrationdate;
+	}
+	/**
+	 * @param gstexpirydate the gstexpirydate to set
+	 */
+	public void setGstexpirydate(String gstexpirydate) {
+		this.gstexpirydate = gstexpirydate;
+	}
+	
+	/**
+	 * @return the website
+	 */
+	public String getWebsite() {
+		return website;
+	}
+	/**
+	 * @param website the website to set
+	 */
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+	/**
+	 * @return the trafficviolation
+	 */
+	public String getTrafficviolation() {
+		return trafficviolation;
+	}
+	/**
+	 * @param trafficviolation the trafficviolation to set
+	 */
+	public void setTrafficviolation(String trafficviolation) {
+		this.trafficviolation = trafficviolation;
+	}
+	/**
+	 * @return the vipstatus
+	 */
+	public String getVipstatus() {
+		return vipstatus;
+	}
+	/**
+	 * @param vipstatus the vipstatus to set
+	 */
+	public void setVipstatus(String vipstatus) {
+		this.vipstatus = vipstatus;
+	}
+	/**
+	 * @return the permanentaddress
+	 */
+	public String getPermanentaddress() {
+		return permanentaddress;
+	}
+	/**
+	 * @param permanentaddress the permanentaddress to set
+	 */
+	public void setPermanentaddress(String permanentaddress) {
+		this.permanentaddress = permanentaddress;
+	}
+	/**
+	 * @return the statecountry
+	 */
+	public String getStatecountry() {
+		return statecountry;
+	}
+	/**
+	 * @param statecountry the statecountry to set
+	 */
+	public void setStatecountry(String statecountry) {
+		this.statecountry = statecountry;
+	}
+	/**
+	 * @return the telnohouse
+	 */
+	public String getTelnohouse() {
+		return telnohouse;
+	}
+	/**
+	 * @param telnohouse the telnohouse to set
+	 */
+	public void setTelnohouse(String telnohouse) {
+		this.telnohouse = telnohouse;
+	}
+	/**
+	 * @return the telnooffice
+	 */
+	public String getTelnooffice() {
+		return telnooffice;
+	}
+	/**
+	 * @param telnooffice the telnooffice to set
+	 */
+	public void setTelnooffice(String telnooffice) {
+		this.telnooffice = telnooffice;
+	}
+	/**
+	 * @return the faxnohouse
+	 */
+	public String getFaxnohouse() {
+		return faxnohouse;
+	}
+	/**
+	 * @param faxnohouse the faxnohouse to set
+	 */
+	public void setFaxnohouse(String faxnohouse) {
+		this.faxnohouse = faxnohouse;
+	}
+	/**
+	 * @return the faxnooffice
+	 */
+	public String getFaxnooffice() {
+		return faxnooffice;
+	}
+	/**
+	 * @param faxnooffice the faxnooffice to set
+	 */
+	public void setFaxnooffice(String faxnooffice) {
+		this.faxnooffice = faxnooffice;
+	}
+	/**
+	 * @return the remarks
+	 */
+	public String getRemarks() {
+		return remarks;
+	}
+	/**
+	 * @param remarks the remarks to set
+	 */
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+	/**
+	 * @return the datasignedcustomer
+	 */
+	public String getDatasignedcustomer() {
+		return datasignedcustomer;
+	}
+	/**
+	 * @param datasignedcustomer the datasignedcustomer to set
+	 */
+	public void setDatasignedcustomer(String datasignedcustomer) {
+		this.datasignedcustomer = datasignedcustomer;
+	}
+	/**
+	 * @return the oldicpassportno
+	 */
+	public String getOldicpassportno() {
+		return oldicpassportno;
+	}
+	/**
+	 * @param oldicpassportno the oldicpassportno to set
+	 */
+	public void setOldicpassportno(String oldicpassportno) {
+		this.oldicpassportno = oldicpassportno;
+	}
+	/**
+	 * @return the salutation
+	 */
+	public String getSalutation() {
+		return salutation;
+	}
+	/**
+	 * @param salutation the salutation to set
+	 */
+	public void setSalutation(String salutation) {
+		this.salutation = salutation;
+	}
+	/**
+	 * @return the age
+	 */
+	public String getAge() {
+		return age;
+	}
+	/**
+	 * @param age the age to set
+	 */
+	public void setAge(String age) {
+		this.age = age;
+	}
+	/**
+	 * @return the employementstatus
+	 */
+	public String getEmployementstatus() {
+		return employementstatus;
+	}
+	/**
+	 * @param employementstatus the employementstatus to set
+	 */
+	public void setEmployementstatus(String employementstatus) {
+		this.employementstatus = employementstatus;
+	}
+	/**
+	 * @return the gstregistrationno
+	 */
+	public String getGstregistrationno() {
+		return gstregistrationno;
+	}
+	/**
+	 * @param gstregistrationno the gstregistrationno to set
+	 */
+	public void setGstregistrationno(String gstregistrationno) {
+		this.gstregistrationno = gstregistrationno;
+	}
+	/**
+	 * @return the namedoldicno
+	 */
+	public String getNamedoldicno() {
+		return namedoldicno;
 	}
 	/**
 	 * @param namedoldicno the namedoldicno to set
 	 */
 	public void setNamedoldicno(String namedoldicno) {
 		this.namedoldicno = namedoldicno;
+	}
+	/**
+	 * @return the namednewicno
+	 */
+	public String getNamednewicno() {
+		return namednewicno;
 	}
 	/**
 	 * @param namednewicno the namednewicno to set

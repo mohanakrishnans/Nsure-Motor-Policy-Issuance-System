@@ -91,6 +91,15 @@ public class QuotationServiceImpl implements QuotationService {
 		//System.out.println("S<");
 		
 	}
+	@Override
+	public void saveNamedDrivers(QuotationDO quotationDO) {
+		// TODO Auto-generated method stub
+		//System.out.println("S>");
+		quotationdao.saveNamedDrivers(quotationDO);
+		
+		//System.out.println("S<");
+		
+	}
 
 	@Override
 	public List<QuotationDO> getsourceType(QuotationDO sourceTypeDO) {

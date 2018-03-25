@@ -124,7 +124,6 @@
 
 
 </head>
-
 <body class="" data-ng-app="quotation"
 	data-ng-controller="quotationController as tc" id="ENDOR_NON_JPJ_MOTOR">
 	<nav class="side-navbar">
@@ -135,6 +134,7 @@
 					<img src="http://localhost/nsure/dashboard/img/avatar-1.jpg"
 						alt="person" class="img-fluid rounded-circle">
 					<h2 class="h5">Nsure</h2>
+					<h1 class="h1">${user }</h1>
 				</div>
 				<div class="sidenav-header-logo">
 					<a href="index.jsp" class="brand-small text-center"> <strong>B</strong><strong
@@ -143,24 +143,17 @@
 			</div>
 			<div class="main-menu">
 				<ul id="side-main-menu" class="side-menu list-unstyled">
-					<li><a href="quotation"> <i class="icon-home"></i>Quotation</a></li>
-					<li><a href="covernote"> <i class="icon-form"></i>New Business</a></li>
-					<li><a href="nameddrivers"> <i class="icon-form"></i>Named Drivers</a></li>
-					<li><a href="endorsementdetails"><i class="icon-form"></i>Endorsement Details</a></li>
-					<li><a href="premium"> <i class="icon-grid"></i>Premium</a></li>
-					<!-- <li><a href="#endorsement" aria-expanded="false"
-						data-toggle="collapse"> <i class="fa fa-bar-chart"></i>Endorsement
-					</a>
-					
-						<ul id="endorsement" class="collapse list-unstyled "> -->
-					
-					<!-- 	<li><a href="endorsementdetails">Endorsement Details</a></li>
-						</ul></li>  
-					
-					</a>   <ul id="tablesDropdown" class="collapse list-unstyled ">
-							<li><a href="tables.html">Bootstrap tables</a></li>
-							<li><a href="tables-datatable.html">Datatable</a></li>
-						</ul></li>-->
+					<li><a href="quotation"> <i class="icon-home"></i>Quotation
+					</a></li>
+					<li><a href="cnoptions"> <i class="icon-form"></i>CN
+							Options
+					</a></li>
+					<!-- 
+					<li><a href="nameddrivers"> <i class="icon-form"></i>Named Drivers</a></li> -->
+					<li><a href="endorsementdetails"><i class="icon-form"></i>Endorsement</a></li>
+					<li><a href="referRisk"> <i class="icon-grid"></i>Refer
+							Risk
+					</a></li>
 				</ul>
 			</div>
 		</div>
@@ -200,7 +193,7 @@
 										<label for="sourceType" class="col-sm-4 control-label">Source
 											Type </label>
 										<div class="col-sm-8">
-											<select name="sourceType" required id="SOURCE_TYPE"
+											<select name="sourceType" value="${sourceType }" required id="SOURCE_TYPE"
 												class="form-control">
 												<option selected="selected" value="0">--SELECT--</option>
 											</select>
@@ -210,9 +203,8 @@
 										<label for="accountCode" class="col-sm-4 control-label">Account
 											Code</label>
 										<div class="col-sm-8">
-											<input name="accountCode" required id="accountCode"
-												class="form-control" type="number"
-												data-ng-model="accountCode"
+											<input name="accountCode" value="${accountCode }" required id="accountCode"
+												class="form-control" type="number"												
 												onKeyPress="if(this.value.length==2) return false;" />
 										</div>
 									</div>
@@ -223,7 +215,7 @@
 										<div class="col-sm-8">
 											<input name="branch" required id="branch"
 												class="form-control" type="text" maxlength="10"
-												data-ng-model="branch"
+												value="${ branch}"
 												onkeypress="return onlyAlphabets(event,this);" />
 										</div>
 									</div>
@@ -233,7 +225,7 @@
 										<div class="col-sm-8">
 											<input name="accountName" required id="accountName"
 												class="form-control" type="text" maxlength="10"
-												data-ng-model="accountName"
+												value="${accountName}" 
 												onkeypress="return onlyAlphabets(event,this);" />
 										</div>
 									</div>
@@ -250,7 +242,7 @@
 									<label for="CONTACT_TYPE" class="col-sm-4 control-label">Contact_Type:</label>
 									<div class="col-sm-4">
 										<select name="contactType" required id="CONTACT_TYPE"
-											class="form-control" data-ng-model="drpContactType">
+											class="form-control" value="${conactType }" data-ng-model="drpContactType">
 											<option selected="selected" value="0">--SELECT--</option>
 										</select>
 									</div>
@@ -268,10 +260,10 @@
 											<label for="newicno" class="col-sm-4 control-label">New
 												IC No:</label>
 											<div class="col-sm-8">
-												<input name="NewIcNo" required id="newicno" type="number"
-													class="form-control" data-ng-model="newicnoValue"
+												<input name="newIcNo"  value="${newIcNo }"  required id="newicno" type="number"
+													class="form-control" 
 													onKeyPress="if(this.value.length==12) return false;"
-													onChange="newIcNo()" />
+													onChange="newIcno()" />
 											</div>
 											<!-- <div data-ng-messages="form-horizontal.newIcNo.$error" style="color:maroon" role="alert">
 												<div data-ng-message="required">You did not enter a field</div>
@@ -283,55 +275,55 @@
 											<label for="oldicno" class="col-sm-4 control-label">Old
 												IC No / Passport No:</label>
 											<div class="col-sm-8">
-												<input name="OldIcNo" required id="oldicno" type="text"
-													class="form-control" data-ng-model="oldicnoValue"
-													maxlength="20" />
+												<input name="oldicpassportno"  value="${ oldicpassportno}" required id="oldicno" type="text"
+													class="form-control" 
+													maxlength="20" onChange="oldIcNo()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="name" class="col-sm-4 control-label">Name:</label>
+											<label for="Name" class="col-sm-4 control-label">Name:</label>
 											<div class="col-sm-8">
-												<input name="Name" required id="name" class="form-control"
-													type="text" maxlength="100" data-ng-model="nameValue"
+												<input name="name"  value="${name }"  required id="Name" class="form-control"
+													type="text" maxlength="100" 
 													onkeypress="return onlyAlphabets(event,this);" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="SALUTATION" class="col-sm-4 control-label">Salutation:</label>
 											<div class="col-sm-8">
-												<select name="Salutation" required id="SALUTATION"
-													class="form-control" data-ng-model="salutationValue">
+												<select name="salutation" value="${salutation }" required id="SALUTATION"
+													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
-													<option selected="selected" value="1">Mr</option>
-													<option selected="selected" value="2">Mrs</option>
-													<option selected="selected" value="3">Ms</option>
-													<option selected="selected" value="4">Dr</option>
-													<option selected="selected" value="5">Prof</option>
+													<option value="Mr">Mr</option>
+													<option value="Mrs">Mrs</option>
+													<option value="Ms">Ms</option>
+													<option value="Dr">Dr</option>
+													<option value="Prof">Prof</option>
 												</select>
 											</div>
 										</div>
 
 										<div class="row form-group form-inline">
-											<label for="nationality" class="col-sm-4 control-label">Nationality:</label>
+											<label for="Nationality" class="col-sm-4 control-label">Nationality:</label>
 											<div class="col-sm-8">
-												<select name="Nationality" required id="nationality"
-													class="form-control" data-ng-model="drpnationalityValue">
+												<select name="nationality" value="${ nationality}" required id="Nationality"
+													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
-													<option selected="selected" value="1">INDIAN</option>
-													<option selected="selected" value="2">MYLASIAN</option>
-													<option selected="selected" value="3">OTHERS</option>
+													<option value="Indian">INDIAN</option>
+													<option value="Mylaysian">MYLAYSIAN</option>
+													<option value="Others">OTHERS</option>
 												</select>
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="race" class="col-sm-4 control-label">Race:</label>
+											<label for="Race" class="col-sm-4 control-label">Race:</label>
 											<div class="col-sm-8">
-												<select name="Race" required id="race" class="form-control"
-													data-ng-model="drpraceValue">
+												<select name="race"  value="${race }" required id="Race" class="form-control"
+													>
 													<option selected="selected" value="0">--SELECT--</option>
-													<option selected="selected" value="1">BLACK</option>
-													<option selected="selected" value="2">WHITE</option>
-													<option selected="selected" value="3">OTHERS</option>
+													<option value="Black">BLACK</option>
+													<option value="White">WHITE</option>
+													<option value="Others">OTHERS</option>
 												</select>
 											</div>
 										</div>
@@ -339,23 +331,23 @@
 											<label for="dob" class="col-sm-4 control-label">Date
 												Of Birth:</label>
 											<div class="col-sm-8">
-												<input name="DateOfBirth" required class="form-control"
-													id="dob" type="date" value="" />
+												<input name="dateOfBirth"  value="${dateOfBirth }" required class="form-control"
+													id="dob" type="date" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="age" class="col-sm-4 control-label">Age</label>
+											<label for="Age" class="col-sm-4 control-label">Age</label>
 											<div class="col-sm-8">
-												<input name="Age" required class="form-control" id="age"
+												<input name="age"  value="${age }" required class="form-control" id="Age"
 													type="number"
 													onKeyPress="if(this.value.length==2) return false;" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="gender" class="col-sm-4 control-label">Gender:</label>
+											<label for="Gender" class="col-sm-4 control-label">Gender:</label>
 											<div class="col-sm-8">
-												<input name="Gender" required class="form-control"
-													id="gender" type="text" />
+												<input name="gender" value="${ gender}" required class="form-control"
+													id="Gender" type="text" />
 												<!--<select name="Gender" required id="gender"
 													class="form-control">
 													 <option selected="selected" value="0">--SELECT--</option>
@@ -365,11 +357,11 @@
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="maritalstatus" class="col-sm-4 control-label">Marital
+											<label for="Maritalstatus" class="col-sm-4 control-label">Marital
 												Status:</label>
 											<div class="col-sm-8">
-												<select name="MaritalStatus" required id="maritalstatus"
-													class="form-control" data-ng-model="maritalstatusValue">
+												<select name="maritalStatus" value="${maritalStatus }" required id="Maritalstatus"
+													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="SINGLE">SINGLE</option>
 													<option value="MARRIED">MARRIED</option>
@@ -377,15 +369,15 @@
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="occupation" class="col-sm-4 control-label">Occupation:</label>
+											<label for="Occupation" class="col-sm-4 control-label">Occupation:</label>
 											<div class="col-sm-8">
-												<select name="Occupation" required id="occupation"
-													class="form-control" data-ng-model="occupationValue">
+												<select name="occupation" value="${occupation }" required id="Occupation"
+													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
-													<option selected="selected" value="1">EMPLOYED</option>
-													<option selected="selected" value="2">BUSINESS</option>
-													<option selected="selected" value="3">HOUSE WIFE</option>
-													<option selected="selected" value="4">OTHERS</option>
+													<option value="Employed">EMPLOYED</option>
+													<option value="Business">BUSINESS</option>
+													<option value="House wife">HOUSE WIFE</option>
+													<option value="Others">OTHERS</option>
 												</select>
 											</div>
 										</div>
@@ -393,8 +385,9 @@
 											<label for="gstregistered" class="col-sm-4 control-label">GST
 												Registered:</label>
 											<div class="col-sm-8">
-												<select name="GstRegistered" required id="gstregistered"
-													class="form-control" data-ng-model="gstregisteredValue">
+												<select name="gstRegistered" value="${gstRegistered }"  required id="gstregistered"
+													class="form-control" 
+													onChange="gsTregistered()">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -402,45 +395,45 @@
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="gstregistrationno" class="col-sm-4 control-label">GST
+											<label for="Gstregistrationno" class="col-sm-4 control-label">GST
 												Registration No:</label>
 											<div class="col-sm-8">
-												<input name="GstRegistrationNo" required
-													class="form-control" id="gstregistrationno" type="text"
-													data-ng-model="gstregistrationnoValue" />
+												<input disabled name="gstregistrationno" value="${gstregistrationno }" required
+													class="form-control" id="Gstregistrationno" type="number"
+													onKeyPress="if(this.value.length==10) return false;"
+													onChange="gstRegistrationNo()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="gstregdate" class="col-sm-4 control-label">GST
 												Reg Date:</label>
 											<div class="col-sm-8">
-												<input name="GstRegDate" required class="form-control"
-													id="gstregdate" type="date" data-ng-model="gstregdateValue" />
+												<input disabled name="gstregistrationdate" value="${gstregistrationdate }" required
+													class="form-control" id="gstregdate" type="date" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="gstexpirydate" class="col-sm-4 control-label">GST
+											<label for="Gstexpirydate" class="col-sm-4 control-label">GST
 												Expiry Date:</label>
 											<div class="col-sm-8">
-												<input name="GstExpiryDate" required class="form-control"
-													id="gstexpirydate" type="date"
-													data-ng-model="gstexpirydateValue" />
+												<input disabled name="gstexpirydate" value="${gstexpirydate }"  required
+													class="form-control" id="Gstexpirydate" type="date"
+													/>
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="website" class="col-sm-4 control-label">Website:</label>
+											<label for="Website" class="col-sm-4 control-label">Website:</label>
 											<div class="col-sm-8">
-												<input name="Website" required class="form-control"
-													id="website" type="text" data-ng-model="websiteValue" />
+												<input name="website" value="${website }" required class="form-control"
+													id="Website" type="url"  />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="employmentstatus" class="col-sm-4 control-label">Employment
+											<label for="Employmentstatus" class="col-sm-4 control-label">Employment
 												Status:</label>
 											<div class="col-sm-8">
-												<select name="EmploymentStatus" required
-													id="employmentstatus" class="form-control"
-													data-ng-model="employmentstatusValue">
+												<select name="employementstatus" value="${employementstatus }" required
+													id="Employmentstatus" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -451,30 +444,30 @@
 									<div class="col-md-6">
 
 										<div class="row form-group form-inline">
-											<label for="trafficviolation" class="col-sm-4 control-label">Traffic
+											<label for="Trafficviolation" class="col-sm-4 control-label">Traffic
 												Violation:</label>
 											<div class="col-sm-8">
-												<select name="TrafficViolation" required
-													id="trafficviolation" class="form-control"
-													data-ng-model="trafficviolationValue">
+												<select name="trafficviolation" value="${trafficviolation }" required
+													id="Trafficviolation" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 												</select>
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="email" class="col-sm-4 control-label">E-mail:</label>
+											<label for="Email" class="col-sm-4 control-label">E-mail:</label>
 											<div class="col-sm-8">
-												<input name="Email" required class="form-control" id="email"
-													type="email" data-ng-model="emailValue" />
+												<input name="email" value="${email }"  required class="form-control" id="Email"
+													type="email" 
+													onChange="emailVal()" />
 											</div>
 										</div>
 
 										<div class="row form-group form-inline">
-											<label for="vipstatus" class="col-sm-4 control-label">VIP
+											<label for="Vipstatus" class="col-sm-4 control-label">VIP
 												Status:</label>
 											<div class="col-sm-8">
-												<select name="VipStatus" required id="vipstatus"
-													class="form-control" data-ng-model="vipstatusValue">
+												<select name="vipstatus" value="${vipstatus }" required id="Vipstatus"
+													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -484,40 +477,41 @@
 										<fieldset class="scheduler-border">
 											<legend class="scheduler-border">Permanent Address</legend>
 											<div class="row form-group form-inline">
-												<label for="address" class="col-sm-4 control-label">Address:</label>
+												<label for="Address" class="col-sm-4 control-label">Address:</label>
 												<div class="col-sm-8">
-													<input name="Address" required class="form-control"
-														id="address" type="text" maxlength="120"
-														data-ng-model="addressValue" />
+													<input name="address" value="${address }"  required class="form-control"
+														id="Address" type="text" maxlength="120"
+														 />
 												</div>
 											</div>
 											<div class="row form-group form-inline">
 												<label for="postcode" class="col-sm-4 control-label">Post
 													Code:</label>
 												<div class="col-sm-8">
-													<input name="PostCode" required class="form-control"
-														id="postcode" type="text" maxlength="6"
-														data-ng-model="postcodeValue" />
+													<input name="postCode" value="${postCode }" required class="form-control"
+														id="postcode" type="number" 
+														onKeyPress="if(this.value.length==6 ) return false;"
+														onChange="posTcode()" />
 												</div>
 											</div>
 											<div class="row form-group form-inline">
 												<label for="state" class="col-sm-4 control-label">State/Country:</label>
 												<div class="col-sm-8">
-													<select name="State" required id="state"
+													<select name="statecountry" value="${statecountry }" required id="state"
 														class="form-control">
 														<option selected="selected" value="0">--SELECT--</option>
-														<option selected="selected" value="1">INDIA</option>
-														<option selected="selected" value="2">MYLASIA</option>
+														<option value="1">INDIA</option>
+														<option value="2">MYLASIA</option>
 													</select>
 												</div>
 											</div>
 											<div class="row form-group form-inline">
-												<label for="countrycode" class="col-sm-4 control-label">Country
+												<label for="Countrycode" class="col-sm-4 control-label">Country
 													code:</label>
 												<div class="col-sm-8">
-													<input name="CountryCode" required class="form-control"
-														id="countrycode" type="text" maxlength="6"
-														data-ng-model="countrycodeValue" />
+													<input name="countryCode" value="${countryCode }"  required class="form-control"
+														id="Countrycode" type="number"
+														onKeyPress="if(this.value.length==3 ) return false;" />
 												</div>
 											</div>
 										</fieldset>
@@ -525,52 +519,56 @@
 											<label for="mobileno" class="col-sm-4 control-label">Mobile
 												No:</label>
 											<div class="col-sm-8">
-												<input name="MobileNo" required class="form-control"
-													id="mobileno" type="number" maxlength="10"
-													data-ng-model="mobilenoValue" />
+												<input name="mobileNo" value="${mobileNo }"  required class="form-control"
+													id="mobileno" type="number" 
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="mobilEno()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="telno1" class="col-sm-4 control-label">Tel
 												No.(House):</label>
 											<div class="col-sm-8">
-												<input name="Telno1" required class="form-control"
-													id="telno1" type="tel" maxlength="10"
-													data-ng-model="telno1Value" />
+												<input name="telnohouse" value="${telnohouse }" required class="form-control"
+													id="telno1" type="number"
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="telNo()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="telno2" class="col-sm-4 control-label">Tel
 												No.(Office):</label>
 											<div class="col-sm-8">
-												<input name="Telno2" required class="form-control"
-													id="telno2" type="tel" maxlength="10"
-													data-ng-model="telno2Value" />
+												<input name="telnooffice" value="${telnooffice }" required class="form-control"
+													id="telno2" type="number" maxlength="10"
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="telNo1()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="faxno1" class="col-sm-4 control-label">Fax
 												No.(House):</label>
 											<div class="col-sm-8">
-												<input name="Faxno1" required class="form-control"
-													id="faxno1" type="tel" maxlength="10"
-													data-ng-model="faxno1Value" />
+												<input name="faxnohouse" value="${faxnohouse }" required class="form-control"
+													id="faxno1" type="number" 
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="faxNo()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="faxno2" class="col-sm-4 control-label">Fax
 												No.(Office):</label>
 											<div class="col-sm-8">
-												<input name="Faxno2" required class="form-control"
-													id="faxno2" type="tel" maxlength="10"
-													data-ng-model="faxno2Value" />
+												<input name="faxnooffice" value="${faxnooffice }" required class="form-control"
+													id="faxno2" type="number" 
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="faxNo1()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="pdpa" class="col-sm-4 control-label">PDPA:</label>
+											<label for="Pdpa" class="col-sm-4 control-label">PDPA:</label>
 											<div class="col-sm-8">
-												<select name="Pdpa" required id="pdpa" class="form-control"
-													data-ng-model="pdpaValue">
+												<select name="pdpa" value="${pdpa }" required id="Pdpa" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="N0">NO</option>
@@ -578,10 +576,9 @@
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="css" class="col-sm-4 control-label">CSS:</label>
+											<label for="Css" class="col-sm-4 control-label">CSS:</label>
 											<div class="col-sm-8">
-												<select name="Css" required id="css" class="form-control"
-													data-ng-model="cssValue">
+												<select name="css" value="${css }" required id="Css" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -592,31 +589,27 @@
 											<label for="remarks" class="col-sm-4 control-label">Remarks:</label>
 											<div class="col-sm-8">
 												<textarea rows="3" cols="20" class="form-control"
-													id="remarks" data-ng-model="remarksValue">
+													id="remarks">${remarks }
 													</textarea>
 											</div>
 										</div>
 									</div>
 								</div>
-								<fieldset class="scheduler-border">
-									<form>
+								<fieldset class="scheduler-border">									
 										Personal Data Protection consent signed by customer
-										<div class="col-sm-12">
-											<label><input type="radio" name="optradio">Yes</label>
-											<label><input type="radio" name="optradio">No</label>
-										</div>
-									</form>
-									<form>
+											<div class="col-sm-12">
+											<label><input type="radio" value="${ datasignedcustomer}" name="datasignedcustomer">Yes</label>
+											<label><input type="radio" value="${ datasignedcustomer}" name="datasignedcustomer">No</label>
+										</div>												
 										Consent on Cross Selling signed by customer
 										<div class="col-sm-12">
-											<label><input type="radio" name="optradio">Yes</label>
-											<label><input type="radio" name="optradio">No</label>
-										</div>
-									</form>
+											<label><input type="radio" value="${ crosssignedcustomer}" name="crosssignedcustomer">Yes</label>
+											<label><input type="radio" value="${ crosssignedcustomer}" name="crosssignedcustomer">No</label>
+										</div>									
 								</fieldset>
 							</fieldset>
-							<button type="submit" class="pull-right btn  btn-success center"
-								onclick="validateIndividual()">Next</button>
+							<button type="submit" class="pull-right btn  btn-success center">
+								Next</button>
 						</div>
 						<!--  onclick="location.href='save_quotation_form'"  -->
 
@@ -629,27 +622,28 @@
 											<label for="businessregno" class="col-sm-4 control-label">Business
 												Reg No:</label>
 											<div class="col-sm-8">
-												<input name="BusinessRegNo" required id="businessregno"
+												<input name="businessRegNo" value="${ businessRegNo}"  required id="businessregno"
 													class="form-control" type="text" maxlength="20"
-													data-ng-model="businessregnoValue" />
+													onChange="businessRegno()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="name" class="col-sm-4 control-label">Name:</label>
+											<label for="Name" class="col-sm-4 control-label">Name:</label>
 											<div class="col-sm-8">
-												<input name="Name" required id="name" class="form-control"
-													type="text" maxlength="100" data-ng-model="nameValue" />
+												<input name="name"  value="${name }"  required id="Name" class="form-control"
+													type="text" maxlength="100" 
+													onkeypress="return onlyAlphabets(event,this);" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="race" class="col-sm-4 control-label">Race:</label>
+											<label for="Race" class="col-sm-4 control-label">Race:</label>
 											<div class="col-sm-8">
-												<select name="Race" required id="race" class="form-control"
-													data-ng-model="drpraceValue">
+												<select name="race"  value="${race }" required id="Race" class="form-control"
+													>
 													<option selected="selected" value="0">--SELECT--</option>
-													<option selected="selected" value="1">BLACK</option>
-													<option selected="selected" value="2">WHITE</option>
-													<option selected="selected" value="3">OTHERS</option>
+													<option value="Black">BLACK</option>
+													<option value="White">WHITE</option>
+													<option value="Others">OTHERS</option>
 												</select>
 											</div>
 										</div>
@@ -657,21 +651,20 @@
 											<label class="col-sm-4 control-label" for="typeofbusiness">Type
 												Of Business:</label>
 											<div class="col-sm-8">
-												<input name="TypeOfBusiness" required class="form-control"
-													id="typeofbusiness" type="text"
-													data-ng-model="typeofbusinessValue" />
+												<input name="typeOfBusiness" value="${ typeOfBusiness}" required class="form-control"
+													id="typeofbusiness" type="text" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="occupation" class="col-sm-4 control-label">Occupation:</label>
+											<label for="Occupation" class="col-sm-4 control-label">Occupation:</label>
 											<div class="col-sm-8">
-												<select name="Occupation" id="occupation"
-													class="form-control" data-ng-model="occupationValue">
+												<select name="occupation" value="${occupation }" required id="Occupation"
+													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
-													<option selected="selected" value="1">EMPLOYED</option>
-													<option selected="selected" value="2">BUSINESS</option>
-													<option selected="selected" value="3">HOUSE WIFE</option>
-													<option selected="selected" value="4">OTHERS</option>
+													<option value="Employed">EMPLOYED</option>
+													<option value="Business">BUSINESS</option>
+													<option value="House wife">HOUSE WIFE</option>
+													<option value="Others">OTHERS</option>
 												</select>
 											</div>
 										</div>
@@ -679,8 +672,9 @@
 											<label for="gstregistered" class="col-sm-4 control-label">GST
 												Registered:</label>
 											<div class="col-sm-8">
-												<select name="GstRegistered" required id="gstregistered"
-													class="form-control" data-ng-model="gstregisteredValue">
+												<select name="gstRegistered" value="${gstRegistered }"  required id="gstregistered"
+													class="form-control" 
+													onChange="gsTregistered()">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -688,44 +682,45 @@
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="gstregistrationno" class="col-sm-4 control-label">GST
+											<label for="Gstregistrationno" class="col-sm-4 control-label">GST
 												Registration No:</label>
 											<div class="col-sm-8">
-												<input name="GstRegistrationNo" required
-													class="form-control" id="gstregistrationno" type="text"
-													data-ng-model="gstregistrationnoValue" />
+												<input disabled name="gstregistrationno" value="${gstregistrationno }" required
+													class="form-control" id="Gstregistrationno" type="number"
+													onKeyPress="if(this.value.length==10) return false;"
+													onChange="gstRegistrationNo()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="gstregdate" class="col-sm-4 control-label">GST
 												Reg Date:</label>
 											<div class="col-sm-8">
-												<input name="GstRegDate" required class="form-control"
-													id="gstregdate" type="date" data-ng-model="gstregdateValue" />
+												<input disabled name="gstregistrationdate" value="${gstregistrationdate }" required
+													class="form-control" id="gstregdate" type="date" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="gstexpirydate" class="col-sm-4 control-label">GST
+											<label for="Gstexpirydate" class="col-sm-4 control-label">GST
 												Expiry Date:</label>
 											<div class="col-sm-8">
-												<input name="GstExpiryDate" required class="form-control"
-													id="gstexpirydate" type="date"
-													data-ng-model="gstexpirydateValue" />
+												<input disabled name="gstexpirydate" value="${gstexpirydate }"  required
+													class="form-control" id="Gstexpirydate" type="date"
+													/>
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="website" class="col-sm-4 control-label">Website:</label>
+											<label for="Website" class="col-sm-4 control-label">Website:</label>
 											<div class="col-sm-8">
-												<input name="Website" required class="form-control"
-													id="website" type="text" data-ng-model="websiteValue" />
+												<input name="website" value="${website }" required class="form-control"
+													id="Website" type="url"  />
 											</div>
 										</div>
 										<!-- <div class="row form-group form-inline">
-											<label for="employmentstatus" class="col-sm-4 control-label">Employment
+											<label for="Employmentstatus" class="col-sm-4 control-label">Employment
 												Status:</label>
 											<div class="col-sm-8">
 												<select name="EmploymentStatus" required
-													id="employmentstatus" class="form-control"
+													id="Employmentstatus" class="form-control"
 													data-ng-model="employmentstatusValue">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
@@ -734,76 +729,79 @@
 											</div>
 										</div> -->
 										<div class="row form-group form-inline">
-											<label for="trafficviolation" class="col-sm-4 control-label">Traffic
+											<label for="Trafficviolation" class="col-sm-4 control-label">Traffic
 												Violation:</label>
 											<div class="col-sm-8">
-												<select name="TrafficViolation" required
-													id="trafficviolation" class="form-control"
-													data-ng-model="trafficviolationValue">
-													<option selected="selected" value="0">--SELECT--</option>
-												</select>
-											</div>
-										</div>
-										<div class="row form-group form-inline">
-											<label for="email" class="col-sm-4 control-label">E-mail:</label>
-											<div class="col-sm-8">
-												<input name="Email" required class="form-control" id="email"
-													type="email" data-ng-model="emailValue" />
-											</div>
-										</div>
-
-										<div class="row form-group form-inline">
-											<label for="vipstatus" class="col-sm-4 control-label">VIP
-												Status:</label>
-											<div class="col-sm-8">
-												<select name="VipStatus" required id="vipstatus"
-													class="form-control" data-ng-model="vipstatusValue">
+												<select name="trafficviolation" value="${trafficviolation }" required
+													id="Trafficviolation" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
 												</select>
 											</div>
 										</div>
+										<div class="row form-group form-inline">
+											<label for="Email" class="col-sm-4 control-label">E-mail:</label>
+											<div class="col-sm-8">
+												<input name="email" value="${email }"  required class="form-control" id="Email"
+													type="email" 
+													onChange="emailVal()" />
+											</div>
+										</div>
 
+										<div class="row form-group form-inline">
+											<label for="Vipstatus" class="col-sm-4 control-label">VIP
+												Status:</label>
+											<div class="col-sm-8">
+												<select name="vipstatus" value="${vipstatus }" required id="Vipstatus"
+													class="form-control" >
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="NO">NO</option>
+												</select>
+											</div>
+										</div>
 									</div>
 									<div class="col-md-6">
+
 										<fieldset class="scheduler-border">
 											<legend class="scheduler-border">Permanent Address</legend>
 											<div class="row form-group form-inline">
-												<label for="address" class="col-sm-4 control-label">Address:</label>
+												<label for="Address" class="col-sm-4 control-label">Address:</label>
 												<div class="col-sm-8">
-													<input name="Address" required class="form-control"
-														id="address" type="text" maxlength="120"
-														data-ng-model="addressValue" />
+													<input name="address" value="${address }"  required class="form-control"
+														id="Address" type="text" maxlength="120"
+														 />
 												</div>
 											</div>
 											<div class="row form-group form-inline">
 												<label for="postcode" class="col-sm-4 control-label">Post
 													Code:</label>
 												<div class="col-sm-8">
-													<input name="PostCode" required class="form-control"
-														id="postcode" type="text" maxlength="6"
-														data-ng-model="postcodeValue" />
+													<input name="postCode" value="${postCode }" required class="form-control"
+														id="postcode" type="number" 
+														onKeyPress="if(this.value.length==6 ) return false;"
+														onChange="posTcode()" />
 												</div>
 											</div>
 											<div class="row form-group form-inline">
 												<label for="state" class="col-sm-4 control-label">State/Country:</label>
 												<div class="col-sm-8">
-													<select name="State" required id="state"
+													<select name="statecountry" value="${statecountry }" required id="state"
 														class="form-control">
 														<option selected="selected" value="0">--SELECT--</option>
-														<option selected="selected" value="1">INDIA</option>
-														<option selected="selected" value="2">MYLASIA</option>
+														<option value="1">INDIA</option>
+														<option value="2">MYLASIA</option>
 													</select>
 												</div>
 											</div>
 											<div class="row form-group form-inline">
-												<label for="countrycode" class="col-sm-4 control-label">Country
+												<label for="Countrycode" class="col-sm-4 control-label">Country
 													code:</label>
 												<div class="col-sm-8">
-													<input name="CountryCode" required class="form-control"
-														id="countrycode" type="text" maxlength="6"
-														data-ng-model="countrycodeValue" />
+													<input name="countryCode" value="${countryCode }"  required class="form-control"
+														id="Countrycode" type="number"
+														onKeyPress="if(this.value.length==3 ) return false;" />
 												</div>
 											</div>
 										</fieldset>
@@ -811,52 +809,56 @@
 											<label for="mobileno" class="col-sm-4 control-label">Mobile
 												No:</label>
 											<div class="col-sm-8">
-												<input name="MobileNo" required class="form-control"
-													id="mobileno" type="tel" maxlength="10"
-													data-ng-model="mobilenoValue" />
+												<input name="mobileNo" value="${mobileNo }"  required class="form-control"
+													id="mobileno" type="number" 
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="mobilEno()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="telno1" class="col-sm-4 control-label">Tel
 												No.(House):</label>
 											<div class="col-sm-8">
-												<input name="Telno1" required class="form-control"
-													id="telno1" type="tel" maxlength="10"
-													data-ng-model="telno1Value" />
+												<input name="telnohouse" value="${telnohouse }" required class="form-control"
+													id="telno1" type="number"
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="telNo()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="telno2" class="col-sm-4 control-label">Tel
 												No.(Office):</label>
 											<div class="col-sm-8">
-												<input name="Telno2" required class="form-control"
-													id="telno2" type="tel" maxlength="10"
-													data-ng-model="telno2Value" />
+												<input name="telnooffice" value="${telnooffice }" required class="form-control"
+													id="telno2" type="number" maxlength="10"
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="telNo1()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="faxno1" class="col-sm-4 control-label">Fax
 												No.(House):</label>
 											<div class="col-sm-8">
-												<input name="Faxno1" required class="form-control"
-													id="faxno1" type="tel" maxlength="10"
-													data-ng-model="faxno1Value" />
+												<input name="faxnohouse" value="${faxnohouse }" required class="form-control"
+													id="faxno1" type="number" 
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="faxNo()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="faxno2" class="col-sm-4 control-label">Fax
 												No.(Office):</label>
 											<div class="col-sm-8">
-												<input name="Faxno2" required class="form-control"
-													id="faxno2" type="tel" maxlength="10"
-													data-ng-model="faxno2Value" />
+												<input name="faxnooffice" value="${faxnooffice }" required class="form-control"
+													id="faxno2" type="number" 
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="faxNo1()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="pdpa" class="col-sm-4 control-label">PDPA:</label>
+											<label for="Pdpa" class="col-sm-4 control-label">PDPA:</label>
 											<div class="col-sm-8">
-												<select name="Pdpa" required id="pdpa" class="form-control"
-													data-ng-model="pdpaValue">
+												<select name="pdpa" value="${pdpa }" required id="Pdpa" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="N0">NO</option>
@@ -864,10 +866,9 @@
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="css" class="col-sm-4 control-label">CSS:</label>
+											<label for="Css" class="col-sm-4 control-label">CSS:</label>
 											<div class="col-sm-8">
-												<select name="Css" required id="css" class="form-control"
-													data-ng-model="cssValue">
+												<select name="css" value="${css }" required id="Css" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -878,89 +879,89 @@
 											<label for="remarks" class="col-sm-4 control-label">Remarks:</label>
 											<div class="col-sm-8">
 												<textarea rows="3" cols="20" class="form-control"
-													id="remarks" data-ng-model="remarksValue">
+													id="remarks">${remarks }
 													</textarea>
 											</div>
 										</div>
 									</div>
 								</div>
 								<fieldset class="scheduler-border">
-									<form>
+									
 										Personal Data Protection consent signed by customer
 										<div class="col-sm-12">
-											<label><input type="radio" name="optradio">Yes</label>
-											<label><input type="radio" name="optradio">No</label>
+											<label><input type="radio" value="${ datasignedcustomer}" name="datasignedcustomer">Yes</label>
+											<label><input type="radio" value="${ datasignedcustomer}" name="datasignedcustomer">No</label>
 										</div>
-									</form>
-									<form>
+									
 										Consent on Cross Selling signed by customer
 										<div class="col-sm-12">
-											<label><input type="radio" name="optradio">Yes</label>
-											<label><input type="radio" name="optradio">No</label>
+											<label><input type="radio" value="${ crosssignedcustomer}" name="crosssignedcustomer">Yes</label>
+											<label><input type="radio" value="${ crosssignedcustomer}" name="crosssignedcustomer">No</label>
 										</div>
-									</form>
+									
 								</fieldset>
 							</fieldset>
-							<button type="submit" class="pull-right btn  btn-success center"
-								onclick="validateBusiness()">Next</button>
+							<button type="submit" class="pull-right btn  btn-success center">Next</button>
 						</div>
 
 						<div class="form-horizontal" data-ng-if="drpContactType=='3'">
 							<fieldset class="scheduler-border">
 								<legend class="scheduler-border">Others</legend>
 								<div class="row">
-									<div class="col-md-6">
-										<div class="row form-group form-inline">
+								<div class="col-md-6">
+									<div class="row form-group form-inline">
 											<label for="oldicno" class="col-sm-4 control-label">Old
 												IC No / Passport No:</label>
 											<div class="col-sm-8">
-												<input name="OldIcNo" required id="oldicno" type="text"
-													class="form-control" data-ng-model="oldicnoValue"
-													maxlength="20" />
+												<input name="oldicpassportno"  value="${ oldicpassportno}" required id="oldicno" type="text"
+													class="form-control" 
+													maxlength="20" onChange="oldIcNo()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="name" class="col-sm-4 control-label">Name:</label>
+											<label for="Name" class="col-sm-4 control-label">Name:</label>
 											<div class="col-sm-8">
-												<input name="Name" required id="name" class="form-control"
-													type="text" maxlength="100" data-ng-model="nameValue" />
+												<input name="name"  value="${name }"  required id="Name" class="form-control"
+													type="text" maxlength="100" 
+													onkeypress="return onlyAlphabets(event,this);" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="SALUTATION" class="col-sm-4 control-label">Salutation:</label>
 											<div class="col-sm-8">
-												<select name="Salutation" required id="SALUTATION"
-													class="form-control" data-ng-model="salutationValue">
+												<select name="salutation" value="${salutation }" required id="SALUTATION"
+													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
-													<option selected="selected" value="1">Mr</option>
-													<option selected="selected" value="2">Mrs</option>
-													<option selected="selected" value="3">Ms</option>
-													<option selected="selected" value="4">Dr</option>
-													<option selected="selected" value="5">Prof</option>
+													<option value="Mr">Mr</option>
+													<option value="Mrs">Mrs</option>
+													<option value="Ms">Ms</option>
+													<option value="Dr">Dr</option>
+													<option value="Prof">Prof</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="row form-group form-inline">
+											<label for="Nationality" class="col-sm-4 control-label">Nationality:</label>
+											<div class="col-sm-8">
+												<select name="nationality" value="${ nationality}" required id="Nationality"
+													class="form-control" >
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="Indian">INDIAN</option>
+													<option value="Mylaysian">MYLAYSIAN</option>
+													<option value="Others">OTHERS</option>
 												</select>
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="nationality" class="col-sm-4 control-label">Nationality:</label>
+											<label for="Race" class="col-sm-4 control-label">Race:</label>
 											<div class="col-sm-8">
-												<select name="Nationality" id="nationality"
-													class="form-control" data-ng-model="drpnationalityValue">
+												<select name="race"  value="${race }" required id="Race" class="form-control"
+													>
 													<option selected="selected" value="0">--SELECT--</option>
-													<option selected="selected" value="1">INDIAN</option>
-													<option selected="selected" value="2">MYLASIAN</option>
-													<option selected="selected" value="3">OTHERS</option>
-												</select>
-											</div>
-										</div>
-										<div class="row form-group form-inline">
-											<label for="race" class="col-sm-4 control-label">Race:</label>
-											<div class="col-sm-8">
-												<select name="Race" required id="race" class="form-control"
-													data-ng-model="drpraceValue">
-													<option selected="selected" value="0">--SELECT--</option>
-													<option selected="selected" value="1">BLACK</option>
-													<option selected="selected" value="2">WHITE</option>
-													<option selected="selected" value="3">OTHERS</option>
+													<option value="Black">BLACK</option>
+													<option value="White">WHITE</option>
+													<option value="Others">OTHERS</option>
 												</select>
 											</div>
 										</div>
@@ -968,47 +969,37 @@
 											<label for="dob" class="col-sm-4 control-label">Date
 												Of Birth:</label>
 											<div class="col-sm-8">
-												<input name="DateOfBirth" required class="form-control"
+												<input name="dateOfBirth"  value="${dateOfBirth }" required class="form-control"
 													id="dob" type="date" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="age" class="col-sm-4 control-label">Age</label>
+											<label for="Age" class="col-sm-4 control-label">Age</label>
 											<div class="col-sm-8">
-												<input name="Age" required class="form-control" id="age"
-													type="text" />
+												<input name="age"  value="${age }" required class="form-control" id="Age"
+													type="number"
+													onKeyPress="if(this.value.length==2) return false;" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="gender" class="col-sm-4 control-label">Gender:</label>
+											<label for="Gender" class="col-sm-4 control-label">Gender:</label>
 											<div class="col-sm-8">
-												<select name="Gender" required id="gender"
+												<%-- <input name="gender" value="${ gender}" required class="form-control"
+													id="gender" type="text" /> --%>
+												<select name="gender" value="${ gender}" required id="Gender"
 													class="form-control">
-													<option selected="selected" value="0">--SELECT--</option>
-													<option value="1">MALE</option>
-													<option value="2">FEMALE</option>
+													 <option selected="selected" value="0">--SELECT--</option>
+													<option value="Male">MALE</option>
+													<option value="Female">FEMALE</option> 
 												</select>
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="occupation" class="col-sm-4 control-label">Occupation:</label>
-											<div class="col-sm-8">
-												<select name="Occupation" required id="occupation"
-													class="form-control" data-ng-model="occupationValue">
-													<option selected="selected" value="0">--SELECT--</option>
-													<option selected="selected" value="1">EMPLOYED</option>
-													<option selected="selected" value="2">BUSINESS</option>
-													<option selected="selected" value="3">HOUSE WIFE</option>
-													<option selected="selected" value="4">OTHERS</option>
-												</select>
-											</div>
-										</div>
-										<div class="row form-group form-inline">
-											<label for="maritalstatus" class="col-sm-4 control-label">Marital
+											<label for="Maritalstatus" class="col-sm-4 control-label">Marital
 												Status:</label>
 											<div class="col-sm-8">
-												<select name="MaritalStatus" required id="maritalstatus"
-													class="form-control" data-ng-model="maritalstatusValue">
+												<select name="maritalStatus" value="${maritalStatus }" required id="Maritalstatus"
+													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="SINGLE">SINGLE</option>
 													<option value="MARRIED">MARRIED</option>
@@ -1016,11 +1007,25 @@
 											</div>
 										</div>
 										<div class="row form-group form-inline">
+											<label for="Occupation" class="col-sm-4 control-label">Occupation:</label>
+											<div class="col-sm-8">
+												<select name="occupation" value="${occupation }" required id="Occupation"
+													class="form-control" >
+													<option selected="selected" value="0">--SELECT--</option>
+													<option value="Employed">EMPLOYED</option>
+													<option value="Business">BUSINESS</option>
+													<option value="House wife">HOUSE WIFE</option>
+													<option value="Others">OTHERS</option>
+												</select>
+											</div>
+										</div>
+										<div class="row form-group form-inline">
 											<label for="gstregistered" class="col-sm-4 control-label">GST
 												Registered:</label>
 											<div class="col-sm-8">
-												<select name="GstRegistered" required id="gstregistered"
-													class="form-control" data-ng-model="gstregisteredValue">
+												<select name="gstRegistered" value="${gstRegistered }"  required id="gstregistered"
+													class="form-control" 
+													onChange="gsTregistered()">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -1028,45 +1033,45 @@
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="gstregistrationno" class="col-sm-4 control-label">GST
+											<label for="Gstregistrationno" class="col-sm-4 control-label">GST
 												Registration No:</label>
 											<div class="col-sm-8">
-												<input name="GstRegistrationNo" required
-													class="form-control" id="gstregistrationno" type="text"
-													data-ng-model="gstregistrationnoValue" />
+												<input disabled name="gstregistrationno" value="${gstregistrationno }" required
+													class="form-control" id="Gstregistrationno" type="number"
+													onKeyPress="if(this.value.length==10) return false;"
+													onChange="gstRegistrationNo()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="gstregdate" class="col-sm-4 control-label">GST
 												Reg Date:</label>
 											<div class="col-sm-8">
-												<input name="GstRegDate" required class="form-control"
-													id="gstregdate" type="date" data-ng-model="gstregdateValue" />
+												<input disabled name="gstregistrationdate" value="${gstregistrationdate }" required
+													class="form-control" id="gstregdate" type="date" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="gstexpirydate" class="col-sm-4 control-label">GST
+											<label for="Gstexpirydate" class="col-sm-4 control-label">GST
 												Expiry Date:</label>
 											<div class="col-sm-8">
-												<input name="GstExpiryDate" required class="form-control"
-													id="gstexpirydate" type="date"
-													data-ng-model="gstexpirydateValue" />
+												<input disabled name="gstexpirydate" value="${gstexpirydate }"  required
+													class="form-control" id="Gstexpirydate" type="date"
+													/>
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="website" class="col-sm-4 control-label">Website:</label>
+											<label for="Website" class="col-sm-4 control-label">Website:</label>
 											<div class="col-sm-8">
-												<input name="Website" required class="form-control"
-													id="website" type="text" data-ng-model="websiteValue" />
+												<input name="website" value="${website }" required class="form-control"
+													id="Website" type="url"  />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="employmentstatus" class="col-sm-4 control-label">Employment
+											<label for="Employmentstatus" class="col-sm-4 control-label">Employment
 												Status:</label>
 											<div class="col-sm-8">
-												<select name="EmploymentStatus" required
-													id="employmentstatus" class="form-control"
-													data-ng-model="employmentstatusValue">
+												<select name="employementstatus" value="${employementstatus }" required
+													id="Employmentstatus" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -1076,32 +1081,33 @@
 									</div>
 
 									<div class="col-md-6">
-
 										<div class="row form-group form-inline">
-											<label for="trafficviolation" class="col-sm-4 control-label">Traffic
+											<label for="Trafficviolation" class="col-sm-4 control-label">Traffic
 												Violation:</label>
 											<div class="col-sm-8">
-												<select name="TrafficViolation" required
-													id="trafficviolation" class="form-control"
-													data-ng-model="trafficviolationValue">
+												<select name="trafficviolation" value="${trafficviolation }" required
+													id="Trafficviolation" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
+													<option value="YES">YES</option>
+													<option value="NO">NO</option>													
 												</select>
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="email" class="col-sm-4 control-label">E-mail:</label>
+											<label for="Email" class="col-sm-4 control-label">E-mail:</label>
 											<div class="col-sm-8">
-												<input name="Email" required class="form-control" id="email"
-													type="email" data-ng-model="emailValue" />
+												<input name="email" value="${email }"  required class="form-control" id="Email"
+													type="email" 
+													onChange="emailVal()" />
 											</div>
 										</div>
 
 										<div class="row form-group form-inline">
-											<label for="vipstatus" class="col-sm-4 control-label">VIP
+											<label for="Vipstatus" class="col-sm-4 control-label">VIP
 												Status:</label>
 											<div class="col-sm-8">
-												<select name="VipStatus" required id="vipstatus"
-													class="form-control" data-ng-model="vipstatusValue">
+												<select name="vipstatus" value="${vipstatus }" required id="Vipstatus"
+													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -1111,40 +1117,41 @@
 										<fieldset class="scheduler-border">
 											<legend class="scheduler-border">Permanent Address</legend>
 											<div class="row form-group form-inline">
-												<label for="address" class="col-sm-4 control-label">Address:</label>
+												<label for="Address" class="col-sm-4 control-label">Address:</label>
 												<div class="col-sm-8">
-													<input name="Address" required class="form-control"
-														id="address" type="text" maxlength="120"
-														data-ng-model="addressValue" />
+													<input name="address" value="${address }"  required class="form-control"
+														id="Address" type="text" maxlength="120"
+														 />
 												</div>
 											</div>
 											<div class="row form-group form-inline">
 												<label for="postcode" class="col-sm-4 control-label">Post
 													Code:</label>
 												<div class="col-sm-8">
-													<input name="PostCode" required class="form-control"
-														id="postcode" type="text" maxlength="6"
-														data-ng-model="postcodeValue" />
+													<input name="postCode" value="${postCode }" required class="form-control"
+														id="postcode" type="number" 
+														onKeyPress="if(this.value.length==6 ) return false;"
+														onChange="posTcode()" />
 												</div>
 											</div>
 											<div class="row form-group form-inline">
 												<label for="state" class="col-sm-4 control-label">State/Country:</label>
 												<div class="col-sm-8">
-													<select name="State" required id="state"
+													<select name="statecountry" value="${statecountry }" required id="state"
 														class="form-control">
 														<option selected="selected" value="0">--SELECT--</option>
-														<option selected="selected" value="1">INDIA</option>
-														<option selected="selected" value="2">MYLASIA</option>
+														<option value="1">INDIA</option>
+														<option value="2">MYLASIA</option>
 													</select>
 												</div>
 											</div>
 											<div class="row form-group form-inline">
-												<label for="countrycode" class="col-sm-4 control-label">Country
+												<label for="Countrycode" class="col-sm-4 control-label">Country
 													code:</label>
 												<div class="col-sm-8">
-													<input name="CountryCode" required class="form-control"
-														id="countrycode" type="text" maxlength="6"
-														data-ng-model="countrycodeValue" />
+													<input name="countryCode" value="${countryCode }"  required class="form-control"
+														id="Countrycode" type="number"
+														onKeyPress="if(this.value.length==3 ) return false;" />
 												</div>
 											</div>
 										</fieldset>
@@ -1152,52 +1159,56 @@
 											<label for="mobileno" class="col-sm-4 control-label">Mobile
 												No:</label>
 											<div class="col-sm-8">
-												<input name="MobileNo" required class="form-control"
-													id="mobileno" type="number" maxlength="10"
-													data-ng-model="mobilenoValue" />
+												<input name="mobileNo" value="${mobileNo }"  required class="form-control"
+													id="mobileno" type="number" 
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="mobilEno()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="telno1" class="col-sm-4 control-label">Tel
 												No.(House):</label>
 											<div class="col-sm-8">
-												<input name="Telno1" required class="form-control"
-													id="telno1" type="number" maxlength="10"
-													data-ng-model="telno1Value" />
+												<input name="telnohouse" value="${telnohouse }" required class="form-control"
+													id="telno1" type="number"
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="telNo()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="telno2" class="col-sm-4 control-label">Tel
 												No.(Office):</label>
 											<div class="col-sm-8">
-												<input name="Telno2" required class="form-control"
+												<input name="telnooffice" value="${telnooffice }" required class="form-control"
 													id="telno2" type="number" maxlength="10"
-													data-ng-model="telno2Value" />
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="telNo1()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="faxno1" class="col-sm-4 control-label">Fax
 												No.(House):</label>
 											<div class="col-sm-8">
-												<input name="Faxno1" required class="form-control"
-													id="faxno1" type="number" maxlength="10"
-													data-ng-model="faxno1Value" />
+												<input name="faxnohouse" value="${faxnohouse }" required class="form-control"
+													id="faxno1" type="number" 
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="faxNo()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="faxno2" class="col-sm-4 control-label">Fax
 												No.(Office):</label>
 											<div class="col-sm-8">
-												<input name="Faxno2" required class="form-control"
-													id="faxno2" type="number" maxlength="10"
-													data-ng-model="faxno2Value" />
+												<input name="faxnooffice" value="${faxnooffice }" required class="form-control"
+													id="faxno2" type="number" 
+													onKeyPress="if(this.value.length==10 )return false;"
+													onChange="faxNo1()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="pdpa" class="col-sm-4 control-label">PDPA:</label>
+											<label for="Pdpa" class="col-sm-4 control-label">PDPA:</label>
 											<div class="col-sm-8">
-												<select name="Pdpa" required id="pdpa" class="form-control"
-													data-ng-model="pdpaValue">
+												<select name="pdpa" value="${pdpa }" required id="Pdpa" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="N0">NO</option>
@@ -1205,10 +1216,9 @@
 											</div>
 										</div>
 										<div class="row form-group form-inline">
-											<label for="css" class="col-sm-4 control-label">CSS:</label>
+											<label for="Css" class="col-sm-4 control-label">CSS:</label>
 											<div class="col-sm-8">
-												<select name="Css" required id="css" class="form-control"
-													data-ng-model="cssValue">
+												<select name="css" value="${css }" required id="Css" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -1219,32 +1229,32 @@
 											<label for="remarks" class="col-sm-4 control-label">Remarks:</label>
 											<div class="col-sm-8">
 												<textarea rows="3" cols="20" class="form-control"
-													id="remarks" data-ng-model="remarksValue">
+													id="remarks">${remarks }
 													</textarea>
 											</div>
-										</div>
+										</div> 
 									</div>
 								</div>
 								<fieldset class="scheduler-border">
-									<form>
+									
 										Personal Data Protection consent signed by customer
-										<div class="col-sm-12">
-											<label><input type="radio" name="optradio">Yes</label>
-											<label><input type="radio" name="optradio">No</label>
+											<div class="col-sm-12">
+											<label><input type="radio" value="${ datasignedcustomer}" name="datasignedcustomer">Yes</label>
+											<label><input type="radio" value="${ datasignedcustomer}" name="datasignedcustomer">No</label>
 										</div>
-									</form>
-									<form>
+									
+									
 										Consent on Cross Selling signed by customer
 										<div class="col-sm-12">
-											<label><input type="radio" name="optradio">Yes</label>
-											<label><input type="radio" name="optradio">No</label>
+											<label><input type="radio" value="${ crosssignedcustomer}" name="crosssignedcustomer">Yes</label>
+											<label><input type="radio" value="${ crosssignedcustomer}" name="crosssignedcustomer">No</label>
 										</div>
-									</form>
-								</fieldset>
+									
+								</fieldset> 
 							</fieldset>
 
 							<button type="submit" class="btn  btn-success center pull-right"
-								onclick="validateOthers()">Next</button>
+								>Next</button>
 						</div>
 					</form>
 				</div>
@@ -1252,7 +1262,9 @@
 			</div>
 
 		</div>
+		</div>
 </body>
+
 </html>
 
 

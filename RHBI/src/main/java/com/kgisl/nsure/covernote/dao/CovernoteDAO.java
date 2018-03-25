@@ -51,6 +51,8 @@ public interface CovernoteDAO {
 	List<CovernoteDO> getVehicleCapacity(CovernoteDO covernoteDO);
 
 	List<CovernoteDO> getFunctionalModification(CovernoteDO covernoteDO);
+
+	List<CovernoteDO> cnoptionGrid(CovernoteDO covernoteDO);
 	
 	
 }

@@ -3,6 +3,8 @@
  */
 package com.kgisl.nsure.covernote.domain;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Component;
 
 /**
@@ -110,7 +112,88 @@ public class CovernoteDO {
 	private String suminsured;
 	private String trailersuminsured;
 
+
+	/*Grid*/
+	public Long id;
+	public String namee;
+	public String email;
+	public int quotationID;
+	public int classId;
+	public Date IssueDate;
+	
 		
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+	/**
+	 * @return the namee
+	 */
+	public String getNamee() {
+		return namee;
+	}
+	/**
+	 * @param namee the namee to set
+	 */
+	public void setNamee(String namee) {
+		this.namee = namee;
+	}
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	/**
+	 * @return the quotationID
+	 */
+	public int getQuotationID() {
+		return quotationID;
+	}
+	/**
+	 * @param quotationID the quotationID to set
+	 */
+	public void setQuotationID(int quotationID) {
+		this.quotationID = quotationID;
+	}
+	/**
+	 * @return the classId
+	 */
+	public int getClassId() {
+		return classId;
+	}
+	/**
+	 * @param classId the classId to set
+	 */
+	public void setClassId(int classId) {
+		this.classId = classId;
+	}
+	/**
+	 * @return the issueDate
+	 */
+	public Date getIssueDate() {
+		return IssueDate;
+	}
+	/**
+	 * @param issueDate the issueDate to set
+	 */
+	public void setIssueDate(Date issueDate) {
+		IssueDate = issueDate;
+	}
 	/**
 	 * @return the functionalmodificationid
 	 */

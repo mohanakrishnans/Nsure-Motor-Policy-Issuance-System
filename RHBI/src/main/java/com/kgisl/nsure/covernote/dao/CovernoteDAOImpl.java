@@ -45,7 +45,43 @@ public class CovernoteDAOImpl implements CovernoteDAO {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 		namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
+	
+	/*** CN OPTIONS ***/
+	@Override
+	public List<CovernoteDO> cnoptionGrid(CovernoteDO covernoteDO) {
+		List<CovernoteDO> cnoption = null;
+		try {
+			String finalSQL = null;
+			finalSQL = "SELECT * FROM EIS_TRN_COVER_NOTE";
+			cnoption = jdbcTemplate.query(finalSQL, new RowMapper<CovernoteDO>() {
+				@Override
+				public CovernoteDO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					CovernoteDO covernoteDO = new CovernoteDO();
+					covernoteDO.setClassId(rs.getInt("NUM_COVER_NOTE_ID"));
+					covernoteDO.setIssueDate(rs.getDate("DTT_ISSUE_DATE"));
+					return covernoteDO;
+				}
+			});
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return cnoption;
+	}
+	/*@Overrideaw4cxhi9
+	public List<CovernoteDO> cnoptionGrid(CovernoteDO covernoteDO) {
+		// TODO Auto-generated method stub
+		List<CovernoteDO> cnoption = null;
+		try{
+			cnoption = covernotedao.cnoptionGrid(covernoteDO);
 
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return cnoption;
+	}*/
+	
 	@Override
 	public void saveCovernote(CovernoteDO covernoteDO) {
 		// TODO Auto-generated method stub

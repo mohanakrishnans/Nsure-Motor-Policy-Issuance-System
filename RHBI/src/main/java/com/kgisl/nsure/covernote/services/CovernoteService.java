@@ -6,6 +6,7 @@ package com.kgisl.nsure.covernote.services;
 import java.util.List;
 
 import com.kgisl.nsure.covernote.domain.CovernoteDO;
+import com.kgisl.nsure.quotation.domain.QuotationDO;
 
 
 /**
@@ -52,5 +53,7 @@ public interface CovernoteService {
 	List<CovernoteDO> getSafetyCode(CovernoteDO covernoteDO);
 
 	List<CovernoteDO> getFunctionalModification(CovernoteDO covernoteDO);
+
+	List<CovernoteDO> cnoptionGrid(CovernoteDO covernoteDO);
 
 }

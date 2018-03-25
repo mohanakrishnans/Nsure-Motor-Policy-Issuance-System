@@ -46,12 +46,12 @@
 		</div>
 		<div class="main-menu">
 			<ul id="side-main-menu" class="side-menu list-unstyled">
-				<li><a href="quotation"> <i class="icon-home"></i>Quotation</a></li>
-					<li><a href="covernote"> <i class="icon-form"></i>New Business</a></li>
-					<li><a href="nameddrivers"> <i class="icon-form"></i>Named Drivers</a></li>
-					<li><a href="endorsementdetails"><i class="icon-form"></i>Endorsement Details</a></li>
-					<li><a href="premium"> <i class="icon-grid"></i>Premium</a></li>
-			</ul>
+					<li><a href="quotation"> <i class="icon-home"></i>Quotation </a></li>
+					<li><a href="cnOptions"> <i class="icon-form"></i>CN Options</a></li><!-- 
+					<li><a href="nameddrivers"> <i class="icon-form"></i>Named Drivers</a></li> -->
+					<li><a href="endorsementdetails"><i class="icon-form"></i>Endorsement</a></li>
+					<li><a href="referRisk"> <i class="icon-grid"></i>Refer Risk</a></li>
+				</ul>
 		</div>
 	</div>
 	</nav>

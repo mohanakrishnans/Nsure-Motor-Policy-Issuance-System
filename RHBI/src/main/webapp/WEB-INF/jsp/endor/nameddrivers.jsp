@@ -6,6 +6,10 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
+<script type="text/javascript">
+      var CONTEXT_PATH = '<%=request.getContextPath()%>/';
+      window.localStorage.clear();
+</script>
 <link rel="shortcut icon"
 	href="http://localhost/nsure/dashboard/img/favicon.ico">
 <link rel="stylesheet"
@@ -24,10 +28,7 @@
 <script src="http://localhost/nsure/dashboard/js/messenger.min.js"></script>
 <script
 	src="http://localhost/nsure/dashboard/js/messenger-theme-flat.js"></script>
-<!-- 
-<script src="http://localhost/nsure/dashboard/js/home-premium.js"></script> -->
-<script type="text/javascript"
-	src="https://ajax.googleapis.com/ajax/libs/angular.js/1.3.16/angular.min.js"></script>
+
 <script src='resources/js/angular.min.js'></script>
 <script src='resources/js/angular-touch.min.js'></script>
 <script src='resources/js/angular-animate.min.js'></script>
@@ -35,6 +36,7 @@
 <script src="resources/js/index.js"></script>
 <link rel='stylesheet prefetch' href='resources/css/ui-grid.min.css'>
 <link rel='stylesheet prefetch' href='resources/css/style.css'>
+
 </head>
 <body data-ng-app="app">
 	<nav class="side-navbar">
@@ -54,19 +56,12 @@
 		</div>
 		<div class="main-menu">
 			<ul id="side-main-menu" class="side-menu list-unstyled">
-				<li><a href="quotation"> <i class="icon-home"></i>Quotation
-				</a></li>
-				<li><a href="covernote"> <i class="icon-form"></i>New
-						Business
-				</a></li>
-				<li><a href="nameddrivers"> <i class="icon-form"></i>Named
-						Drivers
-				</a></li>
-				<li><a href="endorsementdetails"><i class="icon-form"></i>Endorsement
-						Details</a></li>
-				<li><a href="premium"> <i class="icon-grid"></i>Premium
-				</a></li>
-			</ul>
+					<li><a href="quotation"> <i class="icon-home"></i>Quotation </a></li>
+					<li><a href="cnOptions"> <i class="icon-form"></i>CN Options</a></li><!-- 
+					<li><a href="nameddrivers"> <i class="icon-form"></i>Named Drivers</a></li> -->
+					<li><a href="endorsementdetails"><i class="icon-form"></i>Endorsement</a></li>
+					<li><a href="referRisk"> <i class="icon-grid"></i>Refer Risk</a></li>
+				</ul>
 		</div>
 	</div>
 	</nav>
@@ -99,16 +94,20 @@
 
 						<div data-ng-controller="NamedDrivers">
 							<div data-ui-grid="gridOptions" data-ui-grid-selection
-								class="named-grid"></div>
-						</div>
-						<br>
+								class="named-grid">
+							</div>
+						
+						<!-- 	 -->
 						<ul align="center" class="pager">
-							<button type="button" class="btn btn-primary btn-md"
-								data-toggle="modal" data-target="#namedDrivers">Add
+							<button type="button" class="btn btn-primary btn-md" ng-click="addNewRow()"
+							>Add
+								More drivers</button>
+								<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#namedDrivers">Add
 								More drivers</button>
 							<button type="button" class="btn btn-primary btn-md">Remove
 								drivers</button>
 						</ul>
+						</div>
 					</fieldset>
 					<fieldset class="scheduler-border">
 						<legend class="scheduler-border">Extra Coverage</legend>
@@ -266,31 +265,84 @@
 		</div>
 	</div>
 	<div class="modal fade" id="namedDrivers" role="dialog">
-		<div class="modal-dialog modal-lg">
-
-			<!-- Modal content-->
+		<div class="modal-dialog modal-lg" ng-controller="NamedPopup as user" id="namedDrivers">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title">Add Drivers</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-
 				</div>
-				<div class="modal-body">
-					 <div class="card-body">
-					<div class="card"> 
-							<h4>New Business-Named Driver and Extra Coverage</h4>
-					 	
+				<div class="card-body">
+					<div class="card">
+						<div class="card-header d-flex align-items-center">
+							<h4>Named Driver</h4>
+						</div>
+						<!-- action="save_named_drivers" method="POST"
+								modelAttribute="namedDriversData" -->
 						<div class="card-body">
+							<form action="saveNamedDrivers" method="POST"
+						modelAttribute="saveNamedDriversData">
+								<fieldset class="scheduler-border">
+									<legend class="scheduler-border">Named Drivers</legend>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="row form-group form-inline">
+												<label for="address" class="col-sm-4 control-label">New
+													IC No</label>
+												<div class="col-sm-8">
+													<input ng-model="user.namednewicno"  name="namednewicno" id="uname"  
+													required class="form-control" type="text" />
+													<!--   name="namednewicno"  -->
+												</div>
+											</div>
+											<div class="row form-group form-inline">
+												<label for="address" class="col-sm-4 control-label">Name</label>
+												<div class="col-sm-8">
+													<input ng-model="user.nameddrivername"  name="nameddrivername" required class="form-control" type="text" />
+												</div>
+											</div>
+											<div class="row form-group form-inline">
+												<label for="address" class="col-sm-4 control-label">Old
+													IC No</label>
+												<div class="col-sm-8">
+													<input ng-model="user.namedoldicno" name="namedoldicno" required class="form-control" type="text" />
+												</div>
+											</div>
+											<div class="row form-group form-inline">
+												<label for="address" class="col-sm-4 control-label">Age</label>
+												<div class="col-sm-8">
+													<input ng-model="user.namedage" name="namedage" required class="form-control" type="text" />
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="row form-group form-inline">
+												<label for="address" class="col-sm-4 control-label">Experience</label>
+												<div class="col-sm-8">
+													<input ng-model="user.nameddriverexperience" name="nameddriverexperience" required class="form-control" type="text" />
+												</div>
+											</div>
+											<div class="row form-group form-inline">
+												<label for="address" class="col-sm-4 control-label">Gender</label>
+												<div class="col-sm-8">
+													<input ng-model="user.namedgender" name="namedgender" required class="form-control" type="text" />
+												</div>
+											</div>
+											<div class="row form-group form-inline">
+												<label for="address" class="col-sm-4 control-label">Relationship</label>
+												<div class="col-sm-8">
+													<input ng-model="user.nameddriverrelationship" name="nameddriverrelationship" required class="form-control" type="text" />
+												</div>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<button type="submit" class="btn  btn-success center pull-right" >Next</button>
+							<!-- 	 data-dismiss="modal"  ng-click="submit(this.user)"   -->
+							</form>
 						</div>
 					</div>
-
-				</div> 
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </body>

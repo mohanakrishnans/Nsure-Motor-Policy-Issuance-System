@@ -20,6 +20,21 @@ public class CovernoteServiceImpl implements CovernoteService {
 	CovernoteDAO covernotedao;
 	
 	@Override
+	public List<CovernoteDO> cnoptionGrid(CovernoteDO covernoteDO) {
+		// TODO Auto-generated method stub
+		List<CovernoteDO> cnoption = null;
+		try{
+			cnoption = covernotedao.cnoptionGrid(covernoteDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return cnoption;
+	}
+	
+	@Override
 	public void saveCovernote(CovernoteDO covernoteDO) {
 		// TODO Auto-generated method stub
 		//System.out.println("S>");

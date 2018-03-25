@@ -30,4 +30,6 @@ public interface QuotationDAO {
 
 	List<QuotationDO> namedDriversGrid(QuotationDO quotationDO);
 
+	void saveNamedDrivers(QuotationDO quotationDO);
+
 }

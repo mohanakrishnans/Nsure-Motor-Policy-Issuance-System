@@ -26,4 +26,6 @@ public interface QuotationService {
 
 	List<QuotationDO> namedDriversGrid(QuotationDO quotationDO);
 
+	void saveNamedDrivers(QuotationDO quotationDO);
+
 }

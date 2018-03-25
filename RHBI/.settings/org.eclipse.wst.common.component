@@ -5,6 +5,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/generated/java/source"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Jrxml"/>
         <property name="context-root" value="RHBI"/>
         <property name="java-output-path" value="/RHBI/target/classes"/>
     </wb-module>

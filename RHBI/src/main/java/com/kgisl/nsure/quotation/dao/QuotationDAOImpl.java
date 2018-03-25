@@ -62,7 +62,7 @@ public class QuotationDAOImpl implements QuotationDAO {
 
 	/*** COVERNOTE GRID ***/
 	@Override
-	public List<QuotationDO>covernoteGrid(QuotationDO quotationDO) {
+	public List<QuotationDO> covernoteGrid(QuotationDO quotationDO) {
 		List<QuotationDO> covernoteGrid = null;
 		try {
 			String SQL = null;
@@ -105,10 +105,10 @@ public class QuotationDAOImpl implements QuotationDAO {
 		}
 		return covernoteGrid;
 	}
-	
+
 	/*** NAMED DRIVERS ***/
 	@Override
-	public List<QuotationDO> namedDriversGrid (QuotationDO quotationDO) {
+	public List<QuotationDO> namedDriversGrid(QuotationDO quotationDO) {
 		List<QuotationDO> covernoteGrid = null;
 		try {
 			String SQL = null;
@@ -118,11 +118,11 @@ public class QuotationDAOImpl implements QuotationDAO {
 				@Override
 				public QuotationDO mapRow(ResultSet rs, int rowNum) throws SQLException {
 					QuotationDO quotationDO = new QuotationDO();
-					
+
 					quotationDO.setNameddriversno(rs.getInt("NUM_S_NO"));
 					quotationDO.setNameddrivername(rs.getString("VCH_NAME"));
 					quotationDO.setNamednewicno(rs.getString("NUM_NEW_IC_NO"));
-					quotationDO.setNamedoldicno(rs.getString("NUM_OLD_NEW_IC_NO"));
+					quotationDO.setNamedoldicno(rs.getString("NUM_OLD_IC_NO"));
 					quotationDO.setNameddriverrelationship(rs.getString("VCH_RELATIONSHIP"));
 					quotationDO.setNamedgender(rs.getString("VCH_GENDER"));
 					quotationDO.setNamedage(rs.getInt("NUM_AGE"));
@@ -181,6 +181,48 @@ public class QuotationDAOImpl implements QuotationDAO {
 		return contactType;
 	}
 
+	/* Named Drivers Save */
+	@Override
+	public void saveNamedDrivers(QuotationDO quotationDO) {
+		// TODO Auto-generated method stub
+		// System.out.println(quotationDO.getName()+" mohn");
+
+		
+		// quotationDO.getContactName();
+
+		try {
+			
+			 System.out.println(" 11111");
+			
+
+			SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(dataSource);
+			simpleJdbcCall.withCatalogName("NAMED_DRIVER_SAVE").withProcedureName("PR_NAMED_DRIVER_SAVE")
+					.withoutProcedureColumnMetaDataAccess()
+					.declareParameters(new SqlParameter("P_VCH_NAME", OracleTypes.VARCHAR),
+							new SqlParameter("P_NUM_NEW_IC_NO", OracleTypes.VARCHAR),
+							new SqlParameter("P_NUM_OLD_IC_NO", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_GENDER", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_RELATIONSHIP", OracleTypes.VARCHAR),
+							new SqlParameter("P_NUM_AGE", OracleTypes.NUMBER),
+							new SqlParameter("P_VCH_DRIVER_EXPERIENCE", OracleTypes.VARCHAR));
+
+			SqlParameterSource inputParams = new MapSqlParameterSource()
+					.addValue("P_VCH_NAME", quotationDO.getNameddrivername())
+					.addValue("P_NUM_NEW_IC_NO", quotationDO.getNamednewicno())
+					.addValue("P_NUM_OLD_IC_NO", quotationDO.getNamedoldicno())
+					.addValue("P_VCH_GENDER", quotationDO.getNamedgender())
+					.addValue("P_VCH_RELATIONSHIP", quotationDO.getNameddriverrelationship())
+					.addValue("P_NUM_AGE", quotationDO.getNamedage())
+					.addValue("P_VCH_DRIVER_EXPERIENCE", quotationDO.getNameddriverexperience());
+											
+			Map<String, Object> transactionStatus = simpleJdbcCall.execute(inputParams);
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	/* Quotation Save */
 	@Override
 	public void saveQuotation(QuotationDO quotationDO) {
 		// TODO Auto-generated method stub
@@ -192,20 +234,52 @@ public class QuotationDAOImpl implements QuotationDAO {
 		try {
 			Date DateOfBirth = null;
 
-			if (quotationDO.getDateOfBirth() != null) {
+			//if (quotationDO.getDateOfBirth() != null) {
 				String dob = quotationDO.getDateOfBirth();
 				DateOfBirth = new SimpleDateFormat("dd-MM-yyyy").parse(dob);
-			}
+			//}
 
-			System.out.println(quotationDO.getSourceType() + " " + quotationDO.getAccountCode() + " "
-					+ quotationDO.getBranch() + " " + quotationDO.getAccountName() + " " + quotationDO.getContactType()
-					+ " " + quotationDO.getNewIcNo() + " " + quotationDO.getBusinessRegNo() + " "
-					+ quotationDO.getName() + " " + quotationDO.getNationality() + " " + quotationDO.getRace() + " "
-					+ DateOfBirth + " " + quotationDO.getGender() + " " + quotationDO.getMaritalStatus() + " "
-					+ quotationDO.getOccupation() + " " + quotationDO.getGstRegistered() + " "
-					+ quotationDO.getAddress() + " " + quotationDO.getPostCode() + " " + quotationDO.getCountryCode()
-					+ " " + quotationDO.getMobileNo() + " " + quotationDO.getPdpa() + " " + quotationDO.getCss() + " "
-					+ quotationDO.getTypeOfBusiness() + " ");
+				System.out.println("P_VCH_SOURCE_TYPE"+ quotationDO.getSourceType());
+				System.out.println("P_VCH_ACCOUNT_CODE"+ quotationDO.getAccountCode());
+				System.out.println("P_VCH_BRANCH"+ quotationDO.getBranch());
+				System.out.println("P_VCH_ACCOUNT_NAME"+ quotationDO.getAccountName());
+				System.out.println("P_VCH_CONTACT_TYPE"+ quotationDO.getContactType());
+				System.out.println("P_VCH_NEW_IC_NO"+ quotationDO.getNewIcNo());
+				System.out.println("P_VCH_BUSINESS_REGISTRATION_NO"+ quotationDO.getBusinessRegNo());
+				System.out.println("P_VCH_NAME"+ quotationDO.getName());
+				System.out.println("P_VCH_NATIONALITY"+ quotationDO.getNationality());
+				System.out.println("P_VCH_RACE"+ quotationDO.getRace());
+				System.out.println("P_DTT_DATE_OF_BIRTH"+ DateOfBirth);
+				System.out.println("P_VCH_GENDER"+ quotationDO.getGender());
+				System.out.println("P_VCH_MARITAL_STATUS"+ quotationDO.getMaritalStatus());
+				System.out.println("P_VCH_OCCUPATION"+ quotationDO.getOccupation());
+				System.out.println("P_VCH_GST_REGISTERED"+ quotationDO.getGstRegistered());
+				System.out.println("P_VCH_ADDRESS"+ quotationDO.getAddress());
+				System.out.println("P_VCH_POST_CODE"+ quotationDO.getPostCode());
+				System.out.println("P_VCH_COUNTRY_CODE"+ quotationDO.getCountryCode());
+				System.out.println("P_VCH_MOBILE_NO"+ quotationDO.getMobileNo());
+				System.out.println("P_VCH_PDPA"+ quotationDO.getPdpa());
+				System.out.println("P_VCH_CSS"+ quotationDO.getCss());
+				System.out.println("P_VCH_TYPE_OF_BUSINESS"+ quotationDO.getTypeOfBusiness());							
+				System.out.println("P_NUM_GST_REGISTRATION_NO"+ quotationDO.getGstregistrationno());
+				System.out.println("P_DTT_GST_REGISTRATION_DATE"+ quotationDO.getGstregistrationdate());
+				System.out.println("P_DTT_GST_EXPIRY_DATE"+ quotationDO.getGstexpirydate());
+				System.out.println("P_VCH_WEBSITE"+ quotationDO.getWebsite());
+				System.out.println("P_VCH_TRAFFIC_VIOLATION"+ quotationDO.getTrafficviolation());
+				System.out.println("P_VCH_EMAIL"+ quotationDO.getEmail());
+				System.out.println("P_VCH_VIP_STATUS"+ quotationDO.getVipstatus());
+				System.out.println("P_VCH_STATE_COUNTRY"+ quotationDO.getStatecountry());
+				System.out.println("P_VCH_TEL_NO_HOUSE"+ quotationDO.getTelnohouse());
+				System.out.println("P_VCH_TEL_NO_OFFICE"+ quotationDO.getTelnooffice());
+				System.out.println("P_VCH_FAX_NO_HOUSE"+ quotationDO.getFaxnohouse());
+				System.out.println("P_VCH_FAX_NO_OFFICE"+ quotationDO.getFaxnooffice());
+				System.out.println("P_VCH_REMARKS"+ quotationDO.getRemarks());
+				System.out.println("P_VCH_DATA_SIGNED_CUSTOMER"+ quotationDO.getDatasignedcustomer());
+				System.out.println("P_VCH_CROSS_SIGNED_CUSTOMER"+ quotationDO.getCrosssignedcustomer());
+				System.out.println("P_VCH_OLD_IC_PASSPORT_NO"+ quotationDO.getOldicpassportno());
+				System.out.println("P_VCH_SALUTATION"+ quotationDO.getSalutation());
+				System.out.println("P_NUM_AGE"+ quotationDO.getAge());
+				System.out.println("P_VCH_EMPLOYEMENT_STATUS"+ quotationDO.getEmployementstatus());
 			// System.out.println("DAO>");
 
 			SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(dataSource);
@@ -232,7 +306,29 @@ public class QuotationDAOImpl implements QuotationDAO {
 							new SqlParameter("P_VCH_MOBILE_NO", OracleTypes.VARCHAR),
 							new SqlParameter("P_VCH_PDPA", OracleTypes.VARCHAR),
 							new SqlParameter("P_VCH_CSS", OracleTypes.VARCHAR),
-							new SqlParameter("P_VCH_TYPE_OF_BUSINESS", OracleTypes.VARCHAR));
+							new SqlParameter("P_VCH_TYPE_OF_BUSINESS", OracleTypes.VARCHAR),
+							new SqlParameter("P_NUM_GST_REGISTRATION_NO", OracleTypes.NUMBER),
+							new SqlParameter("P_DTT_GST_REGISTRATION_DATE", OracleTypes.DATE),
+							new SqlParameter("P_DTT_GST_EXPIRY_DATE", OracleTypes.DATE),
+							new SqlParameter("P_VCH_WEBSITE", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_TRAFFIC_VIOLATION", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_EMAIL", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_VIP_STATUS", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_STATE_COUNTRY", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_TEL_NO_HOUSE", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_TEL_NO_OFFICE", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_FAX_NO_HOUSE", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_FAX_NO_OFFICE", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_REMARKS", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_DATA_SIGNED_CUSTOMER", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_CROSS_SIGNED_CUSTOMER", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_OLD_IC_PASSPORT_NO", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_SALUTATION", OracleTypes.VARCHAR),
+							new SqlParameter("P_NUM_AGE", OracleTypes.NUMBER),
+							new SqlParameter("P_VCH_EMPLOYEMENT_STATUS", OracleTypes.VARCHAR)
+							
+							
+							);
 
 			SqlParameterSource inputParams = new MapSqlParameterSource()
 					.addValue("P_VCH_SOURCE_TYPE", quotationDO.getSourceType())
@@ -244,7 +340,8 @@ public class QuotationDAOImpl implements QuotationDAO {
 					.addValue("P_VCH_BUSINESS_REGISTRATION_NO", quotationDO.getBusinessRegNo())
 					.addValue("P_VCH_NAME", quotationDO.getName())
 					.addValue("P_VCH_NATIONALITY", quotationDO.getNationality())
-					.addValue("P_VCH_RACE", quotationDO.getRace()).addValue("P_DTT_DATE_OF_BIRTH", DateOfBirth)
+					.addValue("P_VCH_RACE", quotationDO.getRace())
+					.addValue("P_DTT_DATE_OF_BIRTH", DateOfBirth)
 					.addValue("P_VCH_GENDER", quotationDO.getGender())
 					.addValue("P_VCH_MARITAL_STATUS", quotationDO.getMaritalStatus())
 					.addValue("P_VCH_OCCUPATION", quotationDO.getOccupation())
@@ -253,15 +350,36 @@ public class QuotationDAOImpl implements QuotationDAO {
 					.addValue("P_VCH_POST_CODE", quotationDO.getPostCode())
 					.addValue("P_VCH_COUNTRY_CODE", quotationDO.getCountryCode())
 					.addValue("P_VCH_MOBILE_NO", quotationDO.getMobileNo())
-					.addValue("P_VCH_PDPA", quotationDO.getPdpa()).addValue("P_VCH_CSS", quotationDO.getCss())
-					.addValue("P_VCH_TYPE_OF_BUSINESS", quotationDO.getTypeOfBusiness());
+					.addValue("P_VCH_PDPA", quotationDO.getPdpa())
+					.addValue("P_VCH_CSS", quotationDO.getCss())
+					.addValue("P_VCH_TYPE_OF_BUSINESS", quotationDO.getTypeOfBusiness())							
+					.addValue("P_NUM_GST_REGISTRATION_NO", quotationDO.getGstregistrationno())
+					.addValue("P_DTT_GST_REGISTRATION_DATE", quotationDO.getGstregistrationdate())
+					.addValue("P_DTT_GST_EXPIRY_DATE", quotationDO.getGstexpirydate())
+					.addValue("P_VCH_WEBSITE", quotationDO.getWebsite())
+					.addValue("P_VCH_TRAFFIC_VIOLATION", quotationDO.getTrafficviolation())
+					.addValue("P_VCH_EMAIL", quotationDO.getEmail())
+					.addValue("P_VCH_VIP_STATUS", quotationDO.getVipstatus())
+					.addValue("P_VCH_STATE_COUNTRY", quotationDO.getStatecountry())
+					.addValue("P_VCH_TEL_NO_HOUSE", quotationDO.getTelnohouse())
+					.addValue("P_VCH_TEL_NO_OFFICE", quotationDO.getTelnooffice())
+					.addValue("P_VCH_FAX_NO_HOUSE", quotationDO.getFaxnohouse())
+					.addValue("P_VCH_FAX_NO_OFFICE", quotationDO.getFaxnooffice())
+					.addValue("P_VCH_REMARKS", quotationDO.getRemarks())
+					.addValue("P_VCH_DATA_SIGNED_CUSTOMER", quotationDO.getDatasignedcustomer())
+					.addValue("P_VCH_CROSS_SIGNED_CUSTOMER", quotationDO.getCrosssignedcustomer())
+					.addValue("P_VCH_OLD_IC_PASSPORT_NO", quotationDO.getOldicpassportno())
+					.addValue("P_VCH_SALUTATION", quotationDO.getSalutation())
+					.addValue("P_NUM_AGE", quotationDO.getAge())
+					.addValue("P_VCH_EMPLOYEMENT_STATUS", quotationDO.getEmployementstatus()
+							);
 
 			Map<String, Object> transactionStatus = simpleJdbcCall.execute(inputParams);
 
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		//System.out.println("DAO<");
+		// System.out.println("DAO<");
 	}
 
 	@Override
@@ -288,7 +406,7 @@ public class QuotationDAOImpl implements QuotationDAO {
 			Map<String, Object> transactionStatus = simpleJdbcCall.execute(inputParams);
 
 		} catch (Exception e) {
-			System.out.println();
+			System.out.println(e);
 		}
 		System.out.println("DAO<");
 	}

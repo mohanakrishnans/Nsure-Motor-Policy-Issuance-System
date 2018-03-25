@@ -20,26 +20,26 @@
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	<servlet>
+	<!-- <servlet>
 		<servlet-name>GeneratePdf</servlet-name>
 		<servlet-class>com.kgisl.nsure.corresletters.utilities.GeneratePdf</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>GeneratePdf</servlet-name>
 		<url-pattern>/letters/printpdf</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 
 	<!-- <servlet-mapping> <servlet-name>default</servlet-name> <url-pattern>/img/*</url-pattern> 
 		</servlet-mapping> <servlet-mapping> <servlet-name>default</servlet-name> 
 		<url-pattern>/images/*</url-pattern> </servlet-mapping> -->
-	<servlet>
+	<!-- <servlet>
 		<servlet-name>FilterGeneratePdf</servlet-name>
 		<servlet-class>com.kgisl.nsure.filter.utilities.FilterGeneratePdf</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FilterGeneratePdf</servlet-name>
 		<url-pattern>/filter/printpdf</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 
 	<!-- GZip Ends -->
 	<!-- Cache HTTP Starts <filter> <filter-name>jsCache</filter-name> <filter-class>com.kgisl.nsure.web.interceptor.CacheFilter</filter-class> 

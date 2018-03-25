@@ -32,6 +32,7 @@ import com.kgisl.nsure.quotation.domain.QuotationDO;
 public class CovernoteController {
 	@Autowired
 	CovernoteService covernoteService;
+	
 
 	/** Quotation */
 	@RequestMapping(value = "/coverclass", method = RequestMethod.GET)
@@ -101,6 +102,26 @@ public class CovernoteController {
 		return new ModelAndView("redirect:nameddrivers");
 	}
 	
+	/* CN options Grid */
+	@RequestMapping(value = "/cnoptionGrid", method = RequestMethod.GET)
+	public @ResponseBody String cnoptionGrid(CovernoteDO covernoteDO, HttpServletRequest request) {
+
+		List<CovernoteDO> cnoptiongrid = null;
+		ArrayList<CovernoteDO> mainList = new ArrayList<CovernoteDO>();
+		//System.out.println("cnoptionGrid");
+		String jsonString = null;
+		Gson gson = new Gson();
+		try {
+			cnoptiongrid = covernoteService.cnoptionGrid(covernoteDO);
+
+			mainList.addAll(0, cnoptiongrid);
+			jsonString = gson.toJson(mainList);
+		//	System.out.println("cnoptiongrid\n" + jsonString);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return jsonString;
+	}
 	
 	/**Covernote DROP **/
 	@RequestMapping(value = "/covernoteDrop", method = RequestMethod.GET)
