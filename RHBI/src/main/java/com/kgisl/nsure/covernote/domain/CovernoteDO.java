@@ -31,7 +31,7 @@ public class CovernoteDO {
 	private String vehicleusagename;
 	private int additionalusageid;
 	private String additionalusagename;
-	
+	private int covernoteid;
 	private int cnclassid;
 	private String cnclassname;
 	private int vehiclebodyid;
@@ -121,7 +121,126 @@ public class CovernoteDO {
 	public int classId;
 	public Date IssueDate;
 	
-		
+	/*Endor*/ 
+	public Long policyno;
+	public String cnno;
+	public Date pocdate;
+	public Date effectivedate;
+	public Date expiredate;
+	public Long previouspolicyno;
+	public String covernoteno;	
+	public String endorsementtype;
+	 
+	
+	
+	/**
+	 * @return the covernoteid
+	 */
+	public int getCovernoteid() {
+		return covernoteid;
+	}
+	/**
+	 * @param covernoteid the covernoteid to set
+	 */
+	public void setCovernoteid(int covernoteid) {
+		this.covernoteid = covernoteid;
+	}
+	/**
+	 * @return the previouspolicyno
+	 */
+	public Long getPreviouspolicyno() {
+		return previouspolicyno;
+	}
+	/**
+	 * @param previouspolicyno the previouspolicyno to set
+	 */
+	public void setPreviouspolicyno(Long previouspolicyno) {
+		this.previouspolicyno = previouspolicyno;
+	}
+	/**
+	 * @return the covernoteno
+	 */
+	public String getCovernoteno() {
+		return covernoteno;
+	}
+	/**
+	 * @param covernoteno the covernoteno to set
+	 */
+	public void setCovernoteno(String covernoteno) {
+		this.covernoteno = covernoteno;
+	}
+	/**
+	 * @return the endorsementtype
+	 */
+	public String getEndorsementtype() {
+		return endorsementtype;
+	}
+	/**
+	 * @param endorsementtype the endorsementtype to set
+	 */
+	public void setEndorsementtype(String endorsementtype) {
+		this.endorsementtype = endorsementtype;
+	}
+	/**
+	 * @return the policyno
+	 */
+	public Long getPolicyno() {
+		return policyno;
+	}
+	/**
+	 * @param policyno the policyno to set
+	 */
+	public void setPolicyno(Long policyno) {
+		this.policyno = policyno;
+	}
+	/**
+	 * @return the cnno
+	 */
+	public String getCnno() {
+		return cnno;
+	}
+	/**
+	 * @param cnno the cnno to set
+	 */
+	public void setCnno(String cnno) {
+		this.cnno = cnno;
+	}
+	/**
+	 * @return the pocdate
+	 */
+	public Date getPocdate() {
+		return pocdate;
+	}
+	/**
+	 * @param pocdate the pocdate to set
+	 */
+	public void setPocdate(Date pocdate) {
+		this.pocdate = pocdate;
+	}
+	/**
+	 * @return the effectivedate
+	 */
+	public Date getEffectivedate() {
+		return effectivedate;
+	}
+	/**
+	 * @param effectivedate the effectivedate to set
+	 */
+	public void setEffectivedate(Date effectivedate) {
+		this.effectivedate = effectivedate;
+	}
+	/**
+	 * @return the expiredate
+	 */
+	public Date getExpiredate() {
+		return expiredate;
+	}
+	/**
+	 * @param expiredate the expiredate to set
+	 */
+	public void setExpiredate(Date expiredate) {
+		this.expiredate = expiredate;
+	}
 	/**
 	 * @return the id
 	 */

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="QuotationScheduleList" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="798ec631-51e5-44f2-882d-6cbc3df29bee">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="QuotationScheduleList" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="Field_1" class="java.lang.String"/>
+	<field name="quotationID" class="java.lang.Integer"/>
+	<field name="newIcNo" class="java.lang.Long"/>
+	<field name="address" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79">
+			<staticText>
+				<reportElement x="100" y="10" width="320" height="50" uuid="980e1590-b0b7-4bd9-9da3-db36733174b2"/>
+				<textElement textAlignment="Center">
+					<font size="25"/>
+				</textElement>
+				<text><![CDATA[Motor Transaction]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="570" splitType="Stretch">
+			<subreport>
+				<reportElement x="-20" y="-19" width="595" height="589" uuid="2fd1b531-fa8e-4b95-a683-802c8986b789"/>
+				<dataSourceExpression><![CDATA[$P{QuotationScheduleList}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["QuotationScheduleList.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="4" y="0" width="132" height="20" uuid="f55c9340-a301-4fbb-a5c1-e2b4206ec53f"/>
+				<text><![CDATA[Quatation To]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="20" width="132" height="20" uuid="05848d58-afee-4d3a-b6b3-50497de033be"/>
+				<text><![CDATA[NewIC No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="40" width="132" height="20" uuid="385f8d63-717b-4b90-82c1-9a6c0cf5206e"/>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="60" width="132" height="20" uuid="8da9fcec-6ef2-4061-ba58-6f04b95d17f6"/>
+				<text><![CDATA[Telephone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="80" width="132" height="20" uuid="fc8bda92-d03a-4486-b7a7-102d55456624"/>
+				<text><![CDATA[Fax]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="100" width="132" height="20" uuid="c3d8ab3b-4865-4573-a8b9-f112b8128ede"/>
+				<text><![CDATA[Mobile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="120" width="132" height="20" uuid="8266a2e1-da38-4895-9216-7fa6f5a42963"/>
+				<text><![CDATA[Inception Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="140" width="100" height="20" uuid="4230b58a-780a-4cdf-8a49-b19a4e559442"/>
+				<text><![CDATA[Vehicle Class]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="160" width="100" height="20" uuid="cc936fe1-bd35-4f71-a972-9bcc9c4ed4d4"/>
+				<text><![CDATA[Covernote Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="200" width="100" height="20" uuid="7f8a5f82-11dd-422d-87a8-1a546aa258d4"/>
+				<text><![CDATA[Capacity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="180" width="100" height="20" uuid="1605c442-0e12-45d1-8f1f-736aea20da6a"/>
+				<text><![CDATA[Make and Model]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="220" width="100" height="20" uuid="04524c0d-675a-494e-af92-8737f9e96603"/>
+				<text><![CDATA[Year Of Manufacture]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="240" width="100" height="20" uuid="68b9370f-ce11-4d54-beb8-bbe43d08166f"/>
+				<text><![CDATA[Vehicle No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="1" width="119" height="20" uuid="4489bbe7-3617-4302-bc80-24abc3c820a0"/>
+				<text><![CDATA[Acc No / Agent Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="311" y="20" width="100" height="20" uuid="3523977f-7ac7-4c6f-9877-02d42df45484"/>
+				<text><![CDATA[Old IC no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="60" width="100" height="20" uuid="dd6f737f-2472-45f8-b5a6-358ef25d4322"/>
+				<text><![CDATA[Postal Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="80" width="100" height="20" uuid="fd6bcc39-c13a-4719-9e97-f8ef533b8415"/>
+				<text><![CDATA[Renewable Policy No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="412" y="120" width="102" height="20" uuid="8b984ea9-650a-4b52-909d-ccf176925940"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Use oF Vehicle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="99" width="100" height="20" uuid="b36942ee-5d6f-4a4f-8197-e2104006a727"/>
+				<text><![CDATA[Expiry Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="160" width="100" height="20" uuid="e77cf864-f4d3-44b7-972e-655360f8eae1"/>
+				<text><![CDATA[No of seats]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="181" width="100" height="20" uuid="ae1b76f2-f899-4d69-80ac-60a0d47af712"/>
+				<text><![CDATA[Coverage Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="259" width="100" height="20" uuid="94f17d80-2044-46cf-886f-d2d9cc5648a1"/>
+				<text><![CDATA[Trailer Sum]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="1" width="140" height="20" uuid="e1b13656-1808-4aa9-919e-e83efc591c83"/>
+				<textFieldExpression><![CDATA[$F{quotationID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-120" y="-19" width="100" height="30" uuid="17a1654a-9bde-4ee3-8bed-3a1de8eb0d49"/>
+				<text><![CDATA[quotationID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="136" y="21" width="154" height="19" uuid="1dcd4a65-c812-4989-a35d-e841503e8039"/>
+				<textFieldExpression><![CDATA[$F{newIcNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-120" y="-19" width="100" height="30" uuid="40922792-004f-436b-a7d1-7ac07c45a4e9"/>
+				<text><![CDATA[newIcNo]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="140" splitType="Stretch"/>
+	</summary>
+</jasperReport>

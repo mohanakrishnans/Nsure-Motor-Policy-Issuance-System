@@ -56,4 +56,10 @@ public interface CovernoteService {
 
 	List<CovernoteDO> cnoptionGrid(CovernoteDO covernoteDO);
 
+	List<CovernoteDO> cncovernteGrid(CovernoteDO covernoteDO);
+
+	void convertCovernote(CovernoteDO covernoteDO);
+
+	void cancelCovernote(CovernoteDO covernoteDO);
+
 }

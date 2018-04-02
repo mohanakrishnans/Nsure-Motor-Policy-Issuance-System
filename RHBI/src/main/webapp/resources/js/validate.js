@@ -115,7 +115,7 @@ function dob(){
 	var age=now.getFullYear()-year;
 	if(age>=18){
 		document.getElementById('dob').style.backgroundColor = ""
-		document.getElementById('age').value = age;
+		document.getElementById('Age').value = age;
 		document.getElementById("Age").disabled = true;
 	}else{
 		alert("You are under 18!");		
@@ -145,7 +145,7 @@ function onlyAlphabets(e, t) {
 
 function businessRegno() {
 	var bregno = document.getElementById("businessregno").value;
-	if ((bregno.length != 20) && (bregno.length != 0)) {
+	if ((bregno.length != 10) && (bregno.length != 0)) {
 		alert("Invalid business reg number!");
 		document.getElementById('businessregno').style.backgroundColor = "#f26f6f";
 		document.getElementById("businessregno").value = "";

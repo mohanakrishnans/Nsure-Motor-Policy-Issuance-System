@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,27 +33,64 @@ import com.kgisl.nsure.quotation.domain.QuotationDO;
 public class CovernoteController {
 	@Autowired
 	CovernoteService covernoteService;
-	
 
 	/** Quotation */
 	@RequestMapping(value = "/coverclass", method = RequestMethod.GET)
 	public ModelAndView covernoteClass(@ModelAttribute("loginDO") LoginDO login, HttpServletRequest request)
 			throws Exception {
-		//request.getSession().setAttribute("SESSION_COUNT", request.getSession().getId());
+		// request.getSession().setAttribute("SESSION_COUNT",
+		// request.getSession().getId());
 
 		return new ModelAndView("cn/covernote");
 	}
-	@RequestMapping(value = "/cnclient", method = RequestMethod.GET)
-	public ModelAndView cnClient(@ModelAttribute("quotationFormData") QuotationDO quotationDO,
-			BindingResult result, HttpServletRequest request, HttpSession session) {
 
-		
+	@RequestMapping(value = "/cnOptions", method = RequestMethod.GET)
+	public ModelAndView cnClient(@ModelAttribute("quotationFormData") QuotationDO quotationDO, BindingResult result,
+			HttpServletRequest request, HttpSession session) {
+
 		return new ModelAndView("cn/cnclient");
 	}
+	
+	/*saveEndorsementDetails using Angular post call*/
+	@RequestMapping(value = "/saveEndorsementDetails", method = RequestMethod.POST)
+	public @ResponseBody CovernoteDO saveEndorsementDetails(@RequestBody CovernoteDO quotationDO) {
+		//quotationService.saveNamedDrivers(quotationDO);
+		/*System.out.println(quotationDO.getPreviouspolicyno());
+		System.out.println(quotationDO.getCovernoteno());
+		System.out.println(quotationDO.getPocdate());
+		System.out.println(quotationDO.getEffectivedate());
+		System.out.println(quotationDO.getIssueddate());
+		System.out.println(quotationDO.getEndorsementtype());
+		System.out.println(quotationDO.getExpiredate());*/
+		return quotationDO;
+	}
+	
+	/*Convert to Covernote using Angular post call*/
+	@RequestMapping(value = "/convertCovernote", method = RequestMethod.POST)
+	public @ResponseBody CovernoteDO convertCovernote(@RequestBody CovernoteDO quotationDO) {
+		covernoteService.convertCovernote(quotationDO);
+		System.out.println(quotationDO.getCovernoteid());
+		
+		 
+		
+		return quotationDO;
+	}
+	
+	/*Cancel to Covernote using Angular post call*/
+	@RequestMapping(value = "/cancelCovernote", method = RequestMethod.POST)
+	public @ResponseBody CovernoteDO cancelCovernote(@RequestBody CovernoteDO quotationDO) {
+		covernoteService.cancelCovernote(quotationDO);
+		System.out.println(quotationDO.getCovernoteid());
+		
+		 
+		
+		return quotationDO;
+	}
+	
 	@RequestMapping(value = "/save_covernote_form", method = RequestMethod.POST)
 	public ModelAndView saveQuotation(@ModelAttribute("covernoteFormData") CovernoteDO covernoteDO,
 			BindingResult result, HttpServletRequest request, HttpSession session) {
-		
+
 		session.setAttribute("covernoteclass", covernoteDO.getCovernoteclass());
 		session.setAttribute("masterpolicynumber", covernoteDO.getMasterpolicynumber());
 		session.setAttribute("covernotetype", covernoteDO.getCoveragetype());
@@ -78,7 +116,7 @@ public class CovernoteController {
 		session.setAttribute("garaged", covernoteDO.getGaraged());
 		session.setAttribute("antitheftcode", covernoteDO.getAntitheftcode());
 		session.setAttribute("drivinglicensenumber", covernoteDO.getDrivinglicensenumber());
-		session.setAttribute("performanceaesthetic", covernoteDO.getPerformanceaesthetic());	
+		session.setAttribute("performanceaesthetic", covernoteDO.getPerformanceaesthetic());
 		session.setAttribute("vehiclenumber", covernoteDO.getVehiclenumber());
 		session.setAttribute("makemodel", covernoteDO.getMakemodel());
 		session.setAttribute("vehiclebody", covernoteDO.getVehiclebody());
@@ -101,21 +139,21 @@ public class CovernoteController {
 		session.setAttribute("vehiclemarketvalue", covernoteDO.getVehiclemarketvalue());
 		session.setAttribute("suminsured", covernoteDO.getSuminsured());
 		session.setAttribute("trailersuminsured", covernoteDO.getTrailersuminsured());
-		
+
 		covernoteService.saveCovernote(covernoteDO);
-		//System.out.println(session.getAttribute("sourceType"));
-		//System.out.println(session.getAttribute("accountCode"));
-		
+		// System.out.println(session.getAttribute("sourceType"));
+		// System.out.println(session.getAttribute("accountCode"));
+
 		return new ModelAndView("redirect:nameddrivers");
 	}
-	
+
 	/* CN options Grid */
 	@RequestMapping(value = "/cnoptionGrid", method = RequestMethod.GET)
 	public @ResponseBody String cnoptionGrid(CovernoteDO covernoteDO, HttpServletRequest request) {
 
 		List<CovernoteDO> cnoptiongrid = null;
 		ArrayList<CovernoteDO> mainList = new ArrayList<CovernoteDO>();
-		//System.out.println("cnoptionGrid");
+		 //System.out.println("cnoptionGrid");
 		String jsonString = null;
 		Gson gson = new Gson();
 		try {
@@ -123,17 +161,36 @@ public class CovernoteController {
 
 			mainList.addAll(0, cnoptiongrid);
 			jsonString = gson.toJson(mainList);
-		//	System.out.println("cnoptiongrid\n" + jsonString);
+			 // System.out.println("cnoptiongrid\n" + jsonString);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return jsonString;
 	}
-	
-	/**Covernote DROP **/
+	/* CN options Grid */
+	@RequestMapping(value = "/cncovernteGrid", method = RequestMethod.GET)
+	public @ResponseBody String cncovernteGrid(CovernoteDO covernoteDO, HttpServletRequest request) {
+
+		List<CovernoteDO> cnoptiongrid = null;
+		ArrayList<CovernoteDO> mainList = new ArrayList<CovernoteDO>();
+		 //System.out.println("cnoptionGrid");
+		String jsonString = null;
+		Gson gson = new Gson();
+		try {
+			cnoptiongrid = covernoteService.cncovernteGrid(covernoteDO);
+
+			mainList.addAll(0, cnoptiongrid);
+			jsonString = gson.toJson(mainList);
+			 // System.out.println("cnoptiongrid\n" + jsonString);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return jsonString;
+	}
+	/** Covernote DROP **/
 	@RequestMapping(value = "/covernoteDrop", method = RequestMethod.GET)
 	public @ResponseBody String covernoteDrop(HttpServletRequest request) {
-		//System.out.println("x");
+		// System.out.println("x");
 		List<CovernoteDO> covernoteclass = null;
 		List<CovernoteDO> covernotetype = null;
 		List<CovernoteDO> coveragetype = null;
@@ -141,20 +198,18 @@ public class CovernoteController {
 		List<CovernoteDO> hiretype = null;
 		List<CovernoteDO> ownershiptype = null;
 		List<CovernoteDO> getlocation = null;
-		List<CovernoteDO> getvehicleusage =null;
-		List<CovernoteDO> getadditionalusage =null;
-		List<CovernoteDO> getcnclass =null;
-		List<CovernoteDO> getvehiclebody =null;
-		List<CovernoteDO> getsafetycode =null;
-		List<CovernoteDO> getdriverexperience =null;
-		List<CovernoteDO> getgaraged =null;
-		List<CovernoteDO> getantitheftcode =null;
-		List<CovernoteDO> getperformanceaesthetic =null;
-		List<CovernoteDO> getvehiclecapacity =null;
-		List<CovernoteDO> getfunctionalmodification =null;
-		
-		
-		
+		List<CovernoteDO> getvehicleusage = null;
+		List<CovernoteDO> getadditionalusage = null;
+		List<CovernoteDO> getcnclass = null;
+		List<CovernoteDO> getvehiclebody = null;
+		List<CovernoteDO> getsafetycode = null;
+		List<CovernoteDO> getdriverexperience = null;
+		List<CovernoteDO> getgaraged = null;
+		List<CovernoteDO> getantitheftcode = null;
+		List<CovernoteDO> getperformanceaesthetic = null;
+		List<CovernoteDO> getvehiclecapacity = null;
+		List<CovernoteDO> getfunctionalmodification = null;
+
 		ArrayList<CovernoteDO> mainList = new ArrayList<CovernoteDO>();
 
 		String jsonString = null;
@@ -167,7 +222,7 @@ public class CovernoteController {
 			hiretype = covernoteService.getHireType(null);
 			ownershiptype = covernoteService.getOwnerShipType(null);
 			getlocation = covernoteService.getLocation(null);
-			getvehicleusage= covernoteService.getVehicleUsage(null);
+			getvehicleusage = covernoteService.getVehicleUsage(null);
 			getadditionalusage = covernoteService.getAdditionalUsage(null);
 			getcnclass = covernoteService.getCnClass(null);
 			getvehiclebody = covernoteService.getVehicleBody(null);
@@ -177,9 +232,8 @@ public class CovernoteController {
 			getgaraged = covernoteService.getGaraged(null);
 			getperformanceaesthetic = covernoteService.getPerformanceAesthetic(null);
 			getvehiclecapacity = covernoteService.getVehicleCapacity(null);
-			getfunctionalmodification=covernoteService.getFunctionalModification(null);
-		
-			
+			getfunctionalmodification = covernoteService.getFunctionalModification(null);
+
 			mainList.addAll(0, covernoteclass);
 			mainList.addAll(1, covernotetype);
 			mainList.addAll(2, coveragetype);
@@ -198,10 +252,9 @@ public class CovernoteController {
 			mainList.addAll(15, getperformanceaesthetic);
 			mainList.addAll(16, getvehiclecapacity);
 			mainList.addAll(17, getfunctionalmodification);
-			
 
 			jsonString = gson.toJson(mainList);
-			//System.out.println("coverdrop\n" + jsonString);
+			// System.out.println("coverdrop\n" + jsonString);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

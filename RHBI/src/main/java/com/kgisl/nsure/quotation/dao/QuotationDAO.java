@@ -32,4 +32,10 @@ public interface QuotationDAO {
 
 	void saveNamedDrivers(QuotationDO quotationDO);
 
+	List<QuotationDO> extraCoverageGrid(QuotationDO quotationDO);
+
+	void saveExtraCoverage(QuotationDO quotationDO);
+
+	void saveMpa(QuotationDO quotationDO);
+
 }

@@ -40,7 +40,6 @@
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 	<property name="alwaysUseFullPath" value="true"></property>	
 	</bean>
-	
 	<mvc:resources mapping="/resources/**" location="/resources/" />	
 	<mvc:resources mapping="/dashboard/***" location="/appresources/dashboard/" />
 	<mvc:resources mapping="/layout/**" location="/appresources/layout/" />

@@ -5,21 +5,24 @@
 <meta charset="UTF-8">
 <title>angular-ui-grid enableFullRowSelection</title>
 
+
 <script src='resources/js/angular.min.js'></script>
 <script src='resources/js/angular-touch.min.js'></script>
 <script src='resources/js/angular-animate.min.js'></script>
 <script src='resources/js/ui-grid.min.js'></script>
 <script src="resources/js/index.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <link rel='stylesheet prefetch' href='resources/css/ui-grid.min.css'>
+<link rel='stylesheet prefetch' href='resources/css/ui-grid.css'>
+ <link rel="stylesheet" href="https://rawgit.com/msrikanth508/uiGridInlineEditPOC/master/Css/ui-grid.css" />
+    
 
 
 
 </head>
 
-<body>
-
-	<div data-ng-app="app">
-		<div data-ng-controller="covernoteGrid">
+<body>	<div data-ng-app="app">
+		<div data-ng-controller="cnoptionGrid">
 			<div data-ui-grid="gridOptions" data-ui-grid-selection class="grid"></div>
 		</div>
 	</div>

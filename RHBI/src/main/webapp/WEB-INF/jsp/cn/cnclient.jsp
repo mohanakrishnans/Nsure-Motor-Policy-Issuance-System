@@ -12,10 +12,14 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src='resources/js/angular.min.js'></script>
 <script src='resources/js/angular-touch.min.js'></script>
 <script src='resources/js/angular-animate.min.js'></script>
 <script src='resources/js/ui-grid.min.js'></script>
+<link rel='stylesheet prefetch' href='resources/css/ui-grid.css'>
+
+ <link rel="stylesheet" href="https://rawgit.com/msrikanth508/uiGridInlineEditPOC/master/Css/ui-grid.css" />
 <script src="resources/js/index.js"></script>
 <link rel='stylesheet prefetch' href='resources/css/ui-grid.min.css'>
 <link rel="shortcut icon"
@@ -102,25 +106,12 @@
 		</div>
 		<div class="main-menu">
 			<ul id="side-main-menu" class="side-menu list-unstyled">
-				<li><a href="quotation"> <i class="icon-home"></i>Quotation
-				</a></li>
-				<li><a href="covernote"> <i class="icon-form"></i>New
-						Business
-				</a></li>
-				<li><a href="#endorsement" aria-expanded="false"
-					data-toggle="collapse"><i class="fa fa-bar-chart"></i>Endorsement
-				</a>
-					<ul id="endorsement" class="collapse list-unstyled ">
-						<li><a href="nameddrivers">Named Drivers</a></li>
-						<li><a href="schedule">Schedule Print</a></li>
-					</ul></li>
-				<li><a href="premium"> <i class="icon-grid"></i>Premium
-				</a>
-					<ul id="tablesDropdown" class="collapse list-unstyled ">
-						<li><a href="tables.html">Bootstrap tables</a></li>
-						<li><a href="tables-datatable.html">Datatable</a></li>
-					</ul></li>
-			</ul>
+					<li><a href="quotation"> <i class="icon-home"></i>Quotation </a></li>
+					<li><a href="nbquotation"> <i class="icon-form"></i>New Business</a></li>
+					<li><a href="cnOptions"> <i class="icon-form"></i>CN Options</a></li>
+					<li><a href="endorsementdetails"><i class="icon-form"></i>Endorsement</a></li>
+					<li><a href="referRisk"> <i class="icon-grid"></i>Refer Risk</a></li>
+				</ul>
 		</div>
 	</div>
 	</nav>
@@ -148,116 +139,7 @@
 				<div class="card-body">
 					<form class="container">
 
-						<fieldset class="scheduler-border" id="fieldset1">
-							<legend class="scheduler-border">Select</legend>
-							<div class="row">
-								<div class="col-md-4">
-									<div class="row form-group form-inline">
-										<label for="Branch" class="col-sm-3  control-label">Branch</label>
-										<div class="col-sm-3">
-											<select name="branch" required id="Branch"
-												class="form-control" data-ng-model="branchValue">
-												<option selected="selected" value="0">--SELECT--</option>
-												<option selected="selected" value="1"></option>
-												<option selected="selected" value="2"></option>
-												<option selected="selected" value="3"></option>
-											</select>
-										</div>
-									</div>
-									<div class="row form-group form-inline">
-										<label for="MasterPolicyNo" class="col-sm-3  control-label">
-											Master Policy No.</label>
-										<div class="col-sm-3 inner-addon right-addon">
-											<input name="masterpolicyno" required id="MasterPolicyNo"
-												type="text" class="form-control" placeholder="Search"
-												data-ng-model="masterpolicynoValue" />
-											<button class="btn btn-default" type="submit">
-												<i class="glyphicon glyphicon-search"></i>
-											</button>
-											<!-- <i class="glyphicon glyphicon-search"></i> -->
-										</div>
-									</div>
-									<div class="row form-group form-inline"">
-										<label for="PassportNo" class="col-sm-3  control-label">
-											Passport No.</label>
-										<div class="col-sm-3">
-											<input name="passportno" required id="PassportNo"
-												class="form-control" type="text"
-												data-ng-model="passportnoValue" />
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="row form-group form-inline">
-										<label for="AgentCode" class="col-sm-3  control-label">
-											Agent Code</label>
-										<div class="col-sm-3">
-											<select name="agentcode" required id="AgentCode"
-												class="form-control" data-ng-model="agentcodeValue">
-												<option selected="selected" value="0">--SELECT--</option>
-												<option selected="selected" value="1"></option>
-												<option selected="selected" value="2"></option>
-												<option selected="selected" value="3"></option>
-											</select>
-										</div>
-									</div>
-									<div class="row form-group form-inline">
-										<label for="Client" class="col-sm-3  control-label">
-											Client</label>
-										<div class="col-sm-3 inner-addon right-addon">
-											<input name="client" required id="Client" type="text"
-												class="form-control" placeholder="Search"
-												data-ng-model="clientValue" />
-											<button class="btn btn-default" type="submit">
-												<i class="glyphicon glyphicon-search"></i>
-											</button>
-											<!-- <i class="glyphicon glyphicon-search"></i> -->
-										</div>
-									</div>
-									<div class="row form-group form-inline">
-										<label for="From" class="col-sm-3  control-label">
-											From</label>
-										<div class="col-sm-3">
-											<input name="from" required id="From" class="form-control"
-												type="date" data-ng-model="fromValue" />
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="row form-group form-inline">
-										<label for="ApplNo" class="col-sm-3  control-label">
-											CN/Ref/Appl No. </label>
-										<div class="col-sm-3">
-											<input name="applno" required id="ApplNo"
-												class="form-control" type="text" data-ng-model="applnoValue" />
-										</div>
-									</div>
-									<div class="row form-group form-inline">
-										<label for="IcNo" class="col-sm-3  control-label"> I/C
-											No. </label>
-										<div class="col-sm-3">
-											<input name="icno" required id="IcNo" class="form-control"
-												type="text" data-ng-model="icnoValue" />
-										</div>
-									</div>
-									<div class="row form-group form-inline">
-										<label for="To" class="col-sm-3  control-label">To</label>
-										<div class="col-sm-3">
-											<input name="to" required id="To" class="form-control"
-												type="date" data-ng-model="toValue" />
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<ul class="pager" align="center">
-								<button onclick="" type="submit">Search</button>
-								<button onclick="" type="reset" for="fieldset1" value="reset">Reset</button>
-							</ul>
-
-						</fieldset>
-
-						<fieldset class="scheduler-border">
+				 <fieldset class="scheduler-border">
 							<!-- <legend></legend> -->
 							<ul class="nav nav-tabs" role="tablist">
 								<li class="nav-item"><a class="nav-link active"
@@ -267,13 +149,13 @@
 							</ul>
 							<div class="tab-content">
 
-								<div class="tab-pane active" role="tabpanel" id="covernote">
+								<div  data-ng-controller="cncovernteGrid" class="tab-pane active" role="tabpanel" id="covernote" >
 
 									</br>
 									<div class="row form-group form-inline">
 										<label for="Class" class="col-sm-3  control-label">
 											Class</label>
-										<div class="col-sm-3 inner-addon right-addon">
+										<!-- <div class="col-sm-3 inner-addon right-addon">
 											<select name="class" required id="Class" class="form-control"
 												data-ng-model="classValue">
 												<option selected="selected" value="0">--SELECT--</option>
@@ -284,19 +166,21 @@
 												<option selected="selected" value="5">GOODS VEHICLE</option>
 												<option selected="selected" value="6">TANKERS</option>
 											</select>
-										</div>
-										<button onclick="" type="submit">Refresh</button>
-										<button onclick="" type="submit">Cancel</button>
+										</div> -->
+										
 									</div>
 									</br>
 
-									<div data-ng-controller="cnoptionGrid">
+									 
 										<div data-ui-grid="gridOptions" data-ui-grid-selection
 											class="grid"></div>
-									</div>
+								 <ul>
+								 	<button onclick="#" type="submit">Refresh</button>
+										<button ng-click="cancelCovertnote()" type="submit">Cancel</button>
+								 </ul>
 
 								</div>
-								<div role="tabpanel" class="tab-pane fade" id="quotation">
+								<div role="tabpanel"  data-ng-controller="cnoptionGrid" class="tab-pane fade" id="quotation">
 									<div class="row form-group form-inline">
 										<label for="Class" class="col-sm-3  control-label">
 											Class</label>
@@ -314,13 +198,14 @@
 
 										</div>
 									</div>
-									<div data-ng-controller="cnoptionGrid">
+									 
 										<div data-ui-grid="gridOptions" data-ui-grid-selection
-											class="grid"></div>
-									</div>
+											class="grid">
+										</div>
+									 
 									<ul class="pager" align="center">
-										<button onclick="" type="submit">Covert to Covernote</button>
-										<button onclick="" type="submit">Cancel</button>
+										<button ng-click="convertCovertnote()" type="submit">Covert to Covernote</button>
+										<button ng-click="cancelCovertnote()" type="submit">Cancel</button>
 									</ul>
 								</div>
 							</div>

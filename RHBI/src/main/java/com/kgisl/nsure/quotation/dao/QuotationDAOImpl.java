@@ -79,7 +79,7 @@ public class QuotationDAOImpl implements QuotationDAO {
 					quotationDO.setDateOfBirth(rs.getString("DTT_DATE_OF_BIRTH"));
 					quotationDO.setAddress(rs.getString("VCH_ADDRESS"));
 					quotationDO.setBranch(rs.getString("VCH_BRANCH"));
-					quotationDO.setBusinessRegNo(rs.getLong("VCH_BUSINESS_REGISTRATION_NO"));
+					quotationDO.setBusinessRegNo(rs.getInt("VCH_BUSINESS_REGISTRATION_NO"));
 					quotationDO.setContactType(rs.getInt("VCH_CONTACT_TYPE"));
 					quotationDO.setCountryCode(rs.getString("VCH_COUNTRY_CODE"));
 					quotationDO.setCss(rs.getString("VCH_CSS"));
@@ -127,6 +127,36 @@ public class QuotationDAOImpl implements QuotationDAO {
 					quotationDO.setNamedgender(rs.getString("VCH_GENDER"));
 					quotationDO.setNamedage(rs.getInt("NUM_AGE"));
 					quotationDO.setNameddriverexperience(rs.getString("VCH_DRIVER_EXPERIENCE"));
+
+					return quotationDO;
+				}
+			});
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return covernoteGrid;
+	}
+	
+	/*** NAMED DRIVERS ***/
+	@Override
+	public List<QuotationDO> extraCoverageGrid(QuotationDO quotationDO) {
+		List<QuotationDO> covernoteGrid = null;
+		try {
+			String SQL = null;
+			SQL = "SELECT * FROM EIS_TRN_EXTRA_COVERAGE";
+
+			covernoteGrid = jdbcTemplate.query(SQL, new RowMapper<QuotationDO>() {
+				@Override
+				public QuotationDO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					QuotationDO quotationDO = new QuotationDO();
+
+					quotationDO.setExtracoverageid(rs.getInt("NUM_EXTRA_COVERAGE_ID"));
+					quotationDO.setSuminsured(rs.getString("VCH_SUM_INSURED"));
+					quotationDO.setExtracoveragerate(rs.getString("VCH_EXTRA_COVERAGE_RATE"));
+					quotationDO.setExtracoveragepremium(rs.getString("VCH_EXTRA_COVERAGE_PREMIUM"));
+					quotationDO.setExtracoverageclass(rs.getString("VCH_EXTRA_COVERAGE_CLASS"));
+					quotationDO.setCartdays(rs.getString("VCH_CART_DAYS"));
+					quotationDO.setCartamount(rs.getString("VCH_CART_AMOUNT"));
 
 					return quotationDO;
 				}
@@ -185,11 +215,6 @@ public class QuotationDAOImpl implements QuotationDAO {
 	@Override
 	public void saveNamedDrivers(QuotationDO quotationDO) {
 		// TODO Auto-generated method stub
-		// System.out.println(quotationDO.getName()+" mohn");
-
-		
-		// quotationDO.getContactName();
-
 		try {
 			
 			 System.out.println(" 11111");
@@ -221,23 +246,73 @@ public class QuotationDAOImpl implements QuotationDAO {
 			System.out.println(e);
 		}
 	}
+	
+	/* MPA Save */
+	@Override
+	public void saveMpa(QuotationDO quotationDO) {
+		// TODO Auto-generated method stub
+		try {
+			
+			 System.out.println(" 11111");
+			
+
+			SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(dataSource);
+			simpleJdbcCall.withCatalogName("MPA_SAVE").withProcedureName("PR_MPA_SAVE")
+					.withoutProcedureColumnMetaDataAccess()
+					.declareParameters(new SqlParameter("VCH_SELECT_PLAN", OracleTypes.VARCHAR),
+							new SqlParameter("VCH_NUMBER_OF_PASSENGER", OracleTypes.VARCHAR),
+							new SqlParameter("VCH_MPA_PREMIUM", OracleTypes.VARCHAR));
+
+			SqlParameterSource inputParams = new MapSqlParameterSource()
+					.addValue("VCH_SELECT_PLAN", quotationDO.getSelectplan())
+					.addValue("VCH_NUMBER_OF_PASSENGER", quotationDO.getNoofpassengers())
+					.addValue("VCH_MPA_PREMIUM", quotationDO.getMpapremium());
+											
+			Map<String, Object> transactionStatus = simpleJdbcCall.execute(inputParams);
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	/* Extra Coverage Save */
+	@Override
+	public void saveExtraCoverage(QuotationDO quotationDO) {
+		// TODO Auto-generated method stub
+		try {			
+			 System.out.println(" 11111");		
+
+			SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(dataSource);
+			simpleJdbcCall.withCatalogName("EXTRA_COVERAGE_SAVE").withProcedureName("PR_EXTRA_COVERAGE_SAVE")
+					.withoutProcedureColumnMetaDataAccess()
+					.declareParameters(new SqlParameter("P_VCH_CART_AMOUNT", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_SUM_INSURED", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_EXTRA_COVERAGE_RATE", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_EXTRA_COVERAGE_PREMIUM", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_EXTRA_COVERAGE_CLASS", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_CART_DAYS", OracleTypes.VARCHAR));
+
+			SqlParameterSource inputParams = new MapSqlParameterSource()
+					.addValue("P_VCH_CART_AMOUNT", quotationDO.getCartamount())
+					.addValue("P_VCH_SUM_INSURED", quotationDO.getSuminsured())
+					.addValue("P_VCH_EXTRA_COVERAGE_RATE", quotationDO.getExtracoveragerate())
+					.addValue("P_VCH_EXTRA_COVERAGE_PREMIUM", quotationDO.getExtracoveragepremium())
+					.addValue("P_VCH_EXTRA_COVERAGE_CLASS", quotationDO.getExtracoverageclass())
+					.addValue("P_VCH_CART_DAYS", quotationDO.getCartdays());
+											
+			Map<String, Object> transactionStatus = simpleJdbcCall.execute(inputParams);
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
 
 	/* Quotation Save */
 	@Override
 	public void saveQuotation(QuotationDO quotationDO) {
-		// TODO Auto-generated method stub
-		// System.out.println(quotationDO.getName()+" mohn");
-
-		// System.out.println(" 11111"+quotationDO.getContactName());
-		// quotationDO.getContactName();
 
 		try {
-			Date DateOfBirth = null;
-
-			//if (quotationDO.getDateOfBirth() != null) {
-				String dob = quotationDO.getDateOfBirth();
-				DateOfBirth = new SimpleDateFormat("dd-MM-yyyy").parse(dob);
-			//}
+			 
 
 				System.out.println("P_VCH_SOURCE_TYPE"+ quotationDO.getSourceType());
 				System.out.println("P_VCH_ACCOUNT_CODE"+ quotationDO.getAccountCode());
@@ -249,7 +324,7 @@ public class QuotationDAOImpl implements QuotationDAO {
 				System.out.println("P_VCH_NAME"+ quotationDO.getName());
 				System.out.println("P_VCH_NATIONALITY"+ quotationDO.getNationality());
 				System.out.println("P_VCH_RACE"+ quotationDO.getRace());
-				System.out.println("P_DTT_DATE_OF_BIRTH"+ DateOfBirth);
+				System.out.println("P_DTT_DATE_OF_BIRTH"+ quotationDO.getDateOfBirth());
 				System.out.println("P_VCH_GENDER"+ quotationDO.getGender());
 				System.out.println("P_VCH_MARITAL_STATUS"+ quotationDO.getMaritalStatus());
 				System.out.println("P_VCH_OCCUPATION"+ quotationDO.getOccupation());
@@ -341,7 +416,7 @@ public class QuotationDAOImpl implements QuotationDAO {
 					.addValue("P_VCH_NAME", quotationDO.getName())
 					.addValue("P_VCH_NATIONALITY", quotationDO.getNationality())
 					.addValue("P_VCH_RACE", quotationDO.getRace())
-					.addValue("P_DTT_DATE_OF_BIRTH", DateOfBirth)
+					.addValue("P_DTT_DATE_OF_BIRTH", quotationDO.getDateOfBirth())
 					.addValue("P_VCH_GENDER", quotationDO.getGender())
 					.addValue("P_VCH_MARITAL_STATUS", quotationDO.getMaritalStatus())
 					.addValue("P_VCH_OCCUPATION", quotationDO.getOccupation())

@@ -71,6 +71,20 @@ public class QuotationServiceImpl implements QuotationService {
 	}
 	
 	@Override
+	public List<QuotationDO> extraCoverageGrid(QuotationDO quotationDO){
+		List<QuotationDO> covernoteGrid = null;
+		try{
+			covernoteGrid = quotationdao.extraCoverageGrid(quotationDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return covernoteGrid;
+	}
+	
+	@Override
 	public void insert(QuotationDO quotationDO) {
 		// TODO Auto-generated method stub
 		System.out.println("Serv>");
@@ -96,6 +110,24 @@ public class QuotationServiceImpl implements QuotationService {
 		// TODO Auto-generated method stub
 		//System.out.println("S>");
 		quotationdao.saveNamedDrivers(quotationDO);
+		
+		//System.out.println("S<");
+		
+	}
+	@Override
+	public void saveMpa(QuotationDO quotationDO) {
+		// TODO Auto-generated method stub
+		//System.out.println("S>");
+		quotationdao.saveMpa(quotationDO);
+		
+		//System.out.println("S<");
+		
+	}
+	@Override
+	public void saveExtraCoverage(QuotationDO quotationDO) {
+		// TODO Auto-generated method stub
+		//System.out.println("S>");
+		quotationdao.saveExtraCoverage(quotationDO);
 		
 		//System.out.println("S<");
 		

@@ -58,8 +58,8 @@
 		<div class="main-menu">
 			<ul id="side-main-menu" class="side-menu list-unstyled">
 					<li><a href="quotation"> <i class="icon-home"></i>Quotation </a></li>
-					<li><a href="cnOptions"> <i class="icon-form"></i>CN Options</a></li><!-- 
-					<li><a href="nameddrivers"> <i class="icon-form"></i>Named Drivers</a></li> -->
+					<li><a href="nbquotation"> <i class="icon-form"></i>New Business</a></li>
+					<li><a href="cnoptions"> <i class="icon-form"></i>CN Options</a></li>
 					<li><a href="endorsementdetails"><i class="icon-form"></i>Endorsement</a></li>
 					<li><a href="referRisk"> <i class="icon-grid"></i>Refer Risk</a></li>
 				</ul>
@@ -497,10 +497,9 @@
 					<ul align="center" class="pager">
 						<button onclick="location.href='nameddrivers'" type="button" class="btn btn-danger btn-md">Back</button>
 						<button type="button" class="btn btn-primary btn-md">Save</button>
-						<button type="button" class="btn btn-primary btn-md">Print
-							and Send to JPJ</button>
-						<button type="button" class="btn btn-primary btn-md">MyEG
-							Road Tax Renewal</button>
+						<button type="button" class="btn btn-primary btn-md">Convert To Covernote</button>
+						<!-- <button type="button" class="btn btn-primary btn-md">MyEG
+							Road Tax Renewal</button> -->
 						<button type="button" class="btn btn-danger btn-md">Cancel</button>
 					</ul>
 					<font color="red">This case is under Risk for the below

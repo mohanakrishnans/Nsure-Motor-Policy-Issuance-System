@@ -53,6 +53,12 @@ public interface CovernoteDAO {
 	List<CovernoteDO> getFunctionalModification(CovernoteDO covernoteDO);
 
 	List<CovernoteDO> cnoptionGrid(CovernoteDO covernoteDO);
+
+	List<CovernoteDO> cncovernteGrid(CovernoteDO covernoteDO);
+
+	void convertCovernote(CovernoteDO covernoteDO);
+
+	void cancelCovernote(CovernoteDO covernoteDO);
 	
 	
 }

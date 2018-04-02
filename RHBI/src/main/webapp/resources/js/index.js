@@ -1,184 +1,417 @@
-var app = angular.module('app', [ 'ngTouch', 'ui.grid', 'ui.grid.selection' ]);
-
-/*
- * app.config(['$routeProvider', function($routeProvider) { $routeProvider
- * .when('saveNamedDrivers', { templateUrl: CONTEXT_PATH+'saveNamedDrivers',
- * controller : "saveNamedDrivers" })
- * .otherwise({redirectTo:'/items/computers'}); }]);
- */
-app.controller('cnoptionGrid', ['$scope', '$http', '$log', '$timeout', 'uiGridConstants',
-	 function($scope, $http, $log, $timeout, uiGridConstants) {
-	  $scope.gridOptions = {
-	    rowHeight: 25,
-	    multiSelect: false,
-	    showGridFooter: true,
-	    enableSelectAll: true,
-	    enableFullRowSelection: true,
-	    selectionRowHeaderWidth: 35    
-	  };
-
-	  $scope.gridOptions.columnDefs = [{
-		    name: 'classId',
-		    	displayName:'Class Id'
+var app = angular.module('app', [ 'ngTouch', 'ui.grid', 'ui.grid.selection']);
+/*Quotation Controller*/
+/*------------------------------------------------------*/
+app.controller('endorsement', [
+	'$scope',
+	'$http',
+	'$log',
+	'$timeout',
+	'uiGridConstants','$window',
+	function($scope, $http, $log, $timeout,$uiGridConstants,$window) {
+		$scope.gridOptions = {  };
+		$scope.mySelections = [];
+		 
+		
+		
+		
+		$scope.gridOptions = {
+			rowHeight : 30,
+			multiSelect : false,
+			showGridFooter : true,
+			enableSelectAll : true,
+			enableRowSelection : true,
+			selectionRowHeaderWidth : 50,
+			onRegisterApi: function(gridApi){
+		          $scope.gridApi = gridApi;
+		          gridApi.selection.on.rowSelectionChanged($scope,function(rows){
+		            $scope.mySelections = gridApi.selection.getSelectedRows();
+		            
+		          });}
+		};
+		
+		$scope.gridOptions.columnDefs = [ {
+			  name: 'policyno',
+		    	displayName:'Policy No'
+		  }, {
+		    name: 'cnno',
+		    	displayName:'Cover Note No'
+		  }, {
+		    name: 'effectivedate',
+		    displayName:'Effective Date'
 		  }, {
 		    name: 'IssueDate',
-		    	displayName:'Issue Date'
-		  }/*, {
-		    name: 'contactType',
-		    displayName:'Contact Type'
+		    	displayName:'Issue Date '
 		  }, {
-		    name: 'postCode',
-		    	displayName:'Post Code'
-		  }, {
-		    name: 'address',
-		    displayName:'Address'
-		  }, {
-		    name: 'branch',
-		    displayName:'Branch'
-		  }, {
-		    name: 'nationality',
-		    displayName: 'Nationality'
-		  }, {
-		    name: 'mobileNo',
-		    displayName:'Mobile'
-		  }*/];
+		    name: 'expiredate',
+		    displayName:'Expire date'
+		  }];
+		$scope.gridOptions.multiSelect = false;
 		  
-		  $http.get('cnoptionGrid').success(
-			function(data) {
-		      $scope.gridOptions.data = data;
-		      $timeout(function() {
-		        if ($scope.gridApi.selection.selectRow) {
-		          $scope.gridApi.selection.selectRow($scope.gridOptions.data[0]);
-		        }
-		      });
-		    });	  
+		  $scope.getSelectedRows = function(rowEntity) {
+		    $scope.mySelectedRows = $scope.gridApi.selection.getSelectedRows();
+		    //alert(JSON.stringify( $scope.mySelectedRows));
+		    //alert($scope.mySelectedRows.item);
+		    var str =JSON.stringify( $scope.mySelectedRows);
+		    var objArr = angular.fromJson(str).filter(function(item) {
+		    	
+		    	var policyno = item.policyno;
+		    	var covernoteno = item.cnno;
+		    	var effectivedate = item.effectivedate;
+		    	
+		    	var issuedate = item.IssueDate;
+		    	alert(item.IssueDate);
+		    	
+		    	var expirydate = item.expiredate;
+		        
+		        $('#policyno').val(policyno);
+		        $('#covernoteno').val(covernoteno);
+		        $('#effectivedate').val(effectivedate);
+		        $('#issueddate').val(issuedate);
+		        $('#expirydate').val(expirydate);
+		        
+		        $('#myModal').modal('hide');
+		    	
+		        
+		    });
+		  };
+	
+
+		$http.get('cnoptionGrid').success(					
+				function(data) {
+					$scope.gridOptions.data = data;
+					$scope.mySelectedRows = $scope.gridApi.selection.getSelectedRows();
+					$timeout(function() {
+						if ($scope.gridApi.selection.selectRow) {
+							$scope.gridApi.selection
+									.selectRow($scope.gridOptions.data[0]);
+						}
+					});
+				});
+		 $scope.info = {};
+
+		    $scope.toggleMultiSelect = function() {
+		      $scope.gridApi.selection.setMultiSelect(!$scope.gridApi.grid.options.multiSelect);
+		    };
+
+		    $scope.toggleRow1 = function() {
+		      $scope.gridApi.selection.toggleRowSelection($scope.gridOptions.data[0]);
+		    };
+		    
+		    $scope.gridOptions.onRegisterApi = function(gridApi){
+		      //set gridApi on scope
+		      $scope.gridApi = gridApi;
+		      
+		      
+		    };
+		   
 		}]);
-app.controller('NamedPopup', [
+
+
+app.controller('endorsementdetails', [
+	'$scope',
+	'$http',
+	'$log',
+	'$timeout',
+	'uiGridConstants','$window',
+	function($scope, $http, $log, $timeout,$uiGridConstants,$window) {
+		$scope.gridOptions = {  };
+		$scope.mySelections = [];
+		
+		$scope.endor = [];
+		
+		$scope.endor.previouspolicyno = $window.sessionStorage.getItem( 'previouspolicyno' );
+		$scope.endor.covernoteno=$window.sessionStorage.getItem( 'covernoteno' );
+		$scope.endor.pocdate=$window.sessionStorage.getItem( 'pocdate' );
+		$scope.endor.effectivedate=$window.sessionStorage.getItem( 'effectivedate' );
+		$scope.endor.endorsementtype=$window.sessionStorage.getItem( 'endorsementtype' );
+		$scope.endor.expiredate=$window.sessionStorage.getItem( 'expiredate' );
+		$scope.endor.issueddate=$window.sessionStorage.getItem( 'issueddate' );
+
+		 
+	
+	$scope.endorsubmit = function() {		
+		alert("mohannnn");
+		$window.sessionStorage.setItem('previouspolicyno',$scope.endor.previouspolicyno);
+		$window.sessionStorage.setItem('covernoteno',$scope.endor.covernoteno);				
+		$window.sessionStorage.setItem('pocdate',$scope.endor.pocdate);				
+		$window.sessionStorage.setItem('effectivedate',$scope.endor.effectivedate);				
+		$window.sessionStorage.setItem('endorsementtype',$scope.endor.endorsementtype);				
+		$window.sessionStorage.setItem('expirydate',$scope.endor.expiredate);				
+		$window.sessionStorage.setItem('issueddate',$scope.endor.issueddate);
+		
+		
+		
+		var formData = {
+				"previouspolicyno":$scope.endor.previouspolicyno,
+				"covernoteno":$scope.endor.covernoteno,
+				"pocdate" : $scope.endor.pocdate,
+				"effectivedate" : $scope.endor.effectivedate,
+				"endorsementtype" : $scope.endor.endorsementtype,
+				"issueddate" : $scope.endor.issueddate,
+				"expiredate" : $scope.endor.expiredate
+				
+				
+		};
+			var response = $http.post('saveEndorsementDetails', formData);
+			response.success(function(data, status, headers, config) {
+				$scope.endor.push(data);
+			});
+			response.error(function(data, status, headers, config) {
+				alert( "Exception details: " + JSON.stringify({data: data}));
+			});			
+		$scope.endor = [];
+			
+		}; 
+}]);
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------------------------*/
+app.controller('cnoptionGrid', [
 		'$scope',
 		'$http',
 		'$log',
 		'$timeout',
-		function($scope, $http, $log, $timeout) {
-			var self = this;
-			 
+		'uiGridConstants',
+		function($scope, $http, $log, $timeout, uiGridConstants) {
 			
-			 
-			
-			
-			// var url = 'http://localhost:8080/RHBI/saveNamedDrivers';
-			var self=this;
-			$scope.user = {
 
+			$scope.gridOptions = {
+				rowHeight : 30,
+				multiSelect : false,
+				showGridFooter : true,
+				enableSelectAll : true,
+				enableRowSelection : true,
+				selectionRowHeaderWidth : 50,
+				onRegisterApi: function(gridApi){
+			          $scope.gridApi = gridApi;
+			          gridApi.selection.on.rowSelectionChanged($scope,function(rows){
+			            $scope.mySelections = gridApi.selection.getSelectedRows();
+			            
+			          });}
 			};
 			
-			/*$scope.submit = function(formObject){
-				alert(JSON.stringify($scope.user));
-				$scope.namedDriverSave(formObject);
-			}*/
-			/*self.save = function(formObject){
-		        //angular.element(document.getElementById("namedDrivers")).scope().checkSessionOnSubmit().then(function(response){
-		        var status = true;
-		        if(status){
-		                jConfirm("Do you want to save Profile?","Warning",function(res){
-		                    if(res){
-		                        $http.post(CONTEXT_PATH+'saveNamedDrivers',self.user).then(function(response){
-		                            if(response.data==1){
-		                                swal('Profile Details Saved Successfully.');
-		                                self.user={};
-		                            }else
-		                                swal("Error while saving Profile. Please try again later.");
-		                        });    
-		                    }
-		                });
-		            }
-		        //});
-			}*/
-			$scope.submit = function(formObject) {
-				
-				alert(JSON.stringify($scope.user));
-				
-				var response = $http.post(CONTEXT_PATH + 'saveNamedDrivers',$scope.user);
-				response.success(function (data) {
-				    alert("success");
-				    alert(data);
-				});
-				response.error(function (data) {
-				    alert("error");
-				    alert(data);
-				});
-				
-				/*$http.post(CONTEXT_PATH + 'saveNamedDrivers', JSON.stringify(data)).success(function(response) {
-					$scope.message = data;
-				});*/
-				
-				 /*$http.post(CONTEXT_PATH+'saveNamedDrivers',self.user).then(function(response){
-					 alert("Save successfully");
-				 });*/
-				
-				/*$http({
-				    method: 'POST',
-				    url: CONTEXT_PATH + 'saveNamedDrivers',
-				    headers: {
-				        'Content-Type': 'application/json', 
-				        'Accept': 'application/json'
-				    },
-				    data:$scope.user
-				})*/
-				
-				/*
-				 * $http({ method : GET, url : CONTEXT_PATH +
-				 * 'saveNamedDrivers', data : angular.toJson($scope.user),
-				 * headers : { 'Content-Type' : 'application/json' }
-				 * 
-				 * }).then( _success, _error );
-				 */
-				alert("mohan1");
-            };
-				
-				
-				/*
-				 * $http.post(CONTEXT_PATH + 'saveNamedDrivers', data)
-				 * .success(function(data, status, headers, config) {
-				 * $scope.message = data; })$scope.$apply(function()
-				 * .error(function(data, status, headers, config) { alert(
-				 * "failure message: " + JSON.stringify({data: data})); });
-				 */
-			// }
+			$scope.gridOptions.multiSelect = false; 
 			
+			$scope.cancelCovertnote = function(rowEntity) {
+			    $scope.mySelectedRows = $scope.gridApi.selection.getSelectedRows();
+			    alert(JSON.stringify( $scope.mySelectedRows));
+			    var str =JSON.stringify( $scope.mySelectedRows);
+			    var objArr = angular.fromJson(str).filter(function(item) {			    	
+			    	alert(item.covernoteid);
+			    	
+			    	
+			    	
+			    	$scope.convert=[];
+			    	//var formData = JSON.stringify( $scope.mySelectedRows);
+			    	var formData = {
+							"covernoteid":item.covernoteid
+							
+					};
+						var response = $http.post('cancelCovernote', formData);
+						response.success(function(data, status, headers, config) {
+							$scope.convert.push(data);
+						});
+						response.error(function(data, status, headers, config) {
+							alert( "Exception details: " + JSON.stringify({data: data}));
+						});	
+			    	
+			        
+			    });
+			  };
+			  $scope.convertCovertnote = function(rowEntity) {
+			    $scope.mySelectedRows = $scope.gridApi.selection.getSelectedRows();
+			    alert(JSON.stringify( $scope.mySelectedRows));
+			    //alert($scope.mySelectedRows.item);
+			    var str =JSON.stringify( $scope.mySelectedRows);
+			    var objArr = angular.fromJson(str).filter(function(item) {			    	
+			    	alert(item.covernoteid);
+			    	
+			    	
+			    	
+			    	$scope.convert=[];
+			    	//var formData = JSON.stringify( $scope.mySelectedRows);
+			    	var formData = {
+							"covernoteid":item.covernoteid
+							
+					};
+						var response = $http.post('convertCovernote', formData);
+						response.success(function(data, status, headers, config) {
+							$scope.convert.push(data);
+						});
+						response.error(function(data, status, headers, config) {
+							alert( "Exception details: " + JSON.stringify({data: data}));
+						});	
+			    	
+			        
+			    });
+			  };
+			$scope.gridOptions.columnDefs = [ {
+				name : 'covernoteid',
+				displayName : 'Covernote Id'
+			},{
+				name : 'classId',
+				displayName : 'Class Id'
+			}, {
+				name : 'IssueDate',
+				displayName : 'Issue Date'
+			}];
 			
-			/*
-			 * $scope.submit = function(formObject) {
-			 * alert(JSON.stringify($scope.user)); self.namedDriverSave(); };
-			 */
-
-			// self.submit = function(formObject) {
-			// alert(JSON.stringify(formObject));
-				/*
-				 * return $http .POST(CONTEXT_PATH + 'saveNamedDrivers',
-				 * formObject) .then(function(response) { return response; });
-				 */
-				// self.namedDriverSave();
-			// };
-
-		/*
-		 * self.namedDriverSave = function(formObject) { var resultTrans = {};
-		 * angular.extend(resultTrans, self.user, formObject);
-		 * httpPostService.httpPostObj(CONTEXT_PATH + 'saveNamedDrivers',
-		 * 'QuotationController', '~', resultTrans, 'json').then( function(data) {
-		 * alert("test"); // self.user = data; }); }
-		 */
-
-			/*
-			 * $http({ method : 'POST', url : CONTEXT_PATH + 'saveNamedDrivers',
-			 * data : user, headers : { 'Content-Type' : 'application/json' },
-			 * transformRequest : function(data) { self.user = data; }
-			 * }).success(function(data, status, headers, config) {
-			 * $scope.postStatus = 'success: ' + data; }).error(function(data,
-			 * status, headers, config) { $scope.postStatus = 'error: ' +
-			 * status; });
-			 */
-
+			$http.get('cnoptionGrid').success(
+					function(data) {
+						$scope.gridOptions.data = data;
+						$timeout(function() {
+							if ($scope.gridApi.selection.selectRow) {
+								$scope.gridApi.selection
+										.selectRow($scope.gridOptions.data[0]);
+							}
+						});
+					});
 		} ]);
+
+
+
+
+app.controller('cncovernteGrid', [
+	'$scope',
+	'$http',
+	'$log',
+	'$timeout',
+	'uiGridConstants',
+	function($scope, $http, $log, $timeout, uiGridConstants) {
+		
+		$scope.gridOptions = {
+				rowHeight : 30,
+				multiSelect : false,
+				showGridFooter : true,
+				enableSelectAll : true,
+				enableRowSelection : true,
+				selectionRowHeaderWidth : 50,
+				onRegisterApi: function(gridApi){
+			          $scope.gridApi = gridApi;
+			          gridApi.selection.on.rowSelectionChanged($scope,function(rows){
+			            $scope.mySelections = gridApi.selection.getSelectedRows();
+			            
+			          });}
+			};
+			
+			$scope.gridOptions.multiSelect = false; 
+			
+			$scope.cancelCovertnote = function(rowEntity) {
+			    $scope.mySelectedRows = $scope.gridApi.selection.getSelectedRows();
+			    alert(JSON.stringify( $scope.mySelectedRows));
+			    var str =JSON.stringify( $scope.mySelectedRows);
+			    var objArr = angular.fromJson(str).filter(function(item) {			    	
+			    	alert(item.covernoteid);
+			    	
+			    	
+			    	
+			    	$scope.convert=[];
+			    	//var formData = JSON.stringify( $scope.mySelectedRows);
+			    	var formData = {
+							"covernoteid":item.covernoteid
+							
+					};
+						var response = $http.post('cancelCovernote', formData);
+						response.success(function(data, status, headers, config) {
+							$scope.convert.push(data);
+						});
+						response.error(function(data, status, headers, config) {
+							alert( "Exception details: " + JSON.stringify({data: data}));
+						});	
+			    	
+			        
+			    });
+			  };
+		$scope.gridOptions.columnDefs = [ {
+			name : 'covernoteid',
+			displayName : 'Covernote Id'
+		},{
+			name : 'classId',
+			displayName : 'Class Id'
+		}, {
+			name : 'IssueDate',
+			displayName : 'Issue Date'
+		}];
+
+		$http.get('cncovernteGrid').success(
+				function(data) {
+					$scope.gridOptions.data = data;
+					$timeout(function() {
+						if ($scope.gridApi.selection.selectRow) {
+							$scope.gridApi.selection
+									.selectRow($scope.gridOptions.data[0]);
+						}
+					});
+				});
+	} ]);
+
+
+
+
+
+
+
+
+
+
+
+app.controller('NamedPopup',[ '$scope', '$http','$window', function($scope, $http,$window) {
+	
+	$scope.user = [];
+	
+			$scope.user.namednewicno=$window.sessionStorage.getItem( 'namednewicno' );
+			$scope.user.namedoldicno=$window.sessionStorage.getItem( 'namedoldicno' );
+			$scope.user.namedage=$window.sessionStorage.getItem( 'namedage' );
+			$scope.user.nameddriverexperience=$window.sessionStorage.getItem( 'nameddriverexperience' );
+			$scope.user.namedgender=$window.sessionStorage.getItem( 'namedgender' );
+			$scope.user.nameddrivername=$window.sessionStorage.getItem( 'nameddrivername' );
+			$scope.user.nameddriverrelationship=$window.sessionStorage.getItem( 'nameddriverrelationship' );
+
+		
+		$scope.submit = function() {			
+			$window.sessionStorage.setItem('namednewicno',$scope.user.namednewicno);
+			$window.sessionStorage.setItem('namedoldicno',$scope.user.namedoldicno);				
+			$window.sessionStorage.setItem('namedage',$scope.user.namedage);				
+			$window.sessionStorage.setItem('nameddriverexperience',$scope.user.nameddriverexperience);				
+			$window.sessionStorage.setItem('namedgender',$scope.user.namedgender);				
+			$window.sessionStorage.setItem('nameddrivername',$scope.user.nameddrivername);				
+			$window.sessionStorage.setItem('nameddriverrelationship',$scope.user.nameddriverrelationship);
+			
+		
+			
+			var formData = {
+					"namednewicno" : $scope.user.namednewicno,
+					"namedoldicno" : $scope.user.namedoldicno,
+					"namedage" : $scope.user.namedage,
+					"nameddriverexperience" : $scope.user.nameddriverexperience,
+					"namedgender" : $scope.user.namedgender,
+					"nameddrivername" : $scope.user.nameddrivername,
+					"nameddriverrelationship" : $scope.user.nameddriverrelationship
+			};
+			var response = $http.post('saveNamedDrivers', formData);
+			response.success(function(data, status, headers, config) {
+				$scope.user.push(data);
+				//alert("success");
+			});
+			response.error(function(data, status, headers, config) {
+				alert( "Exception details: " + JSON.stringify({data: data}));
+			});			
+			//Empty list data after process
+		$scope.user = [];
+			
+		};
+		
+	}]);
+
+
 
 app.controller('MainCtrl', [
 		'$scope',
@@ -209,6 +442,54 @@ app.controller('MainCtrl', [
 			} ];
 
 			$http.get('resources/js/example.json').success(
+					function(data) {
+						$scope.gridOptions.data = data;
+						$timeout(function() {
+							if ($scope.gridApi.selection.selectRow) {
+								$scope.gridApi.selection
+										.selectRow($scope.gridOptions.data[0]);
+							}
+						});
+					});
+		} ]);
+
+app.controller('extraCoverage', [
+		'$scope',
+		'$http',
+		'$log',
+		'$timeout',
+		'uiGridConstants',
+		function($scope, $http, $log, $timeout, uiGridConstants) {
+			$scope.gridOptions = {
+				rowHeight : 35,
+				multiSelect : false,
+				showGridFooter : true,
+				enableSelectAll : true,
+				enableFullRowSelection : true,
+				selectionRowHeaderWidth : 35
+			};
+
+			$scope.gridOptions.columnDefs = [ {
+				name : 'extracoverageid',
+				displayName : 'ID',
+			}, {
+				name : 'extracoveragepremium',
+				displayName : 'Extra Coverage Premium'
+			}, {
+				name : 'suminsured',
+				displayName : 'Sum Insured'
+			}, {
+				name : 'extracoveragerate',
+				displayName : 'Extra Coverage Rate'
+			}, {
+				name : 'cartdays',
+				displayName : 'Cart Days'
+			}, {
+				name : 'cartamount',
+				displayName : 'Cart Amount'
+			} ];
+
+			$http.get('extraCoverageGrid').success(
 					function(data) {
 						$scope.gridOptions.data = data;
 						$timeout(function() {
@@ -408,6 +689,174 @@ app.controller('covernoteGrid', [
 						});
 					});
 		} ]);
+
+
+app.controller('endorsementGrid', [
+	'$scope',
+	'$http',
+	'$log',
+	'$timeout',
+	'uiGridConstants',
+	function($scope, $http, $log, $timeout,$uiGridConstants) {
+		 $scope.gridOptions = {  };
+		    $scope.mySelections = [];
+		    //alert("sdcfvbn");
+		$scope.gridOptions = {
+			rowHeight : 30,
+			multiSelect : false,
+			showGridFooter : true,
+			enableSelectAll : true,
+			enableRowSelection : true,
+			selectionRowHeaderWidth : 50,
+			onRegisterApi: function(gridApi){
+		          $scope.gridApi = gridApi;
+		          gridApi.selection.on.rowSelectionChanged($scope,function(rows){
+		            $scope.mySelections = gridApi.selection.getSelectedRows();
+		            
+		          });}
+		};
+
+		$scope.gridOptions.columnDefs = [ {
+			name : 'quotationID',
+			displayName : 'quotationID'
+		}, {
+			name : 'sourceType',
+			displayName : 'Source Type'
+		}, {
+			name : 'contactType',
+			displayName : 'Contact Type'
+		}, {
+			name : 'postCode',
+			displayName : 'Post Code'
+		}, {
+			name : 'address',
+			displayName : 'Address'
+		}, {
+			name : 'branch',
+			displayName : 'Branch'
+		}, {
+			name : 'nationality',
+			displayName : 'Nationality'
+		}, {
+			name : 'mobileNo',
+			displayName : 'Mobile'
+		} ];
+		$scope.gridOptions.multiSelect = false;
+		  
+		  $scope.getSelectedRows = function(rowEntity) {
+		    $scope.mySelectedRows = $scope.gridApi.selection.getSelectedRows();
+		    
+		    alert(JSON.stringify( $scope.mySelectedRows));
+		    //alert($scope.mySelectedRows.item);
+		    var str =JSON.stringify( $scope.mySelectedRows);
+		    var objArr = angular.fromJson(str).filter(function(item) {
+		    	alert(item.contactType);
+		    	var value = item.contactType;
+		        alert("ulla ");
+		        $('#input').val(value);
+		        $('#myModal').modal('hide');
+		    	/*$.ajax({
+		    		url: "selectedRows",
+		    		type: "post",
+		    			data: {"json ": JSON.stringify(item)},
+		    	contentTye:"application/json",
+		    	success:function(result){			    		
+		    	}		    	
+		    	})*/
+		        if (item.key === "directorname") {			        	
+		            //return true;
+		        }
+		    });
+		    
+		    
+		    
+		    /*alert(angular.element(document.querySelector("#endorParent")));
+		    var parentScope = angular.element(document.querySelector("#endorParent"));
+		    parentScope.qt.previousPolicy = rowEntity.quotationId;
+	    	alert(parentScope.qt.previousPolicy);
+		    */
+		    
+		    
+		    
+		    //alert(angular.element($("#endorParent")).scope() );
+		   /* if(angular.element(document.querySelector("#endorParent")) != undefined){
+		    	var parentScope = angular.element(document.querySelector("#endorParent"));
+		    	parentScope.qt.previousPolicy = rowEntity.sourceType;
+		    	alert(parentScope.qt.previousPolicy);
+		    	alert("asdfghjkl");
+		    }*/
+		  };
+	
+		   /*var elems =$element.find('div') //returns all the div's in the $elements
+angular.forEach(elems,function(v,k)){
+if(angular.element(v).hasClass('class-name')){
+ console.log(angular.element(v));
+}}
+
+		    
+		    * if(angular.element($("#endorParent")).scope() != undefined){
+                var parentScope = angular.element($("#endorParent")).scope();
+                var sourceTypeGroupId = parentScope.qt.contactType;
+                if(parentScope!=null && parentScope!=undefined){
+                    parentScope.qt.contactType = rowEntity.contactTypeId;
+                    parentScope.motorclientdet.sourceTypeId = rowEntity.sourceTypeId;
+                    parentScope.motorclientdet.branchName = rowEntity.branchName;
+                    parentScope.motorclientdet.sourceTypeGroupId = sourceTypeGroupId;
+                }
+self.close(this);
+		   }*/
+
+		    //var str =JSON.stringify( $scope.mySelectedRows);
+		    //var objArr = angular.fromJson(str).filter(function(item) {
+		    	//alert(get.contactType);			    	
+		    	/*$.ajax({
+		    		url: "selectedRows",
+		    		type: "post",
+		    			data: {"json ": JSON.stringify(item)},
+		    	contentTye:"application/json",
+		    	success:function(result){			    		
+		    	}		    	
+		    	})
+		        if (item.key === "directorname") {			        	
+		            return true;
+		        }*/
+		    //});
+	
+		  
+		  
+	//};
+
+		$http.get('covernoteGrid').success(					
+				function(data) {
+					$scope.gridOptions.data = data;
+					$scope.mySelectedRows = $scope.gridApi.selection.getSelectedRows();
+					$timeout(function() {
+						if ($scope.gridApi.selection.selectRow) {
+							$scope.gridApi.selection
+									.selectRow($scope.gridOptions.data[0]);
+						}
+					});
+				});
+		 $scope.info = {};
+
+		    $scope.toggleMultiSelect = function() {
+		      $scope.gridApi.selection.setMultiSelect(!$scope.gridApi.grid.options.multiSelect);
+		    };
+
+		    $scope.toggleRow1 = function() {
+		      $scope.gridApi.selection.toggleRowSelection($scope.gridOptions.data[0]);
+		    };
+		    
+		    $scope.gridOptions.onRegisterApi = function(gridApi){
+		      //set gridApi on scope
+		      $scope.gridApi = gridApi;
+		      
+		      
+		    };
+		}]);
+
+
+
 
 var app = angular.module('popup', [ "ngStorage" ])
 app.controller('Popup', function($scope, $localStorage, $window) {

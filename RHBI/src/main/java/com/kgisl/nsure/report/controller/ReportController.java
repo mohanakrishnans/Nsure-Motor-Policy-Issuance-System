@@ -62,9 +62,9 @@ public class ReportController {
 		    CommonPrintDO quotationMotorDO = new CommonPrintDO();
 		    quotationId = motorTransactionDO.getQuotationId();*/
 
-		    quotationScheduleList = (ArrayList < QuotationDO > ) quotationService.namedDriversGrid(quotationDO);
+		    quotationScheduleList = (ArrayList < QuotationDO > ) quotationService.getcnGrid(quotationDO);
 		
-		
+		    //System.out.println(quotationScheduleList);
 		
 		
 		
@@ -93,9 +93,13 @@ public class ReportController {
 			//InputStream is=this.getClass().getResourceAsStream("/Jrxml/Cherry.jrxml");
 					//JasperReport jasperReport = JasperCompileManager.compileReport(is);
 			
+			
+			
 					String path = session.getServletContext().getRealPath("/Jrxml/Cherry.jrxml");
 					//InputStream input = new FileInputStream(new File(path));
-					InputStream input = new FileInputStream(new File("E:/Nsure/Nsure-Motor-Policy-Issuance-System/RHBI/src/main/java/com/kgisl/nsure/report/controller/reportdummy.jasper"));
+					//InputStream input = new FileInputStream(new File("E:/Nsure/Nsure-Motor-Policy-Issuance-System/RHBI/src/main/java/com/kgisl/nsure/report/controller/QuotationScheduleList.jrxml"));
+					InputStream input = new FileInputStream(new File("C:/Users/mohan/JaspersoftWorkspace/Mohan/jasper_report.jrxml"));
+			
 					JasperDesign jasperDesign = JRXmlLoader.load(input);
 					JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 					
@@ -117,7 +121,7 @@ public class ReportController {
 			
 			parameter.put("classid","mohan");
 			parameter.put("gstPremiumAmt",quotationDO.getAccountName());
-			parameter.put("QuotationScheduleList",new JRBeanCollectionDataSource(quotationScheduleList));
+			parameter.put("QuotationDetails",new JRBeanCollectionDataSource(quotationScheduleList));
 			parameter.put("BaseDir",new File(realPath));											
 			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(quotationScheduleList);
 			if(report==null || dataSource==null || parameter== null) {
@@ -132,9 +136,10 @@ public class ReportController {
 			session.setAttribute("net.sf.jasperreports.j2ee.jasper_print_list",list);
 			//
 			response.setContentType("application/pdf");
-			response.addHeader("Content-disposition", "attachment; filename=Schedule Print.pdf");
+			response.addHeader("Content-disposition", "attachment; filename=Schedule_Print.pdf");
 			OutputStream out = response.getOutputStream();
 			JasperExportManager.exportReportToPdfStream(jp,out);
+			//response.sendRedirect(request.getContextPath()+ "/letters/printpdf");
 			out.flush();
 			out.close();
 			/*JRExporter exporter = new JRPdfExporter();

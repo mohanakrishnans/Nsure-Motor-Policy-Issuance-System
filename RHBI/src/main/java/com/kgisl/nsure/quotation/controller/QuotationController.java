@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,8 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.web.servlet.ModelAndView; 
 import com.google.gson.Gson;
 import com.kgisl.nsure.authenticate.domain.LoginDO;
 import com.kgisl.nsure.quotation.Service.QuotationService;
@@ -37,29 +38,55 @@ public class QuotationController {
 
 	@Autowired
 	QuotationService quotationService;
+	@RequestMapping(value = "/file", method = RequestMethod.GET)
+	public ModelAndView Page(@ModelAttribute("loginDO") LoginDO login, HttpServletRequest request)
+			throws Exception {
+		
+		return new ModelAndView("testt/newfile");
+	}
 
 	/** Quotation */
 	@RequestMapping(value = "/quotation", method = RequestMethod.GET)
 	public ModelAndView CRCInitialPage(@ModelAttribute("loginDO") LoginDO login, HttpServletRequest request)
 			throws Exception {
-		request.getSession().setAttribute("SESSION_COUNT", request.getSession().getId());
-
-		// System.out.println("quotation");
-		// return new ModelAndView("auth/crclogin");
+		
 		return new ModelAndView("quot/quotation");
 	}
+	/** Quotation */
+	@RequestMapping(value = "/nbquotation", method = RequestMethod.GET)
+	public ModelAndView nbquotation(@ModelAttribute("loginDO") LoginDO login, HttpServletRequest request)
+			throws Exception {
+		
+		return new ModelAndView("quot/nbquotation");
+	}
+	
+	@RequestMapping(value="/savemohanNamedDrivers", method = RequestMethod.POST)  
+    public ResponseEntity<QuotationDO> registerStudent(@RequestBody List<QuotationDO> stdList) {    
 
+
+        /*if (registerService.isStudentExist(stdList)) {
+            return new ResponseEntity<RegisterDTO>(HttpStatus.CREATED);
+        }*/
+		System.out.println("MMM");
+        return new ResponseEntity<QuotationDO>(HttpStatus.CREATED);
+
+    }
+	
+	
+	
+	
+	
 	/** CoverNote */
 	@RequestMapping(value = "/covernote", method = RequestMethod.GET)
 	public ModelAndView cn(@ModelAttribute("quotationFormData") QuotationDO quotationdo, BindingResult result,
 			HttpServletRequest request, HttpSession session) {
-
-		/*
-		 * String jsonString = null; Gson gson = new Gson(); jsonString =
-		 * gson.toJson(quotationdo); System.out.println(jsonString);
-		 */
-
 		return new ModelAndView("cn/covernote");
+	}
+	/** CoverNote */
+	@RequestMapping(value = "/nbcovernote", method = RequestMethod.GET)
+	public ModelAndView nbcn(@ModelAttribute("quotationFormData") QuotationDO quotationdo, BindingResult result,
+			HttpServletRequest request, HttpSession session) {
+		return new ModelAndView("cn/nbcovernote");
 	}
 
 	/** Premium */
@@ -74,6 +101,19 @@ public class QuotationController {
 	public ModelAndView namedDrivers(@ModelAttribute("login") QuotationDO quotationdo) {
 
 		return new ModelAndView("endor/nameddrivers");
+	}
+	/** Premium */
+	@RequestMapping(value = "/nbpremium", method = RequestMethod.GET)
+	public ModelAndView nbendorsement(@ModelAttribute("login") QuotationDO quotationdo) {
+
+		return new ModelAndView("premium/nbpremium");
+	}
+
+	/** Named Drivers **/
+	@RequestMapping(value = "/nbnameddrivers", method = RequestMethod.GET)
+	public ModelAndView nbnamedDrivers(@ModelAttribute("login") QuotationDO quotationdo) {
+
+		return new ModelAndView("endor/nbnameddrivers");
 	}
 
 	@RequestMapping(value = "/endorsementdetails", method = RequestMethod.GET)
@@ -91,15 +131,7 @@ public class QuotationController {
 	}
 
 	/** Named Driver Save **/
-	/*
-	 * @RequestMapping(value = "/mohan", method = RequestMethod.GET) public
-	 * ModelAndView test1(@ModelAttribute("login") QuotationDO quotationdo,
-	 * HttpServletRequest request) throws Exception {
-	 * request.getSession().setAttribute("QuotationDO",
-	 * request.getSession().getId());
-	 * 
-	 * return new ModelAndView("testt/newfile"); }
-	 */
+	
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public ModelAndView addCustomer(@ModelAttribute("userFormData") QuotationDO quotationDO, BindingResult result,
@@ -124,54 +156,57 @@ public class QuotationController {
 		// System.out.println(userFormData.getName());
 		return new ModelAndView("payment/payment");
 	}
-
-	/* Named Driver */
-	/*
-	 * @RequestMapping(value = "/saveNamedDrivers", method = RequestMethod.POST)
-	 * public ModelAndView saveNamedDrivers(@RequestBody QuotationDO quotationDO) {
-	 * 
-	 * //quotationService.saveNamedDrivers(quotationDO);
-	 * System.out.println("Mr.Mohan\n"+quotationDO.getNameddrivername());
-	 * 
-	 * return new ModelAndView("redirect:quotation"); }
-	 */
-	/** Premium */
-	// @RequestMapping(value = "/saveNamedDrivers", method =
-	// RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
-	// @RequestMapping(value = "/", method = RequestMethod.POST)
-	public @ResponseBody int saveNamedDrivers(@RequestBody QuotationDO quotationDO, HttpServletRequest request) {
-		// public @ResponseBody saveNamedDrivers(QuotationDO user, HttpServletRequest
-		// request, HttpSession session,HttpServletResponse response) {
-		// public String signUp(@RequestBody QuotationDO user){
-		System.out.println("1234567890");
-
-		System.out.println((quotationDO.getNameddrivername()));
-		return 1;
+	/*----------------------------------------------------------------------------------*/
+	
+	@RequestMapping(value = "/AngularJSFormSubmit", method = RequestMethod.GET)
+	public ModelAndView AngularJSFormSubmit(@ModelAttribute("userFormData") QuotationDO quotationDO, BindingResult result,
+			HttpServletRequest request, HttpSession session) {
+		return new ModelAndView("testt/AngularJSFormSubmit");
 	}
-
-	@RequestMapping(value = "/saveNamedDrivers", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String signUp(QuotationDO user) {
-		String username = user.getNameddrivername();// NULL!!
-		System.out.println("00000001 " + username);
-		return "login";
-	}
-
+	
+	/*Save Named Drivers using Angular post call*/
 	@RequestMapping(value = "/saveNamedDrivers", method = RequestMethod.POST)
-	public ModelAndView saveNamedDrivers(@ModelAttribute("quotationFormData") QuotationDO quotationDO,
+	public @ResponseBody QuotationDO saveNamedDrivers(@RequestBody QuotationDO quotationDO) {
+		quotationService.saveNamedDrivers(quotationDO);
+		return quotationDO;
+	}
+	
+	/*saveEndorsementDetails using Angular post call
+	@RequestMapping(value = "/saveEndorsementDetails", method = RequestMethod.POST)
+	public @ResponseBody QuotationDO saveEndorsementDetails(@RequestBody QuotationDO quotationDO) {
+		//quotationService.saveNamedDrivers(quotationDO);
+		
+		return quotationDO;
+	}*/
+	
+	
+	/*==================================================================================*/
+
+	@RequestMapping(value = "/mpa", method = RequestMethod.POST)
+	public ModelAndView saveMpa(@ModelAttribute("mpadata") QuotationDO quotationDO,
 			BindingResult result, HttpServletRequest request, HttpSession session) {
 
-		System.out.println(quotationDO.getNameddrivername());
-		quotationService.saveNamedDrivers(quotationDO);
+		//System.out.println(quotationDO.getNameddrivername());
+		quotationService.saveMpa(quotationDO);
+		return new ModelAndView("redirect:premium");
+	}
+	
+	@RequestMapping(value = "/extraCoverageSave", method = RequestMethod.POST)
+	public ModelAndView saveExtraCoverage(@ModelAttribute("extraCoverage") QuotationDO quotationDO,
+			BindingResult result, HttpServletRequest request, HttpSession session) {
+		
+		quotationService.saveExtraCoverage(quotationDO);
 		return new ModelAndView("redirect:nameddrivers");
 	}
 	
-	
 	/* Quotation Save */
-	@RequestMapping(value = "/save_quotation_form", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/save_quotation_form", method = RequestMethod.POST)
 	public ModelAndView saveQuotation(@ModelAttribute("quotationFormData") QuotationDO quotationDO,
-			BindingResult result, HttpServletRequest request, HttpSession session) {
+			BindingResult result, HttpServletRequest request, HttpSession session) {*/
+	@RequestMapping(value = "/saveQuotationForm", method = RequestMethod.POST)
+	public @ResponseBody QuotationDO saveQuotation(@RequestBody QuotationDO quotationDO) {
 
-		session.setAttribute("sourceType", quotationDO.getSourceType());
+		/*session.setAttribute("sourceType", quotationDO.getSourceType());
 		session.setAttribute("accountCode", quotationDO.getAccountCode());
 		session.setAttribute("branch", quotationDO.getBranch());
 		session.setAttribute("accountName", quotationDO.getAccountName());
@@ -215,6 +250,7 @@ public class QuotationController {
 		session.setAttribute("employementstatus", quotationDO.getEmployementstatus());
 		session.setAttribute("gstregistrationno", quotationDO.getGstregistrationno());
 
+		*/
 		System.out.println("sourceType" + quotationDO.getSourceType());
 		System.out.println("accountCode" + quotationDO.getAccountCode());
 		System.out.println("branch" + quotationDO.getBranch());
@@ -259,8 +295,9 @@ public class QuotationController {
 		System.out.println("employementstatus" + quotationDO.getEmployementstatus());
 		System.out.println("gstregistrationno" + quotationDO.getGstregistrationno());
 
-		quotationService.saveQuotation(quotationDO);
-		return new ModelAndView("redirect:covernote");
+		//quotationService.saveQuotation(quotationDO);
+		//return new ModelAndView("redirect:covernote");
+		return quotationDO;
 	}
 
 	@RequestMapping(value = "/quotationDrop", method = RequestMethod.GET)
@@ -280,7 +317,7 @@ public class QuotationController {
 			mainList.addAll(0, contactType);
 			mainList.addAll(1, sourceType);
 			jsonString = gson.toJson(mainList);
-			// System.out.println("dummy\n" + jsonString);
+			 //System.out.println("dummy\n" + jsonString);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -344,6 +381,27 @@ public class QuotationController {
 		Gson gson = new Gson();
 		try {
 			covernotegrid = quotationService.namedDriversGrid(quotationDO);
+
+			mainList.addAll(0, covernotegrid);
+			jsonString = gson.toJson(mainList);
+			// System.out.println("covernotegrid\n" + jsonString);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return jsonString;
+	}
+	
+	/* Named Drivers Grid */
+	@RequestMapping(value = "/extraCoverageGrid", method = RequestMethod.GET)
+	public @ResponseBody String extraCoverage(QuotationDO quotationDO, HttpServletRequest request) {
+
+		List<QuotationDO> covernotegrid = null;
+		ArrayList<QuotationDO> mainList = new ArrayList<QuotationDO>();
+		// System.out.println("covernoteGrid");
+		String jsonString = null;
+		Gson gson = new Gson();
+		try {
+			covernotegrid = quotationService.extraCoverageGrid(quotationDO);
 
 			mainList.addAll(0, covernotegrid);
 			jsonString = gson.toJson(mainList);

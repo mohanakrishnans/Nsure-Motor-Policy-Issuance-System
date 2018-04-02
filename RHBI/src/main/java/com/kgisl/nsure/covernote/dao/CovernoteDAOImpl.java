@@ -52,13 +52,22 @@ public class CovernoteDAOImpl implements CovernoteDAO {
 		List<CovernoteDO> cnoption = null;
 		try {
 			String finalSQL = null;
+			int quotation=1;
+			//finalSQL = "SELECT * FROM EIS_TRN_COVER_NOTE WHERE = NUM_COVER_NOTE_ID='"+quotation+"'";
 			finalSQL = "SELECT * FROM EIS_TRN_COVER_NOTE";
 			cnoption = jdbcTemplate.query(finalSQL, new RowMapper<CovernoteDO>() {
 				@Override
 				public CovernoteDO mapRow(ResultSet rs, int rowNum) throws SQLException {
 					CovernoteDO covernoteDO = new CovernoteDO();
-					covernoteDO.setClassId(rs.getInt("NUM_COVER_NOTE_ID"));
+					//covernoteDO.setClassId(rs.getInt("NUM_COVER_NOTE_ID"));
+					//covernoteDO.setIssueDate(rs.getDate("DTT_ISSUE_DATE"));
+					covernoteDO.setPolicyno(rs.getLong("VCH_POLICY_NO"));
+					covernoteDO.setCnno(rs.getString("VCH_COVER_NOTE_NO"));
+					//quotationDO.setPocdate(rs.getDate("DTT_JPJ_PROCESSED_DATE"));
+					covernoteDO.setEffectivedate(rs.getDate("DTT_EFFECTIVE_DATE"));
+					covernoteDO.setExpiredate(rs.getDate("DTT_EXPIRY_DATE"));
 					covernoteDO.setIssueDate(rs.getDate("DTT_ISSUE_DATE"));
+					covernoteDO.setCovernoteid(rs.getInt("NUM_COVER_NOTE_ID"));
 					return covernoteDO;
 				}
 			});
@@ -67,6 +76,68 @@ public class CovernoteDAOImpl implements CovernoteDAO {
 		}
 		return cnoption;
 	}
+	
+	/*** CN OPTIONS ***/
+	@Override
+	public List<CovernoteDO> cncovernteGrid(CovernoteDO covernoteDO) {
+		List<CovernoteDO> cnoption = null;
+		try {
+			String finalSQL = null;
+			int quotation=3;
+			//finalSQL = "SELECT * FROM EIS_TRN_COVER_NOTE WHERE=NUM_COVER_NOTE_ID='"+quotation+"'";
+			finalSQL = "SELECT * FROM EIS_TRN_COVER_NOTE";
+			cnoption = jdbcTemplate.query(finalSQL, new RowMapper<CovernoteDO>() {
+				@Override
+				public CovernoteDO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					CovernoteDO covernoteDO = new CovernoteDO();
+					//covernoteDO.setClassId(rs.getInt("NUM_COVER_NOTE_ID"));
+					//covernoteDO.setIssueDate(rs.getDate("DTT_ISSUE_DATE"));
+					covernoteDO.setPolicyno(rs.getLong("VCH_POLICY_NO"));
+					covernoteDO.setCnno(rs.getString("VCH_COVER_NOTE_NO"));
+					//quotationDO.setPocdate(rs.getDate("DTT_JPJ_PROCESSED_DATE"));
+					covernoteDO.setEffectivedate(rs.getDate("DTT_EFFECTIVE_DATE"));
+					covernoteDO.setExpiredate(rs.getDate("DTT_EXPIRY_DATE"));
+					covernoteDO.setIssueDate(rs.getDate("DTT_ISSUE_DATE"));
+					covernoteDO.setCovernoteid(rs.getInt("NUM_COVER_NOTE_ID"));
+					return covernoteDO;
+				}
+			});
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return cnoption;
+	}
+	
+	
+	
+	
+	
+	@Override
+	public void convertCovernote(CovernoteDO covernoteDO) {
+		// TODO Auto-generated method stub
+		
+		try {
+			 String sql="UPDATE EIS_TRN_COVER_NOTE SET NUM_COVER_NOTE_STATUS_ID='"+3+"'where NUM_COVER_NOTE_ID='"+covernoteDO.getCovernoteid()+"'";  
+			    jdbcTemplate.update(sql);  
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	@Override
+	public void cancelCovernote(CovernoteDO covernoteDO) {
+		// TODO Auto-generated method stub
+		
+		try {
+			 String sql="UPDATE EIS_TRN_COVER_NOTE SET NUM_COVER_NOTE_STATUS_ID='"+ 2 +"'where NUM_COVER_NOTE_ID='"+covernoteDO.getCovernoteid()+"'";  
+			    jdbcTemplate.update(sql);  
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
 	/*@Overrideaw4cxhi9
 	public List<CovernoteDO> cnoptionGrid(CovernoteDO covernoteDO) {
 		// TODO Auto-generated method stub

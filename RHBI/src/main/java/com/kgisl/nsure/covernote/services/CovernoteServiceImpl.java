@@ -20,6 +20,20 @@ public class CovernoteServiceImpl implements CovernoteService {
 	CovernoteDAO covernotedao;
 	
 	@Override
+	public List<CovernoteDO> cncovernteGrid(CovernoteDO covernoteDO) {
+		// TODO Auto-generated method stub
+		List<CovernoteDO> cnoption = null;
+		try{
+			cnoption = covernotedao.cncovernteGrid(covernoteDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return cnoption;
+	}
+	@Override
 	public List<CovernoteDO> cnoptionGrid(CovernoteDO covernoteDO) {
 		// TODO Auto-generated method stub
 		List<CovernoteDO> cnoption = null;
@@ -33,12 +47,29 @@ public class CovernoteServiceImpl implements CovernoteService {
 		}
 		return cnoption;
 	}
-	
 	@Override
 	public void saveCovernote(CovernoteDO covernoteDO) {
 		// TODO Auto-generated method stub
 		//System.out.println("S>");
 		covernotedao.saveCovernote(covernoteDO);
+		
+		//System.out.println("S<");
+		
+	}
+	@Override
+	public void convertCovernote(CovernoteDO covernoteDO) {
+		// TODO Auto-generated method stub
+		//System.out.println("S>");
+		covernotedao.convertCovernote(covernoteDO);
+		
+		//System.out.println("S<");
+		
+	}
+	@Override
+	public void cancelCovernote(CovernoteDO covernoteDO) {
+		// TODO Auto-generated method stub
+		//System.out.println("S>");
+		covernotedao.cancelCovernote(covernoteDO);
 		
 		//System.out.println("S<");
 		
@@ -298,4 +329,6 @@ public class CovernoteServiceImpl implements CovernoteService {
 		}
 		return covernoteclass;
 	}
+
+	 
 }
