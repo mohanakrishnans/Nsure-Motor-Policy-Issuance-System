@@ -45,6 +45,7 @@ public class LoginController {
 		value = loginService.validate(loginDO);
 		//System.out.print(value);
 		if (value) {			
+			session.setAttribute("authenticated", true);
 			return new ModelAndView("redirect:quotation");
 		} else {			
 			return new ModelAndView("redirect:/");

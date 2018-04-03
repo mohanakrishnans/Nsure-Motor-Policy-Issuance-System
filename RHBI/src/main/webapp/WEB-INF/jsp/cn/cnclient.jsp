@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%-- <%if(session.getAttribute("user")!=null && session.getAttribute("authenticated").equals(true)){	
+   //response.sendRedirect(request.getContextPath()+"/quotation/");
+}else{
+	response.sendRedirect("/RHBI/");
+}
+%>  --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -181,7 +187,7 @@
 
 								</div>
 								<div role="tabpanel"  data-ng-controller="cnoptionGrid" class="tab-pane fade" id="quotation">
-									<div class="row form-group form-inline">
+								<!-- 	<div class="row form-group form-inline">
 										<label for="Class" class="col-sm-3  control-label">
 											Class</label>
 										<div class="col-sm-3 inner-addon right-addon">
@@ -195,9 +201,8 @@
 												<option selected="selected" value="5">GOODS VEHICLE</option>
 												<option selected="selected" value="6">TANKERS</option>
 											</select>
-
 										</div>
-									</div>
+									</div> -->
 									 
 										<div data-ui-grid="gridOptions" data-ui-grid-selection
 											class="grid">
@@ -210,8 +215,6 @@
 								</div>
 							</div>
 						</fieldset>
-
-
 					</form>
 				</div>
 			</div>

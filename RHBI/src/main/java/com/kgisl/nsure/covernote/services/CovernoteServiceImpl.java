@@ -34,6 +34,15 @@ public class CovernoteServiceImpl implements CovernoteService {
 		return cnoption;
 	}
 	@Override
+	public void savePremium(CovernoteDO covernoteDO) {
+		// TODO Auto-generated method stub
+		//System.out.println("S>");
+		covernotedao.savePremium(covernoteDO);
+		
+		//System.out.println("S<");
+		
+	}
+	@Override
 	public List<CovernoteDO> cnoptionGrid(CovernoteDO covernoteDO) {
 		// TODO Auto-generated method stub
 		List<CovernoteDO> cnoption = null;
@@ -65,6 +74,29 @@ public class CovernoteServiceImpl implements CovernoteService {
 		//System.out.println("S<");
 		
 	}
+	@Override
+	public void saveEndorsementDetails(CovernoteDO quotationDO) {
+		// TODO Auto-generated method stub
+		//System.out.println("S>");
+		covernotedao.saveEndorsementDetails(quotationDO);
+		
+		//System.out.println("S<");
+		
+	}
+	@Override
+	public List<CovernoteDO> endorsementfetch(CovernoteDO quotationDO){
+		List<CovernoteDO> covernoteGrid = null;
+		try{
+			covernoteGrid = covernotedao.endorsementfetch(quotationDO);
+
+			//System.out.println(endorCategoryList);
+		}catch(Exception e){
+			//throw new NsureException(e);
+			System.out.println(e);
+		}
+		return covernoteGrid;
+	}
+
 	@Override
 	public void cancelCovernote(CovernoteDO covernoteDO) {
 		// TODO Auto-generated method stub

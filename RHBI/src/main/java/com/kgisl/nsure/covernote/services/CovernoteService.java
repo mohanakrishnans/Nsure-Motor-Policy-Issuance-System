@@ -62,4 +62,10 @@ public interface CovernoteService {
 
 	void cancelCovernote(CovernoteDO covernoteDO);
 
+	void savePremium(CovernoteDO covernoteDO); 
+
+	void saveEndorsementDetails(CovernoteDO quotationDO);
+
+	List<CovernoteDO> endorsementfetch(CovernoteDO quotationDO);
+
 }

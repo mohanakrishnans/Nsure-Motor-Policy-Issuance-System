@@ -38,4 +38,6 @@ public interface QuotationDAO {
 
 	void saveMpa(QuotationDO quotationDO);
 
+	List<QuotationDO> getreport(QuotationDO quotationDO);
+
 }

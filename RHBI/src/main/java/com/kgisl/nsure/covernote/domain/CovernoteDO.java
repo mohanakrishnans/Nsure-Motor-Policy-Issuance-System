@@ -107,6 +107,7 @@ public class CovernoteDO {
 	private String variantseries;
 	private String vehiclepurchasedate;
 	private String numberofclaims;
+	
 	/*suminsureddetails*/
 	private String vehiclemarketvalue;
 	private String suminsured;
@@ -119,20 +120,480 @@ public class CovernoteDO {
 	public String email;
 	public int quotationID;
 	public int classId;
-	public Date IssueDate;
+	public String IssueDate;
 	
 	/*Endor*/ 
 	public Long policyno;
 	public String cnno;
-	public Date pocdate;
-	public Date effectivedate;
-	public Date expiredate;
+	public String pocdate;
+	public String effectivedate;
+	public String expiredate;
 	public Long previouspolicyno;
 	public String covernoteno;	
 	public String endorsementtype;
 	 
+	/*Permium*/
+	private String suminsured1;
+	private String trailersuminsured1;
+	private String allrideramount;
+	private String basicpremium;
+	private String trailerpremium;
+	private String totalbasic;
+	
+	private String vehiclenumber1;
+	private String policynumber;
+	private String policyexpirydate;
+	private String ncdeffectivedate;
+	private String ncdfrom;
+	private String policyeffectivedate;
+	private String ncdallowedpercent;
+	
+	private String annualpremium;
+	private String ncdamount;
+	private String grosspremium;
+	private String voluntryexcessdiscount;
+	private String gst;
+	private String gstrm;
+	private String gstoncommission;	
+	private String gstoncommissionrm;
+	private String amountpayableagent;
+	private String actpremium;
+	private String afterloading;
+	private String extracoverage;
+	private String stampduty;
+	private String fleetdiscount;
+	private String commission;
+	private String commissionrm;
+	private String amountpayableclient;
+	private String excessdamageclaim;
+	private String voluntryexcess;
+	private String voluntryexcessrm;	
+	
+	private String selectplan;
+	private String mpapremium;
 	
 	
+	
+	/**
+	 * @return the suminsured1
+	 */
+	public String getSuminsured1() {
+		return suminsured1;
+	}
+	/**
+	 * @param suminsured1 the suminsured1 to set
+	 */
+	public void setSuminsured1(String suminsured1) {
+		this.suminsured1 = suminsured1;
+	}
+	/**
+	 * @return the trailersuminsured1
+	 */
+	public String getTrailersuminsured1() {
+		return trailersuminsured1;
+	}
+	/**
+	 * @param trailersuminsured1 the trailersuminsured1 to set
+	 */
+	public void setTrailersuminsured1(String trailersuminsured1) {
+		this.trailersuminsured1 = trailersuminsured1;
+	}
+	/**
+	 * @return the allrideramount
+	 */
+	public String getAllrideramount() {
+		return allrideramount;
+	}
+	/**
+	 * @param allrideramount the allrideramount to set
+	 */
+	public void setAllrideramount(String allrideramount) {
+		this.allrideramount = allrideramount;
+	}
+	/**
+	 * @return the basicpremium
+	 */
+	public String getBasicpremium() {
+		return basicpremium;
+	}
+	/**
+	 * @param basicpremium the basicpremium to set
+	 */
+	public void setBasicpremium(String basicpremium) {
+		this.basicpremium = basicpremium;
+	}
+	/**
+	 * @return the trailerpremium
+	 */
+	public String getTrailerpremium() {
+		return trailerpremium;
+	}
+	/**
+	 * @param trailerpremium the trailerpremium to set
+	 */
+	public void setTrailerpremium(String trailerpremium) {
+		this.trailerpremium = trailerpremium;
+	}
+	/**
+	 * @return the totalbasic
+	 */
+	public String getTotalbasic() {
+		return totalbasic;
+	}
+	/**
+	 * @param totalbasic the totalbasic to set
+	 */
+	public void setTotalbasic(String totalbasic) {
+		this.totalbasic = totalbasic;
+	}
+	/**
+	 * @return the vehiclenumber1
+	 */
+	public String getVehiclenumber1() {
+		return vehiclenumber1;
+	}
+	/**
+	 * @param vehiclenumber1 the vehiclenumber1 to set
+	 */
+	public void setVehiclenumber1(String vehiclenumber1) {
+		this.vehiclenumber1 = vehiclenumber1;
+	}
+	/**
+	 * @return the policynumber
+	 */
+	public String getPolicynumber() {
+		return policynumber;
+	}
+	/**
+	 * @param policynumber the policynumber to set
+	 */
+	public void setPolicynumber(String policynumber) {
+		this.policynumber = policynumber;
+	}
+	/**
+	 * @return the policyexpirydate
+	 */
+	public String getPolicyexpirydate() {
+		return policyexpirydate;
+	}
+	/**
+	 * @param policyexpirydate the policyexpirydate to set
+	 */
+	public void setPolicyexpirydate(String policyexpirydate) {
+		this.policyexpirydate = policyexpirydate;
+	}
+	/**
+	 * @return the ncdeffectivedate
+	 */
+	public String getNcdeffectivedate() {
+		return ncdeffectivedate;
+	}
+	/**
+	 * @param ncdeffectivedate the ncdeffectivedate to set
+	 */
+	public void setNcdeffectivedate(String ncdeffectivedate) {
+		this.ncdeffectivedate = ncdeffectivedate;
+	}
+	/**
+	 * @return the ncdfrom
+	 */
+	public String getNcdfrom() {
+		return ncdfrom;
+	}
+	/**
+	 * @param ncdfrom the ncdfrom to set
+	 */
+	public void setNcdfrom(String ncdfrom) {
+		this.ncdfrom = ncdfrom;
+	}
+	/**
+	 * @return the policyeffectivedate
+	 */
+	public String getPolicyeffectivedate() {
+		return policyeffectivedate;
+	}
+	/**
+	 * @param policyeffectivedate the policyeffectivedate to set
+	 */
+	public void setPolicyeffectivedate(String policyeffectivedate) {
+		this.policyeffectivedate = policyeffectivedate;
+	}
+	/**
+	 * @return the ncdallowedpercent
+	 */
+	public String getNcdallowedpercent() {
+		return ncdallowedpercent;
+	}
+	/**
+	 * @param ncdallowedpercent the ncdallowedpercent to set
+	 */
+	public void setNcdallowedpercent(String ncdallowedpercent) {
+		this.ncdallowedpercent = ncdallowedpercent;
+	}
+	/**
+	 * @return the annualpremium
+	 */
+	public String getAnnualpremium() {
+		return annualpremium;
+	}
+	/**
+	 * @param annualpremium the annualpremium to set
+	 */
+	public void setAnnualpremium(String annualpremium) {
+		this.annualpremium = annualpremium;
+	}
+	/**
+	 * @return the ncdamount
+	 */
+	public String getNcdamount() {
+		return ncdamount;
+	}
+	/**
+	 * @param ncdamount the ncdamount to set
+	 */
+	public void setNcdamount(String ncdamount) {
+		this.ncdamount = ncdamount;
+	}
+	/**
+	 * @return the grosspremium
+	 */
+	public String getGrosspremium() {
+		return grosspremium;
+	}
+	/**
+	 * @param grosspremium the grosspremium to set
+	 */
+	public void setGrosspremium(String grosspremium) {
+		this.grosspremium = grosspremium;
+	}
+	/**
+	 * @return the voluntryexcessdiscount
+	 */
+	public String getVoluntryexcessdiscount() {
+		return voluntryexcessdiscount;
+	}
+	/**
+	 * @param voluntryexcessdiscount the voluntryexcessdiscount to set
+	 */
+	public void setVoluntryexcessdiscount(String voluntryexcessdiscount) {
+		this.voluntryexcessdiscount = voluntryexcessdiscount;
+	}
+	/**
+	 * @return the gst
+	 */
+	public String getGst() {
+		return gst;
+	}
+	/**
+	 * @param gst the gst to set
+	 */
+	public void setGst(String gst) {
+		this.gst = gst;
+	}
+	/**
+	 * @return the gstrm
+	 */
+	public String getGstrm() {
+		return gstrm;
+	}
+	/**
+	 * @param gstrm the gstrm to set
+	 */
+	public void setGstrm(String gstrm) {
+		this.gstrm = gstrm;
+	}
+	/**
+	 * @return the gstoncommission
+	 */
+	public String getGstoncommission() {
+		return gstoncommission;
+	}
+	/**
+	 * @param gstoncommission the gstoncommission to set
+	 */
+	public void setGstoncommission(String gstoncommission) {
+		this.gstoncommission = gstoncommission;
+	}
+	/**
+	 * @return the gstoncommissionrm
+	 */
+	public String getGstoncommissionrm() {
+		return gstoncommissionrm;
+	}
+	/**
+	 * @param gstoncommissionrm the gstoncommissionrm to set
+	 */
+	public void setGstoncommissionrm(String gstoncommissionrm) {
+		this.gstoncommissionrm = gstoncommissionrm;
+	}
+	/**
+	 * @return the amountpayableagent
+	 */
+	public String getAmountpayableagent() {
+		return amountpayableagent;
+	}
+	/**
+	 * @param amountpayableagent the amountpayableagent to set
+	 */
+	public void setAmountpayableagent(String amountpayableagent) {
+		this.amountpayableagent = amountpayableagent;
+	}
+	/**
+	 * @return the actpremium
+	 */
+	public String getActpremium() {
+		return actpremium;
+	}
+	/**
+	 * @param actpremium the actpremium to set
+	 */
+	public void setActpremium(String actpremium) {
+		this.actpremium = actpremium;
+	}
+	/**
+	 * @return the afterloading
+	 */
+	public String getAfterloading() {
+		return afterloading;
+	}
+	/**
+	 * @param afterloading the afterloading to set
+	 */
+	public void setAfterloading(String afterloading) {
+		this.afterloading = afterloading;
+	}
+	/**
+	 * @return the extracoverage
+	 */
+	public String getExtracoverage() {
+		return extracoverage;
+	}
+	/**
+	 * @param extracoverage the extracoverage to set
+	 */
+	public void setExtracoverage(String extracoverage) {
+		this.extracoverage = extracoverage;
+	}
+	/**
+	 * @return the stampduty
+	 */
+	public String getStampduty() {
+		return stampduty;
+	}
+	/**
+	 * @param stampduty the stampduty to set
+	 */
+	public void setStampduty(String stampduty) {
+		this.stampduty = stampduty;
+	}
+	/**
+	 * @return the fleetdiscount
+	 */
+	public String getFleetdiscount() {
+		return fleetdiscount;
+	}
+	/**
+	 * @param fleetdiscount the fleetdiscount to set
+	 */
+	public void setFleetdiscount(String fleetdiscount) {
+		this.fleetdiscount = fleetdiscount;
+	}
+	/**
+	 * @return the commission
+	 */
+	public String getCommission() {
+		return commission;
+	}
+	/**
+	 * @param commission the commission to set
+	 */
+	public void setCommission(String commission) {
+		this.commission = commission;
+	}
+	/**
+	 * @return the commissionrm
+	 */
+	public String getCommissionrm() {
+		return commissionrm;
+	}
+	/**
+	 * @param commissionrm the commissionrm to set
+	 */
+	public void setCommissionrm(String commissionrm) {
+		this.commissionrm = commissionrm;
+	}
+	/**
+	 * @return the amountpayableclient
+	 */
+	public String getAmountpayableclient() {
+		return amountpayableclient;
+	}
+	/**
+	 * @param amountpayableclient the amountpayableclient to set
+	 */
+	public void setAmountpayableclient(String amountpayableclient) {
+		this.amountpayableclient = amountpayableclient;
+	}
+	/**
+	 * @return the excessdamageclaim
+	 */
+	public String getExcessdamageclaim() {
+		return excessdamageclaim;
+	}
+	/**
+	 * @param excessdamageclaim the excessdamageclaim to set
+	 */
+	public void setExcessdamageclaim(String excessdamageclaim) {
+		this.excessdamageclaim = excessdamageclaim;
+	}
+	/**
+	 * @return the voluntryexcess
+	 */
+	public String getVoluntryexcess() {
+		return voluntryexcess;
+	}
+	/**
+	 * @param voluntryexcess the voluntryexcess to set
+	 */
+	public void setVoluntryexcess(String voluntryexcess) {
+		this.voluntryexcess = voluntryexcess;
+	}
+	/**
+	 * @return the voluntryexcessrm
+	 */
+	public String getVoluntryexcessrm() {
+		return voluntryexcessrm;
+	}
+	/**
+	 * @param voluntryexcessrm the voluntryexcessrm to set
+	 */
+	public void setVoluntryexcessrm(String voluntryexcessrm) {
+		this.voluntryexcessrm = voluntryexcessrm;
+	}
+	/**
+	 * @return the selectplan
+	 */
+	public String getSelectplan() {
+		return selectplan;
+	}
+	/**
+	 * @param selectplan the selectplan to set
+	 */
+	public void setSelectplan(String selectplan) {
+		this.selectplan = selectplan;
+	}
+	/**
+	 * @return the mpapremium
+	 */
+	public String getMpapremium() {
+		return mpapremium;
+	}
+	/**
+	 * @param mpapremium the mpapremium to set
+	 */
+	public void setMpapremium(String mpapremium) {
+		this.mpapremium = mpapremium;
+	}
 	/**
 	 * @return the covernoteid
 	 */
@@ -206,46 +667,58 @@ public class CovernoteDO {
 		this.cnno = cnno;
 	}
 	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+	/**
+	 * @return the issueDate
+	 */
+	public String getIssueDate() {
+		return IssueDate;
+	}
+	/**
+	 * @param issueDate the issueDate to set
+	 */
+	public void setIssueDate(String issueDate) {
+		IssueDate = issueDate;
+	}
+	/**
 	 * @return the pocdate
 	 */
-	public Date getPocdate() {
+	public String getPocdate() {
 		return pocdate;
 	}
 	/**
 	 * @param pocdate the pocdate to set
 	 */
-	public void setPocdate(Date pocdate) {
+	public void setPocdate(String pocdate) {
 		this.pocdate = pocdate;
 	}
 	/**
 	 * @return the effectivedate
 	 */
-	public Date getEffectivedate() {
+	public String getEffectivedate() {
 		return effectivedate;
 	}
 	/**
 	 * @param effectivedate the effectivedate to set
 	 */
-	public void setEffectivedate(Date effectivedate) {
+	public void setEffectivedate(String effectivedate) {
 		this.effectivedate = effectivedate;
 	}
 	/**
 	 * @return the expiredate
 	 */
-	public Date getExpiredate() {
+	public String getExpiredate() {
 		return expiredate;
 	}
 	/**
 	 * @param expiredate the expiredate to set
 	 */
-	public void setExpiredate(Date expiredate) {
+	public void setExpiredate(String expiredate) {
 		this.expiredate = expiredate;
-	}
-	/**
-	 * @return the id
-	 */
-	public Long getId() {
-		return id;
 	}
 	/**
 	 * @param id the id to set
@@ -300,18 +773,6 @@ public class CovernoteDO {
 	 */
 	public void setClassId(int classId) {
 		this.classId = classId;
-	}
-	/**
-	 * @return the issueDate
-	 */
-	public Date getIssueDate() {
-		return IssueDate;
-	}
-	/**
-	 * @param issueDate the issueDate to set
-	 */
-	public void setIssueDate(Date issueDate) {
-		IssueDate = issueDate;
 	}
 	/**
 	 * @return the functionalmodificationid

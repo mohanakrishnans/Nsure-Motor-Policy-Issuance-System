@@ -6,6 +6,7 @@ package com.kgisl.nsure.covernote.dao;
 import java.util.List;
 
 import com.kgisl.nsure.covernote.domain.CovernoteDO;
+import com.kgisl.nsure.quotation.domain.QuotationDO;
 
 /**
  * @author mohan
@@ -59,6 +60,12 @@ public interface CovernoteDAO {
 	void convertCovernote(CovernoteDO covernoteDO);
 
 	void cancelCovernote(CovernoteDO covernoteDO);
+
+	void savePremium(CovernoteDO quotationDO); 
+
+	void saveEndorsementDetails(CovernoteDO quotationDO);
+
+	List<CovernoteDO> endorsementfetch(CovernoteDO quotationDO);
 	
 	
 }

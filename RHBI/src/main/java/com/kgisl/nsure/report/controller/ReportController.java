@@ -53,46 +53,21 @@ public class ReportController {
 	/*@SuppressWarnings({ "unchecked", "rawtypes" })
 	*/
 	@SuppressWarnings({ "rawtypes", "unchecked", "deprecation" })
-	@RequestMapping(value = "/mohanreport", method = RequestMethod.GET)
+	@RequestMapping(value = "/printreport", method = RequestMethod.GET)
 	public void PrintDet(QuotationDO quotationDO,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws IOException {  
 		
-		Collection quotationScheduleList = new ArrayList();
-		   // Quotation NB and Quotation Renewal
-		 /*  if (motorTransactionDO.getCoverNoteTypeId() == GlobalNames.QUOTATION_NEW || motorTransactionDO.getCoverNoteTypeId() == GlobalNames.QUOTATION_RENEW) {
-		    CommonPrintDO quotationMotorDO = new CommonPrintDO();
-		    quotationId = motorTransactionDO.getQuotationId();*/
+		Collection quotationScheduleList = new ArrayList(); 
 
-		    quotationScheduleList = (ArrayList < QuotationDO > ) quotationService.getcnGrid(quotationDO);
-		
-		    //System.out.println(quotationScheduleList);
-		
-		
-		
-		//System.out.println(request.getContextPath()+"MohaNNNNNNNNNNNNNNN");
-		//ArrayList < QuotationDO > schedulePrintList = null;
-		//List<QuotationDO> contactType = quotationService.getcontactType(quotationDO);
-		//System.out.println(JSON.stringify(contactType));
-		//schedulePrintList.addAll(0,contactType);
+		    quotationScheduleList = (ArrayList < QuotationDO > ) quotationService.getcnGrid(quotationDO); 
 	      
 		
 		try {					
 			String realPath = request.getContextPath();
-			System.out.println(realPath+" MohaN");
-			//JasperDesign jd  = JRXmlLoader.load(getClass().getResourceAsStream("/Jrxml/reportdummy.jasper"));
-			String report ="http://localhost/nsure/resources/reportdummy.jasper";
+			System.out.println(realPath+" MohaN"); 
 			
+			//String report ="http://localhost/nsure/resources/reportdummy.jasper";
 			
-			///InputStream reportStream = QuotationService.class.getResourceAsStream(report);
-			
-			//InputStream input = this.getClass().getResourceAsStream("/reportdummy.jasper");
-            //JasperDesign design = JRXmlLoader.load(input);
-            //JasperReport report = JasperCompileManager.compileReport(report1);
-			
-			//InputStream jasperStream = this.getClass().getResourceAsStream("E:/Nsure/Nsure-Motor-Policy-Issuance-System/RHBI/Jrxml/reportdummy.jasper");
-		   // JasperReport report = (JasperReport) JRLoader.loadObject(jasperStream);
-			//InputStream is=this.getClass().getResourceAsStream("/Jrxml/Cherry.jrxml");
-					//JasperReport jasperReport = JasperCompileManager.compileReport(is);
-			
+			 
 			
 			
 					String path = session.getServletContext().getRealPath("/Jrxml/Cherry.jrxml");
@@ -105,28 +80,17 @@ public class ReportController {
 					
 					
 			Map parameter = new HashMap();
-			/*QuotationDO quotationMotorDO;
-			String nameDriverName ="";
-			if (quotationScheduleList.size() != 0) {
-				Iterator it = quotationScheduleList.iterator();
-				while (it.hasNext()) {
-					quotationMotorDO = (QuotationDO) it.next();
-					nameDriverName = quotationMotorDO.getNameddrivername();
-					ArrayList<QuotationDO> QuotArray = new ArrayList<QuotationDO>(); 
-					QuotArray.add(quotationMotorDO);
-					parameter.put("QuotationScheduleList",new JRBeanCollectionDataSource(QuotArray));
-				}
-			}*/
-			
+		 
 			
 			parameter.put("classid","mohan");
 			parameter.put("gstPremiumAmt",quotationDO.getAccountName());
 			parameter.put("QuotationDetails",new JRBeanCollectionDataSource(quotationScheduleList));
-			parameter.put("BaseDir",new File(realPath));											
-			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(quotationScheduleList);
-			if(report==null || dataSource==null || parameter== null) {
-				System.out.println("X");
-			}
+			parameter.put("BaseDir",new File(realPath));	
+			
+			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(quotationScheduleList); 
+			
+			
+			
 			JasperPrint jp = JasperFillManager.fillReport(jasperReport,parameter, dataSource);
 			JasperExportManager.exportReportToPdfFile(jp, "test.pdf");
 			byte[] pdf = JasperExportManager.exportReportToPdf(jp);	
@@ -139,6 +103,7 @@ public class ReportController {
 			response.addHeader("Content-disposition", "attachment; filename=Schedule_Print.pdf");
 			OutputStream out = response.getOutputStream();
 			JasperExportManager.exportReportToPdfStream(jp,out);
+			
 			//response.sendRedirect(request.getContextPath()+ "/letters/printpdf");
 			out.flush();
 			out.close();
@@ -162,37 +127,7 @@ public class ReportController {
 		}
 		
 		
-		
-        /*ttpSession session = request.getSession();        
-        ArrayList list = new ArrayList();
-        ArrayList printDetails=new ArrayList();
-        ArrayList subDetails = new ArrayList();
-        String realPath = request.getSession().getServletContext().getRealPath("/");
-        Map reportparameter = new HashMap();
-
-        String report ="E:/Nsure/Nsure-Motor-Policy-Issuance-System/RHBI/Jrxml/";
-        reportparameter.put("BaseDir", new File(report));
-        realPath + 
-        report = report+"reportdummy.jasper";
-        try{
-        	
-            List reportFormDO=covernoteService.getCovernoteClass(null),covernotetype ;
-
-            subDetails.addAll(covernoteService.getCovernoteType(null));
-            printDetails.add(reportFormDO);
-            reportparameter.put("SubDetails", new JRBeanCollectionDataSource(subDetails));
-            JasperPrint    jasperPrint = JasperFillManager.fillReport(report, reportparameter, new JRBeanCollectionDataSource(printDetails));            
-            if (jasperPrint != null) {
-                byte[] pdf = JasperExportManager.exportReportToPdf(jasperPrint);
-                list.add(new ByteArrayInputStream(pdf));
-            }
-            session.setAttribute("net.sf.jasperreports.j2ee.jasper_print_list", list);
-            response.sendRedirect(request.getContextPath() + "/filter/printpdf");
-            report = "";
-            reportparameter.clear();            
-        }catch(Exception e){
-            System.out.println(e);
-        }*/
+	 
     }
 	
 	

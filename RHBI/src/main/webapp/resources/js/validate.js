@@ -72,19 +72,19 @@ function newIcno() {
 			var date = year + "-" + month + "-" + day;
 			// alert(date);
 			// $("#dob").val( day+"-"+month+"-"+ year);
-			document.getElementById('dob').value = date;
-			document.getElementById("dob").disabled = true;
+			document.getElementById('dateob').value = date;
+			document.getElementById("dateob").disabled = true;
 			// alert(document.getElementById("dob").value);
 			if (g == 0) {
-				document.getElementById('Gender').value = "MALE";
-				document.getElementById("Gender").disabled = true;
+				document.getElementById('Genderg').value = "MALE";
+				document.getElementById("Genderg").disabled = true;
 			} else {
-				document.getElementById('Gender').value = "FEMALE";
-				document.getElementById("Gender").disabled = true;
+				document.getElementById('Genderg').value = "FEMALE";
+				document.getElementById("Genderg").disabled = true;
 			}
 			var age = y - year;
-			document.getElementById('Age').value = age;
-			document.getElementById("Age").disabled = true;
+			document.getElementById('Agee').value = age;
+			document.getElementById("Agee").disabled = true;
 			// color();
 			newicno.style.backgroundColor = "#FFFFFF";
 		} else

@@ -10,9 +10,16 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
+<%if(session.getAttribute("user")!=null && session.getAttribute("authenticated").equals(true)){
+	
+   //response.sendRedirect(request.getContextPath()+"/quotation/");
+}else{
+	response.sendRedirect("/RHBI/");
+}
+%>
+ 
 
-
-<!--
+<!-- 
 <link rel="shortcut icon"
 	href="appresources/dashboard/img/favicon.ico">
 <link rel="stylesheet"
@@ -51,7 +58,8 @@
 	src="http://localhost/nsure/dashboard/js/angular-messages.min.js"></script>
 
 -->
-<link rel="shortcut icon"	href="http://localhost/nsure/dashboard/img/favicon.ico">
+<link rel="shortcut icon"
+	href="http://localhost/nsure/dashboard/img/favicon.ico">
 <link rel="stylesheet"
 	href="http://localhost/nsure/dashboard/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -68,122 +76,21 @@
 <script src="http://localhost/nsure/dashboard/js/messenger.min.js"></script>
 <script
 	src="http://localhost/nsure/dashboard/js/messenger-theme-flat.js"></script>
-<script src="http://localhost/nsure/dashboard/js/home-premium.js"></script> 
+<script src="http://localhost/nsure/dashboard/js/home-premium.js"></script>
 
-<script
-	src="http://localhost/nsure/dashboard/js/angular.min.js"></script>
-
-<script
-	src="http://localhost/nsure/dashboard/js/jquery.min.js"></script>
-
-<script
-	src="http://localhost/nsure/dashboard/js/angular-messages.min.js"></script>
+<script src="http://localhost/nsure/dashboard/js/angular.min.js"></script>
 
 <script src="http://localhost/nsure/dashboard/js/jquery.min.js"></script>
+<script src="//code.angularjs.org/snapshot/angular.min.js"></script>
+<script src="//code.angularjs.org/snapshot/angular-messages.js"></script>
+<script src="script.js"></script>
 
-<link type="text/javascript" src="//code.angularjs.org/snapshot/angular.min.js"> 
-<link type="text/javascript" src="//code.angularjs.org/snapshot/angular-messages.js"> 
-<link type="text/javascript" src="script.js"></script>
-<script type="text/javascript" src="resources/js/index.js"></script>
 <script type="text/javascript" src="resources/js/validate.js"></script>
 
 <script type="text/javascript">
- var app = angular.module("app", ['ngMessages']);
- app.controller("quotationController",
-			function($scope,$window) {
-	 	$scope.quotation =[];
+ var app = angular.module("quotation", ['ngMessages']).controller("quotationController",
+			function($scope) {
 				$scope.contactId = null;
-				$scope.quotation.drpContactType=$window.sessionStorage.getItem( 'drpContactType' );
-				$scope.quotation.sourceType = $window.sessionStorage.getItem('sourceType');
-				$scope.quotation.accountCode = $window.sessionStorage.getItem('accountCode');
-				$scope.quotation.branch = $window.sessionStorage.getItem('branch');
-				$scope.quotation.accountName = $window.sessionStorage.getItem('accountName');
-				$scope.quotation.newIcNo = $window.sessionStorage.getItem('newIcNo');
-				$scope.quotation.name = $window.sessionStorage.getItem('name');
-				$scope.quotation.nationality = $window.sessionStorage.getItem('nationality');
-				$scope.quotation.race = $window.sessionStorage.getItem('race');
-				$scope.quotation.dateOfBirth = $window.sessionStorage.getItem('dateOfBirth');
-				//alert($window.sessionStorage.getItem('dateOfBirth'));
-				$scope.quotation.gender = $window.sessionStorage.getItem('gender');
-				$scope.quotation.maritalStatus = $window.sessionStorage.getItem('maritalStatus');
-				$scope.quotation.occupation = $window.sessionStorage.getItem('occupation');
-				$scope.quotation.gstRegistered = $window.sessionStorage.getItem('gstRegistered');
-				$scope.quotation.address = $window.sessionStorage.getItem('address');
-				$scope.quotation.postCode = $window.sessionStorage.getItem('postCode');
-				$scope.quotation.countryCode = $window.sessionStorage.getItem('countryCode');
-				$scope.quotation.mobileNo = $window.sessionStorage.getItem('mobileNo');
-				$scope.quotation.pdpa = $window.sessionStorage.getItem('pdpa');
-				$scope.quotation.css = $window.sessionStorage.getItem('css');
-				$scope.quotation.businessRegNo = $window.sessionStorage.getItem('businessRegNo');
-				$scope.quotation.typeOfBusiness = $window.sessionStorage.getItem('typeOfBusiness');
-				$scope.quotation.oldIcNo = $window.sessionStorage.getItem('oldIcNo');
-				$scope.quotation.email = $window.sessionStorage.getItem('email');
-				$scope.quotation.gstregistrationdate = $window.sessionStorage.getItem('gstregistrationdate');
-				$scope.quotation.gstexpirydate = $window.sessionStorage.getItem('gstexpirydate');
-				$scope.quotation.website = $window.sessionStorage.getItem('website');
-				$scope.quotation.trafficviolation = $window.sessionStorage.getItem('trafficviolation');
-				$scope.quotation.vipstatus = $window.sessionStorage.getItem('vipstatus');
-				$scope.quotation.permanentaddress = $window.sessionStorage.getItem('permanentaddress');
-				$scope.quotation.statecountry = $window.sessionStorage.getItem('statecountry');
-				$scope.quotation.telnohouse = $window.sessionStorage.getItem('telnohouse');
-				$scope.quotation.telnooffice = $window.sessionStorage.getItem('telnooffice');
-				$scope.quotation.faxnohouse = $window.sessionStorage.getItem('faxnohouse');
-				$scope.quotation.faxnooffice = $window.sessionStorage.getItem('faxnooffice');
-				$scope.quotation.remarks = $window.sessionStorage.getItem('remarks');
-				$scope.quotation.datasignedcustomer = $window.sessionStorage.getItem('datasignedcustomer');
-				$scope.quotation.crosssignedcustomer = $window.sessionStorage.getItem('crosssignedcustomer');
-				$scope.quotation.oldicpassportno = $window.sessionStorage.getItem('oldicpassportno');
-				$scope.quotation.salutation = $window.sessionStorage.getItem('salutation');
-				$scope.quotation.age = $window.sessionStorage.getItem('age');
-				$scope.quotation.employementstatus = $window.sessionStorage.getItem('employementstatus');
-				$scope.quotation.gstregistrationno = $window.sessionStorage.getItem('gstregistrationno');
-				
-				$scope.submit = function(){
-					$window.sessionStorage.setItem('drpContactType',$scope.quotation.drpContactType);
-					$window.sessionStorage.setItem('sourceType', $scope.quotation.sourceType);
-					$window.sessionStorage.setItem('accountCode', $scope.quotation.accountCode);
-					$window.sessionStorage.setItem('branch', $scope.quotation.branch);
-					$window.sessionStorage.setItem('accountName', $scope.quotation.accountName);
-					$window.sessionStorage.setItem('newIcNo', $scope.quotation.newIcNo);
-					$window.sessionStorage.setItem('name', $scope.quotation.name);
-					$window.sessionStorage.setItem('nationality', $scope.quotation.nationality);
-					$window.sessionStorage.setItem('race', $scope.quotation.race);
-					$window.sessionStorage.setItem('dateOfBirth', $scope.quotation.dateOfBirth);
-					$window.sessionStorage.setItem('gender', $scope.quotation.gender);
-					$window.sessionStorage.setItem('maritalStatus', $scope.quotation.maritalStatus);
-					$window.sessionStorage.setItem('occupation', $scope.quotation.occupation);
-					$window.sessionStorage.setItem('gstRegistered', $scope.quotation.gstRegistered);
-					$window.sessionStorage.setItem('address', $scope.quotation.address);
-					$window.sessionStorage.setItem('postCode', $scope.quotation.postCode);
-					$window.sessionStorage.setItem('countryCode', $scope.quotation.countryCode);
-					$window.sessionStorage.setItem('mobileNo', $scope.quotation.mobileNo);
-					$window.sessionStorage.setItem('pdpa', $scope.quotation.pdpa);
-					$window.sessionStorage.setItem('css', $scope.quotation.css);
-					$window.sessionStorage.setItem('businessRegNo', $scope.quotation.businessRegNo);
-					$window.sessionStorage.setItem('typeOfBusiness', $scope.quotation.typeOfBusiness);
-					$window.sessionStorage.setItem('oldIcNo', $scope.quotation.oldIcNo);
-					$window.sessionStorage.setItem('email', $scope.quotation.email);
-					$window.sessionStorage.setItem('gstregistrationdate', $scope.quotation.gstregistrationdate);
-					$window.sessionStorage.setItem('gstexpirydate', $scope.quotation.gstexpirydate);
-					$window.sessionStorage.setItem('website', $scope.quotation.website);
-					$window.sessionStorage.setItem('trafficviolation', $scope.quotation.trafficviolation);
-					$window.sessionStorage.setItem('vipstatus', $scope.quotation.vipstatus);
-					$window.sessionStorage.setItem('permanentaddress', $scope.quotation.permanentaddress);
-					$window.sessionStorage.setItem('statecountry', $scope.quotation.statecountry);
-					$window.sessionStorage.setItem('telnohouse', $scope.quotation.telnohouse);
-					$window.sessionStorage.setItem('telnooffice', $scope.quotation.telnooffice);
-					$window.sessionStorage.setItem('faxnohouse', $scope.quotation.faxnohouse);
-					$window.sessionStorage.setItem('faxnooffice', $scope.quotation.faxnooffice);
-					$window.sessionStorage.setItem('remarks', $scope.quotation.remarks);
-					$window.sessionStorage.setItem('datasignedcustomer', $scope.quotation.datasignedcustomer);
-					$window.sessionStorage.setItem('crosssignedcustomer', $scope.quotation.crosssignedcustomer);
-					$window.sessionStorage.setItem('oldicpassportno', $scope.quotation.oldicpassportno);
-					$window.sessionStorage.setItem('salutation', $scope.quotation.salutation);
-					$window.sessionStorage.setItem('age', $scope.quotation.age);
-					$window.sessionStorage.setItem('employementstatus', $scope.quotation.employementstatus);
-					$window.sessionStorage.setItem('gstregistrationno', $scope.quotation.gstregistrationno);		
-				};
-				
 				fnendtmotoronload();
 			});
 	//var app = angular.module('app', ['ngMessages']);
@@ -203,11 +110,11 @@
 				$.each(result, function(index, value) {
 					if (value.contactType > 0) {
 						$('#CONTACT_TYPE').append(
-								'<option data-ng-value="' + value.contactName + '">'
-													 + value.contactName + '</option>');
+								'<option value="' + value.contactType + '">'
+										+ value.contactName + '</option>');
 					} else if (value.sourceType > 0) {
 						$('#SOURCE_TYPE').append(
-								'<option data-ng-value="' + value.sourceName + '">'
+								'<option value="' + value.sourceType + '">'
 										+ value.sourceName + '</option>');
 					} else if (value.salutationid > 0) {
 						$('#SALUTATION').append(
@@ -224,7 +131,7 @@
 
 
 </head>
-<body class="" data-ng-app="app"
+<body class="" data-ng-app="quotation"
 	data-ng-controller="quotationController as tc" id="ENDOR_NON_JPJ_MOTOR">
 	<nav class="side-navbar">
 		<div class="side-navbar-wrapper">
@@ -243,11 +150,17 @@
 			</div>
 			<div class="main-menu">
 				<ul id="side-main-menu" class="side-menu list-unstyled">
-					<li><a href="quotation"> <i class="icon-home"></i>Quotation</a></li>
-					<li><a href="nbquotation"> <i class="icon-form"></i>New Business</a></li>
-					<li><a href="cnOptions"> <i class="icon-form"></i>CN Options</a></li>
+					<li><a href="quotation"> <i class="icon-home"></i>Quotation
+					</a></li>
+					<li><a href="cnOptions"> <i class="icon-form"></i>CN
+							Options
+					</a></li>
+					<!-- 
+					<li><a href="nameddrivers"> <i class="icon-form"></i>Named Drivers</a></li> -->
 					<li><a href="endorsementdetails"><i class="icon-form"></i>Endorsement</a></li>
-					<li><a href="referRisk"> <i class="icon-grid"></i>Refer	Risk</a></li>
+					<li><a href="referRisk"> <i class="icon-grid"></i>Refer
+							Risk
+					</a></li>
 				</ul>
 			</div>
 		</div>
@@ -276,9 +189,8 @@
 					<h4>Quotation | Client Profile</h4>
 				</div>
 				<div class="card-body">
-					<!-- <form action="save_quotation_form" method="POST"
-						modelAttribute="userFormData"> -->
-						<form method="POST">
+					<form action="save_quotation_form" method="POST"
+						modelAttribute="userFormData">
 						<fieldset class="scheduler-border">
 							<legend class="scheduler-border">Account Code / Branch
 								Details</legend>
@@ -288,9 +200,9 @@
 										<label for="sourceType" class="col-sm-4 control-label">Source
 											Type </label>
 										<div class="col-sm-8">
-											<select ng-model="quotation.sourceType" ng-option="{{quotation.sourceType}}" required id="SOURCE_TYPE"
+											<select name="sourceType" value="${sourceType }" required id="SOURCE_TYPE"
 												class="form-control">
-												<!-- <option selected="selected" value="0">--SELECT--</option> -->
+												<option selected="selected" value="0">--SELECT--</option>
 											</select>
 										</div>
 									</div>
@@ -298,9 +210,8 @@
 										<label for="accountCode" class="col-sm-4 control-label">Account
 											Code</label>
 										<div class="col-sm-8">
-											<input ng-model="quotation.accountCode"
-												ng-value="{{quotation.accountCode }}" required
-												id="accountCode" class="form-control" type="number"
+											<input name="accountCode" value="${accountCode }" required id="accountCode"
+												class="form-control" type="number"												
 												onKeyPress="if(this.value.length==2) return false;" />
 										</div>
 									</div>
@@ -309,9 +220,9 @@
 									<div class="row form-group form-inline">
 										<label for="branch" class="col-sm-4 control-label">Branch</label>
 										<div class="col-sm-8">
-											<input ng-model="quotation.branch" required id="branch"
+											<input name="branch" required id="branch"
 												class="form-control" type="text" maxlength="10"
-												ng-value="{{quotation. branch}}"
+												value="${ branch}"
 												onkeypress="return onlyAlphabets(event,this);" />
 										</div>
 									</div>
@@ -319,9 +230,9 @@
 										<label for="accountName" class="col-sm-4 control-label">Account
 											Name</label>
 										<div class="col-sm-8">
-											<input ng-model="quotation.accountName" required id="accountName"
+											<input name="accountName" required id="accountName"
 												class="form-control" type="text" maxlength="10"
-												ng-value="{{quotation.accountName}}" 
+												value="${accountName}" 
 												onkeypress="return onlyAlphabets(event,this);" />
 										</div>
 									</div>
@@ -337,12 +248,9 @@
 								<div class="row form-group form-inline">
 									<label for="CONTACT_TYPE" class="col-sm-4 control-label">Contact_Type:</label>
 									<div class="col-sm-4">
-										<select required 
-												id="CONTACT_TYPE" 
-												class="form-control" 
-												data-ng-value="{{quotation.drpContactType}}" 
-												data-ng-model="quotation.drpContactType">
-											<option data-ng-value=" ">--SELECT--</option>
+										<select name="contactType" required id="CONTACT_TYPE"
+											class="form-control" value="${conactType }" data-ng-model="drpContactType">
+											<option selected="selected" value="0">--SELECT--</option>
 										</select>
 									</div>
 								</div>
@@ -350,7 +258,7 @@
 						</div>
 
 						<hr>
-						<div class="form-horizontal" data-ng-if="quotation.drpContactType=='INDIVIDUAL'">
+						<div class="form-horizontal" data-ng-if="drpContactType=='1'">
 							<fieldset class="scheduler-border">
 								<legend class="scheduler-border">Individual</legend>
 								<div class="row">
@@ -359,7 +267,7 @@
 											<label for="newicno" class="col-sm-4 control-label">New
 												IC No:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.newIcNo"  ng-value="{{quotation.newIcNo }}"  required id="newicno" type="number"
+												<input name="newIcNo"  value="${newIcNo }"  required id="newicno" type="number"
 													class="form-control" 
 													onKeyPress="if(this.value.length==12) return false;"
 													onChange="newIcno()" />
@@ -374,7 +282,7 @@
 											<label for="oldicno" class="col-sm-4 control-label">Old
 												IC No / Passport No:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.oldicpassportno"  ng-value="{{quotation. oldicpassportno}}" required id="oldicno" type="text"
+												<input name="oldicpassportno"  value="${ oldicpassportno}" required id="oldicno" type="text"
 													class="form-control" 
 													maxlength="20" onChange="oldIcNo()" />
 											</div>
@@ -382,7 +290,7 @@
 										<div class="row form-group form-inline">
 											<label for="Name" class="col-sm-4 control-label">Name:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.name"  ng-value="{{quotation.name }}"  required id="Name" class="form-control"
+												<input name="name"  value="${name }"  required id="Name" class="form-control"
 													type="text" maxlength="100" 
 													onkeypress="return onlyAlphabets(event,this);" />
 											</div>
@@ -390,7 +298,7 @@
 										<div class="row form-group form-inline">
 											<label for="SALUTATION" class="col-sm-4 control-label">Salutation:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.salutation" ng-value="{{quotation.salutation }}" required id="SALUTATION"
+												<select name="salutation" value="${salutation }" required id="SALUTATION"
 													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="Mr">Mr</option>
@@ -405,7 +313,7 @@
 										<div class="row form-group form-inline">
 											<label for="Nationality" class="col-sm-4 control-label">Nationality:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.nationality" ng-value="{{quotation.nationality}}" required id="Nationality"
+												<select name="nationality" value="${ nationality}" required id="Nationality"
 													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="Indian">INDIAN</option>
@@ -417,7 +325,7 @@
 										<div class="row form-group form-inline">
 											<label for="Race" class="col-sm-4 control-label">Race:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.race"  ng-value="{{quotation.race }}" required id="Race" class="form-control"
+												<select name="race"  value="${race }" required id="Race" class="form-control"
 													>
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="Black">BLACK</option>
@@ -430,14 +338,14 @@
 											<label for="dob" class="col-sm-4 control-label">Date
 												Of Birth:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.dateOfBirth"  ng-value="{{quotation.dateOfBirth }}" required class="form-control"
+												<input name="dateOfBirth"  value="${dateOfBirth }" required class="form-control"
 												id="dateob"	type="date" /><!--   -->
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="Age" class="col-sm-4 control-label">Age</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.age"  ng-value="{{quotation.age}}" required class="form-control" id="Agee"
+												<input name="age"  value="${age }" required class="form-control" id="Agee"
 													type="number"
 													onKeyPress="if(this.value.length==2) return false;" />
 											</div>
@@ -445,9 +353,9 @@
 										<div class="row form-group form-inline">
 											<label for="Gender" class="col-sm-4 control-label">Gender:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.gender" ng-value="{{quotation.gender}}" required class="form-control"
+												<input name="gender" value="${ gender}" required class="form-control"
 													id="Genderg" type="text" />
-												<!--<select ng-model="quotation.Gender" required id="gender"
+												<!--<select name="Gender" required id="gender"
 													class="form-control">
 													 <option selected="selected" value="0">--SELECT--</option>
 													<option value="1">MALE</option>
@@ -459,7 +367,7 @@
 											<label for="Maritalstatus" class="col-sm-4 control-label">Marital
 												Status:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.maritalStatus" ng-value="{{quotation.maritalStatus }}" required id="Maritalstatus"
+												<select name="maritalStatus" value="${maritalStatus }" required id="Maritalstatus"
 													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="SINGLE">SINGLE</option>
@@ -470,7 +378,7 @@
 										<div class="row form-group form-inline">
 											<label for="Occupation" class="col-sm-4 control-label">Occupation:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.occupation" ng-value="{{quotation.occupation }}" required id="Occupation"
+												<select name="occupation" value="${occupation }" required id="Occupation"
 													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="Employed">EMPLOYED</option>
@@ -484,7 +392,7 @@
 											<label for="gstregistered" class="col-sm-4 control-label">GST
 												Registered:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.gstRegistered" ng-value="{{quotation.gstRegistered }}"  required id="gstregistered"
+												<select name="gstRegistered" value="${gstRegistered }"  required id="gstregistered"
 													class="form-control" 
 													onChange="gsTregistered()">
 													<option selected="selected" value="0">--SELECT--</option>
@@ -497,7 +405,7 @@
 											<label for="Gstregistrationno" class="col-sm-4 control-label">GST
 												Registration No:</label>
 											<div class="col-sm-8">
-												<input disabled ng-model="quotation.gstregistrationno" ng-value="{{quotation.gstregistrationno }}" required
+												<input disabled name="gstregistrationno" value="${gstregistrationno }" required
 													class="form-control" id="Gstregistrationno" type="number"
 													onKeyPress="if(this.value.length==10) return false;"
 													onChange="gstRegistrationNo()" />
@@ -507,7 +415,7 @@
 											<label for="gstregdate" class="col-sm-4 control-label">GST
 												Reg Date:</label>
 											<div class="col-sm-8">
-												<input disabled ng-model="quotation.gstregistrationdate" ng-value="{{quotation.gstregistrationdate}}" required
+												<input disabled name="gstregistrationdate" value="${gstregistrationdate }" required
 													class="form-control" id="gstregdate" type="date" />
 											</div>
 										</div>
@@ -515,7 +423,7 @@
 											<label for="Gstexpirydate" class="col-sm-4 control-label">GST
 												Expiry Date:</label>
 											<div class="col-sm-8">
-												<input disabled ng-model="quotation.gstexpirydate" ng-value="{{quotation.gstexpirydate }}"  required
+												<input disabled name="gstexpirydate" value="${gstexpirydate }"  required
 													class="form-control" id="Gstexpirydate" type="date"
 													/>
 											</div>
@@ -523,7 +431,7 @@
 										<div class="row form-group form-inline">
 											<label for="Website" class="col-sm-4 control-label">Website:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.website" ng-value="{{quotation.website }}" required class="form-control"
+												<input name="website" value="${website }" required class="form-control"
 													id="Website" type="url"  />
 											</div>
 										</div>
@@ -531,7 +439,7 @@
 											<label for="Employmentstatus" class="col-sm-4 control-label">Employment
 												Status:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.employementstatus" ng-value="{{quotation.employementstatus }}" required
+												<select name="employementstatus" value="${employementstatus }" required
 													id="Employmentstatus" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
@@ -546,7 +454,7 @@
 											<label for="Trafficviolation" class="col-sm-4 control-label">Traffic
 												Violation:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.trafficviolation" ng-value="{{quotation.trafficviolation }}" required
+												<select name="trafficviolation" value="${trafficviolation }" required
 													id="Trafficviolation" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
@@ -557,7 +465,7 @@
 										<div class="row form-group form-inline">
 											<label for="Email" class="col-sm-4 control-label">E-mail:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.email" ng-value="{{quotation.email }}"  required class="form-control" id="Email"
+												<input name="email" value="${email }"  required class="form-control" id="Email"
 													type="email" 
 													onChange="emailVal()" />
 											</div>
@@ -567,7 +475,7 @@
 											<label for="Vipstatus" class="col-sm-4 control-label">VIP
 												Status:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.vipstatus" ng-value="{{quotation.vipstatus }}" required id="Vipstatus"
+												<select name="vipstatus" value="${vipstatus }" required id="Vipstatus"
 													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
@@ -580,7 +488,7 @@
 											<div class="row form-group form-inline">
 												<label for="Address" class="col-sm-4 control-label">Address:</label>
 												<div class="col-sm-8">
-													<input ng-model="quotation.address" ng-value="{{quotation.address }}"  required class="form-control"
+													<input name="address" value="${address }"  required class="form-control"
 														id="Address" type="text" maxlength="120"
 														 />
 												</div>
@@ -589,7 +497,7 @@
 												<label for="postcode" class="col-sm-4 control-label">Post
 													Code:</label>
 												<div class="col-sm-8">
-													<input ng-model="quotation.postCode" ng-value="{{quotation.postCode}}" required class="form-control"
+													<input name="postCode" value="${postCode }" required class="form-control"
 														id="postcode" type="number" 
 														onKeyPress="if(this.value.length==6 ) return false;"
 														onChange="posTcode()" />
@@ -598,7 +506,7 @@
 											<div class="row form-group form-inline">
 												<label for="state" class="col-sm-4 control-label">State/Country:</label>
 												<div class="col-sm-8">
-													<select ng-model="quotation.statecountry" ng-value="{{quotation.statecountry}}" required id="state"
+													<select name="statecountry" value="${statecountry }" required id="state"
 														class="form-control">
 														<option selected="selected" value="0">--SELECT--</option>
 														<option value="1">INDIA</option>
@@ -610,7 +518,7 @@
 												<label for="Countrycode" class="col-sm-4 control-label">Country
 													code:</label>
 												<div class="col-sm-8">
-													<input ng-model="quotation.countryCode" ng-value="{{quotation.countryCode}}"  required class="form-control"
+													<input name="countryCode" value="${countryCode }"  required class="form-control"
 														id="Countrycode" type="number"
 														onKeyPress="if(this.value.length==3 ) return false;" />
 												</div>
@@ -620,7 +528,7 @@
 											<label for="mobileno" class="col-sm-4 control-label">Mobile
 												No:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.mobileNo" ng-value="{{quotation.mobileNo}}"  required class="form-control"
+												<input name="mobileNo" value="${mobileNo }"  required class="form-control"
 													id="mobileno" type="number" 
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="mobilEno()" />
@@ -630,7 +538,7 @@
 											<label for="telno1" class="col-sm-4 control-label">Tel
 												No.(House):</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.telnohouse" ng-value="{{quotation.telnohouse }}" required class="form-control"
+												<input name="telnohouse" value="${telnohouse }" required class="form-control"
 													id="telno1" type="number"
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="telNo()" />
@@ -640,7 +548,7 @@
 											<label for="telno2" class="col-sm-4 control-label">Tel
 												No.(Office):</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.telnooffice" ng-value="{{quotation.telnooffice }}" required class="form-control"
+												<input name="telnooffice" value="${telnooffice }" required class="form-control"
 													id="telno2" type="number" maxlength="10"
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="telNo1()" />
@@ -650,7 +558,7 @@
 											<label for="faxno1" class="col-sm-4 control-label">Fax
 												No.(House):</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.faxnohouse" ng-value="{{quotation.faxnohouse }}" required class="form-control"
+												<input name="faxnohouse" value="${faxnohouse }" required class="form-control"
 													id="faxno1" type="number" 
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="faxNo()" />
@@ -660,7 +568,7 @@
 											<label for="faxno2" class="col-sm-4 control-label">Fax
 												No.(Office):</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.faxnooffice" ng-value="{{quotation.faxnooffice }}" required class="form-control"
+												<input name="faxnooffice" value="${faxnooffice }" required class="form-control"
 													id="faxno2" type="number" 
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="faxNo1()" />
@@ -669,7 +577,7 @@
 										<div class="row form-group form-inline">
 											<label for="Pdpa" class="col-sm-4 control-label">PDPA:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.pdpa" ng-value="{{quotation.pdpa }}" required id="Pdpa" class="form-control">
+												<select name="pdpa" value="${pdpa }" required id="Pdpa" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="N0">NO</option>
@@ -679,7 +587,7 @@
 										<div class="row form-group form-inline">
 											<label for="Css" class="col-sm-4 control-label">CSS:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.css" ng-value="{{quotation.css }}" required id="Css" class="form-control">
+												<select name="css" value="${css }" required id="Css" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -689,32 +597,32 @@
 										<div class="row form-group form-inline">
 											<label for="remarks" class="col-sm-4 control-label">Remarks:</label>
 											<div class="col-sm-8">
-												<textarea ng-model="quotation.remarks" class="form-control"
-													id="remarks">{{quotation.remarks }}
+												<textarea rows="3" cols="20" class="form-control"
+													id="remarks">${remarks }
 													</textarea>
 											</div>
 										</div>
 									</div>
 								</div>
-																
+								<fieldset class="scheduler-border">									
 										Personal Data Protection consent signed by customer
 											<div class="col-sm-12">
-											<label><input type="radio" value="YES" ng-model="quotation.datasignedcustomer">Yes</label>
-											<label><input type="radio" value="NO" ng-model="quotation.datasignedcustomer">No</label>
+											<label><input type="radio" value="${ datasignedcustomer}" name="datasignedcustomer">Yes</label>
+											<label><input type="radio" value="${ datasignedcustomer}" name="datasignedcustomer">No</label>
 										</div>												
 										Consent on Cross Selling signed by customer
 										<div class="col-sm-12">
-											<label><input type="radio" value="YES" ng-model="quotation.crosssignedcustomer">Yes</label>
-											<label><input type="radio" value="NO" ng-model="quotation.crosssignedcustomer">No</label>
+											<label><input type="radio" value="${ crosssignedcustomer}" name="crosssignedcustomer">Yes</label>
+											<label><input type="radio" value="${ crosssignedcustomer}" name="crosssignedcustomer">No</label>
 										</div>									
-								
+								</fieldset>
 							</fieldset>
-							<button type="submit" ng-click="submit()" class="pull-right btn  btn-success center">
+							<button type="submit" class="pull-right btn  btn-success center">
 								Next</button>
 						</div>
 						<!--  onclick="location.href='save_quotation_form'"  -->
 
-						<div class="form-horizontal" data-ng-if="quotation.drpContactType=='BUSINESS'">
+						<div class="form-horizontal" data-ng-if="drpContactType=='2'">
 							<fieldset class="scheduler-border">
 								<legend class="scheduler-border">Business</legend>
 								<div class="row">
@@ -723,15 +631,15 @@
 											<label for="businessregno" class="col-sm-4 control-label">Business
 												Reg No:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.businessRegNo" ng-value="{{quotation.businessRegNo}}"  required id="businessregno"
-													class="form-control" type="text" maxlength="10"
+												<input name="businessRegNo" value="${ businessRegNo}"  required id="businessregno"
+													class="form-control" type="text" maxlength="20"
 													onChange="businessRegno()" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="Name" class="col-sm-4 control-label">Name:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.name"  ng-value="{{quotation.name }}"  required id="Name" class="form-control"
+												<input name="name"  value="${name }"  required id="Name" class="form-control"
 													type="text" maxlength="100" 
 													onkeypress="return onlyAlphabets(event,this);" />
 											</div>
@@ -739,7 +647,7 @@
 										<div class="row form-group form-inline">
 											<label for="Race" class="col-sm-4 control-label">Race:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.race"  ng-value="{{quotation.race }}" required id="Race" class="form-control"
+												<select name="race"  value="${race }" required id="Race" class="form-control"
 													>
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="Black">BLACK</option>
@@ -752,14 +660,14 @@
 											<label class="col-sm-4 control-label" for="typeofbusiness">Type
 												Of Business:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.typeOfBusiness" ng-value="{{quotation.typeOfBusiness}}" required class="form-control"
+												<input name="typeOfBusiness" value="${ typeOfBusiness}" required class="form-control"
 													id="typeofbusiness" type="text" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="Occupation" class="col-sm-4 control-label">Occupation:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.occupation" ng-value="{{quotation.occupation }}" required id="Occupation"
+												<select name="occupation" value="${occupation }" required id="Occupation"
 													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="Employed">EMPLOYED</option>
@@ -773,7 +681,7 @@
 											<label for="gstregistered" class="col-sm-4 control-label">GST
 												Registered:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.gstRegistered" ng-value="{{quotation.gstRegistered }}"  required id="gstregistered"
+												<select name="gstRegistered" value="${gstRegistered }"  required id="gstregistered"
 													class="form-control" 
 													onChange="gsTregistered()">
 													<option selected="selected" value="0">--SELECT--</option>
@@ -786,7 +694,7 @@
 											<label for="Gstregistrationno" class="col-sm-4 control-label">GST
 												Registration No:</label>
 											<div class="col-sm-8">
-												<input disabled ng-model="quotation.gstregistrationno" ng-value="{{quotation.gstregistrationno }}" required
+												<input disabled name="gstregistrationno" value="${gstregistrationno }" required
 													class="form-control" id="Gstregistrationno" type="number"
 													onKeyPress="if(this.value.length==10) return false;"
 													onChange="gstRegistrationNo()" />
@@ -796,7 +704,7 @@
 											<label for="gstregdate" class="col-sm-4 control-label">GST
 												Reg Date:</label>
 											<div class="col-sm-8">
-												<input disabled ng-model="quotation.gstregistrationdate" ng-value="{{quotation.gstregistrationdate }}" required
+												<input disabled name="gstregistrationdate" value="${gstregistrationdate }" required
 													class="form-control" id="gstregdate" type="date" />
 											</div>
 										</div>
@@ -804,7 +712,7 @@
 											<label for="Gstexpirydate" class="col-sm-4 control-label">GST
 												Expiry Date:</label>
 											<div class="col-sm-8">
-												<input disabled ng-model="quotation.gstexpirydate" ng-value="{{quotation.gstexpirydate }}"  required
+												<input disabled name="gstexpirydate" value="${gstexpirydate }"  required
 													class="form-control" id="Gstexpirydate" type="date"
 													/>
 											</div>
@@ -812,7 +720,7 @@
 										<div class="row form-group form-inline">
 											<label for="Website" class="col-sm-4 control-label">Website:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.website" ng-value="{{quotation.website }}" required class="form-control"
+												<input name="website" value="${website }" required class="form-control"
 													id="Website" type="url"  />
 											</div>
 										</div>
@@ -820,7 +728,7 @@
 											<label for="Employmentstatus" class="col-sm-4 control-label">Employment
 												Status:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.EmploymentStatus" required
+												<select name="EmploymentStatus" required
 													id="Employmentstatus" class="form-control"
 													data-ng-model="employmentstatusValue">
 													<option selected="selected" value="0">--SELECT--</option>
@@ -833,7 +741,7 @@
 											<label for="Trafficviolation" class="col-sm-4 control-label">Traffic
 												Violation:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.trafficviolation" ng-value="{{quotation.trafficviolation }}" required
+												<select name="trafficviolation" value="${trafficviolation }" required
 													id="Trafficviolation" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
@@ -844,7 +752,7 @@
 										<div class="row form-group form-inline">
 											<label for="Email" class="col-sm-4 control-label">E-mail:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.email" ng-value="{{quotation.email }}"  required class="form-control" id="Email"
+												<input name="email" value="${email }"  required class="form-control" id="Email"
 													type="email" 
 													onChange="emailVal()" />
 											</div>
@@ -854,7 +762,7 @@
 											<label for="Vipstatus" class="col-sm-4 control-label">VIP
 												Status:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.vipstatus" ng-value="{{quotation.vipstatus }}" required id="Vipstatus"
+												<select name="vipstatus" value="${vipstatus }" required id="Vipstatus"
 													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
@@ -870,7 +778,7 @@
 											<div class="row form-group form-inline">
 												<label for="Address" class="col-sm-4 control-label">Address:</label>
 												<div class="col-sm-8">
-													<input ng-model="quotation.address" ng-value="{{quotation.address }}"  required class="form-control"
+													<input name="address" value="${address }"  required class="form-control"
 														id="Address" type="text" maxlength="120"
 														 />
 												</div>
@@ -879,7 +787,7 @@
 												<label for="postcode" class="col-sm-4 control-label">Post
 													Code:</label>
 												<div class="col-sm-8">
-													<input ng-model="quotation.postCode" ng-value="{{quotation.postCode }}" required class="form-control"
+													<input name="postCode" value="${postCode }" required class="form-control"
 														id="postcode" type="number" 
 														onKeyPress="if(this.value.length==6 ) return false;"
 														onChange="posTcode()" />
@@ -888,7 +796,7 @@
 											<div class="row form-group form-inline">
 												<label for="state" class="col-sm-4 control-label">State/Country:</label>
 												<div class="col-sm-8">
-													<select ng-model="quotation.statecountry" ng-value="{{quotation.statecountry }}" required id="state"
+													<select name="statecountry" value="${statecountry }" required id="state"
 														class="form-control">
 														<option selected="selected" value="0">--SELECT--</option>
 														<option value="1">INDIA</option>
@@ -900,7 +808,7 @@
 												<label for="Countrycode" class="col-sm-4 control-label">Country
 													code:</label>
 												<div class="col-sm-8">
-													<input ng-model="quotation.countryCode" ng-value="{{quotation.countryCode }}"  required class="form-control"
+													<input name="countryCode" value="${countryCode }"  required class="form-control"
 														id="Countrycode" type="number"
 														onKeyPress="if(this.value.length==3 ) return false;" />
 												</div>
@@ -910,7 +818,7 @@
 											<label for="mobileno" class="col-sm-4 control-label">Mobile
 												No:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.mobileNo" ng-value="{{quotation.mobileNo }}"  required class="form-control"
+												<input name="mobileNo" value="${mobileNo }"  required class="form-control"
 													id="mobileno" type="number" 
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="mobilEno()" />
@@ -920,7 +828,7 @@
 											<label for="telno1" class="col-sm-4 control-label">Tel
 												No.(House):</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.telnohouse" ng-value="{{quotation.telnohouse }}" required class="form-control"
+												<input name="telnohouse" value="${telnohouse }" required class="form-control"
 													id="telno1" type="number"
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="telNo()" />
@@ -930,7 +838,7 @@
 											<label for="telno2" class="col-sm-4 control-label">Tel
 												No.(Office):</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.telnooffice" ng-value="{{quotation.telnooffice }}" required class="form-control"
+												<input name="telnooffice" value="${telnooffice }" required class="form-control"
 													id="telno2" type="number" maxlength="10"
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="telNo1()" />
@@ -940,7 +848,7 @@
 											<label for="faxno1" class="col-sm-4 control-label">Fax
 												No.(House):</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.faxnohouse" ng-value="{{quotation.faxnohouse }}" required class="form-control"
+												<input name="faxnohouse" value="${faxnohouse }" required class="form-control"
 													id="faxno1" type="number" 
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="faxNo()" />
@@ -950,7 +858,7 @@
 											<label for="faxno2" class="col-sm-4 control-label">Fax
 												No.(Office):</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.faxnooffice" ng-value="{{quotation.faxnooffice }}" required class="form-control"
+												<input name="faxnooffice" value="${faxnooffice }" required class="form-control"
 													id="faxno2" type="number" 
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="faxNo1()" />
@@ -959,7 +867,7 @@
 										<div class="row form-group form-inline">
 											<label for="Pdpa" class="col-sm-4 control-label">PDPA:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.pdpa" ng-value="{{quotation.pdpa }}" required id="Pdpa" class="form-control">
+												<select name="pdpa" value="${pdpa }" required id="Pdpa" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="N0">NO</option>
@@ -969,7 +877,7 @@
 										<div class="row form-group form-inline">
 											<label for="Css" class="col-sm-4 control-label">CSS:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.css" ng-value="{{quotation.css }}" required id="Css" class="form-control">
+												<select name="css" value="${css }" required id="Css" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -979,33 +887,33 @@
 										<div class="row form-group form-inline">
 											<label for="remarks" class="col-sm-4 control-label">Remarks:</label>
 											<div class="col-sm-8">
-												<textarea ng-model="quotation.remarks" class="form-control"
-													id="remarks">{{remarks }}
+												<textarea rows="3" cols="20" class="form-control"
+													id="remarks">${remarks }
 													</textarea>
 											</div>
 										</div>
 									</div>
 								</div>
-								 
+								<fieldset class="scheduler-border">
 									
 										Personal Data Protection consent signed by customer
 										<div class="col-sm-12">
-											<label><input type="radio" value="YES" ng-model="quotation.datasignedcustomer">Yes</label>
-											<label><input type="radio" value="NO" ng-model="quotation.datasignedcustomer">No</label>
+											<label><input type="radio" value="${ datasignedcustomer}" name="datasignedcustomer">Yes</label>
+											<label><input type="radio" value="${ datasignedcustomer}" name="datasignedcustomer">No</label>
 										</div>
 									
 										Consent on Cross Selling signed by customer
 										<div class="col-sm-12">
-											<label><input type="radio" value="YES" ng-model="quotation.crosssignedcustomer">Yes</label>
-											<label><input type="radio" value="NO" ng-model="quotation.crosssignedcustomer">No</label>
+											<label><input type="radio" value="${ crosssignedcustomer}" name="crosssignedcustomer">Yes</label>
+											<label><input type="radio" value="${ crosssignedcustomer}" name="crosssignedcustomer">No</label>
 										</div>
 									
-								 
+								</fieldset>
 							</fieldset>
-							<button type="submit" ng-click="submit()" class="pull-right btn  btn-success center">Next</button>
+							<button type="submit" class="pull-right btn  btn-success center">Next</button>
 						</div>
 
-						<div class="form-horizontal" data-ng-if="quotation.drpContactType=='OTHERS'">
+						<div class="form-horizontal" data-ng-if="drpContactType=='3'">
 							<fieldset class="scheduler-border">
 								<legend class="scheduler-border">Others</legend>
 								<div class="row">
@@ -1014,7 +922,7 @@
 											<label for="oldicno" class="col-sm-4 control-label">Old
 												IC No / Passport No:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.oldicpassportno"  ng-value="{{quotation.oldicpassportno}}" required id="oldicno" type="text"
+												<input name="oldicpassportno"  value="${ oldicpassportno}" required id="oldicno" type="text"
 													class="form-control" 
 													maxlength="20" onChange="oldIcNo()" />
 											</div>
@@ -1022,7 +930,7 @@
 										<div class="row form-group form-inline">
 											<label for="Name" class="col-sm-4 control-label">Name:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.name"  ng-value="{{quotation.name }}"  required id="Name" class="form-control"
+												<input name="name"  value="${name }"  required id="Name" class="form-control"
 													type="text" maxlength="100" 
 													onkeypress="return onlyAlphabets(event,this);" />
 											</div>
@@ -1030,7 +938,7 @@
 										<div class="row form-group form-inline">
 											<label for="SALUTATION" class="col-sm-4 control-label">Salutation:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.salutation" ng-value="{{quotation.salutation }}" required id="SALUTATION"
+												<select name="salutation" value="${salutation }" required id="SALUTATION"
 													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="Mr">Mr</option>
@@ -1045,7 +953,7 @@
 										<div class="row form-group form-inline">
 											<label for="Nationality" class="col-sm-4 control-label">Nationality:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.nationality" ng-value="{{quotation.nationality}}" required id="Nationality"
+												<select name="nationality" value="${ nationality}" required id="Nationality"
 													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="Indian">INDIAN</option>
@@ -1057,7 +965,7 @@
 										<div class="row form-group form-inline">
 											<label for="Race" class="col-sm-4 control-label">Race:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.race"  ng-value="{{quotation.race }}" required id="Race" class="form-control"
+												<select name="race"  value="${race }" required id="Race" class="form-control"
 													>
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="Black">BLACK</option>
@@ -1070,14 +978,14 @@
 											<label for="dob" class="col-sm-4 control-label">Date
 												Of Birth:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.dateOfBirth"  ng-value="{{quotation.dateOfBirth }}" required class="form-control"
-													id="dob" type="date" />
+												<input name="dateOfBirth"  value="${dateOfBirth }" required class="form-control"
+													id="dateob" type="date" />
 											</div>
 										</div>
 										<div class="row form-group form-inline">
 											<label for="Age" class="col-sm-4 control-label">Age</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.age"  ng-value="{{quotation.age }}" required class="form-control" id="Age"
+												<input name="age"  value="${age }" required class="form-control" id="Age"
 													type="number"
 													onKeyPress="if(this.value.length==2) return false;" />
 											</div>
@@ -1085,9 +993,9 @@
 										<div class="row form-group form-inline">
 											<label for="Gender" class="col-sm-4 control-label">Gender:</label>
 											<div class="col-sm-8">
-												<%-- <input ng-model="quotation.gender" ng-value="{{quotation. gender}}" required class="form-control"
+												<%-- <input name="gender" value="${ gender}" required class="form-control"
 													id="gender" type="text" /> --%>
-												<select ng-model="quotation.gender" ng-value="{{quotation.gender}}" required id="Gender"
+												<select name="gender" value="${ gender}" required id="Gender"
 													class="form-control">
 													 <option selected="selected" value="0">--SELECT--</option>
 													<option value="Male">MALE</option>
@@ -1099,7 +1007,7 @@
 											<label for="Maritalstatus" class="col-sm-4 control-label">Marital
 												Status:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.maritalStatus" ng-value="{{quotation.maritalStatus }}" required id="Maritalstatus"
+												<select name="maritalStatus" value="${maritalStatus }" required id="Maritalstatus"
 													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="SINGLE">SINGLE</option>
@@ -1110,7 +1018,7 @@
 										<div class="row form-group form-inline">
 											<label for="Occupation" class="col-sm-4 control-label">Occupation:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.occupation" ng-value="{{quotation.occupation }}" required id="Occupation"
+												<select name="occupation" value="${occupation }" required id="Occupation"
 													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="Employed">EMPLOYED</option>
@@ -1124,7 +1032,7 @@
 											<label for="gstregistered" class="col-sm-4 control-label">GST
 												Registered:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.gstRegistered" ng-value="{{quotation.gstRegistered }}"  required id="gstregistered"
+												<select name="gstRegistered" value="${gstRegistered }"  required id="gstregistered"
 													class="form-control" 
 													onChange="gsTregistered()">
 													<option selected="selected" value="0">--SELECT--</option>
@@ -1137,7 +1045,7 @@
 											<label for="Gstregistrationno" class="col-sm-4 control-label">GST
 												Registration No:</label>
 											<div class="col-sm-8">
-												<input disabled ng-model="quotation.gstregistrationno" ng-value="{{quotation.gstregistrationno }}" required
+												<input disabled name="gstregistrationno" value="${gstregistrationno }" required
 													class="form-control" id="Gstregistrationno" type="number"
 													onKeyPress="if(this.value.length==10) return false;"
 													onChange="gstRegistrationNo()" />
@@ -1147,7 +1055,7 @@
 											<label for="gstregdate" class="col-sm-4 control-label">GST
 												Reg Date:</label>
 											<div class="col-sm-8">
-												<input disabled ng-model="quotation.gstregistrationdate" ng-value="{{quotation.gstregistrationdate }}" required
+												<input disabled name="gstregistrationdate" value="${gstregistrationdate }" required
 													class="form-control" id="gstregdate" type="date" />
 											</div>
 										</div>
@@ -1155,7 +1063,7 @@
 											<label for="Gstexpirydate" class="col-sm-4 control-label">GST
 												Expiry Date:</label>
 											<div class="col-sm-8">
-												<input disabled ng-model="quotation.gstexpirydate" ng-value="{{quotation.gstexpirydate }}"  required
+												<input disabled name="gstexpirydate" value="${gstexpirydate }"  required
 													class="form-control" id="Gstexpirydate" type="date"
 													/>
 											</div>
@@ -1163,7 +1071,7 @@
 										<div class="row form-group form-inline">
 											<label for="Website" class="col-sm-4 control-label">Website:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.website" ng-value="{{quotation.website }}" required class="form-control"
+												<input name="website" value="${website }" required class="form-control"
 													id="Website" type="url"  />
 											</div>
 										</div>
@@ -1171,7 +1079,7 @@
 											<label for="Employmentstatus" class="col-sm-4 control-label">Employment
 												Status:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.employementstatus" ng-value="{{quotation.employementstatus }}" required
+												<select name="employementstatus" value="${employementstatus }" required
 													id="Employmentstatus" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
@@ -1186,7 +1094,7 @@
 											<label for="Trafficviolation" class="col-sm-4 control-label">Traffic
 												Violation:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.trafficviolation" ng-value="{{quotation.trafficviolation }}" required
+												<select name="trafficviolation" value="${trafficviolation }" required
 													id="Trafficviolation" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
@@ -1197,7 +1105,7 @@
 										<div class="row form-group form-inline">
 											<label for="Email" class="col-sm-4 control-label">E-mail:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.email" ng-value="{{quotation.email }}"  required class="form-control" id="Email"
+												<input name="email" value="${email }"  required class="form-control" id="Email"
 													type="email" 
 													onChange="emailVal()" />
 											</div>
@@ -1207,7 +1115,7 @@
 											<label for="Vipstatus" class="col-sm-4 control-label">VIP
 												Status:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.vipstatus" ng-value="{{quotation.vipstatus }}" required id="Vipstatus"
+												<select name="vipstatus" value="${vipstatus }" required id="Vipstatus"
 													class="form-control" >
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
@@ -1220,7 +1128,7 @@
 											<div class="row form-group form-inline">
 												<label for="Address" class="col-sm-4 control-label">Address:</label>
 												<div class="col-sm-8">
-													<input ng-model="quotation.address" ng-value="{{quotation.address }}"  required class="form-control"
+													<input name="address" value="${address }"  required class="form-control"
 														id="Address" type="text" maxlength="120"
 														 />
 												</div>
@@ -1229,7 +1137,7 @@
 												<label for="postcode" class="col-sm-4 control-label">Post
 													Code:</label>
 												<div class="col-sm-8">
-													<input ng-model="quotation.postCode" ng-value="{{quotation.postCode }}" required class="form-control"
+													<input name="postCode" value="${postCode }" required class="form-control"
 														id="postcode" type="number" 
 														onKeyPress="if(this.value.length==6 ) return false;"
 														onChange="posTcode()" />
@@ -1238,7 +1146,7 @@
 											<div class="row form-group form-inline">
 												<label for="state" class="col-sm-4 control-label">State/Country:</label>
 												<div class="col-sm-8">
-													<select ng-model="quotation.statecountry" ng-value="{{quotation.statecountry }}" required id="state"
+													<select name="statecountry" value="${statecountry }" required id="state"
 														class="form-control">
 														<option selected="selected" value="0">--SELECT--</option>
 														<option value="1">INDIA</option>
@@ -1250,7 +1158,7 @@
 												<label for="Countrycode" class="col-sm-4 control-label">Country
 													code:</label>
 												<div class="col-sm-8">
-													<input ng-model="quotation.countryCode" ng-value="{{quotation.countryCode }}"  required class="form-control"
+													<input name="countryCode" value="${countryCode }"  required class="form-control"
 														id="Countrycode" type="number"
 														onKeyPress="if(this.value.length==3 ) return false;" />
 												</div>
@@ -1260,7 +1168,7 @@
 											<label for="mobileno" class="col-sm-4 control-label">Mobile
 												No:</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.mobileNo" ng-value="{{quotation.mobileNo }}"  required class="form-control"
+												<input name="mobileNo" value="${mobileNo }"  required class="form-control"
 													id="mobileno" type="number" 
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="mobilEno()" />
@@ -1270,7 +1178,7 @@
 											<label for="telno1" class="col-sm-4 control-label">Tel
 												No.(House):</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.telnohouse" ng-value="{{quotation.telnohouse }}" required class="form-control"
+												<input name="telnohouse" value="${telnohouse }" required class="form-control"
 													id="telno1" type="number"
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="telNo()" />
@@ -1280,7 +1188,7 @@
 											<label for="telno2" class="col-sm-4 control-label">Tel
 												No.(Office):</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.telnooffice" ng-value="{{quotation.telnooffice }}" required class="form-control"
+												<input name="telnooffice" value="${telnooffice }" required class="form-control"
 													id="telno2" type="number" maxlength="10"
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="telNo1()" />
@@ -1290,7 +1198,7 @@
 											<label for="faxno1" class="col-sm-4 control-label">Fax
 												No.(House):</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.faxnohouse" ng-value="{{quotation.faxnohouse }}" required class="form-control"
+												<input name="faxnohouse" value="${faxnohouse }" required class="form-control"
 													id="faxno1" type="number" 
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="faxNo()" />
@@ -1300,7 +1208,7 @@
 											<label for="faxno2" class="col-sm-4 control-label">Fax
 												No.(Office):</label>
 											<div class="col-sm-8">
-												<input ng-model="quotation.faxnooffice" ng-value="{{quotation.faxnooffice }}" required class="form-control"
+												<input name="faxnooffice" value="${faxnooffice }" required class="form-control"
 													id="faxno2" type="number" 
 													onKeyPress="if(this.value.length==10 )return false;"
 													onChange="faxNo1()" />
@@ -1309,7 +1217,7 @@
 										<div class="row form-group form-inline">
 											<label for="Pdpa" class="col-sm-4 control-label">PDPA:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.pdpa" ng-value="{{quotation.pdpa }}" required id="Pdpa" class="form-control">
+												<select name="pdpa" value="${pdpa }" required id="Pdpa" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="N0">NO</option>
@@ -1319,7 +1227,7 @@
 										<div class="row form-group form-inline">
 											<label for="Css" class="col-sm-4 control-label">CSS:</label>
 											<div class="col-sm-8">
-												<select ng-model="quotation.css" ng-value="{{quotation.css }}" required id="Css" class="form-control">
+												<select name="css" value="${css }" required id="Css" class="form-control">
 													<option selected="selected" value="0">--SELECT--</option>
 													<option value="YES">YES</option>
 													<option value="NO">NO</option>
@@ -1329,32 +1237,32 @@
 										<div class="row form-group form-inline">
 											<label for="remarks" class="col-sm-4 control-label">Remarks:</label>
 											<div class="col-sm-8">
-											<textarea ng-model="quotation.remarks" class="form-control"
-													id="remarks">{{quotation.remarks}}
+												<textarea rows="3" cols="20" class="form-control"
+													id="remarks">${remarks }
 													</textarea>
 											</div>
 										</div> 
 									</div>
 								</div>
-							 
+								<fieldset class="scheduler-border">
 									
 										Personal Data Protection consent signed by customer
 											<div class="col-sm-12">
-											<label><input type="radio" value="YES" ng-model="quotation.datasignedcustomer">Yes</label>
-											<label><input type="radio" value="NO" ng-model="quotation.datasignedcustomer">No</label>
+											<label><input type="radio" value="${ datasignedcustomer}" name="datasignedcustomer">Yes</label>
+											<label><input type="radio" value="${ datasignedcustomer}" name="datasignedcustomer">No</label>
 										</div>
 									
 									
 										Consent on Cross Selling signed by customer
 										<div class="col-sm-12">
-											<label><input type="radio" value="YES" ng-model="quotation.crosssignedcustomer">Yes</label>
-											<label><input type="radio" value="NO" ng-model="quotation.crosssignedcustomer">No</label>
+											<label><input type="radio" value="${ crosssignedcustomer}" name="crosssignedcustomer">Yes</label>
+											<label><input type="radio" value="${ crosssignedcustomer}" name="crosssignedcustomer">No</label>
 										</div>
 									
 								</fieldset> 
-							 
+							</fieldset>
 
-							<button type="submit" ng-click="submit()" class="btn  btn-success center pull-right"
+							<button type="submit" class="btn  btn-success center pull-right"
 								>Next</button>
 						</div>
 					</form>

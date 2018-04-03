@@ -46,14 +46,124 @@ public class CovernoteDAOImpl implements CovernoteDAO {
 		namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 	
+	@Override
+	public void savePremium(CovernoteDO covernoteDO) {
+
+		try {
+			System.out.println("P_NUM_SUM_INSURED "+ covernoteDO.getSuminsured1());
+			System.out.println("P_NUM_TRAILER_SUM_INSURED "+ covernoteDO.getTrailersuminsured1());
+			System.out.println("P_NUM_ALL_RIDER_AMOUNT "+ covernoteDO.getAllrideramount());
+			System.out.println("P_NUM_BASIC_PREMIUM "+ covernoteDO.getBasicpremium());
+			System.out.println("P_NUM_TRAILER_PREMIUM "+ covernoteDO.getTrailerpremium());
+			System.out.println("P_NUM_TOTAL_BASIC "+ covernoteDO.getTotalbasic());
+			System.out.println("P_VCH_VEHICLE_NUMBER "+ covernoteDO.getVehiclenumber1());
+			System.out.println("P_VCH_POLICY_NUMBER "+ covernoteDO.getPolicynumber());
+			System.out.println("P_DTT_POLICY_EXPIRY_DATE "+ covernoteDO.getPolicyexpirydate());
+			System.out.println("P_DTT_NCD_EFFECTIVE_DATE "+ covernoteDO.getNcdeffectivedate());
+			System.out.println("P_VCH_NCD_FROM "+ covernoteDO.getNcdfrom());
+			System.out.println("P_DTT_POLICY_EFFECTIVE_DATE "+ covernoteDO.getPolicyeffectivedate());
+			System.out.println("P_VCH_NCD_ALLOWED_PERCENT "+ covernoteDO.getNcdallowedpercent());
+			System.out.println("P_VCH_ANNUAL_PREMIUM "+ covernoteDO.getAnnualpremium());
+			System.out.println("P_VCH_NCD_AMOUNT "+ covernoteDO.getNcdamount());
+			System.out.println("P_VCH_GROSS_PREMIUM "+ covernoteDO.getGrosspremium());
+			System.out.println("P_VCH_EXCESS_DISCOUNT "+ covernoteDO.getVoluntryexcessdiscount());
+			System.out.println("P_VCH_GST "+ covernoteDO.getGst());
+			System.out.println("P_VCH_GST_COMMISSION "+ covernoteDO.getGstoncommission());
+			System.out.println("P_VCH_AMOUNT_AGENT "+ covernoteDO.getAmountpayableagent());
+			System.out.println("P_VCH_ACT_PREMIUM "+ covernoteDO.getActpremium());
+			System.out.println("P_VCH_AFTER_LOADING "+ covernoteDO.getAfterloading());
+			System.out.println("P_VCH_EXTR_COVERAGE "+ covernoteDO.getExtracoverage());
+			System.out.println("P_VCH_STAMP_DUTY "+ covernoteDO.getStampduty());
+			System.out.println("P_VCH_FLEET_DISCOUNT "+ covernoteDO.getFleetdiscount());
+			System.out.println("P_VCH_COMMISSION "+ covernoteDO.getCommission());
+			System.out.println("P_VCH_AMOUNT_CLIENT "+ covernoteDO.getAmountpayableclient());
+			System.out.println("P_VCH_EXCESS_DAMAGE "+ covernoteDO.getExcessdamageclaim());
+			System.out.println("P_VCH_EXCESS_PERCENT "+ covernoteDO.getVoluntryexcess());;
+			
+			SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(dataSource);
+			simpleJdbcCall.withCatalogName("PREMIUM_SAVE").withProcedureName("PR_PREMIUM_SAVE")
+					.withoutProcedureColumnMetaDataAccess()
+					.declareParameters(new SqlParameter("P_NUM_SUM_INSURED", OracleTypes.NUMBER),
+							new SqlParameter("P_NUM_TRAILER_SUM_INSURED", OracleTypes.NUMBER),
+							new SqlParameter("P_NUM_ALL_RIDER_AMOUNT", OracleTypes.NUMBER),
+							new SqlParameter("P_NUM_BASIC_PREMIUM", OracleTypes.NUMBER),
+							new SqlParameter("P_NUM_TRAILER_PREMIUM", OracleTypes.NUMBER),
+							new SqlParameter("P_NUM_TOTAL_BASIC", OracleTypes.NUMBER),
+							new SqlParameter("P_VCH_VEHICLE_NUMBER", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_POLICY_NUMBER", OracleTypes.VARCHAR),
+							new SqlParameter("P_DTT_POLICY_EXPIRY_DATE", OracleTypes.DATE),
+							new SqlParameter("P_DTT_NCD_EFFECTIVE_DATE", OracleTypes.DATE),
+							new SqlParameter("P_VCH_NCD_FROM", OracleTypes.VARCHAR),
+							new SqlParameter("P_DTT_POLICY_EFFECTIVE_DATE", OracleTypes.DATE),
+							new SqlParameter("P_VCH_NCD_ALLOWED_PERCENT", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_ANNUAL_PREMIUM", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_NCD_AMOUNT", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_GROSS_PREMIUM", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_EXCESS_DISCOUNT", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_GST", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_GST_COMMISSION", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_AMOUNT_AGENT", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_ACT_PREMIUM", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_AFTER_LOADING", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_EXTR_COVERAGE", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_STAMP_DUTY", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_FLEET_DISCOUNT", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_COMMISSION", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_AMOUNT_CLIENT", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_EXCESS_DAMAGE", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_EXCESS_PERCENT", OracleTypes.VARCHAR),
+							new SqlParameter("P_VCH_QUOTATION_ID", OracleTypes.VARCHAR)
+
+			);
+
+			SqlParameterSource inputParams = new MapSqlParameterSource()
+					.addValue("P_NUM_SUM_INSURED", covernoteDO.getSuminsured1())
+					.addValue("P_NUM_TRAILER_SUM_INSURED", covernoteDO.getTrailersuminsured1())
+					.addValue("P_NUM_ALL_RIDER_AMOUNT", covernoteDO.getAllrideramount())
+					.addValue("P_NUM_BASIC_PREMIUM", covernoteDO.getBasicpremium())
+					.addValue("P_NUM_TRAILER_PREMIUM", covernoteDO.getTrailerpremium())
+					.addValue("P_NUM_TOTAL_BASIC", covernoteDO.getTotalbasic())
+					.addValue("P_VCH_VEHICLE_NUMBER", null)
+					.addValue("P_VCH_POLICY_NUMBER", null)
+					.addValue("P_DTT_POLICY_EXPIRY_DATE", null)
+					.addValue("P_DTT_NCD_EFFECTIVE_DATE", null)
+					.addValue("P_VCH_NCD_FROM", null)
+					.addValue("P_DTT_POLICY_EFFECTIVE_DATE", null)
+					.addValue("P_VCH_NCD_ALLOWED_PERCENT", covernoteDO.getNcdallowedpercent())
+					.addValue("P_VCH_ANNUAL_PREMIUM", covernoteDO.getAnnualpremium())
+					.addValue("P_VCH_NCD_AMOUNT", covernoteDO.getNcdamount())
+					.addValue("P_VCH_GROSS_PREMIUM", covernoteDO.getGrosspremium())
+					.addValue("P_VCH_EXCESS_DISCOUNT", covernoteDO.getVoluntryexcessdiscount())
+					.addValue("P_VCH_GST", covernoteDO.getGst())
+					.addValue("P_VCH_GST_COMMISSION", covernoteDO.getGstoncommission())
+					.addValue("P_VCH_AMOUNT_AGENT", covernoteDO.getAmountpayableagent())
+					.addValue("P_VCH_ACT_PREMIUM", covernoteDO.getActpremium())
+					.addValue("P_VCH_AFTER_LOADING", covernoteDO.getAfterloading())
+					.addValue("P_VCH_EXTR_COVERAGE", covernoteDO.getExtracoverage())
+					.addValue("P_VCH_STAMP_DUTY", covernoteDO.getStampduty())
+					.addValue("P_VCH_FLEET_DISCOUNT", covernoteDO.getFleetdiscount())
+					.addValue("P_VCH_COMMISSION", covernoteDO.getCommission())
+					.addValue("P_VCH_AMOUNT_CLIENT", covernoteDO.getAmountpayableclient())
+					.addValue("P_VCH_EXCESS_DAMAGE", covernoteDO.getExcessdamageclaim())
+					.addValue("P_VCH_EXCESS_PERCENT", null)
+					.addValue("P_VCH_QUOTATION_ID", null );
+
+			Map<String, Object> transactionStatus = simpleJdbcCall.execute(inputParams);
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		// System.out.println("DAO<");
+	}
+	
 	/*** CN OPTIONS ***/
 	@Override
 	public List<CovernoteDO> cnoptionGrid(CovernoteDO covernoteDO) {
 		List<CovernoteDO> cnoption = null;
 		try {
 			String finalSQL = null;
-			int quotation=1;
-			//finalSQL = "SELECT * FROM EIS_TRN_COVER_NOTE WHERE = NUM_COVER_NOTE_ID='"+quotation+"'";
+			int quotation = 1;
+			//finalSQL = "SELECT * FROM EIS_TRN_COVER_NOTE WHERE NUM_COVER_NOTE_ID='"+quotation+"'";
 			finalSQL = "SELECT * FROM EIS_TRN_COVER_NOTE";
 			cnoption = jdbcTemplate.query(finalSQL, new RowMapper<CovernoteDO>() {
 				@Override
@@ -64,9 +174,9 @@ public class CovernoteDAOImpl implements CovernoteDAO {
 					covernoteDO.setPolicyno(rs.getLong("VCH_POLICY_NO"));
 					covernoteDO.setCnno(rs.getString("VCH_COVER_NOTE_NO"));
 					//quotationDO.setPocdate(rs.getDate("DTT_JPJ_PROCESSED_DATE"));
-					covernoteDO.setEffectivedate(rs.getDate("DTT_EFFECTIVE_DATE"));
-					covernoteDO.setExpiredate(rs.getDate("DTT_EXPIRY_DATE"));
-					covernoteDO.setIssueDate(rs.getDate("DTT_ISSUE_DATE"));
+					covernoteDO.setEffectivedate(rs.getString("DTT_EFFECTIVE_DATE"));
+					covernoteDO.setExpiredate(rs.getString("DTT_EXPIRY_DATE"));
+					covernoteDO.setIssueDate(rs.getString("DTT_ISSUE_DATE"));
 					covernoteDO.setCovernoteid(rs.getInt("NUM_COVER_NOTE_ID"));
 					return covernoteDO;
 				}
@@ -76,6 +186,30 @@ public class CovernoteDAOImpl implements CovernoteDAO {
 		}
 		return cnoption;
 	}
+	
+	/*** CN OPTIONS ***/
+	/*@Override
+	public List<CovernoteDO> premiunfetch(CovernoteDO covernoteDO) {
+		List<CovernoteDO> cnoption = null;
+		try {
+			String finalSQL = null;
+			int quotation = 1;
+			//finalSQL = "SELECT * FROM EIS_TRN_COVER_NOTE WHERE NUM_COVER_NOTE_ID='"+quotation+"'";
+			finalSQL = "SELECT * FROM EIS_TRN_QUT_PREMIUM";
+			cnoption = jdbcTemplate.query(finalSQL, new RowMapper<CovernoteDO>() {
+				@Override
+				public CovernoteDO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					CovernoteDO covernoteDO = new CovernoteDO();
+					covernoteDO.set
+					return covernoteDO;
+				}
+			});
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return cnoption;
+	}*/
+	
 	
 	/*** CN OPTIONS ***/
 	@Override
@@ -83,8 +217,8 @@ public class CovernoteDAOImpl implements CovernoteDAO {
 		List<CovernoteDO> cnoption = null;
 		try {
 			String finalSQL = null;
-			int quotation=3;
-			//finalSQL = "SELECT * FROM EIS_TRN_COVER_NOTE WHERE=NUM_COVER_NOTE_ID='"+quotation+"'";
+			//int quotation=3;
+			//finalSQL = "SELECT * FROM EIS_TRN_COVER_NOTE WHERE NUM_COVER_NOTE_ID='"+3+"'";
 			finalSQL = "SELECT * FROM EIS_TRN_COVER_NOTE";
 			cnoption = jdbcTemplate.query(finalSQL, new RowMapper<CovernoteDO>() {
 				@Override
@@ -95,9 +229,9 @@ public class CovernoteDAOImpl implements CovernoteDAO {
 					covernoteDO.setPolicyno(rs.getLong("VCH_POLICY_NO"));
 					covernoteDO.setCnno(rs.getString("VCH_COVER_NOTE_NO"));
 					//quotationDO.setPocdate(rs.getDate("DTT_JPJ_PROCESSED_DATE"));
-					covernoteDO.setEffectivedate(rs.getDate("DTT_EFFECTIVE_DATE"));
-					covernoteDO.setExpiredate(rs.getDate("DTT_EXPIRY_DATE"));
-					covernoteDO.setIssueDate(rs.getDate("DTT_ISSUE_DATE"));
+					covernoteDO.setEffectivedate(rs.getString("DTT_EFFECTIVE_DATE"));
+					covernoteDO.setExpiredate(rs.getString("DTT_EXPIRY_DATE"));
+					covernoteDO.setIssueDate(rs.getString("DTT_ISSUE_DATE"));
 					covernoteDO.setCovernoteid(rs.getInt("NUM_COVER_NOTE_ID"));
 					return covernoteDO;
 				}
@@ -110,7 +244,90 @@ public class CovernoteDAOImpl implements CovernoteDAO {
 	
 	
 	
+	@Override
+	public void saveEndorsementDetails(CovernoteDO quotationDO) {
+		// TODO Auto-generated method stub
+		try {
+
+			//QuotationDO quotationDO = null;
+			/*System.out.println(quotationDO.getPreviouspolicyno()   + quotationDO.getCovernoteno()
+					+ quotationDO.getPocdate()  + quotationDO.getEffectivedate() 
+					+ quotationDO.getEndorsementtype() + quotationDO.getIssueddate() 
+					+ quotationDO.getExpiredate());*/
+			// System.out.println("DAO>");
+			Date date1,date2,date3,date4 = null;
+
+			
+				String dob1 = quotationDO.getPocdate();
+				String dob2 = quotationDO.getEffectivedate();
+				String dob3 = quotationDO.getIssueddate();
+				String dob4 = quotationDO.getExpiredate();
+				
+				date1 = new SimpleDateFormat("dd-MM-yyyy").parse(dob1);
+				date2 = new SimpleDateFormat("dd-MM-yyyy").parse(dob2);
+				date3 = new SimpleDateFormat("dd-MM-yyyy").parse(dob3);
+				date4 = new SimpleDateFormat("dd-MM-yyyy").parse(dob4);
+			 
+
+			SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(dataSource);
+			simpleJdbcCall.withCatalogName("ENDOR_SAVE").withProcedureName("PR_ENDOR_SAVE")
+					.withoutProcedureColumnMetaDataAccess()
+					.declareParameters(new SqlParameter("P_NUM_POLICY_NO", OracleTypes.NUMBER),
+							new SqlParameter("P_VCH_COVER_NOTE_NO", OracleTypes.VARCHAR),
+							new SqlParameter("P_DTT_EFFECTIVE_DATE", OracleTypes.DATE),
+							new SqlParameter("P_DTT_ISSUE_DATE", OracleTypes.DATE),
+							new SqlParameter("P_DTT_EXPIRY_DATE", OracleTypes.DATE),
+							new SqlParameter("P_DTT_POC_DATE", OracleTypes.DATE),
+							new SqlParameter("P_VCH_ENDORSEMENT_TYPE", OracleTypes.VARCHAR));
+
+			SqlParameterSource inputParams = new MapSqlParameterSource()
+					.addValue("P_NUM_POLICY_NO", quotationDO.getPreviouspolicyno())
+					.addValue("P_VCH_COVER_NOTE_NO", quotationDO.getCovernoteno())
+					.addValue("P_DTT_EFFECTIVE_DATE", date2)
+					.addValue("P_DTT_ISSUE_DATE", date3)
+					.addValue("P_DTT_EXPIRY_DATE", date4)
+					.addValue("P_DTT_POC_DATE", date1)
+					.addValue("P_VCH_ENDORSEMENT_TYPE", quotationDO.getEndorsementtype());
+
+			Map<String, Object> transactionStatus = simpleJdbcCall.execute(inputParams);
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		// System.out.println("DAO<");
+		
+	}
 	
+	@Override
+	public List<CovernoteDO> endorsementfetch(CovernoteDO quotationDO) {
+		List<CovernoteDO> endorsementfetch = null;
+		try {
+			String SQL = null;
+			SQL = "SELECT * FROM EIS_TRN_ENDORSEMENT";
+
+			endorsementfetch = jdbcTemplate.query(SQL, new RowMapper<CovernoteDO>() {
+				@Override
+				public CovernoteDO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					CovernoteDO quotationDO = new CovernoteDO();
+
+					quotationDO.setPreviouspolicyno(rs.getLong("NUM_POLICY_NO"));
+					quotationDO.setCovernoteno(rs.getString("VCH_COVER_NOTE_NO"));
+					quotationDO.setEffectivedate(rs.getString("DTT_EFFECTIVE_DATE"));
+					quotationDO.setIssueDate(rs.getString("DTT_ISSUE_DATE"));
+					quotationDO.setExpiredate(rs.getString("DTT_EXPIRY_DATE"));
+					quotationDO.setPocdate(rs.getString("DTT_POC_DATE"));
+					quotationDO.setEndorsementtype(rs.getString("VCH_ENDORSEMENT_TYPE"));
+					
+
+					return quotationDO;
+				}
+			});
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return endorsementfetch;
+	}
+
 	
 	@Override
 	public void convertCovernote(CovernoteDO covernoteDO) {
@@ -175,30 +392,7 @@ public class CovernoteDAOImpl implements CovernoteDAO {
 				Expirydate = new SimpleDateFormat("dd-MM-yyyy").parse(expirydate);
 				Vehiclepurchasedate = new SimpleDateFormat("dd-MM-yyyy").parse(vehiclepurchasedate);
 
-			System.out.println(covernoteDO.getIssueddate() + "\n" + covernoteDO.getCovernoteclass() + "\n"
-					+ covernoteDO.getCovernotetype() + "\n" + covernoteDO.getExpirydate() + "\n"
-					+ covernoteDO.getAdditionalusage() + "\n" + covernoteDO.getVehicleusage() + "\n"
-					+ covernoteDO.getCoveragetype() + "\n" + covernoteDO.getAntitheftcode() + "\n"
-					+ covernoteDO.getSafetycode() + "\n" + covernoteDO.getGaraged() + "\n"
-					+ covernoteDO.getInceptiondate() + "\n" + covernoteDO.getOwnershiptype() + "\n"
-					+ covernoteDO.getBtm() + "\n" + covernoteDO.getBdm() + "\n" + covernoteDO.getCapacity() + "\n"
-					+ covernoteDO.getNumberofseats() + "\n" + covernoteDO.getYearsofmanufacturing() + "\n"
-					+ covernoteDO.getEnginemotornumber() + "\n" + covernoteDO.getChassisnumber() + "\n"
-					+ covernoteDO.getLogbooknumber() + "\n" + covernoteDO.getVehiclenumber() + "\n"
-					+ covernoteDO.getPurchaseprice() + "\n" + covernoteDO.getMakemodel() + "\n"
-					+ covernoteDO.getVehiclebody() + "\n" + covernoteDO.getMasterpolicynumber() + "\n"
-					+ covernoteDO.getGeographicallocation() + "\n" + covernoteDO.getClassgroup() + "\n"
-					+ covernoteDO.getHighrisk() + "\n" + covernoteDO.getAllriderdriver() + "\n"
-					+ covernoteDO.getTypeofhirepurchase() + "\n" + covernoteDO.getYoungseniordriver() + "\n"
-					+ covernoteDO.getTrailernumber() + "\n" + covernoteDO.getDriverexperience() + "\n"
-					+ covernoteDO.getFunctionalmodification() + "\n" + covernoteDO.getRegion() + "\n"
-					+ covernoteDO.getVehicletype() + "\n" + covernoteDO.getHirepurchase() + "\n"
-					+ covernoteDO.getPerformanceaesthetic() + "\n" + covernoteDO.getVehicleapprovalcode() + "\n"
-					+ covernoteDO.getVariantseries() + "\n" + covernoteDO.getVehiclemarketvalue() + "\n"
-					+ covernoteDO.getDrivinglicensenumber() + "\n" + covernoteDO.getModeldescription() + "\n"
-					+ covernoteDO.getVehiclepurchasedate() + "\n" + covernoteDO.getNumberofclaims() + "\n"
-					+ covernoteDO.getSuminsured() + "\n" + covernoteDO.getTrailernumber() + "\n"
-					+ covernoteDO.getTcapacity());
+			
 			// System.out.println("DAO>");
 
 			/*

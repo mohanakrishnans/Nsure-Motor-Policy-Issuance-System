@@ -34,6 +34,103 @@ public class CovernoteController {
 	@Autowired
 	CovernoteService covernoteService;
 
+	@Autowired
+	QuotationDO quotationDO;
+
+	/** Premium */
+	@RequestMapping(value = "/premium", method = RequestMethod.GET)
+	public ModelAndView endorsement(@ModelAttribute("login") CovernoteDO covernotedo, HttpSession session) {
+
+		/*
+		 * int number = 20000; String numberAsString = Integer.toString(number);
+		 * covernotedo.setVehiclepurchasedate(numberAsString);
+		 * covernotedo.setSuminsured(Integer.toString(5000));
+		 */
+
+		int suminsured1 = 1000;// =(Integer)session.getAttribute("suminsured");
+		int trailersuminsured1 = 2000;// =(Integer)session.getAttribute("trailersuminsured");
+		int basic_premium = 10500;
+		int trailer_premium=0;
+		if (session.getAttribute("trailersuminsured")!=null) {
+
+			 trailer_premium = 1000;
+		} 
+		int extracoverage=0;
+		if(session.getAttribute("extracoverage")!=null) {
+			extracoverage=1000;
+		}
+		int allriderpercentage = 10;
+		int tb = ((basic_premium + trailer_premium) + ((basic_premium + trailer_premium) / 10));
+		System.out.println(tb);
+		int  anual_premium=tb;
+		
+		session.setAttribute("suminsured1", suminsured1);
+		session.setAttribute("trailersuminsured1", trailersuminsured1);
+		session.setAttribute("allrideramount", allriderpercentage);
+		session.setAttribute("basicpremium", basic_premium);
+		session.setAttribute("totalbasic", tb);
+		session.setAttribute("trailerpremium", trailer_premium);
+		int afterloading=0;
+		int stampduty=10;
+		int gross_premium = anual_premium+afterloading+extracoverage+stampduty;
+		
+		// session.setAttribute("vehiclenumber1", "TN 47 AZ 1");
+		// session.setAttribute("policynumber", 1450314);
+		int gst=6;
+		int gstoncommission=2;
+		float gstrm = (anual_premium/100)*gst;
+		float gstoncommissionrm= (anual_premium/100)*gstoncommission;
+		int commission=15;
+		float commissionrm=(anual_premium/100)*commission;
+		session.setAttribute("annualpremium", anual_premium);
+		session.setAttribute("ncdamount", 0);
+		session.setAttribute("grosspremium", gross_premium);
+		session.setAttribute("gst", gst);
+		session.setAttribute("gstrm", gstrm);
+		
+		
+		float amountpayableclient=gstoncommissionrm+commissionrm+gross_premium;
+		float amountpayableagent=(amountpayableclient-commissionrm);
+		session.setAttribute("gstoncommission", gstoncommission);
+		session.setAttribute("gstoncommissionrm", gstoncommissionrm);
+		session.setAttribute("amountpayableagent", amountpayableagent);
+		float actpremium=amountpayableagent;
+		session.setAttribute("actpremium", actpremium);
+		session.setAttribute("afterloading", afterloading);
+		session.setAttribute("extracoverage", extracoverage);
+		session.setAttribute("stampduty", stampduty);
+		session.setAttribute("fleetdiscount", 1450314);
+		session.setAttribute("commission", commission);
+		session.setAttribute("commissionrm", commissionrm);
+		session.setAttribute("amountpayableclient", amountpayableclient);
+		session.setAttribute("excessdamageclaim", 0);
+		session.setAttribute("voluntryexcess", 0);
+		session.setAttribute("voluntryexcessrm", 0);
+		
+		
+		
+		
+
+		int suminsured = 5000;
+		int trailersuminsured = 3000;
+
+		// int
+		return new ModelAndView("premium/premium");
+	}
+
+	/* Quotation Save */
+	@RequestMapping(value = "/save_premium_form", method = RequestMethod.POST)
+	public ModelAndView savePremium(@ModelAttribute("premiumFormData") CovernoteDO covernoteDO, BindingResult result,
+			HttpServletRequest request, HttpSession session) {
+		// @RequestMapping(value = "/saveQuotationForm", method = RequestMethod.POST)
+		// public @ResponseBody QuotationDO saveQuotation(@RequestBody QuotationDO
+		// quotationDO) {
+
+		covernoteService.savePremium(covernoteDO);
+		return new ModelAndView("redirect:covernote");
+		// return quotationDO;
+	}
+
 	/** Quotation */
 	@RequestMapping(value = "/coverclass", method = RequestMethod.GET)
 	public ModelAndView covernoteClass(@ModelAttribute("loginDO") LoginDO login, HttpServletRequest request)
@@ -50,43 +147,80 @@ public class CovernoteController {
 
 		return new ModelAndView("cn/cnclient");
 	}
-	
-	/*saveEndorsementDetails using Angular post call*/
+
+	/*
+	 * saveEndorsementDetails using Angular post call
+	 * 
+	 * @RequestMapping(value = "/saveEndorsementDetails", method =
+	 * RequestMethod.POST) public @ResponseBody CovernoteDO
+	 * saveEndorsementDetails(@RequestBody CovernoteDO quotationDO) {
+	 * //quotationService.saveNamedDrivers(quotationDO);
+	 * System.out.println(quotationDO.getPreviouspolicyno());
+	 * System.out.println(quotationDO.getCovernoteno());
+	 * System.out.println(quotationDO.getPocdate());
+	 * System.out.println(quotationDO.getEffectivedate());
+	 * System.out.println(quotationDO.getIssueddate());
+	 * System.out.println(quotationDO.getEndorsementtype());
+	 * System.out.println(quotationDO.getExpiredate());
+	 * 
+	 * 
+	 * return quotationDO; }
+	 */
+	/* saveEndorsementDetails using Angular post call */
 	@RequestMapping(value = "/saveEndorsementDetails", method = RequestMethod.POST)
 	public @ResponseBody CovernoteDO saveEndorsementDetails(@RequestBody CovernoteDO quotationDO) {
-		//quotationService.saveNamedDrivers(quotationDO);
-		/*System.out.println(quotationDO.getPreviouspolicyno());
+		// quotationService.saveNamedDrivers(quotationDO);
+		/*System.out.println("11111111\n" + quotationDO.getPreviouspolicyno());
 		System.out.println(quotationDO.getCovernoteno());
 		System.out.println(quotationDO.getPocdate());
 		System.out.println(quotationDO.getEffectivedate());
 		System.out.println(quotationDO.getIssueddate());
 		System.out.println(quotationDO.getEndorsementtype());
-		System.out.println(quotationDO.getExpiredate());*/
+		System.out.println(quotationDO.getExpiredate() + "\n1111111111111111");*/
+
+		covernoteService.saveEndorsementDetails(quotationDO);
+
 		return quotationDO;
 	}
-	
-	/*Convert to Covernote using Angular post call*/
+	/* Named Drivers Grid */
+	@RequestMapping(value = "/endorsementfetch", method = RequestMethod.GET)
+	public @ResponseBody String endorsementfetch(CovernoteDO quotationDO, HttpServletRequest request) {
+
+		List<CovernoteDO> covernotegrid = null;
+		ArrayList<CovernoteDO> mainList = new ArrayList<CovernoteDO>();
+		// System.out.println("covernoteGrid");
+		String jsonString = null;
+		Gson gson = new Gson();
+		try {
+			covernotegrid = covernoteService.endorsementfetch(quotationDO);
+
+			mainList.addAll(0, covernotegrid);
+			jsonString = gson.toJson(mainList);
+			// System.out.println("covernotegrid\n" + jsonString);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return jsonString;
+	}
+
+	/* Convert to Covernote using Angular post call */
 	@RequestMapping(value = "/convertCovernote", method = RequestMethod.POST)
 	public @ResponseBody CovernoteDO convertCovernote(@RequestBody CovernoteDO quotationDO) {
 		covernoteService.convertCovernote(quotationDO);
 		System.out.println(quotationDO.getCovernoteid());
-		
-		 
-		
+
 		return quotationDO;
 	}
-	
-	/*Cancel to Covernote using Angular post call*/
+
+	/* Cancel to Covernote using Angular post call */
 	@RequestMapping(value = "/cancelCovernote", method = RequestMethod.POST)
 	public @ResponseBody CovernoteDO cancelCovernote(@RequestBody CovernoteDO quotationDO) {
 		covernoteService.cancelCovernote(quotationDO);
 		System.out.println(quotationDO.getCovernoteid());
-		
-		 
-		
+
 		return quotationDO;
 	}
-	
+
 	@RequestMapping(value = "/save_covernote_form", method = RequestMethod.POST)
 	public ModelAndView saveQuotation(@ModelAttribute("covernoteFormData") CovernoteDO covernoteDO,
 			BindingResult result, HttpServletRequest request, HttpSession session) {
@@ -153,7 +287,7 @@ public class CovernoteController {
 
 		List<CovernoteDO> cnoptiongrid = null;
 		ArrayList<CovernoteDO> mainList = new ArrayList<CovernoteDO>();
-		 //System.out.println("cnoptionGrid");
+		// System.out.println("cnoptionGrid");
 		String jsonString = null;
 		Gson gson = new Gson();
 		try {
@@ -161,19 +295,20 @@ public class CovernoteController {
 
 			mainList.addAll(0, cnoptiongrid);
 			jsonString = gson.toJson(mainList);
-			 // System.out.println("cnoptiongrid\n" + jsonString);
+			// System.out.println("cnoptiongrid\n" + jsonString);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return jsonString;
 	}
+
 	/* CN options Grid */
 	@RequestMapping(value = "/cncovernteGrid", method = RequestMethod.GET)
 	public @ResponseBody String cncovernteGrid(CovernoteDO covernoteDO, HttpServletRequest request) {
 
 		List<CovernoteDO> cnoptiongrid = null;
 		ArrayList<CovernoteDO> mainList = new ArrayList<CovernoteDO>();
-		 //System.out.println("cnoptionGrid");
+		// System.out.println("cnoptionGrid");
 		String jsonString = null;
 		Gson gson = new Gson();
 		try {
@@ -181,12 +316,13 @@ public class CovernoteController {
 
 			mainList.addAll(0, cnoptiongrid);
 			jsonString = gson.toJson(mainList);
-			 // System.out.println("cnoptiongrid\n" + jsonString);
+			// System.out.println("cnoptiongrid\n" + jsonString);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return jsonString;
 	}
+
 	/** Covernote DROP **/
 	@RequestMapping(value = "/covernoteDrop", method = RequestMethod.GET)
 	public @ResponseBody String covernoteDrop(HttpServletRequest request) {

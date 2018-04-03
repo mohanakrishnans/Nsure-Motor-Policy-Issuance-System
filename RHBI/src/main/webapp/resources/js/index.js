@@ -253,18 +253,27 @@ app.controller('cnoptionGrid', [
 			        
 			    });
 			  };
-			$scope.gridOptions.columnDefs = [ {
-				name : 'covernoteid',
-				displayName : 'Covernote Id'
+			$scope.gridOptions.columnDefs = [{
+				name : 'quotationID',
+				displayName : 'ID'
 			},{
-				name : 'classId',
-				displayName : 'Class Id'
+				name : 'name',
+				displayName : 'Name'
 			}, {
-				name : 'IssueDate',
-				displayName : 'Issue Date'
+				name : 'address',
+				displayName : 'Address'
+			}, {
+				name : 'branch',
+				displayName : 'Branch'
+			}, {
+				name : 'nationality',
+				displayName : 'Nationality'
+			}, {
+				name : 'mobileNo',
+				displayName : 'Mobile'
 			}];
 			
-			$http.get('cnoptionGrid').success(
+			$http.get('covernoteGrid').success(
 					function(data) {
 						$scope.gridOptions.data = data;
 						$timeout(function() {

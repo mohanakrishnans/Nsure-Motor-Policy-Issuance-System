@@ -24,7 +24,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView; 
 import com.google.gson.Gson;
 import com.kgisl.nsure.authenticate.domain.LoginDO;
+import com.kgisl.nsure.covernote.domain.CovernoteDO;
 import com.kgisl.nsure.quotation.Service.QuotationService;
+import com.kgisl.nsure.quotation.dao.QuotationDAO;
 import com.kgisl.nsure.quotation.domain.QuotationDO;
 
 import net.sf.json.JSON;
@@ -35,7 +37,8 @@ import net.sf.json.JSON;
  */
 @Controller
 public class QuotationController {
-
+	@Autowired
+	QuotationDAO quotationdao; 
 	@Autowired
 	QuotationService quotationService;
 	@RequestMapping(value = "/file", method = RequestMethod.GET)
@@ -64,9 +67,7 @@ public class QuotationController {
     public ResponseEntity<QuotationDO> registerStudent(@RequestBody List<QuotationDO> stdList) {    
 
 
-        /*if (registerService.isStudentExist(stdList)) {
-            return new ResponseEntity<RegisterDTO>(HttpStatus.CREATED);
-        }*/
+       
 		System.out.println("MMM");
         return new ResponseEntity<QuotationDO>(HttpStatus.CREATED);
 
@@ -89,12 +90,7 @@ public class QuotationController {
 		return new ModelAndView("cn/nbcovernote");
 	}
 
-	/** Premium */
-	@RequestMapping(value = "/premium", method = RequestMethod.GET)
-	public ModelAndView endorsement(@ModelAttribute("login") QuotationDO quotationdo) {
-
-		return new ModelAndView("premium/premium");
-	}
+	
 
 	/** Named Drivers **/
 	@RequestMapping(value = "/nameddrivers", method = RequestMethod.GET)
@@ -120,6 +116,11 @@ public class QuotationController {
 	public ModelAndView endorsementDetails(@ModelAttribute("login") QuotationDO quotationdo) {
 
 		return new ModelAndView("endor/endorsementdetails");
+	}
+	@RequestMapping(value = "/referrisk", method = RequestMethod.GET)
+	public ModelAndView risk(@ModelAttribute("login") QuotationDO quotationdo) {
+
+		return new ModelAndView("premium/referrisk");
 	}
 
 	@RequestMapping(value = "/mohan", method = RequestMethod.GET)
@@ -186,6 +187,13 @@ public class QuotationController {
 	public ModelAndView saveMpa(@ModelAttribute("mpadata") QuotationDO quotationDO,
 			BindingResult result, HttpServletRequest request, HttpSession session) {
 
+		
+		
+		
+		session.setAttribute("selectplan", quotationDO.getMpapremium());
+		session.setAttribute("noofpassengers", quotationDO.getNoofpassengers());
+		session.setAttribute("mpapremium", quotationDO.getMpapremium());
+		
 		//System.out.println(quotationDO.getNameddrivername());
 		quotationService.saveMpa(quotationDO);
 		return new ModelAndView("redirect:premium");
@@ -200,13 +208,13 @@ public class QuotationController {
 	}
 	
 	/* Quotation Save */
-	/*@RequestMapping(value = "/save_quotation_form", method = RequestMethod.POST)
+	@RequestMapping(value = "/save_quotation_form", method = RequestMethod.POST)
 	public ModelAndView saveQuotation(@ModelAttribute("quotationFormData") QuotationDO quotationDO,
-			BindingResult result, HttpServletRequest request, HttpSession session) {*/
-	@RequestMapping(value = "/saveQuotationForm", method = RequestMethod.POST)
-	public @ResponseBody QuotationDO saveQuotation(@RequestBody QuotationDO quotationDO) {
+			BindingResult result, HttpServletRequest request, HttpSession session) {
+	//@RequestMapping(value = "/saveQuotationForm", method = RequestMethod.POST)
+	//public @ResponseBody QuotationDO saveQuotation(@RequestBody QuotationDO quotationDO) {
 
-		/*session.setAttribute("sourceType", quotationDO.getSourceType());
+		session.setAttribute("sourceType", quotationDO.getSourceType());
 		session.setAttribute("accountCode", quotationDO.getAccountCode());
 		session.setAttribute("branch", quotationDO.getBranch());
 		session.setAttribute("accountName", quotationDO.getAccountName());
@@ -250,54 +258,11 @@ public class QuotationController {
 		session.setAttribute("employementstatus", quotationDO.getEmployementstatus());
 		session.setAttribute("gstregistrationno", quotationDO.getGstregistrationno());
 
-		*/
-		System.out.println("sourceType" + quotationDO.getSourceType());
-		System.out.println("accountCode" + quotationDO.getAccountCode());
-		System.out.println("branch" + quotationDO.getBranch());
-		System.out.println("accountName" + quotationDO.getAccountName());
-		System.out.println("newIcNo" + quotationDO.getNewIcNo());
-		System.out.println("name" + quotationDO.getName());
-		System.out.println("nationality" + quotationDO.getNationality());
-		System.out.println("race" + quotationDO.getRace());
+		
 
-		System.out.println("dateOfBirth" + quotationDO.getDateOfBirth());
-		System.out.println("gender" + quotationDO.getGender());
-		System.out.println("maritalStatus" + quotationDO.getMaritalStatus());
-		System.out.println("occupation" + quotationDO.getOccupation());
-		System.out.println("gstRegistered" + quotationDO.getGstRegistered());
-		System.out.println("address" + quotationDO.getAddress());
-		System.out.println("postCode" + quotationDO.getPostCode());
-		System.out.println("countryCode" + quotationDO.getCountryCode());
-		System.out.println("mobileNo" + quotationDO.getMobileNo());
-		System.out.println("pdpa" + quotationDO.getPdpa());
-		System.out.println("css" + quotationDO.getCss());
-		System.out.println("businessRegNo" + quotationDO.getBusinessRegNo());
-		System.out.println("typeOfBusiness" + quotationDO.getTypeOfBusiness());
-		System.out.println("oldIcNo" + quotationDO.getOldIcNo());
-
-		System.out.println("gstregistrationdate" + quotationDO.getGstregistrationdate());
-		System.out.println("gstexpirydate" + quotationDO.getGstexpirydate());
-		System.out.println("website" + quotationDO.getWebsite());
-		System.out.println("trafficviolation" + quotationDO.getTrafficviolation());
-		System.out.println("vipstatus" + quotationDO.getVipstatus());
-		System.out.println("permanentaddress" + quotationDO.getPermanentaddress());
-		System.out.println("statecountry" + quotationDO.getStatecountry());
-		System.out.println("telnohouse" + quotationDO.getTelnohouse());
-		System.out.println("telnooffice" + quotationDO.getTelnooffice());
-		System.out.println("faxnohouse" + quotationDO.getFaxnohouse());
-		System.out.println("faxnooffice" + quotationDO.getFaxnooffice());
-		System.out.println("remarks" + quotationDO.getRemarks());
-		System.out.println("datasignedcustomer" + quotationDO.getDatasignedcustomer());
-		System.out.println("crosssignedcustomer" + quotationDO.getCrosssignedcustomer());
-		System.out.println("oldicpassportno" + quotationDO.getOldicpassportno());
-		System.out.println("salutation" + quotationDO.getSalutation());
-		System.out.println("age" + quotationDO.getAge());
-		System.out.println("employementstatus" + quotationDO.getEmployementstatus());
-		System.out.println("gstregistrationno" + quotationDO.getGstregistrationno());
-
-		//quotationService.saveQuotation(quotationDO);
-		//return new ModelAndView("redirect:covernote");
-		return quotationDO;
+		quotationService.saveQuotation(quotationDO);
+		return new ModelAndView("redirect:covernote");
+		//return quotationDO;
 	}
 
 	@RequestMapping(value = "/quotationDrop", method = RequestMethod.GET)
@@ -363,13 +328,34 @@ public class QuotationController {
 
 			mainList.addAll(0, covernotegrid);
 			jsonString = gson.toJson(mainList);
-			System.out.println("covernotegrid\n" + jsonString);
+			//System.out.println("covernotegrid\n" + jsonString);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return jsonString;
 	}
+	/* UI Grid */
+	@RequestMapping(value = "/reportquot", method = RequestMethod.GET)
+	public @ResponseBody String reprot(HttpServletRequest request, HttpServletResponse response,
+			QuotationDO quotationDO) {
 
+		List<QuotationDO> covernotegrid = null;
+		ArrayList<QuotationDO> mainList = new ArrayList<QuotationDO>();
+		// System.out.println("covernoteGrid");
+		String jsonString = null;
+		Gson gson = new Gson();
+		try {
+			covernotegrid = quotationdao.getreport(quotationDO);
+
+			mainList.addAll(0, covernotegrid);
+			jsonString = gson.toJson(mainList);
+			//System.out.println("covernotegrid\n" + jsonString);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return jsonString;
+	}
+	
 	/* Named Drivers Grid */
 	@RequestMapping(value = "/namedDrivers", method = RequestMethod.GET)
 	public @ResponseBody String namedDriversGrid(QuotationDO quotationDO, HttpServletRequest request) {
